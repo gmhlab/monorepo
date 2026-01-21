@@ -1,0 +1,24 @@
+{
+  "name": "monorepo",
+  "private": true,
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "lint": "turbo lint",
+    "typecheck": "turbo typecheck",
+    "clean": "turbo clean"
+  },
+  "devDependencies": {
+    "turbo": "^2.3.0",
+    "prettier": "^3.4.0",
+    "typescript": "catalog:",
+    "eslint": "catalog:",
+    "tailwindcss": "catalog:",
+    "@tailwindcss/postcss": "catalog:",
+    "@tailwindcss/vite": "catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "@types/node": "catalog:"
+  },
+  "packageManager": "pnpm@9.15.0"
+}
