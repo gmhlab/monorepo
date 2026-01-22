@@ -1,20 +1,19 @@
-import { Button, Card, CardHeader, CardTitle, CardContent } from "@repo/ui";
+import { ProfileCard } from "@repo/ui";
 
 export default function App() {
   return (
-    <main className="min-h-screen flex items-center justify-center bg-surface p-8">
-      <Card className="w-full max-w-md">
-        <CardHeader>
-          <CardTitle>CDN App</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <p className="text-text-muted">Vite + React + Shared UI</p>
-          <div className="flex gap-2">
-            <Button>Primary</Button>
-            <Button variant="destructive">Destructive</Button>
-          </div>
-        </CardContent>
-      </Card>
+    <main className="min-h-screen flex items-center justify-center bg-background p-8">
+      <div className="w-full max-w-md">
+        <ProfileCard
+          name="Terrance Brunner"
+          role="Senior Design Engineer"
+          avatarUrl="https://jeffersonkidd.com/img/logo.png"
+          skills={["UX / UI", "Design Systems", "Figma", "Prototyping", "React / CSS / TypeScript"]}
+          recentActivity="Reduced design-to-code handoff time by 60%"
+          team="GW Global Mental Health"
+          email="terrancebrunner@gmail.com"
+        />
+      </div>
     </main>
   );
 }
