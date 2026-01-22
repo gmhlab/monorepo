@@ -19,7 +19,7 @@ interface ProfileCardProps {
   email: string
 }
 
-export default function ProfileCard({
+export function ProfileCard({
   name,
   role,
   avatarUrl,
