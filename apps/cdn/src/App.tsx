@@ -3,7 +3,6 @@ import { ProfileCard } from "@repo/ui";
 export default function App() {
   return (
     <main className="min-h-screen flex items-center justify-center bg-background p-8">
-      <div className="w-full max-w-md">
         <ProfileCard
           name="Terrance Brunner"
           role="Senior Design Engineer"
@@ -13,7 +12,6 @@ export default function App() {
           team="GW Global Mental Health"
           email="terrancebrunner@gmail.com"
         />
-      </div>
     </main>
   );
 }
