@@ -46,7 +46,7 @@ const steps = [
 
 export function HowToUseSection() {
   return (
-    <div className="py-20 px-4">
+    <div className="py-20 max-w-3xl px-4">
       <div className="container mx-auto">
         <h2 className="text-5xl md:text-6xl font-serif text-white text-center mb-16">How do you use it?</h2>
 

@@ -10,6 +10,7 @@ import { Download } from "lucide-react";
 export function Innovation() {
   return (
     <div className="min-h-screen bg-[#033C5A]">
+      <div className="w-full max-w-4xl flex flex-col items-center mx-auto">
       <InnovationHeader />
       <WhatIsItSection />
       <HowToUseSection />
@@ -28,8 +29,10 @@ export function Innovation() {
           <div className="absolute inset-0 bg-white opacity-0"></div>
         </button>
       </div>
+      </div>
 
       <NavigationFooter />
+
     </div>
   );
 }
