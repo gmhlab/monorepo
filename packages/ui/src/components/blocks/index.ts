@@ -1,5 +1,7 @@
-export * from "./card-01";
-export * from "./footer-01";
-export * from "./header-01";                                                                                                                                                                 
+// Blocks
+
+export * from "./header-01";       
+export * from "./footer-01";                                                                                                                              
 export * from "./login-01";
-export * from "./login-02";
+export * from "./profile-01";
+export * from "./create-acct-01";

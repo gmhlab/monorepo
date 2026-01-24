@@ -3,14 +3,7 @@
 import { useState } from "react";
 import { Header } from "./blocks/header-01";
 import { Footer } from "./blocks/footer-01";
-import { Button } from "./ui/button";
-import { Input } from "./ui/input";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter, CardAction } from "./ui/card";
 import { Badge } from "./ui/badge";
-import { Switch } from "./ui/switch";
-import { Label } from "./ui/label";
-import { Tabs } from "./ui/tabs";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Separator } from "./ui/separator";
 import { 
   Bell, 
@@ -29,7 +22,6 @@ import {
 } from "lucide-react";
 import { DesignTokens } from "./ds-demo-tokens";
 import { TailwindColorPalettes } from "./ds-demo-palettes";
-import { LoginDemo } from "./blocks/login-01";
 
 export function DesignSystem() {
   const [switchChecked, setSwitchChecked] = useState(false);
@@ -46,7 +38,7 @@ export function DesignSystem() {
 
     {/* Main Content */}
       <main className="container py-12 px-8">
-        <div className="max-w-7xl mx-auto space-y-12">
+        <div className="max-w-5xl mx-auto space-y-12">
 
           {/* Hero Section */}
           <header className="space-y-4">
@@ -66,7 +58,6 @@ export function DesignSystem() {
 
         </div>
       </main>
-      <LoginDemo />
     {/* Footer */}
       <Footer />
 

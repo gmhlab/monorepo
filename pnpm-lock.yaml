@@ -78,6 +78,9 @@ catalogs:
     react-dom:
       specifier: ^19.0.0
       version: 19.2.3
+    react-hook-form:
+      specifier: ^7.55.0
+      version: 7.71.1
     recharts:
       specifier: ^2.15.0
       version: 2.15.4
@@ -266,7 +269,7 @@ importers:
         specifier: 'catalog:'
         version: 19.2.3(react@19.2.3)
       react-hook-form:
-        specifier: ^7.55.0
+        specifier: 'catalog:'
         version: 7.71.1(react@19.2.3)
       recharts:
         specifier: 'catalog:'
