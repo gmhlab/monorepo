@@ -1,20 +1,15 @@
-import { Button, Card, CardHeader, CardTitle, CardDescription, CardContent } from "@repo/ui";
+import { ProfileCard } from "@repo/ui";
 
-export default function Home() {
+export default function App() {
   return (
-    <main className="min-h-screen flex items-center justify-center bg-background p-8">
-      <Card className="w-full max-w-md bg-card">
-        <CardHeader>
-          <CardTitle>Documentation</CardTitle>
-          <CardDescription>Using shared UI components.</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="flex gap-2">
-            <Button variant="secondary">Secondary</Button>
-            <Button variant="ghost">Ghost</Button>
-          </div>
-        </CardContent>
-      </Card>
-    </main>
+    <ProfileCard
+      name="Terrance Brunner"
+      role="Senior Design Engineer"
+      avatarUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRMjq1f6zrvoO_vb_oRwMOsWm59Ux_7Ky9FQ&s"
+      skills={["UX / UI", "Design Systems", "Figma", "Prototyping", "React / CSS / TypeScript"]}
+      recentActivity="Reduced design-to-code handoff time by 60%"
+      team="GW Global Mental Health"
+      email="terrancebrunner@gmail.com"
+    />
   );
 }
