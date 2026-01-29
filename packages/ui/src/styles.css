@@ -5,7 +5,6 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-
   /* ==========================================
      TYPOGRAPHY
      ========================================== */  
@@ -15,15 +14,16 @@
   --font-sans: 'Avenir Next', Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   --font-serif: 'Hoefler Text', ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
   /* Font Sizes */
-  --text-base: 1rem,                  /* 16px */
-  --text-base--line-height: 1.5,
-  --text-sm: 0.875rem,                /* 14px */
-  --text-sm--line-height: 1.43,
-  --text-lg: 1.125rem,                /* 18px */
-  --text-lg--line-height: 1.56,
   --text-xs: 0.75rem,                 /* 12px */
   --text-xs--line-height: 1.33,
+  --text-sm: 0.875rem,                /* 14px */
+  --text-sm--line-height: 1.43,
+  --text-base: 1rem,                  /* 16px */
+  --text-base--line-height: 1.5,
+  --text-lg: 1.125rem,                /* 18px */
+  --text-lg--line-height: 1.56,
   --text-xl: 1.25rem,                 /* 20px */
   --text-xl--line-height: 1.4,
   --text-2xl: 1.5rem,                 /* 24px */
@@ -42,16 +42,15 @@
   --text-8xl--line-height: 1,
   --text-9xl: 8rem,
   --text-9xl--line-height: 1,
+
   /* Font Weights */
-  --font-weight-thin: 100,
-  --font-weight-extralight: 200,
   --font-weight-light: 300,
   --font-weight-normal: 400,
   --font-weight-medium: 500,
   --font-weight-semibold: 600,
   --font-weight-bold: 700,
   --font-weight-extrabold: 800,
-  --font-weight-black: 900,
+
   /* Line Heights */
   --leading-none: 1;
   --leading-tight: 1.25;
@@ -59,6 +58,7 @@
   --leading-normal: 1.5;
   --leading-relaxed: 1.625;
   --leading-loose: 2;
+
   /* Letter Spacing */
   --tracking-tighter: -0.05em;
   --tracking-tight: -0.025em;
@@ -68,8 +68,8 @@
   --tracking-widest: 0.1em;
 
   /* ==========================================
-     SPACING & LAYOUT
-     ========================================== */
+    SPACING & LAYOUT
+    ========================================== */
 
   /* Device Breakpoints */
   --breakpoint-sm: 40rem;
@@ -77,6 +77,7 @@
   --breakpoint-lg: 64rem;
   --breakpoint-xl: 80rem;
   --breakpoint-2xl: 96rem;  
+
   /* Container Sizes */
   --container-3xs: 16rem;
   --container-2xs: 18rem;
@@ -91,6 +92,7 @@
   --container-5xl: 64rem;
   --container-6xl: 72rem;
   --container-7xl: 80rem;
+  
   /* Spacing Scale */
   --spacing-0: 0;
   --spacing-1: 0.25rem;   /* 4px */
@@ -105,6 +107,7 @@
   --spacing-16: 4rem;     /* 64px */
   --spacing-20: 5rem;     /* 80px */
   --spacing-24: 6rem;     /* 96px */
+
   /* Border Radius */
   --radius: 0.625rem;
   --radius-xs: 0.25rem;
@@ -132,6 +135,7 @@
   --slate-800: #1e293b;
   --slate-900: #0f172a;
   --slate-950: #020617;
+
   /* Gray Scale */
   --gray-50: #f9fafb;
   --gray-100: #f3f4f6;
@@ -144,6 +148,7 @@
   --gray-800: #1f2937;
   --gray-900: #111827;
   --gray-950: #030712;
+
   /* Zinc Scale */
   --zinc-50: #fafafa;
   --zinc-100: #f4f4f5;
@@ -156,6 +161,7 @@
   --zinc-800: #27272a;
   --zinc-900: #18181b;
   --zinc-950: #09090b;
+
   /* Neutral Scale */
   --neutral-50: #fafafa;
   --neutral-100: #f5f5f5;
@@ -168,6 +174,7 @@
   --neutral-800: #262626;
   --neutral-900: #171717;
   --neutral-950: #0a0a0a;
+
   /* Stone Scale */
   --stone-50: #fafaf9;
   --stone-100: #f5f5f4;
@@ -180,6 +187,7 @@
   --stone-800: #292524;
   --stone-900: #1c1917;
   --stone-950: #0c0a09;
+
   /* Red Scale */
   --red-50: #fef2f2;
   --red-100: #fee2e2;
@@ -192,6 +200,7 @@
   --red-800: #991b1b;
   --red-900: #7f1d1d;
   --red-950: #450a0a;
+
   /* Orange Scale */
   --orange-50: #fff7ed;
   --orange-100: #ffedd5;
@@ -204,6 +213,7 @@
   --orange-800: #9a3412;
   --orange-900: #7c2d12;
   --orange-950: #431407;
+
   /* Amber Scale */
   --amber-50: #fffbeb;
   --amber-100: #fef3c7;
@@ -216,6 +226,7 @@
   --amber-800: #92400e;
   --amber-900: #78350f;
   --amber-950: #451a03;
+
   /* Yellow Scale */
   --yellow-50: #fefce8;
   --yellow-100: #fef9c3;
@@ -228,6 +239,7 @@
   --yellow-800: #854d0e;
   --yellow-900: #713f12;
   --yellow-950: #422006;
+
   /* Green Scale */
   --green-50: #f0fdf4;
   --green-100: #dcfce7;
@@ -240,6 +252,7 @@
   --green-800: #166534;
   --green-900: #14532d;
   --green-950: #052e16;
+
   /* Emerald Scale */
   --emerald-50: #ecfdf5;
   --emerald-100: #d1fae5;
@@ -252,6 +265,7 @@
   --emerald-800: #065f46;
   --emerald-900: #064e3b;
   --emerald-950: #022c22;
+
   /* Teal Scale */
   --teal-50: #f0fdfa;
   --teal-100: #ccfbf1;
@@ -264,6 +278,7 @@
   --teal-800: #115e59;
   --teal-900: #134e4a;
   --teal-950: #042f2e;
+
   /* Cyan Scale */
   --cyan-50: #ecfeff;
   --cyan-100: #cffafe;
@@ -276,6 +291,7 @@
   --cyan-800: #155e75;
   --cyan-900: #164e63;
   --cyan-950: #083344;
+
   /* Sky Scale */
   --sky-50: #f0f9ff;
   --sky-100: #e0f2fe;
@@ -288,6 +304,7 @@
   --sky-800: #075985;
   --sky-900: #0c4a6e;
   --sky-950: #082f49;
+
   /* Blue Scale */
   --blue-50: #eff6ff;
   --blue-100: #dbeafe;
@@ -300,6 +317,7 @@
   --blue-800: #1e40af;
   --blue-900: #1e3a8a;
   --blue-950: #172554;
+
   /* Indigo Scale */
   --indigo-50: #eef2ff;
   --indigo-100: #e0e7ff;
@@ -312,6 +330,7 @@
   --indigo-800: #3730a3;
   --indigo-900: #312e81;
   --indigo-950: #1e1b4b;
+
   /* Violet Scale */
   --violet-50: #f5f3ff;
   --violet-100: #ede9fe;
@@ -324,6 +343,7 @@
   --violet-800: #5b21b6;
   --violet-900: #4c1d95;
   --violet-950: #2e1065;
+
   /* Purple Scale */
   --purple-50: #faf5ff;
   --purple-100: #f3e8ff;
@@ -336,6 +356,7 @@
   --purple-800: #6b21a8;
   --purple-900: #581c87;
   --purple-950: #3b0764;
+
   /* Fuchsia Scale */
   --fuchsia-50: #fdf4ff;
   --fuchsia-100: #fae8ff;
@@ -348,6 +369,7 @@
   --fuchsia-800: #86198f;
   --fuchsia-900: #701a75;
   --fuchsia-950: #4a044e;
+
   /* Pink Scale */
   --pink-50: #fdf2f8;
   --pink-100: #fce7f3;
@@ -360,6 +382,7 @@
   --pink-800: #9d174d;
   --pink-900: #831843;
   --pink-950: #500724;
+
   /* Rose Scale */
   --rose-50: #fff1f2;
   --rose-100: #ffe4e6;
@@ -372,9 +395,10 @@
   --rose-800: #9f1239;
   --rose-900: #881337;
   --rose-950: #4c0519;
+
   /* Base Colors */
-  --background: #033c5a;
-  --foreground: #ffffff; /* var(--neutral-950); */
+  --background: var(--white);
+  --foreground: var(--neutral-950); 
 
   /* ==========================================
     COLOR SYSTEM
@@ -385,11 +409,13 @@
   --card-foreground: var(--neutral-900);
   --popover: oklch(1 0 0);
   --popover-foreground: var(--neutral-950);
+
   /* Brand Colors */
   --primary: #aa9868; /* #030213 */
   --primary-foreground: oklch(1 0 0);
   --secondary: #adc9d8;
   --secondary-foreground: #030213;
+
   /* Utility Colors */
   --muted: #ececf0;
   --muted-foreground: #717182;
@@ -403,18 +429,21 @@
   --warning-foreground: var(--white);
   --info: var(--blue-500);
   --info-foreground: var(--white);
+
   /* Borders & Inputs */
   --border: #aa9868;
   --input: #aa9868;
   --input-background: #f3f3f5;
   --switch-background: #cbced4;
   --ring: var(--neutral-400);
+
   /* Chart Colors */
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: var(--amber-500);
+
   /* Sidebar Colors */
   --sidebar: var(--neutral-50);
   --sidebar-foreground: var(--neutral-950);
@@ -426,25 +455,33 @@
   --sidebar-ring: var(--neutral-400);
   
   /* ==========================================
-     SHADOWS & ELEVATION
+     SHADOWS & ELEVATION (lighter for dark mode )
      ========================================== */
   
-  --shadow-2xs: 0 1px 0 0 oklch(0.000 0.000 0.000 / 0.05),
-  --shadow-xs: 0 1px 2px 0 oklch(0.000 0.000 0.000 / 0.05),
-  --shadow-sm: 0 1px 3px 0 oklch(0.000 0.000 0.000 / 0.1), 0 1px 2px -1px oklch(0.000 0.000 0.000 / 0.1),
-  --shadow-md: 0 4px 6px -1px oklch(0.000 0.000 0.000 / 0.1), 0 2px 4px -2px oklch(0.000 0.000 0.000 / 0.1),
-  --shadow-lg: 0 10px 15px -3px oklch(0.000 0.000 0.000 / 0.1), 0 4px 6px -4px oklch(0.000 0.000 0.000 / 0.1),
-  --shadow-xl: 0 20px 25px -5px oklch(0.000 0.000 0.000 / 0.1), 0 8px 10px -6px oklch(0.000 0.000 0.000 / 0.1),
-  --shadow-2xl: 0 25px 50px -12px oklch(0.000 0.000 0.000 / 0.25),
-  --drop-shadow-xs: 0 1px 1px 0 oklch(0.000 0.000 0.000 / 0.05),
-  --drop-shadow-sm: 0 1px 2px 0 oklch(0.000 0.000 0.000 / 0.15),
-  --drop-shadow-md: 0 3px 3px 0 oklch(0.000 0.000 0.000 / 0.12),
-  --drop-shadow-lg: 0 4px 4px 0 oklch(0.000 0.000 0.000 / 0.15),
-  --drop-shadow-xl: 0 9px 7px 0 oklch(0.000 0.000 0.000 / 0.1),
-  --drop-shadow-2xl: 0 25px 25px 0 oklch(0.000 0.000 0.000 / 0.15),
-  --inset-shadow-2xs: inset 0 1px 0 0 oklch(0.000 0.000 0.000 / 0.05),
-  --inset-shadow-xs: inset 0 1px 1px 0 oklch(0.000 0.000 0.000 / 0.05),
-  --inset-shadow-sm: inset 0 2px 4px 0 oklch(0.000 0.000 0.000 / 0.05)
+  --shadow-2xs: 0 1px rgb(0 0 0 / 0.05);
+  --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+
+  --inset-shadow-2xs: inset 0 1px rgb(0 0 0 / 0.05);
+  --inset-shadow-xs: inset 0 1px 1px rgb(0 0 0 / 0.05);
+  --inset-shadow-sm: inset 0 2px 4px rgb(0 0 0 / 0.05);
+
+  --drop-shadow-xs: 0 1px 1px rgb(0 0 0 / 0.05);
+  --drop-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.15);
+  --drop-shadow-md: 0 3px 3px rgb(0 0 0 / 0.12);
+  --drop-shadow-lg: 0 4px 4px rgb(0 0 0 / 0.15);
+  --drop-shadow-xl: 0 9px 7px rgb(0 0 0 / 0.1);
+  --drop-shadow-2xl: 0 25px 25px rgb(0 0 0 / 0.15);
+
+  --text-shadow-2xs: 0px 1px 0px rgb(0 0 0 / 0.15);
+  --text-shadow-xs: 0px 1px 1px rgb(0 0 0 / 0.2);
+  --text-shadow-sm: 0px 1px 0px rgb(0 0 0 / 0.075), 0px 1px 1px rgb(0 0 0 / 0.075), 0px 2px 2px rgb(0 0 0 / 0.075);
+  --text-shadow-md: 0px 1px 1px rgb(0 0 0 / 0.1), 0px 1px 2px rgb(0 0 0 / 0.1), 0px 2px 4px rgb(0 0 0 / 0.1);
+  --text-shadow-lg: 0px 1px 2px rgb(0 0 0 / 0.1), 0px 3px 2px rgb(0 0 0 / 0.1), 0px 4px 8px rgb(0 0 0 / 0.1);
   
   /* ==========================================
      TRANSITIONS & ANIMATIONS
@@ -464,16 +501,21 @@
   /* Base Colors */
   --background: var(--neutral-950);
   --foreground: var(--neutral-50);
+
   /* Surface Colors */
   --card: var(--neutral-950);
   --card-foreground: var(--neutral-50);
+
+  /* Popover Colors */
   --popover: var(--neutral-950);
   --popover-foreground: var(--neutral-50);
+
   /* Brand Colors */
   --primary: var(--neutral-50);
   --primary-foreground: var(--neutral-900);
   --secondary: var(--neutral-800);
   --secondary-foreground: var(--neutral-50);
+
   /* Utility Colors */
   --muted: var(--neutral-800);
   --muted-foreground: var(--neutral-400);
@@ -487,18 +529,21 @@
   --warning-foreground: var(--neutral-950);
   --info: var(--blue-400);;
   --info-foreground: var(--neutral-950);
+
   /* Borders & Inputs */
   --border: var(--neutral-800);
   --input: var(--neutral-800);
   --input-background: var(--neutral-900);
   --switch-background: var(--neutral-600);
   --ring: var(--neutral-600);
+
   /* Chart Colors */
   --chart-1: var(--blue-700);
   --chart-2: var(--emerald-500);
   --chart-3: var(--amber-500);
   --chart-4: var(--purple-500);
   --chart-5: var(--rose-500);
+
   /* Sidebar Colors */
   --sidebar: var(--neutral-900);
   --sidebar-foreground: var(--neutral-50);
@@ -508,23 +553,6 @@
   --sidebar-accent-foreground: var(--neutral-50);
   --sidebar-border: var(--neutral-800);
   --sidebar-ring: var(--neutral-600);
-  /* Shadows (lighter for dark mode) */
-  --shadow-2xs: 0 1px 0 0 oklch(0.000 0.000 0.000 / 0.05),
-  --shadow-xs: 0 1px 2px 0 oklch(0.000 0.000 0.000 / 0.05),
-  --shadow-sm: 0 1px 3px 0 oklch(0.000 0.000 0.000 / 0.1), 0 1px 2px -1px oklch(0.000 0.000 0.000 / 0.1),
-  --shadow-md: 0 4px 6px -1px oklch(0.000 0.000 0.000 / 0.1), 0 2px 4px -2px oklch(0.000 0.000 0.000 / 0.1),
-  --shadow-lg: 0 10px 15px -3px oklch(0.000 0.000 0.000 / 0.1), 0 4px 6px -4px oklch(0.000 0.000 0.000 / 0.1),
-  --shadow-xl: 0 20px 25px -5px oklch(0.000 0.000 0.000 / 0.1), 0 8px 10px -6px oklch(0.000 0.000 0.000 / 0.1),
-  --shadow-2xl: 0 25px 50px -12px oklch(0.000 0.000 0.000 / 0.25),
-  --drop-shadow-xs: 0 1px 1px 0 oklch(0.000 0.000 0.000 / 0.05),
-  --drop-shadow-sm: 0 1px 2px 0 oklch(0.000 0.000 0.000 / 0.15),
-  --drop-shadow-md: 0 3px 3px 0 oklch(0.000 0.000 0.000 / 0.12),
-  --drop-shadow-lg: 0 4px 4px 0 oklch(0.000 0.000 0.000 / 0.15),
-  --drop-shadow-xl: 0 9px 7px 0 oklch(0.000 0.000 0.000 / 0.1),
-  --drop-shadow-2xl: 0 25px 25px 0 oklch(0.000 0.000 0.000 / 0.15),
-  --inset-shadow-2xs: inset 0 1px 0 0 oklch(0.000 0.000 0.000 / 0.05),
-  --inset-shadow-xs: inset 0 1px 1px 0 oklch(0.000 0.000 0.000 / 0.05),
-  --inset-shadow-sm: inset 0 2px 4px 0 oklch(0.000 0.000 0.000 / 0.05)
 
 }
 
