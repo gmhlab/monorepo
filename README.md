@@ -1,207 +1,196 @@
-# Monorepo
+# GMH Lab Monorepo
 
-> A pnpm monorepo with shared UI, Tailwind v4 everywhere, and clean TypeScript configs.
+Design system and web applications for [Global Mental Health Lab](https://gwglobalmentalhealth.com).
+
+## Apps
+
+| App | Port | Stack | Purpose |
+|-----|------|-------|---------|
+| `apps/web` | 3000 | Next.js 15 | GMH innovations app |
+| `apps/docs` | 3001 | Next.js 15 | Design system documentation |
+| `apps/cdn` | 3002 | Vite 6 | Static assets / SPA |
 
 ## Quick Start
 
 ```bash
 pnpm install
-pnpm dev
+pnpm dev        # starts all three apps
 ```
 
-| App  | URL                   | Framework   |
-| ---- | --------------------- | ----------- |
-| web  | http://localhost:3000 | Next.js 15  |
-| docs | http://localhost:3001 | Next.js 15  |
-| cdn  | http://localhost:3002 | Vite 6      |
+Requires [pnpm](https://pnpm.io) 9.15+.
 
----
-
-## Architecture
+## Repository Structure
 
 ```
-monorepo/
+gmh-monorepo/
 ├── apps/
-│   ├── cdn/                # Vite — static site
-│   ├── docs/               # Next.js — documentation & design system demos
-│   └── web/                # Next.js — main application (GMH innovations)
+│   ├── web/                        # Next.js innovations app (:3000)
+│   │   └── src/app/
+│   │       ├── page.tsx            #   / → LoginForm
+│   │       ├── login/page.tsx      #   /login → LoginForm + ProfileCard
+│   │       └── innovations/
+│   │           ├── page.tsx        #   /innovations
+│   │           ├── equip/          #   /innovations/equip
+│   │           └── photovoice/     #   /innovations/photovoice
+│   ├── docs/                       # Next.js design system docs (:3001)
+│   │   └── src/app/page.tsx        #   / → ProfileCard
+│   └── cdn/                        # Vite SPA (:3002)
+│       └── src/App.tsx             #   / → Innovation
+│
 ├── packages/
-│   ├── eslint-config/      # Shared ESLint flat configs
-│   ├── typescript-config/  # Shared TypeScript configs
-│   └── ui/                 # Shared React components + Tailwind theme
-├── package.json            # Hoisted dev dependencies
-├── pnpm-workspace.yaml     # Workspace definition + version catalog
-└── turbo.json              # Task orchestration
+│   ├── ui/                         # Shared component library (no build step)
+│   │   ├── src/
+│   │   │   ├── components/
+│   │   │   │   ├── ui/             #   Primitives
+│   │   │   │   ├── blocks/         #   Composed components
+│   │   │   │   └── *.tsx           #   GMH page + DS demo components
+│   │   │   ├── lib/utils.ts        #   cn() — clsx + tailwind-merge
+│   │   │   ├── styles/index.css    #   Tailwind v4 config + design tokens
+│   │   │   └── index.ts            #   Barrel exports
+│   │   ├── registry/               # shadcn registry sources
+│   │   ├── public/r/               # Compiled registry output
+│   │   ├── components.json         # shadcn config
+│   │   └── registry.json           # Registry manifest
+│   ├── typescript-config/          # Shared tsconfig presets
+│   └── eslint-config/              # Shared ESLint configs
+│
+├── turbo.json                      # Turborepo pipeline
+└── pnpm-workspace.yaml             # Workspace + version catalog
 ```
-
----
-
-## Stack
-
-| Layer               | Technology                   | Version |
-| ------------------- | ---------------------------- | ------- |
-| Package Manager     | pnpm (workspaces + catalog)  | 9.15    |
-| Build Orchestration | Turborepo                    | 2.3     |
-| Framework (web, docs) | Next.js                    | 15.1    |
-| Framework (cdn)     | Vite                         | 6.0     |
-| UI Library          | React                        | 19      |
-| Styling             | Tailwind CSS                 | 4.0     |
-| Language            | TypeScript                   | 5.7     |
-| Linting             | ESLint (flat config)         | 9.17    |
-
----
 
 ## UI Package
 
-### Folder Structure
+`@repo/ui` is a raw TypeScript component library — apps compile it themselves (no build step). Built on Tailwind v4, Radix UI, and shadcn conventions.
 
-```
-packages/ui/src/
-├── components/
-│   ├── ui/             # Primitives (button, card, avatar, badge, input, etc.)
-│   ├── blocks/         # Composed components (login, header, footer, profile)
-│   ├── gmh-*           # GMH Innovation page components
-│   └── ds-demo-*       # Design system documentation components
-├── lib/
-│   └── utils.ts        # cn() helper
-├── styles.css          # Design tokens and Tailwind config
-└── index.ts            # Barrel exports
+### Importing
+
+```ts
+import { Button, Card, ProfileCard, cn } from "@repo/ui"
 ```
 
-### Primitives
+```css
+/* In your app's root CSS file */
+@import "@repo/ui/index.css";
+```
 
-| Component   | Features                                                    |
-| ----------- | ----------------------------------------------------------- |
-| `Button`    | Variants: default, secondary, outline, ghost, destructive, link. Sizes: default, sm, lg, icon. Supports `asChild` |
-| `Card`      | CardHeader, CardTitle, CardDescription, CardContent, CardFooter |
-| `Avatar`    | AvatarImage, AvatarFallback (Radix-based)                   |
-| `Badge`     | Variants: default, secondary, outline, destructive          |
-| `Input`     | Styled input with focus states                              |
-| `Label`     | Radix-based for accessibility                               |
-| `Tabs`      | TabsList, TabsTrigger, TabsContent (Radix-based)            |
-| `Switch`    | Toggle switch (Radix-based)                                 |
-| `Separator` | Visual divider (Radix-based)                                |
-| `Field`     | Form field with label, description, and error states        |
+### Component Layers
 
-### Blocks
+**Primitives** (`components/ui/`) — accessible base components:
 
-| Component      | Description                                      |
-| -------------- | ------------------------------------------------ |
-| `Header01`     | Site header with navigation                      |
-| `Footer01`     | Site footer                                      |
-| `Login01`      | Login form with email/password fields            |
-| `Profile01`    | Profile card composed from primitives            |
-| `CreateAcct01` | Account creation form                            |
+| Component | Exports |
+|-----------|---------|
+| `Accordion` | `Accordion`, `AccordionItem`, `AccordionTrigger`, `AccordionContent` |
+| `Avatar` | `Avatar`, `AvatarImage`, `AvatarFallback` |
+| `Badge` | `Badge`, `badgeVariants` |
+| `Button` | `Button`, `buttonVariants` (variants: default, secondary, outline, ghost, destructive, link; sizes: default, sm, lg, icon; supports `asChild`) |
+| `Card` | `Card`, `CardHeader`, `CardTitle`, `CardDescription`, `CardContent`, `CardFooter` |
+| `Field` | `Field` (label + description + error) |
+| `Form` | Form utilities via react-hook-form |
+| `Input` | `Input` |
+| `Label` | `Label` |
+| `Separator` | `Separator` |
+| `Switch` | `Switch` |
+| `Tabs` | `Tabs`, `TabsList`, `TabsTrigger`, `TabsContent` |
 
-### Page Components
+**Blocks** (`components/blocks/`) — composed, page-ready sections:
 
-| Component             | Description                                     |
-| --------------------- | ----------------------------------------------- |
-| `GmhHomepage00`       | GMH main homepage layout                        |
-| `GmhInnovation00`     | Innovation page shell                           |
-| `GmhInnovationWhatIsIt` | "What is it" section                          |
-| `GmhInnovationGetIt`  | "Get it" section                                |
-| `GmhInnovationUseIt`  | "Use it" section                                |
-| `GmhInnovationTestIt` | "Test it" section with charts                   |
-| `GmhInnovationUserStory` | User story/testimonial section               |
-| `DsDemo00`            | Design system demo shell                        |
-| `DsDemoTokens`        | Interactive design token viewer                 |
-| `DsdemoPalettes`      | Color palette documentation                     |
+| Export | File | Description |
+|--------|------|-------------|
+| `Header` | `header-01.tsx` | Site header with navigation |
+| `Footer` | `footer-01.tsx` | Site footer |
+| `LoginForm` | `login-01.tsx` | Login form |
+| `ProfileCard` | `profile-card.tsx` | User profile card (avatar, name, badges, activity, teams) |
+| `CardsCreateAccount` | `create-acct-01.tsx` | Account creation form |
+| `ImageWithFallback` | `image-with-fallback.tsx` | Image with error fallback |
 
-### Dependencies
+**Page Components** (`components/`) — full GMH feature components:
 
-| Package                        | Purpose                                |
-| ------------------------------ | -------------------------------------- |
-| `clsx` + `tailwind-merge`      | `cn()` utility for class merging       |
-| `class-variance-authority`     | CVA for variant-based component styling |
-| `lucide-react`                 | Icon library                           |
-| `@radix-ui/react-*`            | Accessible unstyled primitives         |
-| `motion`                       | Animation library (Framer Motion)      |
-| `recharts`                     | Charts and data visualization          |
-| `react-hook-form`              | Form state management                  |
+| Export | Description |
+|--------|-------------|
+| `GWMentalHealthPage` | Main homepage |
+| `Innovations`, `InnovationsHero`, `InnovationCard`, `InnovationsSection` | Innovations index page |
+| `Innovation`, `InnovationHeader`, `WhatIsItSection`, `GetItSection`, `HowToUseSection`, `TestingSection`, `UserStorySection`, `NavigationFooter` | Single innovation detail |
+| `DesignSystem`, `DesignTokens`, `TailwindColorPalettes` | Design system docs |
 
----
+**Utility:**
+```ts
+cn(...classes)  // clsx + tailwind-merge
+```
 
-## Apps
+## Design System
 
-### Web (`apps/web`)
+### Tailwind v4
 
-Main application with GMH innovations.
+No `tailwind.config.js`. All theme tokens live in `packages/ui/src/styles/index.css` via `@theme inline`. Apps receive tokens by importing the CSS.
 
-**Routes:**
-- `/` — Homepage
-- `/login` — Login page
-- `/innovations` — Innovations index
-- `/innovations/equip` — EQUIP program page
-- `/innovations/photovoice` — PhotoVoice program page
+### Color Tokens
 
-### Docs (`apps/docs`)
+Used as Tailwind utilities — `bg-primary`, `text-muted-foreground`, `border-border`, etc.:
 
-Design system documentation and component demos.
+| Token | Light mode | Dark mode |
+|-------|-----------|-----------|
+| `background` / `foreground` | `#ffffff` / near-black | inverted |
+| `primary` / `primary-foreground` | Gold `#aa9868` | adjusted |
+| `secondary` / `secondary-foreground` | Blue `#adc9d8` | adjusted |
+| `accent` | `#0190db` | adjusted |
+| `muted` / `muted-foreground` | `#ececf0` / `#717182` | inverted |
+| `destructive` | `#d4183d` | `red-900` |
+| `border` / `input` / `ring` | `#aa9868` / neutral | neutral |
+| `chart-1` – `chart-5` | Recharts palette | inverted |
+| `sidebar-*` | Sidebar-specific | inverted |
 
-### CDN (`apps/cdn`)
-
-Vite-based static site for assets and demos.
-
----
-
-## Tailwind v4
-
-CSS-first configuration — no `tailwind.config.js`:
-
-- `@import "tailwindcss"` — single import
-- `@theme { }` — design tokens in CSS
-- `@source` — content scanning directives
-- `@custom-variant dark` — class-based dark mode
-
-### Design Tokens (shadcn-style)
-
-| Token                              | Usage                    |
-| ---------------------------------- | ------------------------ |
-| `background` / `foreground`        | Page background and text |
-| `card` / `card-foreground`         | Card surfaces            |
-| `primary` / `primary-foreground`   | Primary actions          |
-| `secondary` / `secondary-foreground` | Secondary actions      |
-| `muted` / `muted-foreground`       | Subtle elements          |
-| `destructive` / `destructive-foreground` | Destructive actions |
-| `border` / `input` / `ring`        | Borders and focus rings  |
-| `sidebar-*`                        | Sidebar-specific tokens  |
-| `chart-1` through `chart-5`        | Chart colors             |
+Full Tailwind color scale also available as CSS vars (`--blue-500`, `--neutral-900`, etc.).
 
 ### Dark Mode
 
+Class-based via `.dark` on `<html>`:
+
 ```js
-document.documentElement.classList.add('dark');    // Enable
-document.documentElement.classList.remove('dark'); // Disable
-document.documentElement.classList.toggle('dark'); // Toggle
+document.documentElement.classList.toggle('dark')
 ```
 
----
+### Shadows & Radius
+
+- **Shadows:** `shadow-2xs` → `shadow-2xl` (plus `inset-shadow-*` and `drop-shadow-*` variants)
+- **Radius:** `rounded-sm/md/lg/xl` computed from base `--radius: 0.625rem`
+
+## shadcn Registry
+
+Custom shadcn-compatible registry published from this repo:
+
+- **Theme:** `gmhlab-theme` — Navy `#033C5A` + Gold `#AA9868`
+- **Block:** `profile-card` — avatar, name, badges, activity, teams
+
+Manifest: `packages/ui/registry.json` · Sources: `packages/ui/registry/` · Output: `packages/ui/public/r/`
+
+## Tech Stack
+
+| Layer | Technology | Version |
+|-------|-----------|---------|
+| Monorepo | pnpm workspaces + Turborepo | pnpm 9.15 / Turbo 2.3 |
+| Framework | Next.js / Vite | 15.1 / 6.0 |
+| Language | TypeScript | 5.7 |
+| UI | React | 19 |
+| Styling | Tailwind CSS v4 | 4.0 |
+| Components | Radix UI primitives | various |
+| Variants | class-variance-authority | 0.7 |
+| Icons | lucide-react | 0.487 |
+| Animation | motion (Framer Motion) | 12 |
+| Charts | Recharts | 2.15 |
+| Forms | react-hook-form | 7.55 |
+| Linting | ESLint 9 + typescript-eslint | 9.17 |
 
 ## Scripts
 
 ```bash
-pnpm dev          # Start all apps
-pnpm build        # Build all packages
-pnpm lint         # Lint all packages
-pnpm typecheck    # Type check all packages
+pnpm dev                         # Start all apps
+pnpm build                       # Build all packages
+pnpm lint                        # Lint everything
+pnpm typecheck                   # Type check everything
+pnpm clean                       # Clear Turborepo cache
 
-# Single package
-pnpm --filter @repo/web dev
-pnpm --filter @repo/ui typecheck
+pnpm --filter @repo/web dev      # Single app
+pnpm --filter @repo/ui typecheck # Single package task
 ```
 
----
-
-## Key Decisions
-
-| Decision                   | Rationale                                        |
-| -------------------------- | ------------------------------------------------ |
-| Raw source UI              | No build complexity, instant HMR, simpler setup  |
-| pnpm catalog               | Version consistency without hoisting runtime deps |
-| Tailwind v4 CSS-first      | No config file bloat, theme in CSS               |
-| shadcn-style tokens        | Semantic naming, light/dark mode support         |
-| CVA for variants           | Type-safe, composable variant definitions        |
-| Radix primitives           | Accessible, unstyled base components             |
-| Primitives + Blocks        | Layered architecture for composition             |
-| ESLint flat config         | Modern, composable, future-proof                 |
+For agent/contributor workflow guidance, see [CLAUDE.md](./CLAUDE.md).
