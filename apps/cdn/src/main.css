@@ -1,4 +1,4 @@
-@import "@repo/ui/index.css";
+@import "@repo/ui/styles/index.css";
 
 @source "./**/*.tsx";
 @source "../../../packages/ui/src/**/*.tsx";

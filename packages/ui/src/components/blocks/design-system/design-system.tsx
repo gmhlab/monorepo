@@ -1,0 +1,66 @@
+"use client"
+
+import { useState } from "react";
+import { Header } from "./components/header"
+import { Footer } from "./components/footer";
+import { Badge } from "../../ui/badge";
+import { Separator } from "../../ui/separator";
+import { 
+  Bell, 
+  Search, 
+  Plus, 
+  Trash2, 
+  Edit, 
+  Settings, 
+  User, 
+  Download,
+  ChevronRight,
+  Star,
+  Heart,
+  Share2,
+  MoreVertical
+} from "lucide-react";
+import { DesignTokens } from "./components/tokens";
+import { TailwindColorPalettes } from "./components/palettes";
+
+export function DesignSystem() {
+  const [switchChecked, setSwitchChecked] = useState(false);
+  const [checkboxChecked, setCheckboxChecked] = useState(false);
+  const [progress, setProgress] = useState(33);
+  const [sliderValue, setSliderValue] = useState([50]);
+
+  return (
+    <div className="min-h-screen bg-background">
+    {/* <Toaster /> */}
+
+    {/* Header */}
+      <Header />
+
+    {/* Main Content */}
+      <main className="container py-12 px-8">
+        <div className="max-w-5xl mx-auto space-y-12">
+
+          {/* Hero Section */}
+          <header className="space-y-4">
+            <Badge variant="secondary">Component Library</Badge>
+            <h1 className="text-4xl tracking-tight">Modern UI Primitives</h1>
+            <p className="text-xl text-muted-foreground max-w-3xl">
+              A comprehensive collection of accessible, customizable, and production-ready React components built with Radix UI and Tailwind CSS.
+            </p>
+          </header>
+
+          <Separator />
+          {/* Design Tokens Section */}
+          <DesignTokens />
+          <Separator />
+          {/* Tailwind Color Palettes Section */}
+          <TailwindColorPalettes />
+
+        </div>
+      </main>
+    {/* Footer */}
+      <Footer />
+
+    </div>
+  );
+}

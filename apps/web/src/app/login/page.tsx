@@ -1,9 +1,9 @@
-import { LoginForm, ProfileCard, Separator } from "@repo/ui"
+import { Login, ProfileCard, Separator } from "@repo/ui"
 export default function Page() {
   return (
     <div className="flex min-h-svh bg-[#033c5a] w-full items-center justify-center p-6 md:p-10">
       <div className="w-full max-w-xs">
-        <LoginForm />
+        <Login />
         <Separator />
         <ProfileCard
           name="Terrance Brunner"

@@ -1,5 +1,5 @@
 @import "tailwindcss";
-                                                                                                                                             
+
 @source "../components/**/*.tsx";        
 
 @custom-variant dark (&:is(.dark *));
@@ -134,7 +134,7 @@
   --container-5xl: 64rem;
   --container-6xl: 72rem;
   --container-7xl: 80rem;
-  
+
   /* Spacing Scale */
   --spacing-0: 0;
   --spacing-1: 0.25rem;   /* 4px */
@@ -218,11 +218,11 @@
   --sidebar-accent-foreground: var(--neutral-900);
   --sidebar-border: var(--neutral-200);
   --sidebar-ring: var(--neutral-400);
-  
+
   /* ==========================================
      SHADOWS & ELEVATION (lighter for dark mode )
      ========================================== */
-  
+
   --shadow-2xs: 0 1px rgb(0 0 0 / 0.05);
   --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
@@ -247,11 +247,11 @@
   --text-shadow-sm: 0px 1px 0px rgb(0 0 0 / 0.075), 0px 1px 1px rgb(0 0 0 / 0.075), 0px 2px 2px rgb(0 0 0 / 0.075);
   --text-shadow-md: 0px 1px 1px rgb(0 0 0 / 0.1), 0px 1px 2px rgb(0 0 0 / 0.1), 0px 2px 4px rgb(0 0 0 / 0.1);
   --text-shadow-lg: 0px 1px 2px rgb(0 0 0 / 0.1), 0px 3px 2px rgb(0 0 0 / 0.1), 0px 4px 8px rgb(0 0 0 / 0.1);
-  
+
   /* ==========================================
      TRANSITIONS & ANIMATIONS
      ========================================== */
-  
+
   --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -260,7 +260,7 @@
   /* ==========================================
     Tailwind Default Color Palettes
     ========================================== */  
-  
+
   /* Slate Scale */
   --slate-50: #f8fafc;
   --slate-100: #f1f5f9;
@@ -540,7 +540,7 @@
   /* ==========================================
      DARK THEME COLORS
      ========================================== */
-  
+
   /* Base Colors */
   --background: var(--neutral-950);
   --foreground: var(--neutral-50);
@@ -598,7 +598,6 @@
   --sidebar-ring: var(--neutral-600);
 
 }
-
 
 @layer base {
   * { @apply border-border outline-ring/50; }

@@ -1,27 +1,13 @@
 
 // Design System
-export * from "./ds-demo-00"
-export * from "./ds-demo-tokens"
-export * from "./ds-demo-palettes"
+export * from "./blocks/design-system/design-system"
 
 // Innovations
-export * from "./gmh-innovations-00"
-export * from "./gmh-innovations-card"
-export * from "./gmh-innovations-hero"
-export * from "./gmh-innovations-section"
-export * from "./gmh-innovations-svg"
-
+export * from "./blocks/gmh/innovations/innovations"
 
 // Innovation
-export * from "./gmh-innovation-00";
-export * from "./gmh-innovation-getit";
-export * from "./gmh-innovation-header";
-export * from "./gmh-innovation-navfooter";
-export * from "./gmh-innovation-testit";
-export * from "./gmh-innovation-useit";
-export * from "./gmh-innovation-userstory";
-export * from "./gmh-innovation-whatisit";
+export * from "./blocks/gmh/innovation/innovation";
 
 // GMH Homepage
-export * from "./gmh-homepage-00";
+export * from "./blocks/gmh/homepage/homepage";
 
