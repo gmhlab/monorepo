@@ -1,13 +1,7 @@
-import { 
-  Avatar, 
-  AvatarFallback, 
-  AvatarImage } from "../ui/avatar"
-import { Badge } from "../ui/badge"
-import { Button } from "../ui/button" 
-import { Card,
-  CardContent, 
-  CardFooter, 
-  CardHeader } from "../ui/card"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Code, GitBranch, Mail, Users } from 'lucide-react'
 
 interface ProfileCardProps {
@@ -32,7 +26,7 @@ export function ProfileCard({
   return (
     <Card className="bg-card max-w-md w-full">
       <CardHeader className="flex flex-row items-center gap-4">
-        <Avatar className="h-20 w-20 bg-[#033c5a]/90 ">
+        <Avatar className="h-20 w-20 bg-primary/90 ">
           <AvatarImage src={avatarUrl} alt={name} />
           <AvatarFallback>{name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
         </Avatar>

@@ -1,0 +1,62 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "gmhlab",
+  "homepage": "https://gwglobalmentalhealth.com",
+  "items": [
+    {
+      "name": "profile-card",
+      "type": "registry:block",
+      "title": "Profile Card",
+      "description": "Profile card with the user's avatar, name, badges, recent activity, and teams.",
+      "registryDependencies": ["avatar", "button", "card"],
+      "dependencies": ["lucide-react"],
+      "files": [
+        {
+          "path": "registry/new-york/profile-card/profile-card.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "gmhlab-theme",
+      "type": "registry:style",
+      "title": "GMH Lab Theme",
+      "description": "Navy (#033C5A) and gold (#AA9868) design tokens with Sora + DM Mono typography.",
+      "cssVars": {
+        "light": {
+          "background": "0 0% 100%",
+          "foreground": "210 60% 18%",
+          "primary": "203 93% 18%",
+          "primary-foreground": "0 0% 100%",
+          "secondary": "39 26% 54%",
+          "secondary-foreground": "0 0% 100%",
+          "muted": "210 20% 96%",
+          "muted-foreground": "210 10% 40%",
+          "accent": "39 26% 54%",
+          "accent-foreground": "0 0% 100%",
+          "border": "210 15% 90%",
+          "ring": "203 93% 18%",
+          "card": "0 0% 100%",
+          "card-foreground": "210 60% 18%"
+        },
+        "dark": {
+          "background": "210 60% 8%",
+          "foreground": "0 0% 95%",
+          "primary": "39 26% 54%",
+          "primary-foreground": "210 60% 8%",
+          "secondary": "203 50% 30%",
+          "secondary-foreground": "0 0% 95%",
+          "muted": "210 30% 15%",
+          "muted-foreground": "210 10% 60%",
+          "accent": "39 26% 54%",
+          "accent-foreground": "210 60% 8%",
+          "border": "210 30% 20%",
+          "ring": "39 26% 54%",
+          "card": "210 50% 12%",
+          "card-foreground": "0 0% 95%"
+        }
+      },
+      "files": []
+    }
+  ]
+}

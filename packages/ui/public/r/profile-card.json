@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "profile-card",
+  "title": "Profile Card",
+  "description": "Profile card with the user's avatar, name, badges, recent activity, and teams.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "avatar",
+    "button",
+    "card"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york/profile-card/profile-card.tsx",
+      "content": "import { \n  Avatar, \n  AvatarFallback, \n  AvatarImage } from \"@/components/ui/avatar\"\nimport { Badge } from \"@/components/ui/badge\"\nimport { Button } from \"@/components/ui/button\"\nimport { Card,\n  CardContent, \n  CardFooter, \n  CardHeader } from \"@/components/ui/card\"\nimport { Code, GitBranch, Mail, Users } from 'lucide-react'\n\ninterface ProfileCardProps {\n  name: string\n  role: string\n  avatarUrl: string\n  skills: string[]\n  recentActivity: string\n  team: string\n  email: string\n}\n\nexport function ProfileCard({\n  name,\n  role,\n  avatarUrl,\n  skills,\n  recentActivity,\n  team,\n  email\n}: ProfileCardProps) {\n  return (\n    <Card className=\"bg-card max-w-md w-full\">\n      <CardHeader className=\"flex flex-row items-center gap-4\">\n        <Avatar className=\"h-20 w-20 bg-[#033c5a]/90 \">\n          <AvatarImage src={avatarUrl} alt={name} />\n          <AvatarFallback>{name.split(' ').map(n => n[0]).join('')}</AvatarFallback>\n        </Avatar>\n        <div>\n          <h2 className=\"text-2xl font-bold\">{name}</h2>\n          <p className=\"text-sm text-muted-foreground\">{role}</p>\n        </div>\n      </CardHeader>\n      <CardContent className=\"grid gap-4\">\n        <div className=\"flex flex-wrap gap-2\">\n          {skills.map((skill, index) => (\n            <Badge key={index} variant=\"secondary\">\n              <Code className=\"mr-1 h-3 w-3\" />\n              {skill}\n            </Badge>\n          ))}\n        </div>\n        <div className=\"flex items-center gap-2 text-sm\">\n          <GitBranch className=\"h-4 w-4 text-muted-foreground\" />\n          <span>Recent activity: {recentActivity}</span>\n        </div>\n        <div className=\"flex items-center gap-2 text-sm\">\n          <Users className=\"h-4 w-4 text-muted-foreground\" />\n          <span>Team: {team}</span>\n        </div>\n      </CardContent>\n      <CardFooter>\n        <Button className=\"w-full\" variant=\"outline\">\n          <Mail className=\"mr-2 h-4 w-4\" />\n          Contact\n        </Button>\n      </CardFooter>\n    </Card>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}
