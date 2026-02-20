@@ -1,6 +1,6 @@
 @import "tailwindcss";
                                                                                                                                              
-@source "./components/**/*.tsx";        
+@source "../components/**/*.tsx";        
 
 @custom-variant dark (&:is(.dark *));
 
