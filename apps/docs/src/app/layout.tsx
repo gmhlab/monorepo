@@ -1,20 +1,19 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { TooltipProvider } from "@repo/ui";
 
 export const metadata: Metadata = {
-  title: "Documentation",
-  description: "Project documentation",
+  title: "Web App",
+  description: "Main application",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="antialiased bg-[#033c5a]">
-          <main className="min-h-screen flex items-center justify-center bg-background p-8">{children}</main>
+      <body className="antialiased">
+        <TooltipProvider>
+          {children}
+        </TooltipProvider>
       </body>
     </html>
   );
