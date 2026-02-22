@@ -1,2 +1,2 @@
-import { Innovation } from "@repo/ui";
-export default Innovation
+import { HomePage } from "@repo/ui";
+export default HomePage

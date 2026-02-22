@@ -11,3 +11,4 @@ export * from "./blocks/innovation/innovation";
 // GMH Homepage
 export * from "./blocks/homepage/homepage";
 
+export * from "./preview"

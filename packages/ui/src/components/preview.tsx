@@ -142,7 +142,7 @@ import {
 } from "./ui/tooltip"
 import { MinusIcon, PlusIcon, ArrowLeftIcon, ChevronDownIcon, MailCheckIcon, ArchiveIcon, ClockIcon, CalendarPlusIcon, ListFilterIcon, TagIcon, Trash2Icon, ArrowRightIcon, VolumeX, CheckIcon, UserRoundXIcon, ShareIcon, CopyIcon, AlertTriangleIcon, TrashIcon, BotIcon, SearchIcon, InfoIcon, StarIcon, AudioLinesIcon, ArrowUpIcon, BluetoothIcon, MoreVerticalIcon, FileIcon, FolderIcon, FolderOpenIcon, FileCodeIcon, MoreHorizontalIcon, FolderSearchIcon, SaveIcon, DownloadIcon, EyeIcon, LayoutIcon, PaletteIcon, SunIcon, MoonIcon, MonitorIcon, HelpCircleIcon, FileTextIcon, LogOutIcon, ShoppingBagIcon } from "lucide-react"
 
-export default function CoverExample() {
+export function CoverExample() {
   return (
     <ExampleWrapper>
       <ObservabilityCard />
