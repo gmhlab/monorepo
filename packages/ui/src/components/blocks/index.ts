@@ -1,9 +1,11 @@
 // Blocks
 
-export * from "./dashboard-01/dashboard-01";       
-export * from "./design-system/design-system";  
-export * from "./gmh/homepage/homepage";      
-export * from "./gmh/innovation/innovation";
-export * from "./gmh/innovations/innovations";
-export * from "./login-01/login-01";
+export * from "./dashboard/dashboard";
+export * from "./dashboard/dashboard-layout";       
+export * from "./design-system/design-system";
+export * from "./design-system/primitives/primitives";
+export * from "./homepage/homepage";
+export * from "./innovation/innovation";
+export * from "./innovations/innovations";
+export * from "./login/login";
 export * from "./profile-card/profile-card";

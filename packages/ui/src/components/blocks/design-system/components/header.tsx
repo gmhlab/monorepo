@@ -1,8 +1,10 @@
 import { Button } from "../../../ui/button";
+import { ThemeToggle } from "../../../theme-toggle";
 import { Avatar, AvatarFallback, AvatarImage } from "../../../ui/avatar";
 import { 
   Bell, 
   Settings, 
+  Moon
 } from "lucide-react";
 
 export function Header() {
@@ -29,6 +31,7 @@ export function Header() {
           </nav>
         </div>
         <div className="flex items-center gap-3">
+            <ThemeToggle /> 
           <Button variant="ghost" size="icon" aria-label="Notifications">
             <Bell className="size-4" />
           </Button>

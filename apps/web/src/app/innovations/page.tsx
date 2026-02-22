@@ -1,9 +1,2 @@
-import { Innovation } from "@repo/ui";
-
-export default function App() {
-  return (
-    <>
-      <Innovation />
-    </>
-  );
-}
+import { Innovations } from "@repo/ui";
+export default Innovations
