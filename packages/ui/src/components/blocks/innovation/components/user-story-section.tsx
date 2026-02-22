@@ -1,10 +1,10 @@
 "use client";
 
-import { motion } from "motion/react";
 import { Card } from "../../../ui";
 import { User, Quote } from "lucide-react";
+import type { UserStoryData } from "../types";
 
-export function UserStorySection() {
+export function UserStorySection({ storyIntro, paragraphs, quote, name, role, org }: UserStoryData) {
   return (
     <div className="py-20 px-4">
       <div className="container mx-auto ">
@@ -20,36 +20,19 @@ export function UserStorySection() {
                 <div className="flex items-center gap-3 mb-6">
                   <Quote className="w-8 h-8 text-[#AA9868]" />
                   <h3 className="text-white">
-                    I want to tell about User Story
+                    {storyIntro}
                   </h3>
                 </div>
 
-                <p className="text-white/90 mb-4 leading-relaxed">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat.
-                </p>
-
-                <p className="text-white/90 mb-4 leading-relaxed">
-                  Duis aute irure dolor in reprehenderit in voluptate velit esse
-                  cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                  occaecat cupidatat non proident, sunt in culpa qui officia
-                  deserunt mollit anim id est laborum.
-                </p>
-
-                <p className="text-white/90 mb-6 leading-relaxed">
-                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                  accusantium doloremque laudantium, totam rem aperiam, eaque
-                  ipsa quae ab illo inventore veritatis et quasi architecto
-                  beatae vitae dicta sunt explicabo.
-                </p>
+                {paragraphs.map((p, i) => (
+                  <p key={i} className="text-white/90 mb-4 leading-relaxed">
+                    {p}
+                  </p>
+                ))}
 
                 <div className="bg-[#AA9868] text-white p-4 rounded-lg inline-block">
                   <p className="text-sm italic">
-                    "This innovation has transformed the way we approach our
-                    daily challenges and significantly improved our workflow
-                    efficiency."
+                    &ldquo;{quote}&rdquo;
                   </p>
                 </div>
               </div>
@@ -60,10 +43,10 @@ export function UserStorySection() {
                 </div>
 
                 <div className="text-center">
-                  <h4 className="text-white mb-2">Sarah Johnson</h4>
-                  <p className="text-white/80">Senior Product Manager</p>
+                  <h4 className="text-white mb-2">{name}</h4>
+                  <p className="text-white/80">{role}</p>
                   <p className="text-sm text-[#AA9868] mt-2">
-                    Technology Solutions Inc.
+                    {org}
                   </p>
                 </div>
               </div>

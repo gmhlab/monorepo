@@ -13,29 +13,11 @@ import {
   Pie,
   Cell,
 } from "recharts";
+import type { TestingData } from "../types";
 
-const performanceData = [
-  { name: "Week 1", value: 45 },
-  { name: "Week 2", value: 62 },
-  { name: "Week 3", value: 58 },
-  { name: "Week 4", value: 75 },
-  { name: "Week 5", value: 88 },
-  { name: "Week 6", value: 92 },
-];
+const COLORS = ["#033C5A", "#AA9868", "#5A6C7D", "#D4C5A0"];
 
-const testingData1 = [
-  { name: "Passed", value: 75 },
-  { name: "Failed", value: 25 },
-];
-
-const testingData2 = [
-  { name: "Successful", value: 82 },
-  { name: "Issues", value: 18 },
-];
-
-const COLORS = ["#033C5A", "#AA9868", "#5A8BA6", "#D4C5A0"];
-
-export function TestingSection() {
+export function TestingSection({ headline, body, callout, barData, pieData1, pieData2 }: TestingData) {
   return (
     <div className="container mx-auto px-4 py-20">
       <h2 className="text-5xl md:6xl font-serif text-white text-center mb-16">How have we tested it?</h2>
@@ -45,24 +27,21 @@ export function TestingSection() {
           <div className="grid md:grid-cols-2 gap-8 mb-8">
             <div>
               <h3 className="text-white mb-4">
-                How did we score on test performance?
+                {headline}
               </h3>
               <p className="text-white/80 mb-6">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Our
-                comprehensive testing revealed strong performance across all
-                metrics with consistent improvement over the testing period.
+                {body}
               </p>
               <div className="bg-white/10 p-4 rounded-lg">
                 <p className="text-sm text-white/90">
-                  We did so and so well with testing because of these key
-                  factors and improvements.
+                  {callout}
                 </p>
               </div>
             </div>
 
             <div className="bg-white/5 rounded-lg p-6">
               <ResponsiveContainer width="100%" height={250}>
-                <BarChart data={performanceData}>
+                <BarChart data={barData}>
                   <CartesianGrid
                     strokeDasharray="3 3"
                     stroke="rgba(255,255,255,0.2)"
@@ -91,7 +70,7 @@ export function TestingSection() {
               <ResponsiveContainer width="100%" height={200}>
                 <PieChart>
                   <Pie
-                    data={testingData1}
+                    data={pieData1}
                     cx="50%"
                     cy="50%"
                     innerRadius={40}
@@ -99,7 +78,7 @@ export function TestingSection() {
                     paddingAngle={5}
                     dataKey="value"
                   >
-                    {testingData1.map((entry, index) => (
+                    {pieData1.map((_entry, index) => (
                       <Cell
                         key={`cell-${index}`}
                         fill={COLORS[index % COLORS.length]}
@@ -110,7 +89,7 @@ export function TestingSection() {
                 </PieChart>
               </ResponsiveContainer>
               <div className="flex justify-center gap-4 mt-4">
-                {testingData1.map((entry, index) => (
+                {pieData1.map((entry, index) => (
                   <div key={entry.name} className="flex items-center gap-2">
                     <div
                       className="w-4 h-4 rounded"
@@ -126,17 +105,11 @@ export function TestingSection() {
 
             <div>
               <h4 className="text-white mb-4">Combination of testing data</h4>
-              <p className="text-white/80 mb-4">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Multiple testing methodologies were employed to ensure
-                comprehensive validation and verification of all system
-                components.
-              </p>
               <div className="bg-white/5 rounded-lg p-6">
                 <ResponsiveContainer width="100%" height={200}>
                   <PieChart>
                     <Pie
-                      data={testingData2}
+                      data={pieData2}
                       cx="50%"
                       cy="50%"
                       innerRadius={40}
@@ -144,7 +117,7 @@ export function TestingSection() {
                       paddingAngle={5}
                       dataKey="value"
                     >
-                      {testingData2.map((entry, index) => (
+                      {pieData2.map((_entry, index) => (
                         <Cell key={`cell-${index}`} fill={COLORS[index + 2]} />
                       ))}
                     </Pie>

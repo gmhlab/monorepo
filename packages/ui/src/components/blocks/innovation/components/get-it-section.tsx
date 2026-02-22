@@ -1,8 +1,8 @@
-import { motion } from "motion/react";
 import { Card } from "../../../ui";
-import { BookOpen, FileText, Video, Download } from "lucide-react";
+import { BookOpen } from "lucide-react";
+import type { GetItData } from "../types";
 
-export function GetItSection() {
+export function GetItSection({ heading, body, resources, highlight }: GetItData) {
   return (
     <div className="container mx-auto px-4 py-20">
       <h2 className="text-5xl md:text-6xl font-serif text-white text-center mb-16">How do I get it?</h2>
@@ -11,46 +11,29 @@ export function GetItSection() {
         <Card className="p-8 bg-white shadow-2xl">
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
-              <h3 className="text-[#033C5A] mb-4">Training and Resources</h3>
+              <h3 className="text-[#033C5A] mb-4">{heading}</h3>
               <p className="text-muted-foreground mb-6 leading-relaxed">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Access
-                comprehensive training materials, documentation, and support
-                resources to get started quickly and efficiently.
+                {body}
               </p>
 
               <div className="space-y-3 mb-6">
-                <div className="flex items-center gap-3 bg-gray-50 p-3 rounded-lg cursor-pointer">
-                  <BookOpen className="w-5 h-5 text-[#033C5A]" />
-                  <span className="text-sm text-[#033C5A]">
-                    Complete Documentation
-                  </span>
-                </div>
-
-                <div className="flex items-center gap-3 bg-gray-50 p-3 rounded-lg cursor-pointer">
-                  <Video className="w-5 h-5 text-[#033C5A]" />
-                  <span className="text-sm text-[#033C5A]">
-                    Video Tutorials
-                  </span>
-                </div>
-
-                <div className="flex items-center gap-3 bg-gray-50 p-3 rounded-lg cursor-pointer">
-                  <FileText className="w-5 h-5 text-[#033C5A]" />
-                  <span className="text-sm text-[#033C5A]">
-                    Quick Start Guide
-                  </span>
-                </div>
-
-                <div className="flex items-center gap-3 bg-gray-50 p-3 rounded-lg cursor-pointer">
-                  <Download className="w-5 h-5 text-[#033C5A]" />
-                  <span className="text-sm text-[#033C5A]">
-                    Downloadable Resources
-                  </span>
-                </div>
+                {resources.map((resource, i) => (
+                  <a
+                    key={i}
+                    href={resource.href ?? "#"}
+                    className="flex items-center gap-3 bg-gray-50 p-3 rounded-lg cursor-pointer"
+                  >
+                    <resource.icon className="w-5 h-5 text-[#033C5A]" />
+                    <span className="text-sm text-[#033C5A]">
+                      {resource.label}
+                    </span>
+                  </a>
+                ))}
               </div>
 
               <div className="bg-[#AA9868] text-white p-4 rounded-lg">
                 <p className="text-sm">
-                  Get access to exclusive content and early updates
+                  {highlight}
                 </p>
               </div>
             </div>
