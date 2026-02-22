@@ -613,7 +613,7 @@ function Footer() {
 }
 
 // Main Page Component
-export default function GWMentalHealthPage() {
+export function HomePage() {
   return (
     <div className="min-h-screen bg-white">
       <Navigation />

@@ -1,5 +1,5 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "$schema": "https://github.com/gmh/monorepo",
   "name": "gmhlab",
   "homepage": "https://gwglobalmentalhealth.com",
   "items": [
