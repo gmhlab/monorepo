@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { Card } from "../../../../ui";
+import { Card } from "../../../ui";
 import { BookOpen, FileText, Video, Download } from "lucide-react";
 
 export function GetItSection() {

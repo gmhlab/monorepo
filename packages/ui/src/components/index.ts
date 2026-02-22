@@ -3,11 +3,11 @@
 export * from "./blocks/design-system/design-system"
 
 // Innovations
-export * from "./blocks/gmh/innovations/innovations"
+export * from "./blocks/innovations/innovations"
 
 // Innovation
-export * from "./blocks/gmh/innovation/innovation";
+export * from "./blocks/innovation/innovation";
 
 // GMH Homepage
-export * from "./blocks/gmh/homepage/homepage";
+export * from "./blocks/homepage/homepage";
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { Card } from "../../../../ui";
+import { Card } from "../../../ui";
 import { User, Quote } from "lucide-react";
 
 export function UserStorySection() {

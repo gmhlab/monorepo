@@ -6,7 +6,7 @@ import {
   AccordionItem,
   AccordionTrigger,
   AccordionContent,
-} from "../../../../ui";
+} from "../../../ui";
 
 export function WhatIsItSection() {
   return (

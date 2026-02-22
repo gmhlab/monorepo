@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { TooltipProvider } from "@repo/ui";
+import { ThemeProvider, TooltipProvider } from "@repo/ui";
 
 export const metadata: Metadata = {
   title: "Web App",
@@ -9,11 +9,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className="antialiased">
-        <TooltipProvider>
-          {children}
-        </TooltipProvider>
+        <ThemeProvider defaultTheme="system" storageKey="gmh-theme">
+          <TooltipProvider>
+            {children}
+          </TooltipProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -1,5 +1,5 @@
 import svgPaths from "./svg";
-import { ImageWithFallback } from '../../../../image-with-fallback';
+import { ImageWithFallback } from '../../../image-with-fallback';
 
 interface InnovationCardProps {
   title: string;

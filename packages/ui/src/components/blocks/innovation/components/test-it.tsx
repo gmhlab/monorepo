@@ -1,6 +1,6 @@
 "use client";
 
-import { Card } from "../../../../ui";
+import { Card } from "../../../ui";
 import {
   BarChart,
   Bar,

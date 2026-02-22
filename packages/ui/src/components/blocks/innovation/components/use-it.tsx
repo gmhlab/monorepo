@@ -1,4 +1,4 @@
-import { Card } from "../../../../ui";
+import { Card } from "../../../ui";
 import { Circle, Square, Plus, Star, ArrowRight } from "lucide-react";
 
 const steps = [
