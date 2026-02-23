@@ -1,9 +1,9 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "gmhlab-theme",
+  "type": "registry:style",
   "title": "GMH Lab Theme",
   "description": "Navy (#033C5A) and gold (#AA9868) design tokens with Sora + DM Mono typography.",
-  "files": [],
   "cssVars": {
     "light": {
       "background": "0 0% 100%",
@@ -38,5 +38,5 @@
       "card-foreground": "0 0% 95%"
     }
   },
-  "type": "registry:style"
+  "files": []
 }
