@@ -7,8 +7,9 @@ import {
   AccordionTrigger,
   AccordionContent,
 } from "../../../ui";
+import type { WhatIsItData } from "../types";
 
-export function WhatIsItSection() {
+export function WhatIsItSection({ headline, body, capabilities, highlight }: WhatIsItData) {
   return (
     <div className="py-20" >
     <div className="w-full container mx-auto px-4">
@@ -18,41 +19,25 @@ export function WhatIsItSection() {
         <div className="grid md:grid-cols-2 gap-8">
           <div>
             <h3 className="text-white mb-4">
-              Intro headline to hook and read at the module
+              {headline}
             </h3>
             <p className="text-white/90 mb-6">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+              {body}
             </p>
             <Accordion type="single" collapsible className="space-y-3">
-              <AccordionItem value="capability-1" className="bg-white/10 rounded border-none">
-                <AccordionTrigger className="px-3 py-3 text-sm text-white hover:no-underline [&>svg]:text-white">
-                  Capability lorem
-                </AccordionTrigger>
-                <AccordionContent className="px-3 text-white/80">
-                  Details about capability lorem go here.
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="capability-2" className="bg-white/10 rounded border-none">
-                <AccordionTrigger className="px-3 py-3 text-sm text-white hover:no-underline [&>svg]:text-white">
-                  Capability ipsum
-                </AccordionTrigger>
-                <AccordionContent className="px-3 text-white/80">
-                  Details about capability ipsum go here.
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="capability-3" className="bg-white/10 rounded border-none">
-                <AccordionTrigger className="px-3 py-3 text-sm text-white hover:no-underline [&>svg]:text-white">
-                  Capability dolor
-                </AccordionTrigger>
-                <AccordionContent className="px-3 text-white/80">
-                  Details about capability dolor go here.
-                </AccordionContent>
-              </AccordionItem>
+              {capabilities.map((cap, i) => (
+                <AccordionItem key={i} value={`capability-${i}`} className="bg-white/10 rounded border-none">
+                  <AccordionTrigger className="px-3 py-3 text-sm text-white hover:no-underline [&>svg]:text-white">
+                    {cap.label}
+                  </AccordionTrigger>
+                  <AccordionContent className="px-3 text-white/80">
+                    {cap.detail}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
             </Accordion>
             <div className="mt-6 bg-[#AA9868] text-white p-4 rounded inline-block">
-              <p className="text-sm">Special feature highlight</p>
+              <p className="text-sm">{highlight}</p>
             </div>
           </div>
           <div className="bg-white/5 rounded-lg p-8 flex items-center justify-center relative overflow-hidden">
@@ -68,6 +53,6 @@ export function WhatIsItSection() {
       </Card>
       </div>
     </div>
-    </div> 
+    </div>
   );
 }

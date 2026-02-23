@@ -1,2 +1,6 @@
 import { Innovation } from "@repo/ui";
-export default Innovation
+import { equipData } from "./data";
+
+export default function EquipPage() {
+  return <Innovation data={equipData} />;
+}

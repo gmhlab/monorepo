@@ -1,50 +1,8 @@
+import { ArrowRight } from "lucide-react";
 import { Card } from "../../../ui";
-import { Circle, Square, Plus, Star, ArrowRight } from "lucide-react";
+import type { HowToUseData } from "../types";
 
-const steps = [
-  {
-    number: 1,
-    icon: Circle,
-    title: "Initial Step",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Start your journey here.",
-    color: "bg-gray-300",
-  },
-  {
-    number: 2,
-    icon: Square,
-    title: "Configuration",
-    description:
-      "Configure your settings and preferences to match your needs perfectly.",
-    color: "bg-gray-400",
-  },
-  {
-    number: 3,
-    icon: Plus,
-    title: "Add Components",
-    description:
-      "Add the necessary components and integrate with your existing workflow.",
-    color: "bg-gray-300",
-  },
-  {
-    number: 4,
-    icon: Square,
-    title: "Testing Phase",
-    description:
-      "Test thoroughly to ensure everything works as expected before deployment.",
-    color: "bg-gray-400",
-  },
-  {
-    number: 5,
-    icon: Star,
-    title: "Launch",
-    description:
-      "Deploy and launch your innovation to start seeing real-world results.",
-    color: "bg-gray-300",
-  },
-];
-
-export function HowToUseSection() {
+export function HowToUseSection({ steps }: HowToUseData) {
   return (
     <div className="py-20 max-w-3xl px-4">
       <div className="container mx-auto">
@@ -54,18 +12,16 @@ export function HowToUseSection() {
           <Card className="p-8 bg-white/10 backdrop-blur-sm shadow-2xl relative border-white/20">
             <div className="space-y-8">
               {steps.map((step, index) => (
-                <div key={step.number}>
+                <div key={index}>
                   <div
                     className={`flex items-start gap-6 ${index % 2 === 0 ? "flex-row" : "flex-row-reverse"}`}
                   >
                     <div className="flex-shrink-0">
                       <div className="flex items-center gap-4">
                         <span className="text-2xl font-bold text-[#AA9868]">
-                          {step.number}.
+                          {index + 1}.
                         </span>
-                        <div
-                          className={`${step.color} w-20 h-20 rounded-lg flex items-center justify-center`}
-                        >
+                        <div className="bg-gray-300 w-20 h-20 rounded-lg flex items-center justify-center">
                           <step.icon className="w-10 h-10 text-white" />
                         </div>
                       </div>
