@@ -1,5 +1,6 @@
 import { Button } from "../../../ui/button";
 import { ThemeToggle } from "../../../theme-toggle";
+import { ThemeProvider } from "../../../theme-provider";
 import { Avatar, AvatarFallback, AvatarImage } from "../../../ui/avatar";
 import { 
   Bell, 
@@ -31,7 +32,10 @@ export function Header() {
           </nav>
         </div>
         <div className="flex items-center gap-3">
+          <ThemeProvider>
             <ThemeToggle /> 
+          </ThemeProvider>
+
           <Button variant="ghost" size="icon" aria-label="Notifications">
             <Bell className="size-4" />
           </Button>

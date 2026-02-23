@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import type { LucideIcon } from "lucide-react";
 
 export interface WhatIsItData {
@@ -11,7 +12,8 @@ export interface HowToUseData {
   steps: {
     title: string;
     description: string;
-    icon: LucideIcon;
+    icon?: LucideIcon;
+    graphic?: ReactNode;
   }[];
 }
 

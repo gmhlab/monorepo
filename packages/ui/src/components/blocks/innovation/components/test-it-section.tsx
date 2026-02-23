@@ -19,7 +19,7 @@ const COLORS = ["#033C5A", "#AA9868", "#5A6C7D", "#D4C5A0"];
 
 export function TestingSection({ headline, body, callout, barData, pieData1, pieData2 }: TestingData) {
   return (
-    <div className="container mx-auto px-4 py-20">
+    <div className="container max-w-7xl mx-auto px-4 py-20">
       <h2 className="text-5xl md:6xl font-serif text-white text-center mb-16">How have we tested it?</h2>
 
       <div>

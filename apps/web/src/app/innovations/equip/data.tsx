@@ -3,26 +3,26 @@ import type { InnovationData } from "@repo/ui";
 
 export const equipData: InnovationData = {
   hero: {
-    title: "EQUIP",
+    title: "EQUIP Platform",
     subtitle: "Evidence-based quality improvement for mental health services",
   },
 
   whatIsIt: {
     headline: "A structured approach to transforming mental health care quality",
-    body: "EQUIP is a collaborative quality improvement intervention that brings together mental health service users, caregivers, and providers to identify gaps and drive meaningful change in care delivery.",
+    body: "EQUIP is a competency-based training and supervision system designed to ensure non-specialist providers can deliver high-quality psychological interventions. Developed in partnership with WHO and UNICEF, EQUIP standardizes how we assess, train, and support mental health workers in low-resource settings worldwide.",
     capabilities: [
       {
-        label: "Collaborative assessment",
-        detail: "Facilitates structured dialogue between service users, caregivers, and clinicians to surface real-world quality gaps.",
+        label: "Free. Evidence-Based. WHO/UNICEF Backed.",
+        detail: "EQUIP is a free digital platform developed by WHO and UNICEF over 5 years of rigorous research across 36 countries. No subscription fees, no paywalls—just validated competency assessment tools used in 794 training programs with 10,000+ assessments completed. You get the same quality framework that major humanitarian organizations like UNICEF, IOM, and the Red Cross rely on.",
       },
       {
-        label: "Action planning",
-        detail: "Teams co-develop concrete, time-bound action plans targeting the highest-priority quality issues.",
+        label: "Turn Good Trainers into Great Ones.",
+        detail: "EQUIP doesn't just assess trainees—it transforms trainers. When Josephine in Uganda started using competency-based feedback, she discovered blind spots in her own teaching she'd missed for years. The platform's visual dashboards show patterns across your entire cohort: which skills everyone struggles with, where your curriculum has gaps, and exactly where to focus your limited supervision time.",
       },
       {
-        label: "Progress monitoring",
-        detail: "Regular review cycles with standardized metrics track improvement over time.",
-      },
+        label: "Your Language. Your Context. Your Culture.",
+        detail: "'Open body posture' means different things in Nairobi and Karachi. EQUIP was co-designed with practitioners in Nepal, Liberia, Uganda, Jordan, Lebanon, Peru, Ethiopia, Kenya, and Zambia—with tools available in 14 languages and guidance on adapting role-plays for local norms around eye contact, physical touch, and emotional expression. This isn't a Western framework dropped into your context. Its a flexible system built to meet you where you are.",
+      }
     ],
     highlight: "Validated across low- and middle-income country mental health settings",
   },
@@ -30,29 +30,59 @@ export const equipData: InnovationData = {
   howToUse: {
     steps: [
       {
-        title: "Form your QI team",
-        description: "Recruit a multidisciplinary team including at least one service user, one caregiver, and clinical staff.",
+        title: "Prepare",
+        description: "Set up your team on the platform.",
+        graphic: <img src="/equip_prepare.png" 
+          alt="Trainer reviewing materials with a mental health worker" 
+          width={176} 
+          height={176} 
+          className="object-cover" 
+        />,
         icon: Users,
       },
       {
-        title: "Assess current quality",
-        description: "Use the EQUIP assessment guide to identify gaps across six quality domains.",
+        title: "Observe",
+        description: "Watch provider sessions.",
         icon: ClipboardList,
+        graphic: <img src="/equip_observe.png" 
+          alt="Trainer reviewing materials with a mental health worker" 
+          width={152} 
+          height={152} 
+          className="object-cover" 
+        />,
       },
       {
-        title: "Prioritize and plan",
-        description: "Select the top priority areas and co-develop specific, measurable action steps.",
+        title: "Rate",
+        description: "Check off the observed behaviors.",
         icon: Settings,
+        graphic: <img src="/equip_rate.png" 
+          alt="Trainer reviewing materials with a mental health worker" 
+          width={160} 
+          height={160} 
+          className="object-cover" 
+        />,
       },
       {
-        title: "Implement changes",
-        description: "Carry out planned changes over a defined improvement cycle (typically 3–6 months).",
+        title: "Visualize",
+        description: "Generate charts and graphs.",
         icon: CheckCircle,
+        graphic: <img src="/equip_visualize.png" 
+          alt="Trainer reviewing materials with a mental health worker" 
+          width={160} 
+          height={160} 
+          className="object-cover" 
+        />,
       },
       {
-        title: "Review and iterate",
-        description: "Measure outcomes, share learnings, and begin the next improvement cycle.",
+        title: "Feedback",
+        description: "Give competency-based feedback.",
         icon: Rocket,
+        graphic: <img src="/equip_feedback.png" 
+          alt="Trainer reviewing materials with a mental health worker" 
+          width={144} 
+          height={144} 
+          className="object-cover" 
+        />,
       },
     ],
   },

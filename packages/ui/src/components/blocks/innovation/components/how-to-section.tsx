@@ -6,10 +6,10 @@ export function HowToUseSection({ steps }: HowToUseData) {
   return (
     <div className="py-20 max-w-3xl px-4">
       <div className="container mx-auto">
-        <h2 className="text-5xl md:text-6xl font-serif text-white text-center mb-16">How do you use it?</h2>
+        <h2 className="text-5xl md:text-6xl font-serif text-white/90 text-center mb-16">How do you use it?</h2>
 
         <div>
-          <Card className="p-8 bg-white/10 backdrop-blur-sm shadow-2xl relative border-white/20">
+          <Card className="p-8 bg-white/5 backdrop-blur-sm shadow-2xl relative border-white/20">
             <div className="space-y-8">
               {steps.map((step, index) => (
                 <div key={index}>
@@ -21,8 +21,8 @@ export function HowToUseSection({ steps }: HowToUseData) {
                         <span className="text-2xl font-bold text-[#AA9868]">
                           {index + 1}.
                         </span>
-                        <div className="bg-gray-300 w-20 h-20 rounded-lg flex items-center justify-center">
-                          <step.icon className="w-10 h-10 text-white" />
+                        <div className="bg-white w-48 h-48 rounded-lg flex items-center justify-center overflow-hidden">
+                          {step.graphic ?? (step.icon && <step.icon className="w-16 h-16 text-white" />)}
                         </div>
                       </div>
                     </div>
