@@ -1,3 +1,5 @@
+@import 'tailwindcss';
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -168,7 +170,6 @@
   --shadow-2xl: -1px 6.5px 14px -0.5px hsl(0 0% 0% / 1.05);
 }
 
-
 @layer base {
   * { 
     @apply border-border outline-ring/50;
@@ -178,7 +179,6 @@
     letter-spacing: var(--tracking-normal);
   }
 }
-
 
   /* ==========================================
 COLOR SYSTEM:
@@ -210,7 +210,7 @@ Tailwind Default Neutral Palettes
   --gray-800: #1f2937;
   --gray-900: #111827;
   --gray-950: #030712;
-  
+
   /* Zinc Scale */
   --zinc-50: #fafafa;
   --zinc-100: #f4f4f5;
@@ -255,7 +255,6 @@ COLOR SYSTEM:
 Tailwind Default Color Palettes
 ========================================== */
 
-
   /* Red Scale */
   --red-50: #fef2f2;
   --red-100: #fee2e2;
@@ -268,7 +267,7 @@ Tailwind Default Color Palettes
   --red-800: #991b1b;
   --red-900: #7f1d1d;
   --red-950: #450a0a;
-  
+
   /* Orange Scale */
   --orange-50: #fff7ed;
   --orange-100: #ffedd5;
@@ -281,7 +280,7 @@ Tailwind Default Color Palettes
   --orange-800: #9a3412;
   --orange-900: #7c2d12;
   --orange-950: #431407;
-  
+
   /* Amber Scale */
   --amber-50: #fffbeb;
   --amber-100: #fef3c7;
@@ -294,7 +293,7 @@ Tailwind Default Color Palettes
   --amber-800: #92400e;
   --amber-900: #78350f;
   --amber-950: #451a03;
-  
+
   /* Yellow Scale */
   --yellow-50: #fefce8;
   --yellow-100: #fef9c3;
@@ -307,7 +306,7 @@ Tailwind Default Color Palettes
   --yellow-800: #854d0e;
   --yellow-900: #713f12;
   --yellow-950: #422006;
-  
+
   /* Green Scale */
   --green-50: #f0fdf4;
   --green-100: #dcfce7;
@@ -320,7 +319,7 @@ Tailwind Default Color Palettes
   --green-800: #166534;
   --green-900: #14532d;
   --green-950: #052e16;
-  
+
   /* Emerald Scale */
   --emerald-50: #ecfdf5;
   --emerald-100: #d1fae5;
@@ -333,7 +332,7 @@ Tailwind Default Color Palettes
   --emerald-800: #065f46;
   --emerald-900: #064e3b;
   --emerald-950: #022c22;
-  
+
   /* Teal Scale */
   --teal-50: #f0fdfa;
   --teal-100: #ccfbf1;
@@ -346,7 +345,7 @@ Tailwind Default Color Palettes
   --teal-800: #115e59;
   --teal-900: #134e4a;
   --teal-950: #042f2e;
-  
+
   /* Cyan Scale */
   --cyan-50: #ecfeff;
   --cyan-100: #cffafe;
@@ -359,7 +358,7 @@ Tailwind Default Color Palettes
   --cyan-800: #155e75;
   --cyan-900: #164e63;
   --cyan-950: #083344;
-  
+
   /* Sky Scale */
   --sky-50: #f0f9ff;
   --sky-100: #e0f2fe;
@@ -372,7 +371,7 @@ Tailwind Default Color Palettes
   --sky-800: #075985;
   --sky-900: #0c4a6e;
   --sky-950: #082f49;
-  
+
   /* Blue Scale */
   --blue-50: #eff6ff;
   --blue-100: #dbeafe;
@@ -385,7 +384,7 @@ Tailwind Default Color Palettes
   --blue-800: #1e40af;
   --blue-900: #1e3a8a;
   --blue-950: #172554;
-  
+
   /* Indigo Scale */
   --indigo-50: #eef2ff;
   --indigo-100: #e0e7ff;
@@ -398,7 +397,7 @@ Tailwind Default Color Palettes
   --indigo-800: #3730a3;
   --indigo-900: #312e81;
   --indigo-950: #1e1b4b;
-  
+
   /* Violet Scale */
   --violet-50: #f5f3ff;
   --violet-100: #ede9fe;
@@ -411,7 +410,7 @@ Tailwind Default Color Palettes
   --violet-800: #5b21b6;
   --violet-900: #4c1d95;
   --violet-950: #2e1065;
-  
+
   /* Purple Scale */
   --purple-50: #faf5ff;
   --purple-100: #f3e8ff;
@@ -424,7 +423,7 @@ Tailwind Default Color Palettes
   --purple-800: #6b21a8;
   --purple-900: #581c87;
   --purple-950: #3b0764;
-  
+
   /* Fuchsia Scale */
   --fuchsia-50: #fdf4ff;
   --fuchsia-100: #fae8ff;
@@ -437,7 +436,7 @@ Tailwind Default Color Palettes
   --fuchsia-800: #86198f;
   --fuchsia-900: #701a75;
   --fuchsia-950: #4a044e;
-  
+
   /* Pink Scale */
   --pink-50: #fdf2f8;
   --pink-100: #fce7f3;
@@ -450,7 +449,7 @@ Tailwind Default Color Palettes
   --pink-800: #9d174d;
   --pink-900: #831843;
   --pink-950: #500724;
-  
+
   /* Rose Scale */
   --rose-50: #fff1f2;
   --rose-100: #ffe4e6;
