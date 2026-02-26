@@ -1,14 +1,19 @@
+// Blocks
+export * from "./blocks"
 
 // Design System
-export * from "./blocks/design-system/design-system"
+export * from "./design-system/design-system"
+export * from "./design-system/primitives/primitives"
 
-// Innovations
-export * from "./blocks/innovations/innovations"
+// GMH
+export * from "./gmh/homepage/homepage"
+export * from "./gmh/innovation/innovation"
+export * from "./gmh/innovations/innovations"
 
-// Innovation
-export * from "./blocks/innovation/innovation";
+// UI
+export * from "./ui/"
 
-// GMH Homepage
-export * from "./blocks/homepage/homepage";
-
-export * from "./preview"
+// Components
+export * from "./theme-provider"
+export * from "./mode-toggle"
+export * from "./image-with-fallback"
