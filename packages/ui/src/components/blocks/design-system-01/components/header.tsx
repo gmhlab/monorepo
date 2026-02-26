@@ -1,7 +1,7 @@
-import { Button } from "../../ui/button";
-import { ModeToggle } from "../../mode-toggle";
-import { ThemeProvider } from "../../theme-provider";
-import { Avatar, AvatarFallback, AvatarImage } from "../../ui/avatar";
+import { Button } from "../../../ui/button";
+import { ModeToggle } from "../../../mode-toggle";
+import { ThemeProvider } from "../../../theme-provider";
+import { Avatar, AvatarFallback, AvatarImage } from "../../../ui/avatar";
 import { 
   Bell, 
   Settings, 

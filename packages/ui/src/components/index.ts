@@ -1,10 +1,6 @@
 // Blocks
 export * from "./blocks"
 
-// Design System
-export * from "./design-system/design-system"
-export * from "./design-system/primitives/primitives"
-
 // GMH
 export * from "./gmh/homepage/homepage"
 export * from "./gmh/innovation/innovation"

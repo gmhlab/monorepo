@@ -2,22 +2,22 @@
 
 import { useState } from "react";
 import { Button } from "../../ui/button";
-import { Input } from "@repo/ui";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter, CardAction } from "@repo/ui";
-import { Badge } from "@repo/ui";
-import { Switch } from "@repo/ui";
-import { Checkbox } from "@repo/ui";
-import { Label } from "@repo/ui";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@repo/ui";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@repo/ui";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@repo/ui";
-import { Avatar, AvatarFallback, AvatarImage } from "@repo/ui";
-import { Progress } from "@repo/ui";
-import { Slider } from "@repo/ui";
-import { Textarea } from "@repo/ui";
-import { Separator } from "@repo/ui";
-import { Skeleton } from "@repo/ui";
-import { RadioGroup, RadioGroupItem } from "@repo/ui";
+import { Input } from "../../ui/input";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter, CardAction } from "../../ui/card";
+import { Badge } from "../../ui/badge";
+import { Switch } from "../../ui/switch";
+import { Checkbox } from "../../ui/checkbox";
+import { Label } from "../../ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../ui/select";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../ui/tabs";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../../ui/accordion";
+import { Avatar, AvatarFallback, AvatarImage } from "../../ui/avatar";
+import { Progress } from "../../ui/progress";
+import { Slider } from "../../ui/slider";
+import { Textarea } from "../../ui/textarea";
+import { Separator } from "../../ui/separator";
+import { Skeleton } from "../../ui/skeleton";
+import { RadioGroup, RadioGroupItem } from "../../ui/radio-group";
 import { 
   Bell, 
   Search, 
@@ -34,12 +34,12 @@ import {
   MoreVertical
 } from "lucide-react";
 import { toast } from "sonner";
-import { Toaster } from "@repo/ui";
-import { DesignTokens } from "./components/design-tokens";
-import { TailwindColorPalettes } from "./components/tailwind-color-palettes";
+import { Toaster } from "../../ui/sonner";
+import { DesignTokens } from "./components/tokens";
+import { TailwindColorPalettes } from "./components/palettes";
 import { ModeToggle } from "../../mode-toggle";
 
-export function Primitives() {
+export function DesignSystem() {
   const [switchChecked, setSwitchChecked] = useState(false);
   const [checkboxChecked, setCheckboxChecked] = useState(false);
   const [progress, setProgress] = useState(33);
@@ -50,40 +50,6 @@ export function Primitives() {
       <Toaster />
       
       {/* Header */}
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-16 items-center justify-between px-8">
-          <div className="flex items-center gap-6">
-            <h1 className="text-xl font-semibold">UI Primitives</h1>
-            <nav className="hidden md:flex items-center gap-6">
-              <a href="#tokens" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                Design Tokens
-              </a>
-              <a href="#components" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                Components
-              </a>
-              <a href="#forms" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                Forms
-              </a>
-              <a href="#feedback" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                Feedback
-              </a>
-            </nav>
-          </div>
-          <div className="flex items-center gap-3">
-            <ModeToggle />
-            <Button variant="ghost" size="icon">
-              <Bell className="size-4" />
-            </Button>
-            <Button variant="ghost" size="icon">
-              <Settings className="size-4" />
-            </Button>
-            <Avatar>
-              <AvatarImage src="https://github.com/shadcn.png" />
-              <AvatarFallback>JD</AvatarFallback>
-            </Avatar>
-          </div>
-        </div>
-      </header>
 
       {/* Main Content */}
       <main className="container py-12 px-8">
@@ -579,11 +545,7 @@ export function Primitives() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t py-8 mt-12">
-        <div className="container px-8 text-center text-sm text-muted-foreground">
-          Built with React, Radix UI, and Tailwind CSS
-        </div>
-      </footer>
+
     </div>
   );
 }
