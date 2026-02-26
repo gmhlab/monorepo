@@ -1,11 +1,10 @@
-import { InnovationCard } from './gallery';
+import { InnovationCard } from './card';
 import { MessageSquareHeart, Camera } from 'lucide-react';
 
 export function InnovationsSection() {
   return (
-    <div className="flex flex-col gap-4 items-center justify-start max-w-6xl overflow-visible p-0 relative w-full mt-20">
-      <div className="flex flex-col gap-12 items-center justify-start max-w-6xl overflow-visible pb-20 pt-0 px-8 relative w-full">
-        <div className="flex flex-wrap gap-12 items-start justify-center p-0 relative max-w-4xl">
+    <div className="overflow-hidden py-20 relative w-full ">
+        <div className="container flex-wrap mx-auto max-w-6xl flex w-full gap-12 px-8 relative">
           <InnovationCard
             title="EQUIP"
             description={
@@ -16,6 +15,7 @@ export function InnovationsSection() {
             }
             imageFilter="from-blue-600/60 to-blue-800/80"
             icon={<MessageSquareHeart />}
+            href='/gmh/innovations/equip'
           />
           <InnovationCard
             title="PhotoVoice™"
@@ -27,9 +27,9 @@ export function InnovationsSection() {
             }
             imageFilter="from-blue-700/60 to-indigo-800/80"
             icon={<Camera />}
+            href='/gmh/innovations/photovoice'
           />
         </div>
       </div>
-    </div>
   );
 }

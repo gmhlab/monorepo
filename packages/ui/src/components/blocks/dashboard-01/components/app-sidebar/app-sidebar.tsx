@@ -19,22 +19,22 @@ import { LayoutDashboardIcon, ListIcon, ChartBarIcon, FolderIcon, UsersIcon, Cam
 
 const data = {
   user: {
-    name: "shadcn",
-    email: "m@example.com",
+    name: "Brandon Kohrt",
+    email: "bkohrt@gwu.edu",
     avatar: "/avatars/shadcn.jpg",
   },
   navMain: [
     {
       title: "Dashboard",
-      url: "#",
+      url: "/dashboard",
       icon: (
         <LayoutDashboardIcon
         />
       ),
     },
     {
-      title: "Lifecycle",
-      url: "#",
+      title: "Design System",
+      url: "/dashboard/design-system",
       icon: (
         <ListIcon
         />
@@ -42,7 +42,7 @@ const data = {
     },
     {
       title: "Analytics",
-      url: "#",
+      url: "/dashboard/data",
       icon: (
         <ChartBarIcon
         />
@@ -186,9 +186,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               asChild
               className="data-[slot=sidebar-menu-button]:p-1.5!"
             >
-              <a href="#">
+              <a href="/">
                 <CommandIcon className="size-5!" />
-                <span className="text-base font-semibold">Acme Inc.</span>
+                <span className="text-base font-semibold">GMH Lab</span>
               </a>
             </SidebarMenuButton>
           </SidebarMenuItem>

@@ -4,7 +4,7 @@ import { Footer2 } from "@repo/ui";
 const navigationData = [
   { title: 'Home', href: '#' },
   { title: 'Dashboard', href: '/dashboard' },
-  { title: 'About Us', href: '#' },
+  { title: 'Website', href: '#' },
   { title: 'Login', href: '/login' }
 ]
 

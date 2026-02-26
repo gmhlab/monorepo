@@ -5,13 +5,10 @@ import { Button } from "../../ui/button";
 import { Input } from "../../ui/input";
 import { Card, CardContent } from "../../ui/card";
 import { Badge } from "../../ui/badge";
-import { Label } from "../../ui/label";
 import {
   Globe,
   Lightbulb,
   FileText,
-  Menu,
-  X,
   ArrowRight,
   Mail,
   MapPin,
@@ -31,74 +28,10 @@ const brandColors = {
   warmWhite: "#faf9f7",
 };
 
-// Navigation Component
-function Navigation() {
-  const [isOpen, setIsOpen] = useState(false);
-  const navItems = ["Home", "About", "Team", "News", "Projects", "Innovations", "Publications", "Contact"];
-
-  return (
-    <nav className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ background: `linear-gradient(135deg, ${brandColors.navy} 0%, ${brandColors.navyLight} 100%)` }}>
-              <Globe className="w-6 h-6 text-white" />
-            </div>
-            <div className="hidden sm:block">
-              <p className="text-sm font-medium" style={{ color: brandColors.navy }}>Center for Global</p>
-              <p className="text-sm font-medium" style={{ color: brandColors.gold }}>Mental Health Equity</p>
-            </div>
-          </div>
-
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-1">
-            {navItems.map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                className="px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 rounded-lg transition-colors hover:bg-gray-50"
-              >
-                {item}
-              </a>
-            ))}
-          </div>
-
-          {/* Mobile menu button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
-          >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
-        </div>
-
-        {/* Mobile Navigation */}
-        {isOpen && (
-          <div className="lg:hidden py-4 border-t border-gray-100">
-            <div className="flex flex-col gap-1">
-              {navItems.map((item) => (
-                <a
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
-                  className="px-4 py-3 text-sm font-medium text-gray-600 hover:text-gray-900 rounded-lg transition-colors hover:bg-gray-50"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {item}
-                </a>
-              ))}
-            </div>
-          </div>
-        )}
-      </div>
-    </nav>
-  );
-}
-
 // Hero Section
 function HeroSection() {
   return (
-    <section className="relative overflow-hidden" style={{ background: `linear-gradient(180deg, ${brandColors.navy} 0%, ${brandColors.navyLight} 100%)` }}>
+    <section className="relative overflow-hidden" style={{ background: `linear-gradient(180deg, background 0%, ${brandColors.navyLight} 100%)` }}>
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 left-0 w-96 h-96 rounded-full bg-white blur-3xl transform -translate-x-1/2 -translate-y-1/2" />
@@ -112,12 +45,12 @@ function HeroSection() {
             <Badge className="mb-6 px-4 py-1.5 text-xs font-semibold tracking-wider uppercase" style={{ backgroundColor: `${brandColors.gold}20`, color: brandColors.gold, border: `1px solid ${brandColors.gold}40` }}>
               The George Washington University
             </Badge>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium font-serif text-foreground leading-tight mb-6">
               Center for<br />
               <span style={{ color: brandColors.gold }}>Global Mental Health</span>
             </h1>
             <p className="text-lg text-gray-300 max-w-xl mx-auto lg:mx-0 mb-8">
-              Partnering with communities worldwide to promote mental health equity,
+              Partnering with communities worldwide to promote mental health,
               dismantle stigma, and develop sustainable strategies for lasting change.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
@@ -178,7 +111,7 @@ function WhoWeAreSection() {
             <div className="space-y-4 text-gray-600 leading-relaxed">
               <p>
                 Across the world, access to quality mental health care should be a human right.
-                At the George Washington University Center for Global Mental Health Equity, we
+                At the George Washington University Center for Global Mental Health, we
                 partner with communities to promote their existing resources and develop
                 sustainable strategies for their unique needs.
               </p>
@@ -294,15 +227,15 @@ function WhatWeDoSection() {
             <Card key={service.title} className="group relative overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
               <CardContent className="p-8">
                 <div
-                  className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-transform group-hover:scale-110"
+                  className="w-16 h-16 bg-primary-foreground rounded-2xl flex items-center justify-center mb-6 transition-transform group-hover:scale-110"
                   style={{ backgroundColor: `${service.color}15` }}
                 >
                   <service.icon className="w-8 h-8" style={{ color: service.color }} />
                 </div>
-                <h3 className="text-xl font-bold mb-3" style={{ color: brandColors.navy }}>
+                <h3 className="text-xl font-bold mb-3" style={{ color: brandColors.gold }}>
                   {service.title}
                 </h3>
-                <p className="text-gray-600 mb-6 leading-relaxed">
+                <p className="text-muted-foregroyb mb-6 leading-relaxed">
                   {service.description}
                 </p>
                 <Button variant="outline" className="group/btn" style={{ borderColor: service.color, color: service.color }}>
@@ -423,10 +356,10 @@ function TestimonialSection() {
             <Quote className="w-8 h-8" style={{ color: brandColors.gold }} />
           </div>
           <blockquote className="text-xl sm:text-2xl lg:text-3xl text-white font-light leading-relaxed mb-8 italic">
-            "Partnering with the Center for Mental Health Equity has been invaluable. Their dedication
+            "Partnering with the Center for Mental Health has been invaluable. Their dedication
             to addressing mental health disparities and creating inclusive solutions has helped us
             reach underserved communities and implement impactful programs. They are a crucial
-            ally in promoting global mental health equity."
+            ally in promoting global mental health."
           </blockquote>
           <div className="flex items-center justify-center gap-4">
             <div className="w-12 h-12 rounded-full bg-gray-300" />
@@ -448,13 +381,13 @@ function NewsletterSection() {
   return (
     <section className="py-16 bg-white">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Card className="border-0 shadow-xl overflow-hidden">
+        <Card className="border-0 bg-secondary shadow-xl overflow-hidden">
           <CardContent className="p-8 sm:p-12">
             <div className="text-center">
               <div className="inline-flex items-center justify-center w-14 h-14 rounded-full mb-6" style={{ backgroundColor: `${brandColors.gold}20` }}>
                 <Mail className="w-7 h-7" style={{ color: brandColors.gold }} />
               </div>
-              <h3 className="text-2xl sm:text-3xl font-bold mb-3" style={{ color: brandColors.navy }}>
+              <h3 className="text-2xl text-secondary-foreground sm:text-3xl font-bold mb-3">
                 Subscribe to Our Newsletter
               </h3>
               <p className="text-gray-600 mb-8">
@@ -498,7 +431,7 @@ function MapSection() {
             Where We Work
           </h2>
           <p className="text-gray-300 max-w-2xl mx-auto">
-            Our partnerships span across continents, bringing mental health equity to communities worldwide
+            Our partnerships span across continents, bringing mental health to communities worldwide
           </p>
         </div>
 
@@ -543,80 +476,10 @@ function MapSection() {
   );
 }
 
-// Footer
-function Footer() {
-  return (
-    <footer className="bg-gray-900 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid md:grid-cols-4 gap-12">
-          {/* Logo & Description */}
-          <div className="md:col-span-2">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ background: `linear-gradient(135deg, ${brandColors.navy} 0%, ${brandColors.navyLight} 100%)` }}>
-                <Globe className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <p className="text-sm font-medium text-white">Center for Global</p>
-                <p className="text-sm font-medium" style={{ color: brandColors.gold }}>Mental Health Equity</p>
-              </div>
-            </div>
-            <p className="text-gray-400 text-sm max-w-md mb-6">
-              At the George Washington University, we're dedicated to advancing mental health equity worldwide through research, innovation, and community partnerships.
-            </p>
-            <div className="flex gap-4">
-              {["twitter", "linkedin", "facebook"].map((social) => (
-                <a
-                  key={social}
-                  href={`#${social}`}
-                  className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-gray-700 transition-colors"
-                >
-                  <span className="sr-only">{social}</span>
-                  <div className="w-4 h-4 bg-gray-500 rounded" />
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {/* Quick Links */}
-          <div>
-            <h4 className="font-semibold mb-4" style={{ color: brandColors.gold }}>Quick Links</h4>
-            <ul className="space-y-2">
-              {["About Us", "Our Team", "Projects", "Publications"].map((link) => (
-                <li key={link}>
-                  <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">
-                    {link}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h4 className="font-semibold mb-4" style={{ color: brandColors.gold }}>Contact Us</h4>
-            <div className="space-y-3 text-sm text-gray-400">
-              <p>Looking to collaborate?</p>
-              <a href="mailto:info@gwglobalmentalhealth.com" className="hover:text-white transition-colors block">
-                info@gwglobalmentalhealth.com
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom Bar */}
-        <div className="border-t border-gray-800 mt-12 pt-8 text-center text-sm text-gray-500">
-          <p>&copy; 2026 The George Washington University Center for Global Mental Health. All rights reserved.</p>
-        </div>
-      </div>
-    </footer>
-  );
-}
-
 // Main Page Component
 export function HomePage() {
   return (
     <div className="min-h-screen bg-white">
-      <Navigation />
       <HeroSection />
       <WhoWeAreSection />
       <WhatWeDoSection />
@@ -624,7 +487,6 @@ export function HomePage() {
       <TestimonialSection />
       <NewsletterSection />
       <MapSection />
-      <Footer />
     </div>
   );
 }

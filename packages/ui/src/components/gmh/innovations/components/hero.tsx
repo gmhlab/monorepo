@@ -1,12 +1,10 @@
 export function InnovationsHero() {
   return (
-    <div className="flex flex-col gap-4 items-center justify-start max-w-6xl overflow-visible p-0 relative w-full">
-      <div className="flex flex-col gap-12 items-center justify-start overflow-visible px-8 py-20 relative w-full">
-        <div className="flex flex-wrap gap-12 items-center justify-center p-0 relative max-w-4xl">
-          <div className="flex flex-col gap-6 items-start justify-start max-w-4xl p-0 relative">
+      <div className="overflow-hidden relative w-full">
+          <div className="container px-8 pt-20 pb-0 mx-auto flex-col max-w-6xl gap-6 items-start justify-start relative">
             <div className="flex flex-row items-start justify-start p-0 relative">
-              <h1 className="text-7xl font-black text-white leading-none tracking-tight bg-gradient-to-r from-white via-white to-gray-200 bg-clip-text text-transparent">
-                INNOVATIONS
+              <h1 className="text-6xl md:text-8xl font-serif text-foreground leading-none tracking-tight bg-gradient-to-r from-foreground via-foreground to-muted bg-clip-text text-transparent">
+                Innovations
               </h1>
             </div>
             <div className="flex flex-row items-start justify-start p-0 relative w-full max-w-4xl">
@@ -16,8 +14,6 @@ export function InnovationsHero() {
               </p>
             </div>
           </div>
-        </div>
       </div>
-    </div>
   );
 }

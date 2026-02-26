@@ -8,7 +8,7 @@ import { ThemeProvider } from "@repo/ui";
 import { Toaster } from "@repo/ui";
 import { TooltipProvider } from "@repo/ui";
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
+const inter = Inter({ subsets: ['latin'], variable: '--font-sans-inter' });
 const jetbrainsMono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mono' });
 const libreBaskerville = Libre_Baskerville({ 
   weight: ['400', '700'],  // Libre Baskerville requires explicit weights
@@ -30,7 +30,7 @@ export const viewport: Viewport = {
 }
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={inter.variable} suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <body className={`${libreBaskerville.variable} ${jetbrainsMono.variable} antialiased`}>
         <ThemeProvider
           attribute="class"

@@ -19,11 +19,11 @@ export function NavigationFooter({
   const dots = Array.from({ length: total }, (_, i) => i + 1);
 
   return (
-    <div className="bg-[#5A6C7D] py-6 mt-20">
+    <div className="bg-[#5A6C7D]/25 w-full py-6 mt-20">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
           <motion.a
-            href={prevHref ?? "#"}
+            href={prevHref ?? "/gmh/#"}
             whileHover={{ scale: 1.05, x: -5 }}
             whileTap={{ scale: 0.95 }}
             className={`flex items-center gap-2 text-white hover:text-[#AA9868] transition-colors ${!prevHref ? "opacity-30 pointer-events-none" : ""}`}
@@ -46,7 +46,7 @@ export function NavigationFooter({
           </div>
 
           <motion.a
-            href={nextHref ?? "#"}
+            href={nextHref ?? "/gmh/#"}
             whileHover={{ scale: 1.05, x: 5 }}
             whileTap={{ scale: 0.95 }}
             className={`flex items-center gap-2 text-white hover:text-[#AA9868] transition-colors ${!nextHref ? "opacity-30 pointer-events-none" : ""}`}

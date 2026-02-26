@@ -1,6 +1,8 @@
 # GMH Lab Monorepo
 
-Design system and web applications for [Global Mental Health Lab](https://gwglobalmentalhealth.com).
+Design system and web applications for the [Global Mental Health Lab](https://gwglobalmentalhealth.com).
+
+Built with pnpm workspaces, Turborepo, React 19, Next.js 16, Vite 6, and Tailwind CSS v4.
 
 ## Quick Start
 
@@ -9,30 +11,31 @@ pnpm install
 pnpm dev        # starts all three apps
 ```
 
-Requires [pnpm](https://pnpm.io) 9.15+.
+Requires [pnpm](https://pnpm.io) 9.15+ and Node.js.
 
 ## Apps
 
 | App | Port | Stack | Purpose |
 |-----|------|-------|---------|
-| `apps/web` | 3000 | Next.js 15 | GMH innovations app |
-| `apps/docs` | 3001 | Next.js 15 | Design system documentation |
-| `apps/cdn` | 3002 | Vite 6 | Static assets / SPA |
+| [`apps/web`](apps/web) | 3000 | Next.js 16 | Main GMH application — dashboard, innovations, public site |
+| [`apps/docs`](apps/docs) | 3001 | Next.js 16 | Design system documentation |
+| [`apps/cdn`](apps/cdn) | 3002 | Vite 6 | Static asset delivery SPA |
 
 ## Repository Structure
 
 ```
 gmh-monorepo/
 ├── apps/
-│   ├── web/                        # Next.js innovations app (:3000)
+│   ├── web/                        # Next.js main app (:3000)
 │   ├── docs/                       # Next.js design system docs (:3001)
 │   └── cdn/                        # Vite SPA (:3002)
 │
 ├── packages/
 │   ├── ui/                         # Shared component library (raw TS, no build)
 │   ├── typescript-config/          # Shared tsconfig presets
-│   └── eslint-config/              # Shared ESLint configs
+│   └── eslint-config/              # Shared ESLint flat configs
 │
+├── docs/                           # CDN embed snippets + pre-built assets
 ├── turbo.json                      # Turborepo pipeline
 └── pnpm-workspace.yaml             # Workspace + version catalog
 ```
@@ -44,7 +47,7 @@ Raw TypeScript component library — apps compile it themselves, no build step r
 ### Importing
 
 ```ts
-import { Button, Card, ProfileCard, cn } from "@repo/ui"
+import { Button, Card, ProfileCard, cn, useIsMobile } from "@repo/ui";
 ```
 
 ```css
@@ -54,21 +57,37 @@ import { Button, Card, ProfileCard, cn } from "@repo/ui"
 
 ### Component Layers
 
-**Primitives** (`components/ui/`) — headless, accessible base components built on Radix UI:
+**Primitives** (`components/ui/`) — 56 headless, accessible base components built on Radix UI:
 
-`Accordion` · `Avatar` · `Badge` · `Breadcrumb` · `Button` · `Card` · `Chart` · `Checkbox` · `Drawer` · `DropdownMenu` · `Field` · `Form` · `Input` · `Label` · `Select` · `Separator` · `Sheet` · `Sidebar` · `Skeleton` · `Sonner` · `Switch` · `Table` · `Tabs` · `Toggle` · `ToggleGroup` · `Tooltip`
+`Accordion` · `AlertDialog` · `Alert` · `AspectRatio` · `Avatar` · `Badge` · `Breadcrumb` · `Button` · `ButtonGroup` · `Calendar` · `Card` · `Carousel` · `Chart` · `Checkbox` · `Collapsible` · `Combobox` · `Command` · `ContextMenu` · `Dialog` · `Direction` · `Drawer` · `DropdownMenu` · `Empty` · `Field` · `Form` · `HoverCard` · `Input` · `InputGroup` · `InputOTP` · `Item` · `Kbd` · `Label` · `Menubar` · `NativeSelect` · `NavigationMenu` · `Pagination` · `Popover` · `Progress` · `RadioGroup` · `Resizable` · `ScrollArea` · `Select` · `Separator` · `Sheet` · `Sidebar` · `Skeleton` · `Slider` · `Sonner` · `Spinner` · `Switch` · `Table` · `Tabs` · `Textarea` · `Toggle` · `ToggleGroup` · `Tooltip`
 
-**Blocks** (`components/blocks/`) — composed, page-ready sections:
+**Blocks** (`components/blocks/`) — 15 composed, page-ready sections:
 
 | Block | Description |
 |-------|-------------|
-| `login-01/` | Login page with form |
-| `profile-card/` | User profile card (avatar, name, badges, activity, teams) |
 | `dashboard-01/` | Full dashboard layout with sidebar, data table, and charts |
-| `design-system/` | Design system documentation viewer |
-| `gmh/homepage/` | GMH Lab homepage |
-| `gmh/innovations/` | Innovations index (hero, gallery, sections) |
-| `gmh/innovation/` | Single innovation detail page |
+| `design-system-01/` | Design system documentation viewer with palettes and tokens |
+| `example-01/` | Card + Form examples with AlertDialog, Combobox, DropdownMenu |
+| `example-02/` | Kitchen sink page demonstrating many UI primitives |
+| `example-03/` | Data dashboard with charts and data table |
+| `footer-01/` | Simple footer |
+| `footer-02/` | Footer with logo |
+| `footer-03/` | GMH-branded footer with quick links and contact info |
+| `login-03/` | Login page with form |
+| `navbar-01/` | Navigation menu with mega-menu pattern |
+| `navbar-02/` | Navigation with configurable data prop |
+| `navbar-03/` | Navigation header variant |
+| `navbar-04/` | Navigation with mode toggle and avatar |
+| `navbar-05/` | GMH-branded navigation bar |
+| `profile-card-01/` | User profile card (avatar, name, badges, activity, teams) |
+
+**GMH Components** (`components/gmh/`) — domain-specific branded pages:
+
+| Component | Description |
+|-----------|-------------|
+| `homepage/` | GMH Lab homepage with hero, about, news, testimonials, newsletter, map |
+| `innovation/` | Single innovation detail page (EQUIP and Photovoice data included) |
+| `innovations/` | Innovations index with hero, gallery, and section cards |
 
 **Utilities:**
 
@@ -76,7 +95,26 @@ import { Button, Card, ProfileCard, cn } from "@repo/ui"
 cn(...classes)        // clsx + tailwind-merge
 useIsMobile()         // responsive hook (< 768px)
 ImageWithFallback     // image with error fallback
+ModeToggle            // dark/light/system theme toggle
+ThemeProvider          // next-themes wrapper
+Logo / LogoMark       // GMH logo SVG components
 ```
+
+## Web App Routes
+
+The main app (`apps/web`) uses Next.js App Router with four route groups:
+
+| Route | Component | Route Group |
+|-------|-----------|-------------|
+| `/` | ComponentExample | `(site)` — Navbar2 + Footer2 |
+| `/login` | LoginPage | `(auth)` — minimal layout |
+| `/dashboard` | ComponentExample | `(app)` — Sidebar + Header |
+| `/dashboard/design-system` | DesignSystem | `(app)` |
+| `/dashboard/data` | Example3 | `(app)` |
+| `/gmh` | HomePage | `(gmh)` — Navbar5 + Footer3 |
+| `/gmh/innovations` | Innovations | `(gmh)` |
+| `/gmh/innovations/equip` | Innovation (EQUIP) | `(gmh)` |
+| `/gmh/innovations/photovoice` | Innovation (Photovoice) | `(gmh)` |
 
 ## Design System
 
@@ -86,60 +124,88 @@ No `tailwind.config.js`. All theme tokens live in `packages/ui/src/styles/index.
 
 ### Brand Colors
 
-| Token | Value | Usage |
-|-------|-------|-------|
-| `primary` | Navy `#033C5A` | Brand primary |
-| `secondary` | Gold `#AA9868` | Brand accent |
-| `accent` | Blue `#0190db` | Interactive |
+| Token | Approximate Value | Usage |
+|-------|-------------------|-------|
+| `primary` | Dark navy | Brand primary |
+| `secondary` | Gold/tan | Brand accent |
+| `accent` | Light gold | Interactive elements |
 
-Full semantic token set: `background`, `foreground`, `card`, `muted`, `destructive`, `border`, `input`, `ring`, `sidebar-*`, `chart-1`–`chart-5`.
+Full semantic token set: `background`, `foreground`, `card`, `popover`, `primary`, `secondary`, `muted`, `accent`, `destructive`, `border`, `input`, `ring`, `sidebar-*`, `chart-1`–`chart-5`.
+
+### Typography
+
+| Variable | Font | Source |
+|----------|------|--------|
+| `--font-sans` | Avenir Next | System / CSS default |
+| `--font-serif` | Libre Baskerville | Google Fonts (Next.js) |
+| `--font-mono` | JetBrains Mono | Google Fonts (Next.js) |
 
 ### Dark Mode
 
-Class-based via `.dark` on `<html>`:
+Class-based via `.dark` on `<html>`, managed by `next-themes`:
 
-```js
-document.documentElement.classList.toggle('dark')
+```ts
+import { ModeToggle } from "@repo/ui";
+// or programmatically:
+const { setTheme } = useTheme();
+setTheme("dark"); // "light" | "dark" | "system"
 ```
 
 ## shadcn Registry
 
-Custom shadcn-compatible registry published from this repo:
+Custom shadcn-compatible registry published from this repo (51 items):
 
-- **Theme:** `gmhlab-theme` — Navy + Gold with Sora / DM Mono typography
-- **Block:** `profile-card`
+- **44 primitives** — one per `components/ui/` file
+- **7 blocks** — dashboard, design-system, homepage, innovation, innovations, login, profile-card
+- **1 style** — `gmhlab-theme` (Navy + Gold design tokens)
 
 Manifest: `packages/ui/registry.json` · Sources: `packages/ui/registry/` · Output: `packages/ui/public/r/`
+
+```bash
+pnpm --filter @repo/ui build:registry    # rebuild registry
+```
 
 ## Tech Stack
 
 | Layer | Technology | Version |
 |-------|-----------|---------|
 | Monorepo | pnpm workspaces + Turborepo | pnpm 9.15 / Turbo 2.3 |
-| Framework | Next.js / Vite | 15.1 / 6.0 |
-| Language | TypeScript | 5.7 |
+| Framework | Next.js / Vite | 16 / 6.0 |
+| Language | TypeScript (strict) | 5.7 |
 | UI | React | 19 |
 | Styling | Tailwind CSS v4 | 4.0 |
-| Components | Radix UI primitives | various |
-| Variants | class-variance-authority | 0.7 |
-| Icons | lucide-react + @tabler/icons-react | 0.487 / 3.37 |
+| Components | Radix UI + Base UI | 1.4 / 1.2 |
+| Variants | class-variance-authority | — |
+| Icons | lucide-react | 0.487 |
 | Animation | motion | 12 |
 | Charts | Recharts | 2.15 |
 | Tables | @tanstack/react-table | 8.21 |
-| Forms | react-hook-form + zod | 7.55 / 4.x |
-| DnD | @dnd-kit | 6/9/10 |
+| Forms | react-hook-form + zod | 7.55 / 4.3 |
+| Drag & Drop | @dnd-kit | 6/9/10 |
+| Carousel | embla-carousel-react | 8.6 |
+| Drawer | vaul | 1.1 |
+| Toasts | sonner | 2.0 |
+| Theme | next-themes | 0.4 |
 
 ## Scripts
 
 ```bash
-pnpm dev                         # Start all apps
-pnpm build                       # Build all packages
-pnpm lint                        # Lint everything
-pnpm typecheck                   # Type check everything
-pnpm clean                       # Clear Turborepo cache
+# All apps
+pnpm dev                             # Start all apps concurrently
+pnpm build                           # Build all packages (Turborepo order)
+pnpm lint                            # Lint everything
+pnpm typecheck                       # Type check everything
+pnpm clean                           # Clear Turborepo cache
 
-pnpm --filter @repo/web dev      # Single app
-pnpm --filter @repo/ui typecheck # Single package task
+# Single app/package
+pnpm --filter @repo/web dev          # Start web app only
+pnpm --filter @repo/docs dev         # Start docs app only
+pnpm --filter @repo/cdn dev          # Start CDN app only
+pnpm --filter @repo/ui typecheck     # Typecheck UI package
+pnpm --filter @repo/ui lint          # Lint UI package
+pnpm --filter @repo/ui build:registry # Build shadcn registry
 ```
 
-For agent/contributor workflow details, see [CLAUDE.md](./CLAUDE.md).
+## Contributing
+
+For detailed agent/contributor workflow, component conventions, and architectural decisions, see [CLAUDE.md](./CLAUDE.md).

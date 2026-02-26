@@ -1,7 +1,7 @@
 import { HeroSection } from "./components/hero-section";
 import { WhatIsItSection } from "./components/what-is-it-section";
 import { HowToUseSection } from "./components/how-to-section";
-import { TestingSection } from "./components/test-it-section";
+import { TestingSection } from "./components/test-it-section-02";
 import { UserStorySection } from "./components/user-story-section";
 import { PartnerMarquee } from "./components/partner-marquee";
 import { GetItSection } from "./components/get-it-section";
@@ -29,7 +29,7 @@ export function Innovation({ data }: InnovationProps) {
         <WhatIsItSection {...data.whatIsIt} />
         <PartnerMarquee />
         <HowToUseSection {...data.howToUse} />
-        <TestingSection {...data.testing} />
+        <TestingSection /* {...data.testing} */ /> 
         <UserStorySection {...data.userStory} />
         <GetItSection {...data.getIt} />
 

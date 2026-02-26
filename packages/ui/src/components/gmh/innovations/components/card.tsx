@@ -6,6 +6,7 @@ interface InnovationCardProps {
   description: React.ReactNode;
   imageFilter: string;
   icon: React.ReactNode;
+  href?: string;
 }
 
 function IconLeft() {
@@ -23,14 +24,30 @@ function IconLeft() {
   );
 }
 
-function EnhancedButton() {
-  return (
-    <button className="group relative overflow-hidden bg-gradient-to-r from-[#033C5A] to-[#045A85] hover:from-[#045A85] hover:to-[#033C5A] text-white px-6 py-3 rounded-lg shadow-lg shadow-[#033C5A]/30 hover:shadow-xl hover:shadow-[#033C5A]/50 transition-all duration-300 transform hover:-translate-y-0.5">
+function EnhancedButton({ href }: { href?: string }) {
+  const className = "group relative overflow-hidden bg-gradient-to-r from-[#033C5A] to-[#045A85] hover:from-[#045A85] hover:to-[#033C5A] text-white px-6 py-3 rounded-lg shadow-lg shadow-[#033C5A]/30 hover:shadow-xl hover:shadow-[#033C5A]/50 transition-all duration-300 transform hover:-translate-y-0.5";
+
+  const content = (
+    <>
       <div className="flex items-center gap-2 relative z-10">
         <IconLeft />
         <span className="text-sm font-semibold">Learn More</span>
       </div>
       <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+    </>
+  );
+
+  if (href) {
+    return (
+      <a href={href} className={className}>
+        {content}
+      </a>
+    );
+  }
+
+  return (
+    <button type="button" className={className}>
+      {content}
     </button>
   );
 }
@@ -71,18 +88,18 @@ function TextContentHeading({ title, description }: { title: string; description
   );
 }
 
-function ContentBox({ title, description }: { title: string; description: React.ReactNode }) {
+function ContentBox({ title, description, href }: { title: string; description: React.ReactNode; href?: string }) {
   return (
     <div className="absolute left-20 top-16 w-64 bg-gradient-to-br from-white/95 to-white/90 backdrop-blur-sm rounded-2xl shadow-2xl shadow-black/40 border border-white/20 p-6 z-10 transform hover:scale-105 transition-all duration-300">
       <div className="flex flex-col gap-6">
         <TextContentHeading title={title} description={description} />
-        <EnhancedButton />
+        <EnhancedButton href={href} />
       </div>
     </div>
   );
 }
 
-export function InnovationCard({ title, description, imageFilter, icon }: InnovationCardProps) {
+export function InnovationCard({ title, description, imageFilter, icon, href }: InnovationCardProps) {
   return (
     <div className="relative w-96 h-96 group">
       {/* Main image area with gradient overlay */}
@@ -97,14 +114,14 @@ export function InnovationCard({ title, description, imageFilter, icon }: Innova
           <div className={`absolute inset-0 bg-gradient-to-br ${imageFilter} mix-blend-overlay`} />
           <div className="absolute inset-0 bg-gradient-to-t from-[#033C5A]/80 via-[#033C5A]/40 to-transparent" />
         </div>
-        
+
         {/* White border with gradient glow */}
         <div className="absolute inset-0 border-4 border-white/80 rounded-2xl pointer-events-none" />
         <div className="absolute inset-0 border border-[#AA9868]/30 rounded-2xl pointer-events-none shadow-inner shadow-[#AA9868]/20" />
       </div>
-      
+
       {/* Content overlay */}
-      <ContentBox title={title} description={description} />
+      <ContentBox title={title} description={description} href={href} />
       
       {/* Subject-relevant icon */}
       <div className="absolute left-5 top-5 w-16 h-16 bg-gradient-to-br from-[#AA9868] to-[#AA9868]/70 rounded-xl shadow-lg shadow-[#AA9868]/30 backdrop-blur-sm border border-[#AA9868]/40 z-20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
