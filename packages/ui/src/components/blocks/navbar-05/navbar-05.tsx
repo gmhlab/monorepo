@@ -34,13 +34,15 @@ export function Navbar5() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ background: `linear-gradient(135deg, ${brandColors.navy} 0%, ${brandColors.navyLight} 100%)` }}>
-              <Globe className="w-6 h-6 text-white" />
-            </div>
-            <div className="hidden sm:block">
-              <p className="text-sm font-medium text-foreground">Center for</p>
-              <p className="text-sm font-medium text-primary">Global Mental Health</p>
-            </div>
+            <a href="/">
+              <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ background: `linear-gradient(135deg, ${brandColors.navy} 0%, ${brandColors.navyLight} 100%)` }}>
+                <Globe className="w-6 h-6 text-white" />
+              </div>
+              <div className="hidden sm:block">
+                <p className="text-sm font-medium text-foreground">Center for</p>
+                <p className="text-sm font-medium text-primary">Global Mental Health</p>
+              </div>
+            </a>
           </div>
 
           {/* Desktop Navigation */}

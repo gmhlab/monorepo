@@ -2,9 +2,9 @@ import { Navbar2 } from "@repo/ui"
 import { Footer2 } from "@repo/ui";
 
 const navigationData = [
-  { title: 'Home', href: '#' },
+  { title: 'Home', href: '/' },
   { title: 'Dashboard', href: '/dashboard' },
-  { title: 'Website', href: '#' },
+  { title: 'Website', href: '/gmh' },
   { title: 'Login', href: '/login' }
 ]
 
