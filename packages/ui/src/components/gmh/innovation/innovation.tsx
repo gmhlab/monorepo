@@ -1,5 +1,5 @@
 import { HeroSection } from "./components/hero-section";
-import { WhatIsItSection } from "./components/what-is-it-section";
+import { WhatIsItSection } from "./components/what-is-section";
 import { HowToUseSection } from "./components/how-to-section";
 import { TestingSection } from "./components/test-it-section-02";
 import { UserStorySection } from "./components/user-story-section";

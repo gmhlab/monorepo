@@ -2,12 +2,15 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 
 import "./globals.css";
-import { TooltipProvider, TooltipTrigger } from "@repo/ui";
+import { ThemeProvider, TooltipProvider } from "@repo/ui";
+import App from "./App";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <TooltipProvider>
-      <h1>Hello!</h1>
-    </TooltipProvider>
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+      <TooltipProvider>
+        <App />
+      </TooltipProvider>
+    </ThemeProvider>
   </StrictMode>
 );

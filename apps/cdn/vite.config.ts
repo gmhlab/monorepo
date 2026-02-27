@@ -11,4 +11,22 @@ export default defineConfig({
       "@repo/ui": resolve(__dirname, "../../packages/ui/src"),
     },
   },
+  build: {
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, "index.html"),
+        "hero-section": resolve(__dirname, "src/entries/hero-section.tsx"),
+        "what-is-section": resolve(__dirname, "src/entries/what-is-section.tsx"),
+        "how-to-section": resolve(__dirname, "src/entries/how-to-section.tsx"),
+      },
+      output: {
+        entryFileNames: (chunkInfo) => {
+          return chunkInfo.name === "main"
+            ? "assets/[name]-[hash].js"
+            : "widgets/[name].js";
+        },
+        assetFileNames: "assets/[name]-[hash][extname]",
+      },
+    },
+  },
 });
