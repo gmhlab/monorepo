@@ -7,6 +7,8 @@ interface HowToUseSectionProps {
     title: string;
     description: string;
     graphicUrl?: string;
+    graphicWidth?: number;
+    graphicHeight?: number;
   }[];
 }
 
@@ -21,7 +23,9 @@ export function mount(selector: string, props: HowToUseSectionProps) {
       <img
         src={step.graphicUrl}
         alt={step.title}
-        className="w-full h-full object-cover"
+        width={step.graphicWidth}
+        height={step.graphicHeight}
+        className="object-cover"
       />
     ) : undefined,
   }));
