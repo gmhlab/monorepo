@@ -19,6 +19,7 @@ export default defineConfig({
         "what-is-section": resolve(__dirname, "src/entries/what-is-section.tsx"),
         "how-to-section": resolve(__dirname, "src/entries/how-to-section.tsx"),
       },
+      preserveEntrySignatures: "exports-only",
       output: {
         entryFileNames: (chunkInfo) => {
           return chunkInfo.name === "main"
