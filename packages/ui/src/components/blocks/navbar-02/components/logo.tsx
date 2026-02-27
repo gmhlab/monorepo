@@ -6,9 +6,9 @@ import { cn } from '../../../../lib/utils'
 
 const Logo = ({ className }: { className?: string }) => {
   return (
-    <div className={cn('flex items-center gap-1', className)}>
-      <LogoSvg className='size-12 rounded-full' />
-      <span className='text-xl font-semibold'>gmhlab/studio</span>
+    <div className={cn('flex items-center', className)}>
+      <LogoSvg className='size-16 rounded-full' />
+      <span className='text-xl -ml-2 font-semibold'>GMH Lab / Studio</span>
     </div>
   )
 }

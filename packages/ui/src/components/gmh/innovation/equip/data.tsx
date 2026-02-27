@@ -32,10 +32,10 @@ export const equipData: InnovationData = {
       {
         title: "Prepare",
         description: "Set up your team on the platform.",
-        graphic: <img src="/equip_prepare.png" 
+        graphic: <img src="/prepare.png" 
           alt="Trainer reviewing materials with a mental health worker" 
-          width={176} 
-          height={176} 
+          width={144} 
+          height={144} 
           className="object-cover" 
         />,
         icon: Users,
@@ -44,10 +44,10 @@ export const equipData: InnovationData = {
         title: "Observe",
         description: "Watch provider sessions.",
         icon: ClipboardList,
-        graphic: <img src="/equip_observe.png" 
+        graphic: <img src="/observe.png" 
           alt="Trainer reviewing materials with a mental health worker" 
-          width={152} 
-          height={152} 
+          width={144} 
+          height={144} 
           className="object-cover" 
         />,
       },
@@ -55,10 +55,10 @@ export const equipData: InnovationData = {
         title: "Rate",
         description: "Check off the observed behaviors.",
         icon: Settings,
-        graphic: <img src="/equip_rate.png" 
+        graphic: <img src="/rate.png" 
           alt="Trainer reviewing materials with a mental health worker" 
-          width={160} 
-          height={160} 
+          width={152} 
+          height={152} 
           className="object-cover" 
         />,
       },
@@ -66,7 +66,7 @@ export const equipData: InnovationData = {
         title: "Visualize",
         description: "Generate charts and graphs.",
         icon: CheckCircle,
-        graphic: <img src="/equip_visualize.png" 
+        graphic: <img src="/visualize.png" 
           alt="Trainer reviewing materials with a mental health worker" 
           width={160} 
           height={160} 
@@ -77,10 +77,10 @@ export const equipData: InnovationData = {
         title: "Feedback",
         description: "Give competency-based feedback.",
         icon: Rocket,
-        graphic: <img src="/equip_feedback.png" 
+        graphic: <img src="/feedback.png" 
           alt="Trainer reviewing materials with a mental health worker" 
-          width={144} 
-          height={144} 
+          width={160} 
+          height={160} 
           className="object-cover" 
         />,
       },

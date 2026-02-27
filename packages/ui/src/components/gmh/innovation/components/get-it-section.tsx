@@ -4,15 +4,15 @@ import type { GetItData } from "../types";
 
 export function GetItSection({ heading, body, resources, highlight }: GetItData) {
   return (
-    <div className="container mx-auto px-4 py-20">
+    <div className="container max-w-6xl mx-auto px-4 py-20">
       <h2 className="text-5xl md:text-6xl font-serif text-white text-center mb-16">How do I get it?</h2>
 
       <div>
         <Card className="p-8 bg-white shadow-2xl">
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
-              <h3 className="text-[#033C5A] mb-4">{heading}</h3>
-              <p className="text-muted-foreground mb-6 leading-relaxed">
+              <h3 className="font-bold text-3xl text-[#033C5A] mb-4">{heading}</h3>
+              <p className="font-medium text-muted-foreground mb-6 leading-relaxed">
                 {body}
               </p>
 
@@ -21,10 +21,9 @@ export function GetItSection({ heading, body, resources, highlight }: GetItData)
                   <a
                     key={i}
                     href={resource.href ?? "#"}
-                    className="flex items-center gap-3 bg-gray-50 p-3 rounded-lg cursor-pointer"
-                  >
+                    className="flex items-center border-1 border-border/25 gap-3 bg-gray-50 p-3 rounded-lg cursor-pointer shadow-sm">
                     <resource.icon className="w-5 h-5 text-[#033C5A]" />
-                    <span className="text-sm text-[#033C5A]">
+                    <span className="text-md font-medium text-[#033C5A]">
                       {resource.label}
                     </span>
                   </a>
@@ -43,7 +42,7 @@ export function GetItSection({ heading, body, resources, highlight }: GetItData)
               style={{ minHeight: "350px" }}
             >
               <div className="absolute inset-0 bg-gradient-to-br from-[#033C5A]/10 to-[#AA9868]/10"></div>
-              <div className="relative z-10 flex flex-col items-center">
+              <div className="z-10 flex flex-col items-center">
                 <div className="relative">
                   <div className="w-32 h-32 bg-white rounded-lg shadow-xl mb-4 transform rotate-6 absolute top-0 left-0"></div>
                   <div className="w-32 h-32 bg-white rounded-lg shadow-xl mb-4 transform -rotate-6 absolute top-4 left-4"></div>

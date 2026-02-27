@@ -7,7 +7,7 @@ import type { UserStoryData } from "../types";
 export function UserStorySection({ storyIntro, paragraphs, quote, name, role, org }: UserStoryData) {
   return (
     <div className="py-20 px-4">
-      <div className="container mx-auto ">
+      <div className="container max-w-6xl mx-auto ">
         <h2 className="text-5xl md:text-6xl font-serif text-white text-center mb-16">Who has used it?</h2>
 
         <div>

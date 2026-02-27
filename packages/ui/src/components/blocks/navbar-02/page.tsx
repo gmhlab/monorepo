@@ -19,7 +19,7 @@ type NavigationItem = {
 
 const Navbar2 = ({ navigationData }: { navigationData: NavigationItem }) => {
   return (
-    <header className='sticky top-0 z-50'>
+    <header className='sticky top-0 z-50 border-b border-dashed'>
       <div className='mx-auto flex max-w-6xl items-center justify-between gap-8 px-4 py-7 sm:px-6'>
 
         <div className='flex items-center gap-6'>

@@ -65,13 +65,13 @@ export function TestingSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <h3 className="text-white mb-4">How did we score on test performance?</h3>
+              <h3 className="text-white text-3xl font-bold mb-4">How did we score on test performance?</h3>
               <p className="text-white/80 mb-6">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Our comprehensive testing revealed 
                 strong performance across all metrics with consistent improvement over the testing period.
               </p>
-              <div className="bg-white/10 p-4 rounded-lg">
-                <p className="text-sm text-white/90">We did so and so well with testing because of these key factors and improvements.</p>
+              <div className="bg-primary p-4 rounded-lg">
+                <p className="text-lg font-bold text-primary-foreground">We did so and so well with testing because of these key factors and improvements.</p>
               </div>
             </motion.div>
             
@@ -101,13 +101,13 @@ export function TestingSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <h3 className="text-white mb-4">System Reliability Over Time</h3>
+              <h3 className="text-white text-3xl font-bold mb-4">System Reliability Over Time</h3>
               <p className="text-white/80 mb-6">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Reliability metrics showed steady 
                 improvement as iterative testing cycles addressed core stability concerns.
               </p>
-              <div className="bg-white/10 p-4 rounded-lg">
-                <p className="text-sm text-white/90">Uptime reached 99.5% by Sprint 5 with error rates dropping to near zero.</p>
+              <div className="bg-primary p-4 rounded-lg">
+                <p className="text-lg font-bold text-primary-foreground">Uptime reached 99.5% by Sprint 5 with error rates dropping to near zero.</p>
               </div>
             </motion.div>
           </div>
@@ -155,7 +155,7 @@ export function TestingSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
             >
-              <h4 className="text-white mb-4">Combination of testing data</h4>
+              <h4 className="text-white text-3xl font-bold mb-4">Combination of testing data</h4>
               <p className="text-white/80 mb-4">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Multiple testing methodologies were employed 
                 to ensure comprehensive validation and verification of all system components.

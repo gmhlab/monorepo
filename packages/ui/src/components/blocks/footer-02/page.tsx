@@ -1,6 +1,7 @@
 import { cn } from "../../../lib/utils";
 
 import { Logo, LogoImage, LogoText } from "./components/logo";
+import LogoMark from "../../../assets/svg/logo-mark";
 
 interface MenuItem {
   title: string;
@@ -29,7 +30,7 @@ interface Footer2Props {
 
 const Footer2 = ({
   logo = {
-    src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-1.svg",
+    src: "import LogoSvg from '../../../../assets/svg/logo-mark'",
     alt: "blocks for gmhlab/ui",
     title: "GMHlab.com",
     url: "https://www.gmhlab.com",
@@ -83,8 +84,8 @@ const Footer2 = ({
   ],
 }: Footer2Props) => {
   return (
-    <section className={cn("py-32", className)}>
-      <div className="container">
+    <section className={cn("py-10", className)}>
+      <div className="container mx-auto max-w-7xl">
         <footer>
           <div className="grid grid-cols-2 gap-8 lg:grid-cols-6">
             <div className="col-span-2 mb-8 lg:mb-0">
@@ -94,8 +95,9 @@ const Footer2 = ({
                     src={logo.src}
                     alt={logo.alt}
                     title={logo.title}
-                    className="h-10 dark:invert"
+                    className="h-10 dark:invert hidden"
                   />
+                  <LogoMark className="h-20" />
                   <LogoText className="text-xl">{logo.title}</LogoText>
                 </Logo>
               </div>

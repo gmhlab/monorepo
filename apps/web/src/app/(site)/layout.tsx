@@ -17,8 +17,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <main>
         {children}
       </main>
-      <footer>
-        <Footer2 className="container mx-auto"/>
+      <footer className="border-t border-dashed">
+        <Footer2 />
       </footer>
     </>
   )
