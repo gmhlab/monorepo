@@ -1,0 +1,1 @@
+import{h as n,j as i}from"../assets/data-table-vJhGmGqb.js";import{H as r}from"../assets/hero-section-bqSLr-XV.js";function d(o,t){const e=document.querySelector(o);if(!e)throw new Error(`Element not found: ${o}`);n.createRoot(e).render(i.jsx(r,{...t}))}typeof window<"u"&&(window.GMHWidgets=window.GMHWidgets||{},window.GMHWidgets.HeroSection={mount:d});
