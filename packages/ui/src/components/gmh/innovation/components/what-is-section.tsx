@@ -13,8 +13,8 @@ import type { WhatIsItData } from "../types";
 
 export function WhatIsItSection({ headline, body, capabilities }: WhatIsItData) {
   return (
-    <div className="py-20" >
-    <div className="w-full container max-w-7xl mx-auto px-4">
+    <div className="py-20 w-full px-2" >
+    <div className="container max-w-7xl mx-auto px-4">
       <h2 className="text-5xl md:text-6xl font-serif text-white text-center mb-16">What is it?</h2>
       <Card className="p-8 bg-white/10 backdrop-blur-sm shadow-2xl border-white/20">
         <div className="grid md:grid-cols-2 gap-8">
