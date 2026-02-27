@@ -1,13 +1,13 @@
-import { HeroSection, WhatIsItSection, HowToUseSection } from "@repo/ui";
+import { HeroSection, WhatIsItSection, PartnerMarquee, HowToUseSection } from "@repo/ui";
 
 // Sample data for preview - replace with actual data or import from @repo/ui
 const sampleData = {
   hero: {
     title: "EQUIP",
-    subtitle: "Enhancing Quality of care through Unified training and Integration of Practices",
+    subtitle: "Enhancing Quality of care through Unified Training and Integration of Practices",
   },
   whatIsIt: {
-    headline: "A digital training platform for mental health",
+    headline: "A digital training platform for mental health workers",
     body: "EQUIP provides evidence-based training modules designed to build capacity among healthcare workers in low-resource settings.",
     capabilities: [
       { label: "Self-paced learning", detail: "Complete modules at your own pace with progress tracking." },
@@ -66,6 +66,7 @@ export function App() {
         subtitle={sampleData.hero.subtitle}
       />
       <WhatIsItSection {...sampleData.whatIsIt} />
+      <PartnerMarquee />
       <HowToUseSection {...sampleData.howToUse} />
     </div>
   );
