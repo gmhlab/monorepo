@@ -6,13 +6,27 @@ interface HowToUseSectionProps {
   steps: {
     title: string;
     description: string;
+    graphicUrl?: string;
   }[];
 }
 
 export function mount(selector: string, props: HowToUseSectionProps) {
   const el = document.querySelector(selector);
   if (!el) throw new Error(`Element not found: ${selector}`);
-  createRoot(el).render(<HowToUseSection {...props} />);
+
+  // Convert graphicUrl strings to React elements
+  const stepsWithGraphics = props.steps.map((step) => ({
+    ...step,
+    graphic: step.graphicUrl ? (
+      <img
+        src={step.graphicUrl}
+        alt={step.title}
+        className="w-full h-full object-cover"
+      />
+    ) : undefined,
+  }));
+
+  createRoot(el).render(<HowToUseSection steps={stepsWithGraphics} />);
 }
 
 // Auto-register on window for script tag usage
