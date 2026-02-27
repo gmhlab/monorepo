@@ -4,8 +4,8 @@ import type { HowToUseData } from "../types";
 
 export function HowToUseSection({ steps }: HowToUseData) {
   return (
-    <div className="py-20 max-w-2xl w-full px-2">
-      <div className="container mx-auto ">
+    <div className="py-20 w-full px-2">
+      <div className="container mx-auto max-w-2xl">
         <h2 className="text-5xl md:text-6xl font-serif text-white/90 text-center mb-16">How do you use it?</h2>
 
         <div>

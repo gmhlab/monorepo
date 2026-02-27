@@ -18,10 +18,42 @@ const sampleData = {
   },
   howToUse: {
     steps: [
-      { title: "Register", description: "Create an account on the EQUIP platform." },
-      { title: "Select modules", description: "Choose the training modules relevant to your practice." },
-      { title: "Complete training", description: "Work through interactive content and assessments." },
-      { title: "Get certified", description: "Receive certification upon successful completion." },
+      { title: "Register", 
+        description: "Create an account on the EQUIP platform.", 
+        graphic: <img src="/prepare.png" 
+          alt="Trainer reviewing materials with a mental health worker" 
+          width={144} 
+          height={144} 
+          className="object-cover" 
+        />,
+      },
+      { title: "Select modules", 
+        description: "Choose the training modules relevant to your practice.",
+        graphic: <img src="/observe.png" 
+          alt="Trainer reviewing materials with a mental health worker" 
+          width={144} 
+          height={144} 
+          className="object-cover" 
+        />,
+      },
+      { title: "Complete training", 
+        description: "Work through interactive content and assessments.",
+        graphic: <img src="/rate.png" 
+          alt="Trainer reviewing materials with a mental health worker" 
+          width={152} 
+          height={152} 
+          className="object-cover" 
+        />,
+      },
+      { title: "Get certified", 
+        description: "Receive certification upon successful completion.",
+        graphic: <img src="/visualize.png" 
+          alt="Trainer reviewing materials with a mental health worker" 
+          width={160} 
+          height={160} 
+          className="object-cover" 
+        />,
+      },
     ],
   },
 };
