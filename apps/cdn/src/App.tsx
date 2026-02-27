@@ -28,7 +28,7 @@ const sampleData = {
 
 export function App() {
   return (
-    <div className="min-h-screen bg-[#033C5A]">
+    <div className="">
       <HeroSection
         title={sampleData.hero.title}
         subtitle={sampleData.hero.subtitle}

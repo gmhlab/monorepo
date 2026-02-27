@@ -11,7 +11,7 @@ import {
 } from "../../../ui";
 import type { WhatIsItData } from "../types";
 
-export function WhatIsItSection({ headline, body, capabilities, highlight }: WhatIsItData) {
+export function WhatIsItSection({ headline, body, capabilities }: WhatIsItData) {
   return (
     <div className="py-20" >
     <div className="w-full container max-w-7xl mx-auto px-4">

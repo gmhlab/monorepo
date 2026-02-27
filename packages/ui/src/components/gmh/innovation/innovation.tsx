@@ -18,8 +18,7 @@ interface InnovationProps {
 
 export function Innovation({ data }: InnovationProps) {
   return (
-    <div className="min-h-screen bg-background">
-      <div className="w-full flex flex-col items-center mx-auto">
+      <div className="w-full flex flex-col items-center">
 
         <HeroSection
           title={data.hero.title}
@@ -45,6 +44,5 @@ export function Innovation({ data }: InnovationProps) {
           total={data.navigation?.total}
         />
       </div>
-    </div>
   );
 }
