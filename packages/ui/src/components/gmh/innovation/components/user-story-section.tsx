@@ -18,8 +18,8 @@ export function UserStorySection({ storyIntro, paragraphs, quote, name, role, or
             <div className="grid md:grid-cols-2 gap-8 relative z-10">
               <div>
                 <div className="flex items-center gap-3 mb-6">
-                  <Quote className="w-8 h-8 text-[#AA9868]" />
-                  <h3 className="text-white">
+                  <Quote className="w-22 h-22 text-[#AA9868]" />
+                  <h3 className="text-white text-3xl font-bold">
                     {storyIntro}
                   </h3>
                 </div>
@@ -31,7 +31,7 @@ export function UserStorySection({ storyIntro, paragraphs, quote, name, role, or
                 ))}
 
                 <div className="bg-[#AA9868] text-white p-4 rounded-lg inline-block">
-                  <p className="text-sm italic">
+                  <p className="text-xl font-serif italic">
                     &ldquo;{quote}&rdquo;
                   </p>
                 </div>

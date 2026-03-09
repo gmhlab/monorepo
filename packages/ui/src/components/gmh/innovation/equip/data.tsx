@@ -1,4 +1,4 @@
-import { BookOpen, FileText, Video, Download, Settings, Users, CheckCircle, Rocket, ClipboardList } from "lucide-react";
+import { FileText, Globe, GraduationCap, FileDown, Settings, Users, CheckCircle, Rocket, ClipboardList, FolderOpen } from "lucide-react";
 import type { InnovationData } from "../types";
 
 export const equipData: InnovationData = {
@@ -110,26 +110,27 @@ export const equipData: InnovationData = {
   },
 
   userStory: {
-    storyIntro: "A community mental health nurse's experience with EQUIP",
+    storyIntro: "Trainer Spotlight: How EQUIP transformed training in Uganda",
     paragraphs: [
-      "Before EQUIP, our team rarely sat down with service users to talk about what was missing in our care. We assumed we knew what people needed. The QI process changed that — it gave us a structure for listening.",
-      "During our first assessment cycle we discovered that nearly half of our clients didn't understand their diagnosis. That was confronting, but it gave us something concrete to act on. Within three months we'd redesigned how clinicians deliver psychoeducation.",
-      "The most unexpected outcome was the shift in team culture. Providers started asking for user feedback proactively rather than waiting for the formal review meetings.",
+      "With 12 years of experience in mental health, Josephine knew something was missing. 'There was no reliable way to assess whether trainees had truly mastered the required skills. Traditional pre- and post-training knowledge tests weren't reliable indicators of who could deliver services safely and effectively.'",
+      "She integrated EQUIP into training for community health workers delivering Group Interpersonal Therapy. Her team created role plays reflecting typical client interactions, used ENACT and GroupACT tools to assess competencies, and tailored supervision to address harmful behaviors identified during feedback.",
+      "The results were striking: harmful behaviors among trainees reduced by 68%, while helpful behaviors increased by 92%. The trained community health workers have now provided safe and effective Group IPT to 190 women. Since then, Josephine has used EQUIP to train over 240 people and conducted 971 competency assessments.",
     ],
-    quote: "EQUIP didn't just improve our scores — it changed how we relate to the people we're trying to help.",
-    name: "Amara Diallo",
-    role: "Community Mental Health Nurse",
-    org: "Regional Outpatient Mental Health Clinic",
+    quote: "I strongly believe that incorporating the EQUIP approach is necessary in any training. Without it, I would have been unable to provide the level of assistance required, as there were numerous aspects that I previously overlooked or did not prioritize.",
+    name: "Josephine Akellot, MSc",
+    role: "Clinical Psychologist & Mental Health Technical Leader",
+    org: "HealthRight Uganda",
   },
 
   getIt: {
     heading: "Training and Implementation Resources",
     body: "EQUIP is freely available to mental health facilities in LMICs. Access the full implementation package including facilitator guides, assessment tools, and training videos.",
     resources: [
-      { icon: BookOpen, label: "EQUIP Implementation Guide", href: "#" },
-      { icon: Video, label: "Facilitator Training Videos", href: "#" },
-      { icon: FileText, label: "Quality Assessment Tools", href: "#" },
-      { icon: Download, label: "Full Resource Package", href: "#" },
+      { icon: FolderOpen, label: "Case Studies", href: "#" },
+      { icon: Globe, label: "EQUIP Platform", href: "https://equipcompetency.org" },
+      { icon: FileText, label: "Project Overview", href: "#" },
+      { icon: GraduationCap, label: "Research & Publications", href: "#" },
+      { icon: FileDown, label: "Training Manual", href: "#" },
     ],
     highlight: "All EQUIP materials are open-access and available in multiple languages.",
   },

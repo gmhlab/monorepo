@@ -2,55 +2,36 @@
 
 import { motion } from 'motion/react';
 import { Card } from '../../../ui/card';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, LineChart, Line, AreaChart, Area } from 'recharts';
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
 
-const performanceData = [
-  { name: 'Week 1', value: 45 },
-  { name: 'Week 2', value: 62 },
-  { name: 'Week 3', value: 58 },
-  { name: 'Week 4', value: 75 },
-  { name: 'Week 5', value: 88 },
-  { name: 'Week 6', value: 92 }
+const improvementData = [
+  { month: 'Month 1', improvement: 12 },
+  { month: 'Month 2', improvement: 24 },
+  { month: 'Month 3', improvement: 38 },
+  { month: 'Month 4', improvement: 52 },
+  { month: 'Month 5', improvement: 67 },
+  { month: 'Month 6', improvement: 78 },
 ];
 
-const testingData1 = [
-  { name: 'Passed', value: 75 },
-  { name: 'Failed', value: 25 }
+const assessmentsData = [
+  { period: 'Q1', assessments: 1250 },
+  { period: 'Q2', assessments: 2840 },
+  { period: 'Q3', assessments: 4520 },
+  { period: 'Q4', assessments: 6890 },
 ];
-
-const testingData2 = [
-  { name: 'Successful', value: 82 },
-  { name: 'Issues', value: 18 }
-];
-
-const reliabilityData = [
-  { name: 'Sprint 1', uptime: 94, errors: 12 },
-  { name: 'Sprint 2', uptime: 96, errors: 8 },
-  { name: 'Sprint 3', uptime: 97, errors: 5 },
-  { name: 'Sprint 4', uptime: 99, errors: 3 },
-  { name: 'Sprint 5', uptime: 99.5, errors: 1 },
-];
-
-const coverageData = [
-  { name: 'Unit', value: 45 },
-  { name: 'Integration', value: 30 },
-  { name: 'E2E', value: 25 },
-];
-
-const COLORS = ['#033C5A', '#AA9868', '#5A8BA6', '#D4C5A0'];
 
 export function TestingSection() {
   return (
     <div className="container mx-auto px-4 py-20">
-      <motion.h2 
+      <motion.h2
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-5xl md:6xl font-serif text-white text-center mb-16"
+        className="text-5xl md:text-6xl font-serif text-white text-center mb-16"
       >
         How have we tested it?
       </motion.h2>
-      
+
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -58,157 +39,110 @@ export function TestingSection() {
         transition={{ duration: 0.6 }}
       >
         <Card className="p-8 bg-white/10 backdrop-blur-sm shadow-2xl border-white/20">
-          <div className="grid md:grid-cols-3 gap-8 mb-8">
+          {/* Hero Stat */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <p className="text-[#AA9868] text-lg uppercase tracking-wider mb-2">The Global Challenge</p>
+            <h3 className="text-white text-5xl md:text-7xl font-bold mb-4">1 Billion</h3>
+            <p className="text-white/80 text-xl md:text-2xl">people lack access to effective mental healthcare</p>
+            <p className="text-white/60 mt-4 text-lg">That's <span className="text-[#AA9868] font-semibold">1 in 7</span> people worldwide</p>
+          </motion.div>
+
+          {/* Stats Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            {/* Improvement Rate */}
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
-              <h3 className="text-white text-3xl font-bold mb-4">How did we score on test performance?</h3>
-              <p className="text-white/80 mb-6">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Our comprehensive testing revealed 
-                strong performance across all metrics with consistent improvement over the testing period.
-              </p>
-              <div className="bg-primary p-4 rounded-lg">
-                <p className="text-lg font-bold text-primary-foreground">We did so and so well with testing because of these key factors and improvements.</p>
-              </div>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
               className="bg-white/5 rounded-lg p-6"
             >
-              <ResponsiveContainer width="100%" height={250}>
-                <BarChart data={performanceData}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.2)" />
-                  <XAxis dataKey="name" stroke="#ffffff" />
-                  <YAxis stroke="#ffffff" />
-                  <Tooltip 
-                    contentStyle={{ backgroundColor: '#AA9868', color: 'white', border: 'none', borderRadius: '8px' }}
+              <h4 className="text-white mb-2 text-center">% Increase in Improvement</h4>
+              <div className="text-center mb-4">
+                <span className="text-5xl font-bold text-[#AA9868]">78%</span>
+                <p className="text-white/60 text-sm mt-1">over 6 months of testing</p>
+              </div>
+              <ResponsiveContainer width="100%" height={150}>
+                <AreaChart data={improvementData}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
+                  <XAxis dataKey="month" stroke="#ffffff80" tick={{ fontSize: 10 }} />
+                  <YAxis stroke="#ffffff80" tick={{ fontSize: 10 }} />
+                  <Tooltip
+                    contentStyle={{ backgroundColor: '#033C5A', color: 'white', border: 'none', borderRadius: '8px' }}
                   />
-                  <Bar dataKey="value" fill="#AA9868" radius={[8, 8, 0, 0]} />
-                </BarChart>
+                  <Area type="monotone" dataKey="improvement" stroke="#AA9868" fill="#AA9868" fillOpacity={0.3} />
+                </AreaChart>
               </ResponsiveContainer>
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              <h3 className="text-white text-3xl font-bold mb-4">System Reliability Over Time</h3>
-              <p className="text-white/80 mb-6">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Reliability metrics showed steady 
-                improvement as iterative testing cycles addressed core stability concerns.
-              </p>
-              <div className="bg-primary p-4 rounded-lg">
-                <p className="text-lg font-bold text-primary-foreground">Uptime reached 99.5% by Sprint 5 with error rates dropping to near zero.</p>
-              </div>
-            </motion.div>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
+            {/* Number of Trainees */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="bg-white/5 rounded-lg p-6"
+              className="bg-white/5 rounded-lg p-6 flex flex-col justify-center items-center"
             >
-              <h4 className="text-white mb-4 text-center">Test Results Distribution</h4>
-              <ResponsiveContainer width="100%" height={200}>
-                <PieChart>
-                  <Pie
-                    data={testingData1}
-                    cx="50%"
-                    cy="50%"
-                    innerRadius={40}
-                    outerRadius={80}
-                    paddingAngle={5}
-                    dataKey="value"
-                  >
-                    {testingData1.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                    ))}
-                  </Pie>
-                  <Tooltip />
-                </PieChart>
-              </ResponsiveContainer>
-              <div className="flex justify-center gap-4 mt-4">
-                {testingData1.map((entry, index) => (
-                  <div key={entry.name} className="flex items-center gap-2">
-                    <div className="w-4 h-4 rounded" style={{ backgroundColor: COLORS[index] }}></div>
-                    <span className="text-sm text-white">{entry.name}: {entry.value}%</span>
-                  </div>
-                ))}
+              <h4 className="text-white mb-4 text-center">Number of Trainees Assessed</h4>
+              <span className="text-6xl md:text-7xl font-bold text-[#AA9868]">2,450</span>
+              <p className="text-white/60 text-sm mt-2">mental health professionals trained</p>
+              <div className="mt-4 flex gap-4">
+                <div className="text-center">
+                  <span className="text-2xl font-bold text-white">12</span>
+                  <p className="text-white/60 text-xs">Countries</p>
+                </div>
+                <div className="text-center">
+                  <span className="text-2xl font-bold text-white">45</span>
+                  <p className="text-white/60 text-xs">Institutions</p>
+                </div>
               </div>
             </motion.div>
 
+            {/* Cumulative Assessments */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
-            >
-              <h4 className="text-white text-3xl font-bold mb-4">Combination of testing data</h4>
-              <p className="text-white/80 mb-4">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Multiple testing methodologies were employed 
-                to ensure comprehensive validation and verification of all system components.
-              </p>
-              <div className="bg-white/5 rounded-lg p-6">
-                <ResponsiveContainer width="100%" height={200}>
-                  <PieChart>
-                    <Pie
-                      data={testingData2}
-                      cx="50%"
-                      cy="50%"
-                      innerRadius={40}
-                      outerRadius={80}
-                      paddingAngle={5}
-                      dataKey="value"
-                    >
-                      {testingData2.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={COLORS[index + 2]} />
-                      ))}
-                    </Pie>
-                    <Tooltip />
-                  </PieChart>
-                </ResponsiveContainer>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.4 }}
               className="bg-white/5 rounded-lg p-6"
             >
-              <h4 className="text-white mb-4 text-center">Reliability Trend</h4>
-              <ResponsiveContainer width="100%" height={200}>
-                <AreaChart data={reliabilityData}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.2)" />
-                  <XAxis dataKey="name" stroke="#ffffff" />
-                  <YAxis stroke="#ffffff" />
-                  <Tooltip 
-                    contentStyle={{ backgroundColor: '#033C5A', color: 'white', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '8px' }}
-                  />
-                  <Area type="monotone" dataKey="uptime" stroke="#AA9868" fill="#AA9868" fillOpacity={0.3} />
-                </AreaChart>
-              </ResponsiveContainer>
-              <div className="flex justify-center gap-4 mt-4">
-                <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 rounded" style={{ backgroundColor: '#AA9868' }}></div>
-                  <span className="text-sm text-white">Uptime %</span>
-                </div>
+              <h4 className="text-white mb-2 text-center">Cumulative Number of Assessments</h4>
+              <div className="text-center mb-4">
+                <span className="text-5xl font-bold text-[#AA9868]">15,500+</span>
+                <p className="text-white/60 text-sm mt-1">total assessments completed</p>
               </div>
+              <ResponsiveContainer width="100%" height={150}>
+                <BarChart data={assessmentsData}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
+                  <XAxis dataKey="period" stroke="#ffffff80" tick={{ fontSize: 10 }} />
+                  <YAxis stroke="#ffffff80" tick={{ fontSize: 10 }} />
+                  <Tooltip
+                    contentStyle={{ backgroundColor: '#033C5A', color: 'white', border: 'none', borderRadius: '8px' }}
+                  />
+                  <Bar dataKey="assessments" fill="#AA9868" radius={[4, 4, 0, 0]} />
+                </BarChart>
+              </ResponsiveContainer>
             </motion.div>
           </div>
+
+          {/* Summary */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="bg-white/5 rounded-lg p-6 text-center"
+          >
+            <p className="text-white/80 text-lg">
+              Our rigorous testing across multiple regions and institutions demonstrates consistent improvement
+              in trainee competency, with measurable impact on mental healthcare delivery quality.
+            </p>
+          </motion.div>
         </Card>
       </motion.div>
     </div>
