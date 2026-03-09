@@ -63,7 +63,7 @@
 }
 
 :root {
-  --background: hsl(201, 50%, 94%);
+  --background: #00273c; /* hsl(201, 50%, 94%); */
   --foreground: oklab(28.018% -0.02345 -0.03519);
   --card: oklch(1.0000 0 0);
   --card-foreground: oklch(0.2789 0.0419 236.3427);

@@ -27,7 +27,7 @@ export function HowToUseSection({ steps }: HowToUseData) {
                       </div>
                     </div>
                     <div
-                      className={`flex-1 text-center ${index % 2 === 0 ? "md:text-left" : "md:text-right"}`}
+                      className={`flex-1 text-center md:${index % 2 === 0 ? "text-left" : "text-right"}`}
                     >
                       <h4 className="text-white text-2xl md:text-4xl uppercase font-bold mb-1">{step.title}</h4>
                       <p className="text-white/80 text-base md:text-xl">{step.description}</p>
@@ -35,7 +35,7 @@ export function HowToUseSection({ steps }: HowToUseData) {
                   </div>
                   {index < steps.length - 1 && (
                     <div
-                      className={`flex justify-center ${index % 2 === 0 ? "md:justify-end" : "md:justify-start"} my-3 md:my-4`}
+                      className={`flex justify-center md:${index % 2 === 0 ? "justify-end" : "justify-start"} my-3 md:my-4`}
                     >
                       <ArrowDown className="w-6 h-6 md:w-8 md:h-8 text-[#AA9868]" />
                     </div>

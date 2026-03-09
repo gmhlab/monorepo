@@ -2,9 +2,7 @@
 export * from "./blocks"
 
 // GMH
-export * from "./gmh/homepage/homepage"
-export * from "./gmh/innovation/innovation"
-export * from "./gmh/innovations/innovations"
+export * from "./gmh"
 
 // UI
 export * from "./ui/"

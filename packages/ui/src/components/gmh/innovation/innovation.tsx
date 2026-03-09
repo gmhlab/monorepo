@@ -1,5 +1,5 @@
 import { HeroSection } from "./components/hero-section";
-import { WhatIsItSection } from "./components/what-is-it-section";
+import { WhatIsItSection } from "./components/what-is-section";
 import { HowToUseSection } from "./components/how-to-section";
 import { TestingSection } from "./components/test-it-section-02";
 import { UserStorySection } from "./components/user-story-section";
@@ -18,8 +18,7 @@ interface InnovationProps {
 
 export function Innovation({ data }: InnovationProps) {
   return (
-    <div className="min-h-screen bg-background">
-      <div className="w-full flex flex-col items-center mx-auto">
+      <div className="w-full flex flex-col items-center">
 
         <HeroSection
           title={data.hero.title}
@@ -45,6 +44,5 @@ export function Innovation({ data }: InnovationProps) {
           total={data.navigation?.total}
         />
       </div>
-    </div>
   );
 }
