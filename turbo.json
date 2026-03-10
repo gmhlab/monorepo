@@ -1,5 +1,6 @@
 {
   "$schema": "https://turbo.build/schema.json",
+  "globalEnv": ["SITE_PASSWORD", "PASSWORD_PROTECTION_ENABLED"],
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
