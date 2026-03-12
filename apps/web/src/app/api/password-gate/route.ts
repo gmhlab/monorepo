@@ -22,7 +22,7 @@ export async function POST(request: NextRequest) {
     url.pathname = "/password-gate";
     url.searchParams.set("redirect", redirect);
     url.searchParams.set("error", "1");
-    return NextResponse.redirect(url);
+    return NextResponse.redirect(url, 303);
   }
 
   if (password !== sitePassword) {
@@ -30,7 +30,7 @@ export async function POST(request: NextRequest) {
     url.pathname = "/password-gate";
     url.searchParams.set("redirect", redirect);
     url.searchParams.set("error", "1");
-    return NextResponse.redirect(url);
+    return NextResponse.redirect(url, 303);
   }
 
   const hash = await hashPassword(sitePassword);
@@ -38,7 +38,7 @@ export async function POST(request: NextRequest) {
   url.pathname = redirect;
   url.search = "";
 
-  const response = NextResponse.redirect(url);
+  const response = NextResponse.redirect(url, 303);
   response.cookies.set(COOKIE_NAME, hash, {
     httpOnly: true,
     secure: true,
