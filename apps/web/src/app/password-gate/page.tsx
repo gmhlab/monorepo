@@ -36,7 +36,7 @@ export default async function PasswordGatePage({
             required
             autoFocus
             autoComplete="current-password"
-            className="mb-4 block w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:border-ring focus:outline-none focus:ring-1 focus:ring-ring"
+            className="mb-4 block w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-white placeholder:text-muted-foreground focus:border-ring focus:outline-none focus:ring-1 focus:ring-ring"
             placeholder="Enter password"
           />
           <button
