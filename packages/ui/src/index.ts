@@ -1,13 +1,33 @@
-// Components
-export * from "./components/ui"
-export * from "./components/blocks"
-export * from "./components"
+
 
 // Assets
 export * from "./assets"
 
+// Blocks
+export * from "./blocks"
+
+// Composites
+export * from "./composites"
+
+// GMH
+export * from "./gmh"
+
 // Hooks
 export * from "./hooks"
 
+// Layouts
+export * from "./layouts"
+
 // Utils
 export * from "./lib"
+
+// Patterns
+export * from "./patterns"
+
+// Templates
+export * from "./templates"
+
+// Primitives
+export * from "./ui"
+
+
