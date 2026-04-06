@@ -17,3 +17,6 @@ export * from "./navbar-03/page";
 export * from "./navbar-04/page";
 export * from "./navbar-05/navbar-05";
 export * from "./profile-card-01/profile-card";
+export * from "./marketing";
+
+export * from "./portal-nav";

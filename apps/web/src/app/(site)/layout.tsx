@@ -1,5 +1,5 @@
-import { Navbar2 } from "@repo/ui"
-import { Footer2 } from "@repo/ui";
+import { Navbar1, Navbar2, Navbar3, Navbar4, Navbar5 } from "@repo/ui"
+import { Footer2, Footer1, Footer3 } from "@repo/ui";
 
 const navigationData = [
   { title: 'Home', href: '/' },
@@ -12,6 +12,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <>
       <header>
+        <Navbar4 />
         <Navbar2 navigationData={navigationData} />
       </header>
       <main>

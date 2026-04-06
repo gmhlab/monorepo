@@ -50,7 +50,7 @@ const components: { title: string; href: string; description: string }[] = [
   },
 ]
 
-export function Header() {
+export function Navbar3() {
   return (
     <NavigationMenu>
       <NavigationMenuList className="flex justify-items-stretch">
