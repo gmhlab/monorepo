@@ -83,11 +83,42 @@ When the user wants to check Code Connect coverage:
 ## Project Constants
 
 - **Figma file key**: `JoFKlZFj4MXQoXxOxVqM1F`
-- **Figma pages**: TODO — pages need to be created in the new Figma file. Update these IDs after creating pages for each layer.
+- **Figma pages**: Layouts (0:1), Primitives (9:2), Composites (9:3), Patterns (9:4), Blocks (9:5), Templates (9:6), Pages (9:7)
 - **Code Connect config**: `packages/ui/figma.config.json`
 - **Code Connect dependency**: `@figma/code-connect` (devDependency on `@repo/ui`)
 - **Publishing**: Requires Figma Organization/Enterprise plan. Not available yet — files exist for documentation.
 - **Component set naming**: `_Layer/ComponentName`
+
+## Figma Variable Collections
+
+Four variable collections exist in the Figma file, mirroring the code token system:
+
+| Collection | Type | Count | Code Source | Modes |
+|---|---|---|---|---|
+| **Spacing** | `FLOAT` | 25 | `layouts/_scale.ts` | Default |
+| **Sizing** | `FLOAT` | 24 | `layouts/_scale.ts` | Default |
+| **Semantic Colors** | `COLOR` | 32 | `styles/index.css` | Light, Dark |
+| **Color Primitives** | `COLOR` | 231 | `styles/index.css` | Default |
+
+### Spacing variables (path format: `gap/md`, `padding/lg`, etc.)
+- `gap/{none,xs,sm,md,lg,xl,2xl,3xl}` — flex/grid gap (0–64px)
+- `padding/{none,xs,sm,md,lg,xl,2xl}` — internal spacing (0–48px)
+- `space/{none,xs,sm,md,lg,xl,2xl,3xl}` — external margin (0–64px)
+- `section/{sm,md,lg,xl}` — vertical section rhythm (32–128px)
+- `gutter/{default,sm-up}` — viewport-edge breathing room (16px, 24px)
+
+### Sizing variables (path format: `container/lg`, `radius/md`, etc.)
+- `container/{xs,sm,md,lg,xl,2xl}` — page max-widths (576–1536px)
+- `center-max/{xs..7xl}` — fine-grained max-widths (320–1280px)
+- `measure/{narrow,prose,wide}` — readable text widths
+- `grid-min/{12rem..30rem}` — auto-grid column minimums (192–480px)
+- `radius/{sm,md,lg,xl}` — border radius (0–8px)
+
+### When syncing components to Figma
+- Bind spacing props (gap, padding) to **Spacing** collection variables
+- Bind width constraints to **Sizing** collection variables
+- Bind fill/stroke colors to **Semantic Colors** variables (enables mode switching)
+- Use **Color Primitives** only for one-off accent colors not covered by semantic tokens
 
 ## Code Connect File Template
 
@@ -119,10 +150,10 @@ figma.connect(Component, FIGMA_URL, {
 
 | Code Layer | Figma Page | Path Convention |
 |---|---|---|
-| `packages/ui/src/layouts/` | Layouts (TBD) | `.figma/component.figma.tsx` |
-| `packages/ui/src/primitives/` | Primitives (TBD) | `.figma/component.figma.tsx` |
-| `packages/ui/src/composites/` | Composites (TBD) | `.figma/component.figma.tsx` |
-| `packages/ui/src/patterns/` | Patterns (TBD) | `.figma/component.figma.tsx` |
-| `packages/ui/src/blocks/` | Blocks (TBD) | `.figma/component.figma.tsx` |
-| `packages/ui/src/templates/` | Templates (TBD) | `.figma/component.figma.tsx` |
-| `packages/ui/src/pages/` | Pages (TBD) | `.figma/component.figma.tsx` |
+| `packages/ui/src/layouts/` | Layouts (0:1) | `.figma/component.figma.tsx` |
+| `packages/ui/src/primitives/` | Primitives (9:2) | `.figma/component.figma.tsx` |
+| `packages/ui/src/composites/` | Composites (9:3) | `.figma/component.figma.tsx` |
+| `packages/ui/src/patterns/` | Patterns (9:4) | `.figma/component.figma.tsx` |
+| `packages/ui/src/blocks/` | Blocks (9:5) | `.figma/component.figma.tsx` |
+| `packages/ui/src/templates/` | Templates (9:6) | `.figma/component.figma.tsx` |
+| `packages/ui/src/pages/` | Pages (9:7) | `.figma/component.figma.tsx` |

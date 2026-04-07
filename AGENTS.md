@@ -137,10 +137,35 @@ Use layout components (Stack, Cluster, Grid, Center, Cover, Split) for structura
 
 ## Figma Integration
 
-The design system has Figma Code Connect files in `.figma/` directories within each UI layer. These map Figma component variants to code props.
+**Figma file**: `JoFKlZFj4MXQoXxOxVqM1F` — [GMH Lab — Monorepo (Layer 1)](https://www.figma.com/design/JoFKlZFj4MXQoXxOxVqM1F)
+
+Code Connect files live in `.figma/` directories within each UI layer. These map Figma component variants to code props.
 
 - Config: `packages/ui/figma.config.json`
 - Dependency: `@figma/code-connect` (devDependency on `@repo/ui`)
+
+### Figma Pages
+
+| Page | ID | Code Layer |
+|------|-----|------------|
+| Layouts | `0:1` | `layouts/` |
+| Primitives | `9:2` | `primitives/` |
+| Composites | `9:3` | `composites/` |
+| Patterns | `9:4` | `patterns/` |
+| Blocks | `9:5` | `blocks/` |
+| Templates | `9:6` | `templates/` |
+| Pages | `9:7` | `pages/` |
+
+### Figma Variable Collections
+
+| Collection | Type | Count | Source |
+|---|---|---|---|
+| **Spacing** | `FLOAT` | 25 | `_scale.ts` — Gap, Padding, Space, Section Spacing, Gutter |
+| **Sizing** | `FLOAT` | 24 | `_scale.ts` — Container Width, Center Max, Measure, Grid Min, Radius |
+| **Semantic Colors** | `COLOR` | 32 | `index.css` — Light + Dark modes (background, primary, secondary, muted, accent, destructive, border, ring, chart, sidebar tokens) |
+| **Color Primitives** | `COLOR` | 231 | `index.css` — 21 Tailwind palettes × 11 shades |
+
+When creating Figma components, bind properties to these variables rather than hardcoding values. Semantic Colors support mode switching (Light/Dark).
 
 ### Figma-to-Code Rules
 

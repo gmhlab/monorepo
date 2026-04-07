@@ -74,8 +74,9 @@ When the user describes a component:
 
 ## Project Constraints (always apply)
 
-- **Tailwind v4**: No `tailwind.config.js`. Classes only. Design tokens are CSS variables defined in `apps/web/app/globals.css` via `@theme`.
+- **Tailwind v4**: No `tailwind.config.js`. Classes only. Design tokens are CSS variables defined in `packages/ui/src/styles/index.css` via `@theme`.
+- **Figma variables**: The Figma file (`JoFKlZFj4MXQoXxOxVqM1F`) has 4 variable collections (Spacing, Sizing, Semantic Colors, Color Primitives) that mirror the code token system. When reviewing Figma designs, map Figma variables back to their Tailwind equivalents.
 - **New dependencies**: Add to `pnpm-workspace.yaml` catalog first, then reference with `"catalog:"` in `package.json`.
 - **shadcn/ui**: Primitives are installed via `npx shadcn@latest add <name>` from `packages/ui/`. Config is in `packages/ui/components.json`.
 - **Import paths**: `@repo/ui/layouts`, `@repo/ui/primitives`, `@repo/ui/patterns`, `@repo/ui/templates`, `@repo/ui/composites`. Internal cross-layer imports use relative paths to the source file.
-- **Layer dependency rule**: Each layer may only import from layers below it. lib → layouts → primitives → composites → patterns → templates.
+- **Layer dependency rule**: Each layer may only import from layers below it. lib → layouts → primitives → composites → patterns → templates → pages.
