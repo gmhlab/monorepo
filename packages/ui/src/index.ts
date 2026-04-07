@@ -28,6 +28,6 @@ export * from "./patterns"
 export * from "./templates"
 
 // Primitives
-export * from "./ui"
+export * from "./primitives"
 
 

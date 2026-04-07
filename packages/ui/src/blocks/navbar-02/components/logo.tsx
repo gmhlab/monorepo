@@ -1,5 +1,5 @@
 // SVG Imports
-import LogoSvg from '../../../assets/svg/logo-mark'
+import LogoSvg from '../../../assets/logo'
 
 // Util Imports
 import { cn } from '../../../lib/utils'

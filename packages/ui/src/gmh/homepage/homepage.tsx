@@ -1,10 +1,10 @@
 "use client"
 
 import { useState } from "react";
-import { Button } from "../../ui/button";
-import { Input } from "../../ui/input";
-import { Card, CardContent } from "../../ui/card";
-import { Badge } from "../../ui/badge";
+import { Button } from "../../primitives/button";
+import { Input } from "../../primitives/input";
+import { Card, CardContent } from "../../primitives/card";
+import { Badge } from "../../primitives/badge";
 import { Container, Grid, Cluster, Center } from "../../layouts";
 import {
   Globe,

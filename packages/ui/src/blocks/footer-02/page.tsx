@@ -1,7 +1,7 @@
 import { cn } from "../../lib/utils";
 
 import { Logo, LogoImage, LogoText } from "./components/logo";
-import LogoMark from "../../assets/svg/logo-mark";
+import LogoMark from "../../assets/logo";
 
 interface MenuItem {
   title: string;

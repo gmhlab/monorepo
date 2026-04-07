@@ -1,19 +1,19 @@
 import { PortalNavWrapper as PortalNav } from "../../../../components/portal-nav-wrapper"
 
 const layoutLinks = [
-  { href: "/dashboard/layouts/container", label: "Container" },
-  { href: "/dashboard/layouts/stack", label: "Stack" },
-  { href: "/dashboard/layouts/cluster", label: "Cluster" },
-  { href: "/dashboard/layouts/grid", label: "Grid" },
-  { href: "/dashboard/layouts/center", label: "Center" },
-  { href: "/dashboard/layouts/split", label: "Split" },
-  { href: "/dashboard/layouts/cover", label: "Cover" },
-  { href: "/dashboard/layouts/box", label: "Box" },
-  { href: "/dashboard/layouts/switcher", label: "Switcher" },
-  { href: "/dashboard/layouts/frame", label: "Frame" },
-  { href: "/dashboard/layouts/reel", label: "Reel" },
-  { href: "/dashboard/layouts/imposter", label: "Imposter" },
-  { href: "/dashboard/layouts/icon", label: "Icon" },
+  { href: "/app/layouts/container", label: "Container" },
+  { href: "/app/layouts/stack", label: "Stack" },
+  { href: "/app/layouts/cluster", label: "Cluster" },
+  { href: "/app/layouts/grid", label: "Grid" },
+  { href: "/app/layouts/center", label: "Center" },
+  { href: "/app/layouts/split", label: "Split" },
+  { href: "/app/layouts/cover", label: "Cover" },
+  { href: "/app/layouts/box", label: "Box" },
+  { href: "/app/layouts/switcher", label: "Switcher" },
+  { href: "/app/layouts/frame", label: "Frame" },
+  { href: "/app/layouts/reel", label: "Reel" },
+  { href: "/app/layouts/imposter", label: "Imposter" },
+  { href: "/app/layouts/icon", label: "Icon" },
 ]
 
 export default function LayoutsLayout({ children }: { children: React.ReactNode }) {

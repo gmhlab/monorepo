@@ -1,4 +1,4 @@
-import { Toggle } from "../ui"
+import { Toggle } from "../primitives"
 import { cn } from "../lib"
 
 export interface HamburgerProps {

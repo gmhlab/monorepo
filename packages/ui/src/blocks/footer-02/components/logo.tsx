@@ -9,7 +9,7 @@ import {
   ContextMenuContent,
   ContextMenuItem,
   ContextMenuTrigger,
-} from "../../../ui/context-menu";
+} from "../../../primitives/context-menu";
 
 interface LogoProps extends React.HTMLAttributes<HTMLAnchorElement> {
   url: string;

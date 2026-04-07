@@ -1,7 +1,7 @@
 "use client"
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../../ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../ui/tabs";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../../primitives/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../primitives/tabs";
 
 export function TailwindColorPalettes() {
   // Helper to generate color scale from 50-950

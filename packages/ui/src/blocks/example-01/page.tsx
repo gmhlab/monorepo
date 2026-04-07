@@ -17,9 +17,9 @@ import {
   AlertDialogMedia,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "../../ui/alert-dialog"
-import { Badge } from "../../ui/badge"
-import { Button } from "../../ui/button"
+} from "../../primitives/alert-dialog"
+import { Badge } from "../../primitives/badge"
+import { Button } from "../../primitives/button"
 import {
   Card,
   CardAction,
@@ -28,7 +28,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "../../ui/card"
+} from "../../primitives/card"
 import {
   Combobox,
   ComboboxContent,
@@ -36,7 +36,7 @@ import {
   ComboboxInput,
   ComboboxItem,
   ComboboxList,
-} from "../../ui/combobox"
+} from "../../primitives/combobox"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -53,9 +53,9 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "../../ui/dropdown-menu"
-import { Field, FieldGroup, FieldLabel } from "../../ui/field"
-import { Input } from "../../ui/input"
+} from "../../primitives/dropdown-menu"
+import { Field, FieldGroup, FieldLabel } from "../../primitives/field"
+import { Input } from "../../primitives/input"
 import {
   Select,
   SelectContent,
@@ -63,8 +63,8 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../../ui/select"
-import { Textarea } from "../../ui/textarea"
+} from "../../primitives/select"
+import { Textarea } from "../../primitives/textarea"
 import { PlusIcon, BluetoothIcon, MoreVerticalIcon, FileIcon, FolderIcon, FolderOpenIcon, FileCodeIcon, MoreHorizontalIcon, FolderSearchIcon, SaveIcon, DownloadIcon, EyeIcon, LayoutIcon, PaletteIcon, SunIcon, MoonIcon, MonitorIcon, UserIcon, CreditCardIcon, SettingsIcon, KeyboardIcon, LanguagesIcon, BellIcon, MailIcon, ShieldIcon, HelpCircleIcon, FileTextIcon, LogOutIcon } from "lucide-react"
 
 export function ComponentExample() {

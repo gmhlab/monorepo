@@ -52,8 +52,8 @@ import { Bar, BarChart, ResponsiveContainer } from "recharts"
 import { toast } from "sonner"
 
 import { cn } from "../../lib/utils"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../../ui/accordion"
-import { Alert, AlertDescription, AlertTitle } from "../../ui/alert"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../../primitives/accordion"
+import { Alert, AlertDescription, AlertTitle } from "../../primitives/alert"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -65,8 +65,8 @@ import {
   AlertDialogMedia,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "../../ui/alert-dialog"
-import { AspectRatio } from "../../ui/aspect-ratio"
+} from "../../primitives/alert-dialog"
+import { AspectRatio } from "../../primitives/aspect-ratio"
 import {
   Avatar,
   AvatarBadge,
@@ -74,8 +74,8 @@ import {
   AvatarGroup,
   AvatarGroupCount,
   AvatarImage,
-} from "../../ui/avatar"
-import { Badge } from "../../ui/badge"
+} from "../../primitives/avatar"
+import { Badge } from "../../primitives/badge"
 import {
   Breadcrumb,
   BreadcrumbEllipsis,
@@ -84,24 +84,24 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "../../ui/breadcrumb"
-import { Button } from "../../ui/button"
+} from "../../primitives/breadcrumb"
+import { Button } from "../../primitives/button"
 import {
   ButtonGroup,
   ButtonGroupSeparator,
   ButtonGroupText,
-} from "../../ui/button-group"
-import { Calendar } from "../../ui/calendar"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../../ui/card"
+} from "../../primitives/button-group"
+import { Calendar } from "../../primitives/calendar"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../../primitives/card"
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "../../ui/carousel"
-import { Checkbox } from "../../ui/checkbox"
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "../../ui/collapsible"
+} from "../../primitives/carousel"
+import { Checkbox } from "../../primitives/checkbox"
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "../../primitives/collapsible"
 import {
   Combobox,
   ComboboxChip,
@@ -118,7 +118,7 @@ import {
   ComboboxTrigger,
   ComboboxValue,
   useComboboxAnchor,
-} from "../../ui/combobox"
+} from "../../primitives/combobox"
 import {
   Command,
   CommandDialog,
@@ -129,7 +129,7 @@ import {
   CommandList,
   CommandSeparator,
   CommandShortcut,
-} from "../../ui/command"
+} from "../../primitives/command"
 import {
   ContextMenu,
   ContextMenuCheckboxItem,
@@ -144,7 +144,7 @@ import {
   ContextMenuSubContent,
   ContextMenuSubTrigger,
   ContextMenuTrigger,
-} from "../../ui/context-menu"
+} from "../../primitives/context-menu"
 import {
   Dialog,
   DialogClose,
@@ -154,7 +154,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../../ui/dialog"
+} from "../../primitives/dialog"
 import {
   Drawer,
   DrawerClose,
@@ -164,7 +164,7 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "../../ui/drawer"
+} from "../../primitives/drawer"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -181,7 +181,7 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "../../ui/dropdown-menu"
+} from "../../primitives/dropdown-menu"
 import {
   Empty,
   EmptyContent,
@@ -189,7 +189,7 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "../../ui/empty"
+} from "../../primitives/empty"
 import {
   Field,
   FieldDescription,
@@ -197,16 +197,16 @@ import {
   FieldLabel,
   FieldLegend,
   FieldSet,
-} from "../../ui/field"
-import { HoverCard, HoverCardContent, HoverCardTrigger } from "../../ui/hover-card"
-import { Input } from "../../ui/input"
+} from "../../primitives/field"
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "../../primitives/hover-card"
+import { Input } from "../../primitives/input"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
   InputGroupText,
-} from "../../ui/input-group"
-import { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot } from "../../ui/input-otp"
+} from "../../primitives/input-group"
+import { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot } from "../../primitives/input-otp"
 import {
   Item,
   ItemActions,
@@ -215,9 +215,9 @@ import {
   ItemGroup,
   ItemSeparator,
   ItemTitle,
-} from "../../ui/item"
-import { Kbd, KbdGroup } from "../../ui/kbd"
-import { Label } from "../../ui/label"
+} from "../../primitives/item"
+import { Kbd, KbdGroup } from "../../primitives/kbd"
+import { Label } from "../../primitives/label"
 import {
   Menubar,
   MenubarCheckboxItem,
@@ -232,12 +232,12 @@ import {
   MenubarSubContent,
   MenubarSubTrigger,
   MenubarTrigger,
-} from "../../ui/menubar"
+} from "../../primitives/menubar"
 import {
   NativeSelect,
   NativeSelectOptGroup,
   NativeSelectOption,
-} from "../../ui/native-select"
+} from "../../primitives/native-select"
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -246,7 +246,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "../../ui/navigation-menu"
+} from "../../primitives/navigation-menu"
 import {
   Pagination,
   PaginationContent,
@@ -255,7 +255,7 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "../../ui/pagination"
+} from "../../primitives/pagination"
 import {
   Popover,
   PopoverContent,
@@ -263,11 +263,11 @@ import {
   PopoverHeader,
   PopoverTitle,
   PopoverTrigger,
-} from "../../ui/popover"
-import { Progress } from "../../ui/progress"
-import { RadioGroup, RadioGroupItem } from "../../ui/radio-group"
-import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "../../ui/resizable"
-import { ScrollArea, ScrollBar } from "../../ui/scroll-area"
+} from "../../primitives/popover"
+import { Progress } from "../../primitives/progress"
+import { RadioGroup, RadioGroupItem } from "../../primitives/radio-group"
+import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "../../primitives/resizable"
+import { ScrollArea, ScrollBar } from "../../primitives/scroll-area"
 import {
   Select,
   SelectContent,
@@ -276,8 +276,8 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from "../../ui/select"
-import { Separator } from "../../ui/separator"
+} from "../../primitives/select"
+import { Separator } from "../../primitives/separator"
 import {
   Sheet,
   SheetClose,
@@ -287,12 +287,12 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "../../ui/sheet"
-import { Skeleton } from "../../ui/skeleton"
-import { Slider } from "../../ui/slider"
-import { Toaster } from "../../ui/sonner"
-import { Spinner } from "../../ui/spinner"
-import { Switch } from "../../ui/switch"
+} from "../../primitives/sheet"
+import { Skeleton } from "../../primitives/skeleton"
+import { Slider } from "../../primitives/slider"
+import { Toaster } from "../../primitives/sonner"
+import { Spinner } from "../../primitives/spinner"
+import { Switch } from "../../primitives/switch"
 import {
   Table,
   TableBody,
@@ -302,12 +302,12 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "../../ui/table"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../ui/tabs"
-import { Textarea } from "../../ui/textarea"
-import { Toggle } from "../../ui/toggle"
-import { ToggleGroup, ToggleGroupItem } from "../../ui/toggle-group"
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../../ui/tooltip"
+} from "../../primitives/table"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../primitives/tabs"
+import { Textarea } from "../../primitives/textarea"
+import { Toggle } from "../../primitives/toggle"
+import { ToggleGroup, ToggleGroupItem } from "../../primitives/toggle-group"
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../../primitives/tooltip"
 
 // ---------------------------------------------------------------------------
 // ComponentWrapper

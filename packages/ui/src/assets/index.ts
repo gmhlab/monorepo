@@ -1,1 +1,3 @@
-export { Logo, LogoMark } from "./svg"
+import Logo from "./logo"
+
+export { Logo }

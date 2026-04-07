@@ -24,7 +24,7 @@ export const Cover = forwardRef<HTMLDivElement, CoverProps>(
       <div
         ref={ref}
         className={cn(
-          "flex flex-col",
+          "flex flex-col items-center justify-between",
           heightClass,
           className
         )}

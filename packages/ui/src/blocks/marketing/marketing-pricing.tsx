@@ -2,7 +2,7 @@ import { forwardRef, type HTMLAttributes } from "react"
 import { Center } from "../../layouts/center"
 import { Stack } from "../../layouts/stack"
 import { Grid } from "../../layouts/grid"
-import { Button } from "../../ui/button"
+import { Button } from "../../primitives/button"
 import { cn } from "../../lib/"
 
 export interface PricingPlan {

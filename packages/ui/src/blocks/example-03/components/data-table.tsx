@@ -40,15 +40,15 @@ import { toast } from "sonner"
 import { z } from "zod"
 
 import { useIsMobile } from "../../../hooks/use-mobile"
-import { Badge } from "../../../ui/badge"
-import { Button } from "../../../ui/button"
+import { Badge } from "../../../primitives/badge"
+import { Button } from "../../../primitives/button"
 import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
   type ChartConfig,
-} from "../../../ui/chart"
-import { Checkbox } from "../../../ui/checkbox"
+} from "../../../primitives/chart"
+import { Checkbox } from "../../../primitives/checkbox"
 import {
   Drawer,
   DrawerClose,
@@ -58,7 +58,7 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "../../../ui/drawer"
+} from "../../../primitives/drawer"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -66,9 +66,9 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "../../../ui/dropdown-menu"
-import { Input } from "../../../ui/input"
-import { Label } from "../../../ui/label"
+} from "../../../primitives/dropdown-menu"
+import { Input } from "../../../primitives/input"
+import { Label } from "../../../primitives/label"
 import {
   Select,
   SelectContent,
@@ -76,8 +76,8 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../../../ui/select"
-import { Separator } from "../../../ui/separator"
+} from "../../../primitives/select"
+import { Separator } from "../../../primitives/separator"
 import {
   Table,
   TableBody,
@@ -85,13 +85,13 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "../../../ui/table"
+} from "../../../primitives/table"
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "../../../ui/tabs"
+} from "../../../primitives/tabs"
 import { GripVerticalIcon, CircleCheckIcon, LoaderIcon, EllipsisVerticalIcon, Columns3Icon, ChevronDownIcon, PlusIcon, ChevronsLeftIcon, ChevronLeftIcon, ChevronRightIcon, ChevronsRightIcon, TrendingUpIcon } from "lucide-react"
 
 export const schema = z.object({

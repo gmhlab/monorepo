@@ -1,13 +1,13 @@
 import { MenuIcon, SearchIcon } from 'lucide-react'
 
-import { Button } from '../../ui/button'
+import { Button } from '../../primitives/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger
-} from '../../ui/dropdown-menu'
+} from '../../primitives/dropdown-menu'
 
 import Logo from './components/logo'
 import { ModeToggle } from '../../composites/mode-toggle'
@@ -30,7 +30,7 @@ const Navbar2 = ({ navigationData }: { navigationData: NavigationItem }) => {
           <a href='/' className='hover:text-primary max-md:hidden'>Home</a>
           <a href='/dashboard' className='hover:text-primary max-md:hidden'>Dashboard</a>
           <a href=''><Logo className='text-foreground gap-3' /></a>
-          <a href='/gmh' className='hover:text-primary max-md:hidden'>Website</a>
+          <a href='/site' className='hover:text-primary max-md:hidden'>Website</a>
           <a href='/login' className='hover:text-primary max-md:hidden'>Login</a>
         </div>
 

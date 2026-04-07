@@ -1,23 +1,23 @@
 "use client";
 
 import { useState } from "react";
-import { Button } from "../../ui/button";
-import { Input } from "../../ui/input";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter, CardAction } from "../../ui/card";
-import { Badge } from "../../ui/badge";
-import { Switch } from "../../ui/switch";
-import { Checkbox } from "../../ui/checkbox";
-import { Label } from "../../ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../ui/select";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../ui/tabs";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../../ui/accordion";
-import { Avatar, AvatarFallback, AvatarImage } from "../../ui/avatar";
-import { Progress } from "../../ui/progress";
-import { Slider } from "../../ui/slider";
-import { Textarea } from "../../ui/textarea";
-import { Separator } from "../../ui/separator";
-import { Skeleton } from "../../ui/skeleton";
-import { RadioGroup, RadioGroupItem } from "../../ui/radio-group";
+import { Button } from "../../primitives/button";
+import { Input } from "../../primitives/input";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter, CardAction } from "../../primitives/card";
+import { Badge } from "../../primitives/badge";
+import { Switch } from "../../primitives/switch";
+import { Checkbox } from "../../primitives/checkbox";
+import { Label } from "../../primitives/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../primitives/select";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../primitives/tabs";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../../primitives/accordion";
+import { Avatar, AvatarFallback, AvatarImage } from "../../primitives/avatar";
+import { Progress } from "../../primitives/progress";
+import { Slider } from "../../primitives/slider";
+import { Textarea } from "../../primitives/textarea";
+import { Separator } from "../../primitives/separator";
+import { Skeleton } from "../../primitives/skeleton";
+import { RadioGroup, RadioGroupItem } from "../../primitives/radio-group";
 import { 
   Bell, 
   Search, 
@@ -34,7 +34,7 @@ import {
   MoreVertical
 } from "lucide-react";
 import { toast } from "sonner";
-import { Toaster } from "../../ui/sonner";
+import { Toaster } from "../../primitives/sonner";
 import { DesignTokens } from "./components/tokens";
 import { TailwindColorPalettes } from "./components/palettes";
 import { ModeToggle } from "../../composites/mode-toggle";

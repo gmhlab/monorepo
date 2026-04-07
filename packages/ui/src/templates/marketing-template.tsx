@@ -1,34 +1,28 @@
 import { type ComponentPropsWithRef, type ReactNode } from "react"
 import { Stack } from "../layouts/stack"
-import { Center, type CenterProps } from "../layouts/center"
+import { Center } from "../layouts/center"
 import { Cluster } from "../layouts/cluster"
-import { sectionSpacingMap } from "../layouts/_scale"
+import { type CenterMax } from "../layouts/_scale"
 import { cn } from "../lib/"
 
-/** Subset of CenterMax values appropriate for a marketing page shell. */
-type MarketingMax = Extract<
-  CenterProps["max"],
-  "xl" | "2xl" | "3xl" | "4xl" | "5xl" | "6xl" | "7xl" | "full"
->
-
 export interface MarketingTemplateProps extends ComponentPropsWithRef<"div"> {
-  /** Navigation bar content (typically MarketingNav) */
+  /** Navigation content — logo, links, CTA */
   nav: ReactNode
-  /** Page body — hero, features, pricing, CTA sections */
+  /** Page body — hero, features, pricing, testimonials, etc. */
   children: ReactNode
-  /** Footer content (typically MarketingFooter) */
+  /** Footer content */
   footer?: ReactNode
-  /** Max-width constraint for nav and footer */
-  max?: MarketingMax
+  /** Max-width for nav and footer gutters */
+  max?: CenterMax
+  /** Optional announcement banner pinned above the nav */
+  banner?: ReactNode
 }
-
-/** Header height — 56px / 3.5rem. Shared between header and scroll-offset. */
-const HEADER_HEIGHT = "h-14"
 
 export function MarketingTemplate({
   nav,
   children,
   footer,
+  banner,
   max = "7xl",
   className,
   ref,
@@ -36,23 +30,30 @@ export function MarketingTemplate({
 }: MarketingTemplateProps) {
   return (
     <Stack ref={ref} gap="none" className={cn("min-h-screen", className)} {...props}>
-      {/* Sticky header */}
-      <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      {/* ── Announcement banner ─────────────────────────────────── */}
+      {banner && (
+        <div className="relative z-50 border-b border-border/60 bg-primary px-4 py-2 text-center text-xs font-medium tracking-wide text-primary-foreground">
+          {banner}
+        </div>
+      )}
+
+      {/* ── Sticky header ───────────────────────────────────────── */}
+      <header className="sticky top-0 z-40 border-b border-border/40 bg-background/80 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60">
         <Center max={max} gutter>
-          <Cluster gap="none" align="center" className={HEADER_HEIGHT}>
+          <Cluster gap="none" align="center" className="h-14">
             {nav}
           </Cluster>
         </Center>
       </header>
 
-      {/* Main content */}
+      {/* ── Main content — sections go full-width ───────────────── */}
       <main className="flex-1">{children}</main>
 
-      {/* Footer */}
+      {/* ── Footer ──────────────────────────────────────────────── */}
       {footer && (
-        <footer className="border-t border-border bg-muted/30">
-          <Center max={max} gutter className={sectionSpacingMap["md"]}>
-            {footer}
+        <footer className="border-t border-border/40 bg-muted/20">
+          <Center max={max} gutter>
+            <div className="py-12 md:py-16">{footer}</div>
           </Center>
         </footer>
       )}

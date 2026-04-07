@@ -12,7 +12,7 @@ import {
   NavigationMenuTrigger,
   NavigationMenuContent,
   NavigationMenuLink,
-} from "../../ui/navigation-menu"
+} from "../../primitives/navigation-menu"
 
 export type NavLink = {
   label: string
@@ -69,7 +69,7 @@ export function MarketingNav({
         className="w-full"
       >
         {/* Left: Logo */}
-        <div className="flex-shrink-0">{logo}</div>
+        <div className="flex">{logo}</div>
 
         {/* Center: Navigation links */}
         {(links.length > 0 || groups.length > 0) && (

@@ -1,20 +1,20 @@
 import { cn } from "../../../lib/utils"
-import { Button } from "../../../ui/button"
+import { Button } from "../../../primitives/button"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "../../../ui/card"
+} from "../../../primitives/card"
 import {
   Field,
   FieldDescription,
   FieldGroup,
   FieldLabel,
   FieldSeparator,
-} from "../../../ui/field"
-import { Input } from "../../../ui/input"
+} from "../../../primitives/field"
+import { Input } from "../../../primitives/input"
 
 export function LoginForm({
   className,

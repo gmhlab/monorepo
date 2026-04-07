@@ -1,24 +1,28 @@
 import { type ComponentPropsWithRef, type ReactNode } from "react"
-import { Cover, type CoverProps } from "../layouts/cover"
-import { Stack } from "../layouts/stack"
+import { Cover } from "../layouts/cover"
 import { Center } from "../layouts/center"
-import { centerMaxMap, type CenterMax } from "../layouts/_scale"
+import { Stack } from "../layouts/stack"
+import { type CenterMax } from "../layouts/_scale"
 import { cn } from "../lib/"
 
-/** Subset of CenterMax values appropriate for an auth card. */
-type AuthCardWidth = Extract<CenterMax, "xs" | "sm" | "md" | "lg" | "xl">
+const maxWidthMap = {
+  xs: "max-w-xs",
+  sm: "max-w-sm",
+  md: "max-w-md",
+  lg: "max-w-lg",
+} as const
 
 export interface AuthTemplateProps extends ComponentPropsWithRef<"div"> {
-  /** Logo or branding — rendered above the card */
+  /** Logo or brand mark displayed above the form */
   logo?: ReactNode
-  /** Auth card content — vertically and horizontally centered */
+  /** Auth form — login, register, reset, verify, etc. */
   children: ReactNode
-  /** Footer content (legal links, sign-up CTA) — below the card */
+  /** Footer content — legal links, copyright */
   footer?: ReactNode
-  /** Max-width of the centered card area. Default "sm" (384px). */
-  maxWidth?: AuthCardWidth
-  /** Cover height strategy. Default "screen" (100vh). */
-  minHeight?: CoverProps["minHeight"]
+  /** Max-width of the form card */
+  maxWidth?: keyof typeof maxWidthMap
+  /** Optional decorative background layer (gradient, pattern, illustration) */
+  background?: ReactNode
 }
 
 export function AuthTemplate({
@@ -26,7 +30,7 @@ export function AuthTemplate({
   children,
   footer,
   maxWidth = "sm",
-  minHeight = "screen",
+  background,
   className,
   ref,
   ...props
@@ -34,22 +38,38 @@ export function AuthTemplate({
   return (
     <Cover
       ref={ref}
-      minHeight={minHeight}
-      className={cn("bg-muted/20", className)}
+      minHeight="screen"
+      header={
+        logo && (
+          <div className="flex h-20 items-end justify-center px-6 pt-6">
+            {logo}
+          </div>
+        )
+      }
+      footer={
+        footer && (
+          <div className="px-6 pb-8 pt-4 text-center text-xs text-muted-foreground">
+            {footer}
+          </div>
+        )
+      }
+      className={cn("relative overflow-hidden bg-background", className)}
       {...props}
     >
-      <Center max="full" gutter className={centerMaxMap[maxWidth]}>
-        <Stack gap="lg">
-          {logo && (
-            <div className="text-center">{logo}</div>
-          )}
-          {children}
-          {footer && (
-            <div className="text-center text-sm text-muted-foreground">
-              {footer}
-            </div>
-          )}
-        </Stack>
+      {/* ── Decorative background ───────────────────────────── */}
+      {background && (
+        <div className="pointer-events-none absolute inset-0 z-0">
+          {background}
+        </div>
+      )}
+
+      {/* ── Form content ────────────────────────────────────── */}
+      <Center max="full" gutter className="relative z-10">
+        <div className={cn("w-full", maxWidthMap[maxWidth])}>
+          <Stack gap="lg">
+            {children}
+          </Stack>
+        </div>
       </Center>
     </Cover>
   )

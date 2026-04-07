@@ -1,31 +1,59 @@
 import { type ComponentPropsWithRef } from "react"
-import { cn } from "../lib/utils"
+import { cn } from "../lib"
 import { type Gap, gapMap } from "./_scale"
 
 // ─────────────────────────────────────────────
 // Stack
 //
 // Vertical flow with consistent gap.
+// This is the most-used layout component in the system.
+//
 // The parent Stack owns the gap between its children.
 // Children should never set margin-top/margin-bottom
 // to space themselves — that breaks composition.
+//
+// Usage:
+//
+//   {/* Basic vertical rhythm */}
+//   <Stack gap="lg">
+//     <Heading />
+//     <Paragraph />
+//     <Paragraph />
+//   </Stack>
+//
+//   {/* Centered content column */}
+//   <Stack gap="md" align="center">
+//     <Logo />
+//     <NavLinks />
+//   </Stack>
+//
+//   {/* Prose content with uniform nested rhythm */}
+//   <Stack gap="md" recursive>
+//     <article dangerouslySetInnerHTML={{ __html: content }} />
+//   </Stack>
 // ─────────────────────────────────────────────
 
 /**
  * Recursive spacing via the "lobotomized owl" selector (* + *).
- * USE ONLY FOR PROSE / ARTICLE CONTENT. The descendant selector
- * will reach into nested layout components and fight their own
- * gap values.
+ * Applies margin-top to ALL sibling elements at every nesting level.
+ *
+ * USE ONLY FOR PROSE / ARTICLE CONTENT.
+ *
+ * The descendant selector will reach into nested layout components
+ * (Cluster, Grid, etc.) and fight their own gap values. This is
+ * intentional for prose where you want uniform rhythm regardless
+ * of HTML structure, but harmful for composed UI where each layout
+ * primitive should control its own spacing.
  */
 const recursiveGapMap: Record<Gap, string> = {
   none: "[&_*+*]:mt-0",
-  xs: "[&_*+*]:mt-1",
-  sm: "[&_*+*]:mt-2",
-  md: "[&_*+*]:mt-4",
-  lg: "[&_*+*]:mt-6",
-  xl: "[&_*+*]:mt-8",
-  "2xl": "[&_*+*]:mt-12",
-  "3xl": "[&_*+*]:mt-16",
+  xs:   "[&_*+*]:mt-1",
+  sm:   "[&_*+*]:mt-2",
+  md:   "[&_*+*]:mt-4",
+  lg:   "[&_*+*]:mt-6",
+  xl:   "[&_*+*]:mt-8",
+  "2xl":"[&_*+*]:mt-12",
+  "3xl":"[&_*+*]:mt-16",
 }
 
 export interface StackProps extends ComponentPropsWithRef<"div"> {
@@ -33,7 +61,10 @@ export interface StackProps extends ComponentPropsWithRef<"div"> {
   gap?: Gap
   /** Cross-axis alignment. Default `"stretch"`. */
   align?: "start" | "center" | "end" | "stretch"
-  /** Apply spacing to ALL descendants, not just direct children. Prose only. */
+  /**
+   * Apply spacing to ALL descendants, not just direct children.
+   * For prose/article content only — see recursiveGapMap comment above.
+   */
   recursive?: boolean
 }
 
