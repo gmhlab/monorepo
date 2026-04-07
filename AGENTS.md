@@ -67,6 +67,8 @@ patterns/      Stateless UI recipes — PageHeader, SectionHeader, FormSection, 
   ↑
 templates/     Full page shells — AppShellTemplate, AuthTemplate, MarketingTemplate, SplitTemplate, LinkInBioTemplate.
   ↑
+pages/         Complete page compositions — template + blocks + patterns wired into route-ready views.
+  ↑
 gmh/           Domain-specific branded components (HomePage, Innovations). May use hardcoded brand colors.
 ```
 

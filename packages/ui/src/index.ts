@@ -24,6 +24,9 @@ export * from "./lib"
 // Patterns
 export * from "./patterns"
 
+// Pages
+export * from "./pages"
+
 // Templates
 export * from "./templates"
 
