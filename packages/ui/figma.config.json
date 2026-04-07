@@ -1,0 +1,10 @@
+{
+  "codeConnect": {
+    "include": ["src/**/*.figma.tsx"],
+    "react": {
+      "importPaths": {
+        "@repo/ui": "src"
+      }
+    }
+  }
+}

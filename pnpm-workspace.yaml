@@ -28,6 +28,7 @@ catalog:
 
   # Build
   turbo: "^2.9.5"
+  "@figma/code-connect": "^1.4.3"
 
   # Frameworks
   next: "^16.0.0"

@@ -24,7 +24,7 @@ When the user has React components that need Figma representations:
 1. **Read the component** to understand its props, variants, and behavior.
 2. **Check for existing Figma components** — call `search_design_system` or `get_metadata` on the relevant page before creating duplicates.
 3. **Create the Figma component set** using `use_figma`:
-   - Navigate to the correct page: Layouts (0:1), Patterns (8:2), Templates (10:2), Primitives (12:2), Blocks (15:2), Composites (117:5)
+   - Navigate to the correct page (see Layer → Figma Page Mapping table for page IDs)
    - Use `await figma.setCurrentPageAsync(page)` (NEVER `figma.currentPage = page`)
    - Create individual `figma.createComponent()` instances, named with variant syntax: `prop=value, prop=value`
    - Call `figma.combineAsVariants(components, page)` to create the component set
@@ -82,8 +82,8 @@ When the user wants to check Code Connect coverage:
 
 ## Project Constants
 
-- **Figma file key**: `ZIDu0vPHrPmPywhIAzXegB`
-- **Figma pages**: Layouts (0:1), Patterns (8:2), Templates (10:2), Primitives (12:2), Blocks (15:2), Composites (117:5)
+- **Figma file key**: `JoFKlZFj4MXQoXxOxVqM1F`
+- **Figma pages**: TODO — pages need to be created in the new Figma file. Update these IDs after creating pages for each layer.
 - **Code Connect config**: `packages/ui/figma.config.json`
 - **Code Connect dependency**: `@figma/code-connect` (devDependency on `@repo/ui`)
 - **Publishing**: Requires Figma Organization/Enterprise plan. Not available yet — files exist for documentation.
@@ -95,7 +95,7 @@ When the user wants to check Code Connect coverage:
 import figma from "@figma/code-connect"
 import { Component } from "../component"
 
-const FIGMA_URL = "https://www.figma.com/design/ZIDu0vPHrPmPywhIAzXegB?node-id=NODE_ID"
+const FIGMA_URL = "https://www.figma.com/design/JoFKlZFj4MXQoXxOxVqM1F?node-id=NODE_ID"
 
 figma.connect(Component, FIGMA_URL, {
   props: {
@@ -119,9 +119,10 @@ figma.connect(Component, FIGMA_URL, {
 
 | Code Layer | Figma Page | Path Convention |
 |---|---|---|
-| `packages/ui/src/layouts/` | Layouts (0:1) | `.figma/component.figma.tsx` |
-| `packages/ui/src/patterns/` | Patterns (8:2) | `.figma/component.figma.tsx` |
-| `packages/ui/src/templates/` | Templates (10:2) | `.figma/component.figma.tsx` |
-| `packages/ui/src/primitives/` | Primitives (12:2) | `.figma/component.figma.tsx` |
-| `packages/ui/src/blocks/` | Blocks (15:2) | `.figma/component.figma.tsx` |
-| `packages/ui/src/composites/` | Composites (117:5) | `.figma/component.figma.tsx` |
+| `packages/ui/src/layouts/` | Layouts (TBD) | `.figma/component.figma.tsx` |
+| `packages/ui/src/primitives/` | Primitives (TBD) | `.figma/component.figma.tsx` |
+| `packages/ui/src/composites/` | Composites (TBD) | `.figma/component.figma.tsx` |
+| `packages/ui/src/patterns/` | Patterns (TBD) | `.figma/component.figma.tsx` |
+| `packages/ui/src/blocks/` | Blocks (TBD) | `.figma/component.figma.tsx` |
+| `packages/ui/src/templates/` | Templates (TBD) | `.figma/component.figma.tsx` |
+| `packages/ui/src/pages/` | Pages (TBD) | `.figma/component.figma.tsx` |

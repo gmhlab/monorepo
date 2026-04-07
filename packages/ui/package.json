@@ -43,6 +43,7 @@
     "react-dom": "catalog:"
   },
   "devDependencies": {
+    "@figma/code-connect": "catalog:",
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*"
   }
