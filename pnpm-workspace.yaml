@@ -26,6 +26,9 @@ catalog:
   "@tailwindcss/postcss": "^4.0.0"
   "@tailwindcss/vite": "^4.0.0"
 
+  # Build
+  turbo: "^2.9.5"
+
   # Frameworks
   next: "^16.0.0"
   vite: "^6.0.0"
