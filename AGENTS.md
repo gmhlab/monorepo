@@ -59,13 +59,13 @@ layouts/       Spatial primitives — Stack, Center, Cluster, Grid, Container, S
   ↑
 primitives/    Headless, accessible base components (Radix/Base UI). Use cva + cn + data-slot pattern.
   ↑
-composites/    Composed UI pieces — Logo, ModeToggle, ThemeProvider, ImageWithFallback, Hamburger, ProfileCard.
+composites/    Composed UI pieces — Logo, LogoMark, ModeToggle, ThemeProvider, ImageWithFallback, Hamburger, ProfileCard.
   ↑
 blocks/        Page-ready sections (numbered: dashboard-01, login-03, etc.) + marketing blocks + navbars/footers.
   ↑
 patterns/      Stateless UI recipes — PageHeader, SectionHeader, FormSection, EmptyState, FeatureCard, ProfileHeader.
   ↑
-templates/     Full page shells — AppShellTemplate, AuthTemplate, MarketingTemplate, SplitTemplate, LinkInBioTemplate.
+templates/     Full page shells — AppShellTemplate, AuthTemplate, MarketingTemplate, SplitTemplate.
   ↑
 pages/         Complete page compositions — template + blocks + patterns wired into route-ready views.
   ↑
@@ -94,10 +94,10 @@ Each layer re-exports through barrel `index.ts` files up to `ui/src/index.ts`.
 
 The web app uses Next.js route groups for distinct layout contexts:
 
-- `(site)/` — GMH branded public site (homepage, innovations)
+- `(content)/` — GMH branded public site (homepage, innovations)
 - `(marketing)/` — Marketing pages
-- `(portal)/` — Portal area (root `/` landing)
-- `(auth)/` — Authentication pages + layout demos
+- `(home)/` — Portal landing page (root `/`)
+- `(auth)/` — Authentication pages, layout demos, link-in-bio
 - `(app)/` — Dashboard area (Sidebar + Header)
 
 Root layout provides ThemeProvider, TooltipProvider, Toaster, and fonts.

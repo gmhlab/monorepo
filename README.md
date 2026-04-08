@@ -33,15 +33,16 @@ gmhlab_monorepo/
 ├── packages/
 │   ├── ui/                         # Shared component library (raw TS, no build)
 │   │   └── src/
-│   │       ├── primitives/         # Primitives (57 shadcn/Radix components)
+│   │       ├── lib/               # Pure utilities (cn, slot)
+│   │       ├── hooks/             # Shared hooks (useIsMobile)
 │   │       ├── layouts/            # Spatial primitives (Stack, Center, Grid, etc.)
+│   │       ├── primitives/         # Headless, accessible base components (Radix/Base UI)
 │   │       ├── composites/         # Multi-primitive widgets (Logo, ThemeProvider)
 │   │       ├── blocks/             # Page-ready sections (navbars, footers, marketing)
 │   │       ├── patterns/           # Stateless UI recipes (PageHeader, FormSection)
-│   │       ├── templates/          # Full page shells (AppShell, Auth, Marketing)
+│   │       ├── templates/          # Full page shells (AppShell, Auth, Marketing, Split)
+│   │       ├── pages/             # Complete page compositions (Dashboard, DesignSystem, LinkInBio)
 │   │       ├── gmh/               # Domain-specific branded components
-│   │       ├── hooks/             # Shared hooks (useIsMobile)
-│   │       ├── lib/               # Utilities (cn, slot)
 │   │       ├── styles/            # Theme tokens and CSS
 │   │       └── assets/            # Static assets
 │   ├── typescript-config/          # Shared tsconfig presets
@@ -70,7 +71,7 @@ import { Button, Card, Stack, cn, useIsMobile } from "@repo/ui";
 
 ### Component Layers
 
-**Primitives** (`src/primitives/`) — 57 headless, accessible base components built on Radix UI:
+**Primitives** (`src/primitives/`) — 56 headless, accessible base components built on Radix UI:
 
 `Accordion` · `AlertDialog` · `Alert` · `AspectRatio` · `Avatar` · `Badge` · `Breadcrumb` · `Button` · `ButtonGroup` · `Calendar` · `Card` · `Carousel` · `Chart` · `Checkbox` · `Collapsible` · `Combobox` · `Command` · `ContextMenu` · `Dialog` · `Direction` · `Drawer` · `DropdownMenu` · `Empty` · `Field` · `Form` · `HoverCard` · `Input` · `InputGroup` · `InputOTP` · `Item` · `Kbd` · `Label` · `Menubar` · `NativeSelect` · `NavigationMenu` · `Pagination` · `Popover` · `Progress` · `RadioGroup` · `Resizable` · `ScrollArea` · `Select` · `Separator` · `Sheet` · `Sidebar` · `Skeleton` · `Slider` · `Sonner` · `Spinner` · `Switch` · `Table` · `Tabs` · `Textarea` · `Toggle` · `ToggleGroup` · `Tooltip`
 
@@ -91,11 +92,12 @@ All share a `Gap` type and scale from `_scale.ts`.
 | `navbar-05` | GMH-branded navigation bar |
 | `footer-02` | Footer with logo |
 | `footer-03` | GMH-branded footer with quick links and contact info |
-| `design-system-01/` | Design system documentation viewer with palettes and tokens |
+| `header` | Shared header block |
+| `footer` | Shared footer block |
 | `example-01/` | Card + Form examples with AlertDialog, Combobox, DropdownMenu |
 | `example-02/` | Kitchen sink page demonstrating many UI primitives |
 | `example-03/` | Data dashboard with charts and data table |
-| `login-03/` | Login page with form |
+| `login-03` | Login page with form |
 
 **Patterns** (`src/patterns/`) — stateless UI recipes:
 
@@ -103,7 +105,11 @@ All share a `Gap` type and scale from `_scale.ts`.
 
 **Templates** (`src/templates/`) — full page shells with named slots:
 
-`AppShellTemplate` · `AuthTemplate` · `MarketingTemplate` · `SplitTemplate` · `LinkInBioTemplate`
+`AppShellTemplate` · `AuthTemplate` · `MarketingTemplate` · `SplitTemplate`
+
+**Pages** (`src/pages/`) — complete page compositions wired into route-ready views:
+
+`DashboardPage` · `DesignSystemPage` · `LinkInBioTemplate`
 
 **Composites** (`src/composites/`) — multi-primitive widgets:
 
@@ -126,23 +132,25 @@ The main app (`apps/web`) uses Next.js App Router with five route groups:
 
 | Route Group | Layout | Purpose |
 |-------------|--------|---------|
-| `(site)` | Navbar5 + Footer3 | GMH branded public site |
+| `(content)` | Navbar5 + Footer3 | GMH branded public site |
 | `(marketing)` | Marketing layout | Marketing pages |
-| `(portal)` | Portal layout | Portal area |
-| `(auth)` | Minimal | Authentication + layout demos |
+| `(home)` | Navbar2 + Footer2 | Portal landing page |
+| `(auth)` | Minimal | Authentication, layout demos, link-in-bio |
 | `(app)` | Sidebar + Header | Dashboard area |
 
 Key routes:
 
 | Route | Route Group |
 |-------|-------------|
-| `/site` | `(site)` — GMH homepage |
-| `/site/innovations` | `(site)` — Innovations index |
-| `/site/innovations/equip` | `(site)` — EQUIP detail |
-| `/site/innovations/photovoice` | `(site)` — Photovoice detail |
-| `/marketing` | `(marketing)` — Marketing page |
-| `/` | `(portal)` — Portal landing |
+| `/site` | `(content)` — GMH homepage |
+| `/site/innovations` | `(content)` — Innovations index |
+| `/site/innovations/equip` | `(content)` — EQUIP detail |
+| `/site/innovations/photovoice` | `(content)` — Photovoice detail |
+| `/marketing/01`, `/marketing/02` | `(marketing)` — Marketing pages |
+| `/` | `(home)` — Portal landing |
 | `/login` | `(auth)` — Login page |
+| `/links` | `(auth)` — Link-in-bio page |
+| `/layouts/*` | `(auth)` — Layout primitive demos |
 | `/dashboard` | `(app)` — Dashboard |
 | `/dashboard/design-system` | `(app)` — Design system viewer |
 | `/dashboard/example/01–03` | `(app)` — Example pages |
