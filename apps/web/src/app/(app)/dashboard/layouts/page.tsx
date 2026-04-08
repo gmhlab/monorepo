@@ -30,8 +30,8 @@ const layouts = [
 ]
 
 const tierColors: Record<string, "default" | "secondary" | "outline"> = {
-  foundational: "default",
-  structural: "secondary",
+  foundational: "secondary",
+  structural: "default",
   specialized: "outline",
 }
 
