@@ -44,9 +44,7 @@ function AppSidebar() {
   return (
     <Sidebar>
       <SidebarHeader className="p-4">
-        <a href="/" className="flex items-center gap-2">
-          <Logo/>
-        </a>
+        <Logo/>
       </SidebarHeader>
       <SidebarSeparator className="max-w-xs" />
       <SidebarContent>

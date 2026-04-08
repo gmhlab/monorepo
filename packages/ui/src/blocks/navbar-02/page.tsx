@@ -27,10 +27,10 @@ const Navbar2 = ({ navigationData }: { navigationData: NavigationItem }) => {
         </div>
 
         <div className='text-muted-foreground flex flex-1 items-center gap-8 font-medium md:justify-center lg:gap-16'>
-          <a href='/' className='hover:text-primary max-md:hidden'>Home</a>
-          <a href='/dashboard' className='hover:text-primary max-md:hidden'>Dashboard</a>
+          <a href='/dashboard' className='hover:text-primary max-md:hidden'>App</a>
+          <a href='/site' className='hover:text-primary max-md:hidden'>Content</a>
           <a href=''><Logo className='text-foreground gap-3' /></a>
-          <a href='/site' className='hover:text-primary max-md:hidden'>Website</a>
+          <a href='/links' className='hover:text-primary max-md:hidden'>Social</a>
           <a href='/login' className='hover:text-primary max-md:hidden'>Login</a>
         </div>
 

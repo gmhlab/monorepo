@@ -1,7 +1,7 @@
-import { Button } from "../../../primitives/button";
-import { ModeToggle } from "../../../composites/mode-toggle";
-import { ThemeProvider } from "../../../composites/theme-provider";
-import { Avatar, AvatarFallback, AvatarImage } from "../../../primitives/avatar";
+import { Button } from "../primitives/button";
+import { ModeToggle } from "../composites/mode-toggle";
+import { ThemeProvider } from "../composites/theme-provider";
+import { Avatar, AvatarFallback, AvatarImage } from "../primitives/avatar";
 import { 
   Bell, 
   Settings, 

@@ -35,11 +35,11 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import { Toaster } from "../../primitives/sonner";
-import { DesignTokens } from "./components/tokens";
-import { TailwindColorPalettes } from "./components/palettes";
+import { DesignTokens } from "./tokens";
+import { TailwindColorPalettes } from "./palettes";
 import { ModeToggle } from "../../composites/mode-toggle";
 
-export function DesignSystem() {
+export default function DesignSystem() {
   const [switchChecked, setSwitchChecked] = useState(false);
   const [checkboxChecked, setCheckboxChecked] = useState(false);
   const [progress, setProgress] = useState(33);

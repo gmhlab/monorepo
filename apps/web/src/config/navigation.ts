@@ -3,6 +3,13 @@
 
 import type { NavLink, NavGroup } from "@repo/ui/blocks"
 
+export const navigationData = [
+  { label: 'App', href: '/app/design-system' },
+  { label: 'Dashboard', href: '/dashboard' },
+  { label: 'Website', href: '/gmh' },
+  { label: 'Login', href: '/login' }
+]
+
 export const marketingLinks: NavLink[] = [
   { label: "Features", href: "/test" },
   { label: "Pricing", href: "/test/01" },

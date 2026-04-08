@@ -1,12 +1,7 @@
 import { Navbar2 } from "@repo/ui"
 import { Footer2 } from "@repo/ui";
+import { navigationData } from "../../config/navigation"
 
-const navigationData = [
-  { title: 'App', href: '/app/design-system' },
-  { title: 'Dashboard', href: '/dashboard' },
-  { title: 'Website', href: '/gmh' },
-  { title: 'Login', href: '/login' }
-]
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
