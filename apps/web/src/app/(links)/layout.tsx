@@ -1,4 +1,4 @@
-import { Navbar2, Navbar5 } from "@repo/ui"
+import { Navbar2 } from "@repo/ui"
 import { Footer2 } from "@repo/ui";
 
 const navigationData = [

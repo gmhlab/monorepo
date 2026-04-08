@@ -1,5 +1,4 @@
 import type { SVGAttributes } from 'react'
-import type Logo from './logo'
 
 const LogoMark = (props: SVGAttributes<SVGElement>) => {
   return (

@@ -1,8 +1,5 @@
 
 
-// Assets
-export * from "./assets"
-
 // Blocks
 export * from "./blocks"
 

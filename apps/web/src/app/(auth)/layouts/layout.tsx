@@ -1,7 +1,7 @@
 import { MarketingTemplate } from "@repo/ui/templates"
 import { MarketingNavWrapper } from "@/components/marketing-nav-wrapper"
 import { Container } from "@repo/ui"
-import { Logo } from "@repo/ui/assets"
+import { Logo } from "@repo/ui"
 import { ModeToggle } from "@repo/ui/"
 
 const layoutLinks = [

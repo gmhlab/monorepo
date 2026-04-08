@@ -1,3 +1,1 @@
-import Logo from "./logo"
-
-export { Logo }
+export { default as LogoMark } from "./logo"

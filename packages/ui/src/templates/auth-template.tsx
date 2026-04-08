@@ -29,7 +29,7 @@ export function AuthTemplate({
   logo,
   children,
   footer,
-  maxWidth = "sm",
+  maxWidth = "md",
   background,
   className,
   ref,

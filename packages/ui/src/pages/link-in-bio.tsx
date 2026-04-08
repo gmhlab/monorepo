@@ -5,7 +5,7 @@ import { Stack } from "../layouts/stack"
 import { Cluster } from "../layouts/cluster"
 import { sectionSpacingMap } from "../layouts/_scale"
 import { ProfileHeader } from "../patterns/profile-header"
-import { cn } from "../lib/"
+import { cn } from "../lib"
 
 export interface LinkInBioTemplateProps extends ComponentPropsWithRef<"div"> {
   /** Profile avatar or image */
@@ -35,8 +35,8 @@ export function LinkInBioTemplate({
 }: LinkInBioTemplateProps) {
   return (
     <Cover
+      minHeight="auto"
       ref={ref}
-      minHeight="screen"
       className={cn("bg-background text-foreground relative overflow-hidden", className)}
       {...props}
     >
