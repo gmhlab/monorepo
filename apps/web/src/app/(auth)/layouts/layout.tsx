@@ -10,7 +10,6 @@ const layoutLinks = [
   { href: "/layouts/cluster", label: "Cluster" },
   { href: "/layouts/grid", label: "Grid" },
   { href: "/layouts/center", label: "Center" },
-  { href: "/layouts/split", label: "Split" },
   { href: "/layouts/cover", label: "Cover" },
 ]
 

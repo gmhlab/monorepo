@@ -62,7 +62,6 @@ export function MarketingNav({
   return (
     <div className={cn("relative w-full", className)}>
       <Cluster
-        as="nav"
         justify="between"
         align="center"
         gap="lg"

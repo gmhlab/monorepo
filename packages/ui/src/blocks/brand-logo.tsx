@@ -40,7 +40,7 @@ type BrandLogoProps = Omit<LogoProps, "icon" | "name"> & {
   customIcon?: LogoProps["icon"]
 }
 
-export function BrandLogo({ 
+export function Logo({ 
   customIcon,
   variant = "full",
   size = "md",

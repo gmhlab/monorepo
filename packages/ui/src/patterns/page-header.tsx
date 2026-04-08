@@ -1,45 +1,32 @@
 import { forwardRef, type HTMLAttributes, type ReactNode } from "react"
-import { Cluster } from "../layouts/cluster"
-import { Stack } from "../layouts/stack"
+import { Cluster, Stack } from "../layouts/"
+import { Badge } from "../primitives"
 import { cn } from "../lib/"
 
 export interface PageHeaderProps extends Omit<HTMLAttributes<HTMLDivElement>, "title"> {
+  badge?: ReactNode
+  breadcrumb?: ReactNode
   title: ReactNode
   description?: ReactNode
   actions?: ReactNode
-  breadcrumb?: ReactNode
 }
 
 export const PageHeader = forwardRef<HTMLDivElement, PageHeaderProps>(
-  ({ title, description, actions, breadcrumb, className, ...props }, ref) => {
+  ({ breadcrumb, badge, title, description, actions, className, ...props }, ref) => {
     return (
-      <Stack ref={ref} gap="sm" className={cn(className)} {...props}>
-        {breadcrumb && (
-          <div className="text-sm text-muted-foreground">
-            {breadcrumb}
-          </div>
-        )}
-
+      <Stack ref={ref} gap="md" recursive={false} className={cn(className)} {...props}>
+        {breadcrumb && ( <div className="text-sm text-muted-foreground"> {breadcrumb} </div> )}
+        {badge && ( <Badge variant="secondary" className="pl-1 pr-3 pt-1 pb-1.5 gap-1.5"> {badge} </Badge> )}
         <Cluster justify="between" align="start" wrap={false}>
-          <Stack gap="xs">
-            <h1 className="text-2xl font-semibold tracking-tight">
-              {title}
-            </h1>
-            {description && (
-              <p className="text-muted-foreground">
-                {description}
-              </p>
-            )}
+          <Stack gap="sm" className="max-w-xl">
+            <h1 className="text-4xl font-bold tracking-tight"> {title} </h1>
+            {description && ( <p className="text-muted-foreground"> {description} </p> )}
           </Stack>
-
-          {actions && (
-            <Cluster gap="sm" className="shrink-0">
-              {actions}
-            </Cluster>
-          )}
+          {actions && ( <Cluster gap="sm" className="shrink-0"> {actions} </Cluster> )}
         </Cluster>
       </Stack>
     )
   }
 )
+
 PageHeader.displayName = "PageHeader"

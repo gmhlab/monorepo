@@ -46,10 +46,9 @@ function AppSidebar() {
       <SidebarHeader className="p-4">
         <a href="/" className="flex items-center gap-2">
           <Logo/>
-          <h1>GMH Lab</h1>
         </a>
       </SidebarHeader>
-      <SidebarSeparator />
+      <SidebarSeparator className="max-w-xs" />
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel>Navigation</SidebarGroupLabel>
