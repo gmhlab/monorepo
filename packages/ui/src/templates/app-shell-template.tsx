@@ -2,16 +2,25 @@
 
 import { type ComponentPropsWithRef, type ReactNode } from "react"
 import {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarHeader,
   SidebarInset,
   SidebarProvider,
+  SidebarSeparator,
 } from "../primitives/sidebar"
 import { Stack } from "../layouts/stack"
 import { cn } from "../lib/"
 
 export interface AppShellTemplateProps extends Omit<ComponentPropsWithRef<"div">, "content"> {
-  /** Sidebar element — typically an <AppSidebar /> or <Sidebar /> */
-  sidebar: ReactNode
-  /** Top header bar — breadcrumbs, search, user menu */
+  /** Sidebar header slot — typically a <Logo /> or brand mark */
+  sidebarHeader?: ReactNode
+  /** Sidebar body — nav groups, menus, etc. Usually a <SidebarNav /> pattern. */
+  nav: ReactNode
+  /** Sidebar footer slot — help link, user menu, workspace switcher */
+  sidebarFooter?: ReactNode
+  /** Top header bar content — breadcrumbs, search, user menu */
   header?: ReactNode
   /** Main page content */
   content: ReactNode
@@ -22,7 +31,9 @@ export interface AppShellTemplateProps extends Omit<ComponentPropsWithRef<"div">
 }
 
 export function AppShellTemplate({
-  sidebar,
+  sidebarHeader,
+  nav,
+  sidebarFooter,
   header,
   content,
   panel,
@@ -34,7 +45,18 @@ export function AppShellTemplate({
   return (
     <SidebarProvider defaultOpen={defaultOpen}>
       <div ref={ref} className={cn("flex min-h-screen w-full", className)} {...props}>
-        {sidebar}
+        <Sidebar>
+          {sidebarHeader && (
+            <>
+              <SidebarHeader className="p-4">{sidebarHeader}</SidebarHeader>
+              <SidebarSeparator className="max-w-xs" />
+            </>
+          )}
+          <SidebarContent>{nav}</SidebarContent>
+          {sidebarFooter && (
+            <SidebarFooter className="p-4">{sidebarFooter}</SidebarFooter>
+          )}
+        </Sidebar>
 
         <SidebarInset>
           <Stack gap="none" className="flex-1">

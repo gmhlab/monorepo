@@ -3,82 +3,53 @@
 import {
   AppShellTemplate,
   Logo,
-  Sidebar,
-  SidebarHeader,
-  SidebarContent,
-  SidebarFooter,
-  SidebarGroup,
-  SidebarGroupLabel,
-  SidebarGroupContent,
   SidebarMenu,
-  SidebarMenuItem,
   SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarNav,
   SidebarTrigger,
-  SidebarSeparator,
+  type SidebarNavGroup,
 } from "@repo/ui"
 import {
-  LayoutDashboard,
-  Users,
   BarChart3,
-  Settings,
-  HelpCircle,
   Bell,
-  Search,
-  Palette,
-  Layout,
   Component,
+  HelpCircle,
+  LayoutDashboard,
+  Layout,
+  Palette,
+  Search,
+  Settings,
+  Users,
 } from "lucide-react"
-import { Cluster } from "@repo/ui"
 
-const navItems = [
-  { title: "Dashboard", icon: LayoutDashboard, href: "/dashboard" },
-  { title: "DesignSystem", icon: Palette, href: "/dashboard/design-system" },
-  { title: "Layouts", icon: Layout, href: "/dashboard/layouts" },
-  { title: "Sink", icon: Component, href: "/dashboard/example/02" },
-  { title: "Users", icon: Users, href: "#" },
-  { title: "Analytics", icon: BarChart3, href: "#" },
-  { title: "Settings", icon: Settings, href: "#" },
+const navGroups: SidebarNavGroup[] = [
+  {
+    label: "Navigation",
+    items: [
+      { title: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
+      { title: "DesignSystem", href: "/dashboard/design-system", icon: Palette },
+      { title: "Layouts", href: "/dashboard/layouts", icon: Layout },
+      { title: "Sink", href: "/dashboard/example/02", icon: Component },
+      { title: "Users", href: "#", icon: Users },
+      { title: "Analytics", href: "#", icon: BarChart3 },
+      { title: "Settings", href: "#", icon: Settings },
+    ],
+  },
 ]
 
-function AppSidebar() {
+function SidebarFooterLinks() {
   return (
-    <Sidebar>
-      <SidebarHeader className="p-4">
-        <Logo/>
-      </SidebarHeader>
-      <SidebarSeparator className="max-w-xs" />
-      <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupLabel>Navigation</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {navItems.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <a href={item.href}>
-                      <item.icon className="size-4" />
-                      <span>{item.title}</span>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-      </SidebarContent>
-      <SidebarFooter className="p-4">
-        <SidebarMenu>
-          <SidebarMenuItem>
-            <SidebarMenuButton asChild>
-              <a href="/dashboard/help">
-                <HelpCircle className="size-4" />
-                <span>Help</span>
-              </a>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-        </SidebarMenu>
-      </SidebarFooter>
-    </Sidebar>
+    <SidebarMenu>
+      <SidebarMenuItem>
+        <SidebarMenuButton asChild>
+          <a href="/dashboard/help">
+            <HelpCircle className="size-4" />
+            <span>Help</span>
+          </a>
+        </SidebarMenuButton>
+      </SidebarMenuItem>
+    </SidebarMenu>
   )
 }
 
@@ -102,7 +73,9 @@ function AppHeader() {
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
     <AppShellTemplate
-      sidebar={<AppSidebar />}
+      sidebarHeader={<Logo />}
+      nav={<SidebarNav groups={navGroups} />}
+      sidebarFooter={<SidebarFooterLinks />}
       header={<AppHeader />}
       content={children}
     />
