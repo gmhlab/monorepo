@@ -15,7 +15,7 @@ export function InnovationsSection() {
             }
             imageFilter="from-blue-600/60 to-blue-800/80"
             icon={<MessageSquareHeart />}
-            href='/gmh/innovations/equip'
+            href='/site/innovations/equip'
           />
           <InnovationCard
             title="PhotoVoice™"
@@ -27,7 +27,7 @@ export function InnovationsSection() {
             }
             imageFilter="from-blue-700/60 to-indigo-800/80"
             icon={<Camera />}
-            href='/gmh/innovations/photovoice'
+            href='/site/innovations/photovoice'
           />
         </div>
       </div>
