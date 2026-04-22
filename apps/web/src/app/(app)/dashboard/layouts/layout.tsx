@@ -1,13 +1,12 @@
 import { PortalNavWrapper as PortalNav } from "../../../../components/portal-nav-wrapper"
 
 const layoutLinks = [
-  { href: "/app/layouts/container", label: "Container" },
-  { href: "/app/layouts/stack", label: "Stack" },
-  { href: "/app/layouts/cluster", label: "Cluster" },
-  { href: "/app/layouts/grid", label: "Grid" },
-  { href: "/app/layouts/center", label: "Center" },
-  { href: "/app/layouts/split", label: "Split" },
-  { href: "/app/layouts/cover", label: "Cover" },
+  { href: "/dashboard/layouts/container", label: "Container" },
+  { href: "/dashboard/layouts/stack", label: "Stack" },
+  { href: "/dashboard/layouts/cluster", label: "Cluster" },
+  { href: "/dashboard/layouts/grid", label: "Grid" },
+  { href: "/dashboard/layouts/center", label: "Center" },
+  { href: "/dashboard/layouts/cover", label: "Cover" },
 ]
 
 export default function LayoutsLayout({ children }: { children: React.ReactNode }) {

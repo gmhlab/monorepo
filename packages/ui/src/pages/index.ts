@@ -1,3 +1,3 @@
 export { DashboardPage } from "./dashboard-page"
 export { LinkInBioTemplate, type LinkInBioTemplateProps } from "./link-in-bio"
-export { default } from "./design-system/design-system-page"
+export { default as DesignSystem } from "./design-system/design-system-page"
