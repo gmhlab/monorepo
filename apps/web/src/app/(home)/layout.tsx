@@ -3,12 +3,18 @@ import { Footer2 } from "@repo/ui";
 import { navigationData } from "../../config/navigation"
 
 
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
 
       <header>
-        <Navbar2 navigationData={navigationData} />
+        <Navbar2 
+          navigationData={navigationData.map(item => ({
+          title: item.label,
+          href: item.href,
+          }))}
+        />
       </header>
 
       <main>

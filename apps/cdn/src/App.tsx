@@ -1,5 +1,5 @@
 import { HeroSection, WhatIsItSection, PartnerMarquee, HowToUseSection } from "@repo/ui";
-import { equipData } from "../../web/src/app/(website)/site/innovations/equip/data";
+import { equipData } from "../../web/src/app/(content)/site/innovations/equip/data";
 
 export function App() {
   return (
