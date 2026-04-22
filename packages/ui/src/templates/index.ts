@@ -1,0 +1,4 @@
+export { MarketingTemplate, type MarketingTemplateProps } from "./marketing-template"
+export { AppShellTemplate, type AppShellTemplateProps } from "./app-shell-template"
+export { AuthTemplate, type AuthTemplateProps } from "./auth-template"
+export { SplitTemplate, type SplitTemplateProps } from "./split-template"

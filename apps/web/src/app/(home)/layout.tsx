@@ -1,0 +1,24 @@
+import { Navbar2 } from "@repo/ui"
+import { Footer2 } from "@repo/ui";
+import { navigationData } from "../../config/navigation"
+
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <>
+
+      <header>
+        <Navbar2 navigationData={navigationData} />
+      </header>
+
+      <main>
+        {children}
+      </main>
+
+      <footer className="border-t border-dashed">
+        <Footer2 />
+      </footer>
+
+    </>
+  )
+}

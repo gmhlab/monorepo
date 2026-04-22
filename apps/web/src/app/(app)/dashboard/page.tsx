@@ -1,7 +1,1 @@
-import { Example3 } from "@repo/ui";
-
-export default function Page() {
-  return (
-    < Example3 />
-  );
-}
+export { DashboardPage as default } from "@repo/ui"

@@ -11,20 +11,20 @@ pnpm install
 pnpm dev        # starts all three apps
 ```
 
-Requires [pnpm](https://pnpm.io) 9.15+ and Node.js.
+Requires [pnpm](https://pnpm.io) 9.15+ and Node.js 18+.
 
 ## Apps
 
 | App | Port | Stack | Purpose |
 |-----|------|-------|---------|
-| [`apps/web`](apps/web) | 3000 | Next.js 16 | Main GMH application — dashboard, innovations, public site |
+| [`apps/web`](apps/web) | 3000 | Next.js 16 | Main GMH application — dashboard, public site, marketing |
 | [`apps/docs`](apps/docs) | 3001 | Next.js 16 | Design system documentation |
 | [`apps/cdn`](apps/cdn) | 3002 | Vite 6 | Static asset delivery SPA |
 
 ## Repository Structure
 
 ```
-gmh-monorepo/
+gmhlab_monorepo/
 ├── apps/
 │   ├── web/                        # Next.js main app (:3000)
 │   ├── docs/                       # Next.js design system docs (:3001)
@@ -32,10 +32,24 @@ gmh-monorepo/
 │
 ├── packages/
 │   ├── ui/                         # Shared component library (raw TS, no build)
+│   │   └── src/
+│   │       ├── lib/               # Pure utilities (cn, slot)
+│   │       ├── hooks/             # Shared hooks (useIsMobile)
+│   │       ├── layouts/            # Spatial primitives (Stack, Center, Grid, etc.)
+│   │       ├── primitives/         # Headless, accessible base components (Radix/Base UI)
+│   │       ├── composites/         # Multi-primitive widgets (Logo, ThemeProvider)
+│   │       ├── blocks/             # Page-ready sections (navbars, footers, marketing)
+│   │       ├── patterns/           # Stateless UI recipes (PageHeader, FormSection)
+│   │       ├── templates/          # Full page shells (AppShell, Auth, Marketing, Split)
+│   │       ├── pages/             # Complete page compositions (Dashboard, DesignSystem, LinkInBio)
+│   │       ├── gmh/               # Domain-specific branded components
+│   │       ├── styles/            # Theme tokens and CSS
+│   │       └── assets/            # Static assets
 │   ├── typescript-config/          # Shared tsconfig presets
 │   └── eslint-config/              # Shared ESLint flat configs
 │
 ├── docs/                           # CDN embed snippets + pre-built assets
+├── scripts/                        # Utility scripts (sync-cdn-to-docs.sh)
 ├── turbo.json                      # Turborepo pipeline
 └── pnpm-workspace.yaml             # Workspace + version catalog
 ```
@@ -47,7 +61,7 @@ Raw TypeScript component library — apps compile it themselves, no build step r
 ### Importing
 
 ```ts
-import { Button, Card, ProfileCard, cn, useIsMobile } from "@repo/ui";
+import { Button, Card, Stack, cn, useIsMobile } from "@repo/ui";
 ```
 
 ```css
@@ -57,64 +71,90 @@ import { Button, Card, ProfileCard, cn, useIsMobile } from "@repo/ui";
 
 ### Component Layers
 
-**Primitives** (`components/ui/`) — 56 headless, accessible base components built on Radix UI:
+**Primitives** (`src/primitives/`) — 56 headless, accessible base components built on Radix UI:
 
 `Accordion` · `AlertDialog` · `Alert` · `AspectRatio` · `Avatar` · `Badge` · `Breadcrumb` · `Button` · `ButtonGroup` · `Calendar` · `Card` · `Carousel` · `Chart` · `Checkbox` · `Collapsible` · `Combobox` · `Command` · `ContextMenu` · `Dialog` · `Direction` · `Drawer` · `DropdownMenu` · `Empty` · `Field` · `Form` · `HoverCard` · `Input` · `InputGroup` · `InputOTP` · `Item` · `Kbd` · `Label` · `Menubar` · `NativeSelect` · `NavigationMenu` · `Pagination` · `Popover` · `Progress` · `RadioGroup` · `Resizable` · `ScrollArea` · `Select` · `Separator` · `Sheet` · `Sidebar` · `Skeleton` · `Slider` · `Sonner` · `Spinner` · `Switch` · `Table` · `Tabs` · `Textarea` · `Toggle` · `ToggleGroup` · `Tooltip`
 
-**Blocks** (`components/blocks/`) — 15 composed, page-ready sections:
+**Layouts** (`src/layouts/`) — 7 spatial primitives based on [Every Layout](https://every-layout.dev/):
+
+`Stack` · `Center` · `Cluster` · `Grid` · `Container` · `Split` · `Cover`
+
+All share a `Gap` type and scale from `_scale.ts`.
+
+**Blocks** (`src/blocks/`) — page-ready composed sections:
 
 | Block | Description |
 |-------|-------------|
-| `dashboard-01/` | Full dashboard layout with sidebar, data table, and charts |
-| `design-system-01/` | Design system documentation viewer with palettes and tokens |
+| `marketing/` | MarketingNav, MarketingHero, MarketingFeatures, MarketingPricing, MarketingCTA, MarketingFooter |
+| `portal-nav` | Portal navigation component |
+| `brand-logo` | Brand logo block |
+| `navbar-02` | Navigation with configurable data prop |
+| `navbar-05` | GMH-branded navigation bar |
+| `footer-02` | Footer with logo |
+| `footer-03` | GMH-branded footer with quick links and contact info |
+| `header` | Shared header block |
+| `footer` | Shared footer block |
 | `example-01/` | Card + Form examples with AlertDialog, Combobox, DropdownMenu |
 | `example-02/` | Kitchen sink page demonstrating many UI primitives |
 | `example-03/` | Data dashboard with charts and data table |
-| `footer-01/` | Simple footer |
-| `footer-02/` | Footer with logo |
-| `footer-03/` | GMH-branded footer with quick links and contact info |
-| `login-03/` | Login page with form |
-| `navbar-01/` | Navigation menu with mega-menu pattern |
-| `navbar-02/` | Navigation with configurable data prop |
-| `navbar-03/` | Navigation header variant |
-| `navbar-04/` | Navigation with mode toggle and avatar |
-| `navbar-05/` | GMH-branded navigation bar |
-| `profile-card-01/` | User profile card (avatar, name, badges, activity, teams) |
+| `login-03` | Login page with form |
 
-**GMH Components** (`components/gmh/`) — domain-specific branded pages:
+**Patterns** (`src/patterns/`) — stateless UI recipes:
 
-| Component | Description |
-|-----------|-------------|
-| `homepage/` | GMH Lab homepage with hero, about, news, testimonials, newsletter, map |
-| `innovation/` | Single innovation detail page (EQUIP and Photovoice data included) |
-| `innovations/` | Innovations index with hero, gallery, and section cards |
+`PageHeader` · `SectionHeader` · `FormSection` · `EmptyState` · `FeatureCard` · `ProfileHeader`
 
-**Utilities:**
+**Templates** (`src/templates/`) — full page shells with named slots:
+
+`AppShellTemplate` · `AuthTemplate` · `MarketingTemplate` · `SplitTemplate`
+
+**Pages** (`src/pages/`) — complete page compositions wired into route-ready views:
+
+`DashboardPage` · `DesignSystemPage` · `LinkInBioTemplate`
+
+**Composites** (`src/composites/`) — multi-primitive widgets:
+
+`Logo` · `LogoMark` · `ModeToggle` · `ThemeProvider` · `ImageWithFallback` · `Hamburger` · `ProfileCard`
+
+**GMH** (`src/gmh/`) — domain-specific branded pages:
+
+`HomePage` · `Innovation` · `Innovations`
+
+### Utilities
 
 ```ts
 cn(...classes)        // clsx + tailwind-merge
 useIsMobile()         // responsive hook (< 768px)
-ImageWithFallback     // image with error fallback
-ModeToggle            // dark/light/system theme toggle
-ThemeProvider          // next-themes wrapper
-Logo / LogoMark       // GMH logo SVG components
 ```
 
 ## Web App Routes
 
-The main app (`apps/web`) uses Next.js App Router with four route groups:
+The main app (`apps/web`) uses Next.js App Router with five route groups:
 
-| Route | Component | Route Group |
-|-------|-----------|-------------|
-| `/` | ComponentExample | `(site)` — Navbar2 + Footer2 |
-| `/login` | LoginPage | `(auth)` — minimal layout |
-| `/dashboard` | ComponentExample | `(app)` — Sidebar + Header |
-| `/dashboard/design-system` | DesignSystem | `(app)` |
-| `/dashboard/data` | Example3 | `(app)` |
-| `/gmh` | HomePage | `(gmh)` — Navbar5 + Footer3 |
-| `/gmh/innovations` | Innovations | `(gmh)` |
-| `/gmh/innovations/equip` | Innovation (EQUIP) | `(gmh)` |
-| `/gmh/innovations/photovoice` | Innovation (Photovoice) | `(gmh)` |
+| Route Group | Layout | Purpose |
+|-------------|--------|---------|
+| `(content)` | Navbar5 + Footer3 | GMH branded public site |
+| `(marketing)` | Marketing layout | Marketing pages |
+| `(home)` | Navbar2 + Footer2 | Portal landing page |
+| `(auth)` | Minimal | Authentication, layout demos, link-in-bio |
+| `(app)` | Sidebar + Header | Dashboard area |
+
+Key routes:
+
+| Route | Route Group |
+|-------|-------------|
+| `/site` | `(content)` — GMH homepage |
+| `/site/innovations` | `(content)` — Innovations index |
+| `/site/innovations/equip` | `(content)` — EQUIP detail |
+| `/site/innovations/photovoice` | `(content)` — Photovoice detail |
+| `/marketing/01`, `/marketing/02` | `(marketing)` — Marketing pages |
+| `/` | `(home)` — Portal landing |
+| `/login` | `(auth)` — Login page |
+| `/links` | `(auth)` — Link-in-bio page |
+| `/layouts/*` | `(auth)` — Layout primitive demos |
+| `/dashboard` | `(app)` — Dashboard |
+| `/dashboard/design-system` | `(app)` — Design system viewer |
+| `/dashboard/example/01–03` | `(app)` — Example pages |
+| `/dashboard/layouts/*` | `(app)` — Layout primitive demos |
 
 ## Design System
 
@@ -153,11 +193,11 @@ setTheme("dark"); // "light" | "dark" | "system"
 
 ## shadcn Registry
 
-Custom shadcn-compatible registry published from this repo (51 items):
+Custom shadcn-compatible registry published from this repo:
 
-- **44 primitives** — one per `components/ui/` file
-- **7 blocks** — dashboard, design-system, homepage, innovation, innovations, login, profile-card
-- **1 style** — `gmhlab-theme` (Navy + Gold design tokens)
+- **Primitives** — one per `src/primitives/` file
+- **Blocks** — dashboard, design-system, homepage, innovation, innovations, login, profile-card
+- **Style** — `gmhlab-theme` (Navy + Gold design tokens)
 
 Manifest: `packages/ui/registry.json` · Sources: `packages/ui/registry/` · Output: `packages/ui/public/r/`
 
@@ -204,6 +244,8 @@ pnpm --filter @repo/cdn dev          # Start CDN app only
 pnpm --filter @repo/ui typecheck     # Typecheck UI package
 pnpm --filter @repo/ui lint          # Lint UI package
 pnpm --filter @repo/ui build:registry # Build shadcn registry
+
+pnpm exec prettier --write .          # Format everything
 ```
 
 ## Contributing

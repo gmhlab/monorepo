@@ -6,8 +6,8 @@
  * Generates shadcn-compatible registry JSON files for every primitive and block
  * in the @repo/ui package. The script:
  *
- *   1. Scans src/components/ui/*.tsx for primitives
- *   2. Scans src/components/blocks/ for block groups
+ *   1. Scans src/primitives/*.tsx for primitives
+ *   2. Scans src/blocks/ for block groups
  *   3. Reads each source file and rewrites internal relative imports to @/ aliases
  *   4. Detects npm dependencies and registryDependencies from rewritten content
  *   5. Writes individual registry item files to public/r/<name>.json
@@ -29,9 +29,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const PKG_ROOT = resolve(__dirname, "..");
 const SRC = join(PKG_ROOT, "src");
-const COMPONENTS = join(SRC, "components");
-const UI_DIR = join(COMPONENTS, "ui");
-const BLOCKS_DIR = join(COMPONENTS, "blocks");
+const UI_DIR = join(SRC, "primitives");
+const BLOCKS_DIR = join(SRC, "blocks");
 const PUBLIC_R = join(PKG_ROOT, "public", "r");
 const REGISTRY_PATH = join(PKG_ROOT, "registry.json");
 
@@ -106,13 +105,13 @@ const IMPORT_RE = /(?:import|export)\s+(?:type\s+)?(?:(?:\{[^}]*\}|[^"';\n]+)\s+
  *
  * Returns { content, npmDeps, registryDeps }.
  */
-function rewriteFile(sourceContent, sourceAbsPath, componentsDir) {
+function rewriteFile(sourceContent, sourceAbsPath, srcDir) {
   const npmDeps = new Set();
   const registryDeps = new Set();
 
-  // Compute the directory of the source file relative to src/components/
-  const relToComponents = relative(componentsDir, sourceAbsPath);
-  const isInUiDir = relToComponents.startsWith("ui/") || relToComponents.startsWith("ui\\");
+  // Compute the directory of the source file relative to src/
+  const relToSrc = relative(srcDir, sourceAbsPath);
+  const isInPrimitivesDir = relToSrc.startsWith("primitives/") || relToSrc.startsWith("primitives\\");
 
   const rewritten = sourceContent.replace(IMPORT_RE, (match, specifier) => {
     // 1. Already an @/ alias — leave as-is but collect deps
@@ -167,35 +166,28 @@ function rewriteFile(sourceContent, sourceAbsPath, componentsDir) {
     // 4. Relative import — resolve and rewrite
     if (specifier.startsWith(".")) {
       const resolvedAbs = resolve(dirname(sourceAbsPath), specifier);
-      const resolvedRel = relative(componentsDir, resolvedAbs);
+      const resolvedRel = relative(srcDir, resolvedAbs);
       const normalised = resolvedRel.replace(/\\/g, "/");
 
-      // Pattern A: ../../lib/utils or ../../../../lib/utils -> @/lib/utils
-      if (normalised.startsWith("../lib/") || normalised === "../lib/utils" || normalised.startsWith("../../lib/")) {
-        // Resolve from the components dir to find the actual relative path from src/
-        const fromSrc = relative(join(componentsDir, ".."), resolvedAbs).replace(/\\/g, "/");
+      // Pattern A: ../lib/utils or ../../lib/utils -> @/lib/utils
+      if (normalised.startsWith("lib/")) {
         return match
-          .replace(`"${specifier}"`, `"@/${fromSrc}"`)
-          .replace(`'${specifier}'`, `'@/${fromSrc}'`);
+          .replace(`"${specifier}"`, `"@/${normalised}"`)
+          .replace(`'${specifier}'`, `'@/${normalised}'`);
       }
 
-      // Pattern B: ../../hooks/use-mobile or ../../../../hooks/use-mobile -> @/hooks/use-mobile
-      if (normalised.startsWith("../hooks/") || normalised.startsWith("../../hooks/")) {
-        const fromSrc = relative(join(componentsDir, ".."), resolvedAbs).replace(/\\/g, "/");
+      // Pattern B: ../hooks/use-mobile or ../../hooks/use-mobile -> @/hooks/use-mobile
+      if (normalised.startsWith("hooks/")) {
         return match
-          .replace(`"${specifier}"`, `"@/${fromSrc}"`)
-          .replace(`'${specifier}'`, `'@/${fromSrc}'`);
+          .replace(`"${specifier}"`, `"@/${normalised}"`)
+          .replace(`'${specifier}'`, `'@/${normalised}'`);
       }
 
-      // Pattern C: Sibling primitive in ui/ dir -> @/components/ui/<name>
-      if (isInUiDir && normalised.startsWith("ui/") === false) {
-        // This shouldn't happen for ui/ files referencing siblings — let's
-        // check if it resolves to the ui dir
-      }
-      if (isInUiDir) {
+      // Pattern C: Sibling primitive in primitives/ dir -> @/components/ui/<name>
+      if (isInPrimitivesDir) {
         // Sibling import like ./button -> @/components/ui/button
         const targetName = basename(specifier, extname(specifier));
-        // Only rewrite if the target is in ui/ (sibling) and not a subdir
+        // Only rewrite if the target is a sibling and not a subdir
         if (specifier.startsWith("./") && !specifier.includes("/", 2)) {
           registryDeps.add(targetName);
           return match
@@ -204,21 +196,17 @@ function rewriteFile(sourceContent, sourceAbsPath, componentsDir) {
         }
       }
 
-      // Pattern D: Block file importing from ../../ui/<name> or ../../../ui/<name>
-      if (normalised.startsWith("ui/")) {
-        const primitiveName = normalised.replace("ui/", "").replace(/\.\w+$/, "");
+      // Pattern D: Block/composite file importing from ../../primitives/<name> or ../../../primitives/<name>
+      if (normalised.startsWith("primitives/")) {
+        const primitiveName = normalised.replace("primitives/", "").replace(/\.\w+$/, "");
         registryDeps.add(primitiveName);
         return match
           .replace(`"${specifier}"`, `"@/components/ui/${primitiveName}"`)
           .replace(`'${specifier}'`, `'@/components/ui/${primitiveName}'`);
       }
 
-      // Pattern E: Imports to components/ level files (theme-toggle, theme-toggle-01,
-      // image-with-fallback, theme-provider, etc.)
-      // These resolve to paths like "theme-toggle", "theme-toggle-01", "image-with-fallback"
-      // (directly under components/ but not in ui/)
-      if (!normalised.includes("/") || normalised.match(/^[a-z0-9-]+$/)) {
-        // It's a file directly in components/ dir
+      // Pattern E: Imports to composites/ level files
+      if (normalised.startsWith("composites/")) {
         const compName = basename(normalised, extname(normalised));
         return match
           .replace(`"${specifier}"`, `"@/components/${compName}"`)
@@ -373,7 +361,7 @@ async function buildPrimitiveItem(fileName) {
   const absPath = join(UI_DIR, fileName);
   const sourceContent = await readFile(absPath, "utf-8");
 
-  const { content, npmDeps, registryDeps } = rewriteFile(sourceContent, absPath, COMPONENTS);
+  const { content, npmDeps, registryDeps } = rewriteFile(sourceContent, absPath, SRC);
 
   return {
     name,
@@ -419,7 +407,7 @@ async function buildBlockItem(blockName) {
     const sourceContent = await readFile(absPath, "utf-8");
 
     if (ext === ".tsx" || ext === ".ts") {
-      const result = rewriteFile(sourceContent, absPath, COMPONENTS);
+      const result = rewriteFile(sourceContent, absPath, SRC);
       for (const d of result.npmDeps) npmDeps.add(d);
       for (const d of result.registryDeps) registryDeps.add(d);
 
