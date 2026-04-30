@@ -4,7 +4,7 @@
 **Client:** Global Mental Health Lab (GMH Lab)
 **Project:** Design System & Multi-Application Monorepo
 **Project Period:** 2026-01-21 — 2026-04-30
-**Total Contract Value:** $1,500.00 USD
+**Total Contract Value:** $4,500.00 USD
 
 ---
 
@@ -12,28 +12,11 @@
 
 ### Abstract
 
-Conception and delivery of a full-stack design system and multi-application
-monorepo for the Global Mental Health Lab. The work encompasses the complete
-software lifecycle: architectural planning, design token specification,
-component library construction, Figma integration, and deployment of three
-production-ready applications. The outcome is a cohesive, branded digital
-platform that enables GMH Lab to publish interactive research content,
-showcase the EQUIP methodology, and maintain a scalable, well-documented
-design system — all from a single, version-controlled repository.
+Conception and delivery of a branded design system and suite of web applications for the Global Mental Health Lab. Work covered the full project lifecycle — from initial architecture and visual identity to a library of reusable components and three production applications — resulting in a unified digital platform for publishing research content, showcasing the EQUIP methodology, and maintaining a living design system.
 
 ### Technical Summary
 
-Implemented a **pnpm + Turborepo monorepo** containing three applications
-(`apps/web`, `apps/docs`, `apps/cdn`) and a shared component library
-(`@repo/ui`). The component library follows a strict 10-layer hierarchy
-(lib → hooks → layouts → primitives → composites → blocks → patterns →
-templates → pages → gmh) inspired by the Every Layout methodology and
-headless-first Radix UI primitives. All visual tokens are expressed in
-Tailwind CSS v4 using the oklch color space with full light/dark mode
-support. Figma Code Connect mappings link every layout primitive to the
-canonical Figma file (`JoFKlZFj4MXQoXxOxVqM1F`), keeping design and code
-in sync. The CDN application delivers embeddable iframe widgets (hero,
-what-is, partner-marquee, how-to) to external sites via GitHub Pages.
+A shared-codebase monorepo containing three applications and a component library, built on React 19, Next.js 16, and Tailwind CSS v4. The component library is organized into ten hierarchical layers, from low-level utilities up to full page compositions, with a spatial layout system based on the Every Layout methodology. All design tokens map to a Figma file, keeping visual decisions in sync between designers and developers. A separate CDN application delivers embeddable content widgets to external partner sites.
 
 ---
 
@@ -41,11 +24,11 @@ what-is, partner-marquee, how-to) to external sites via GitHub Pages.
 
 | # | Invoice | Description | Date | Amount |
 |---|---------|-------------|------|--------|
-| 1 | INV-2026-001 | Monorepo Infrastructure & Tooling | 2026-02-05 | $400.00 |
-| 2 | INV-2026-002 | Design System & Component Library | 2026-03-14 | $700.00 |
-| 3 | INV-2026-003 | Application Development & Deployment | 2026-04-30 | $400.00 |
+| 1 | INV-2026-001 | Foundation & Developer Tooling | 2026-02-05 | $1,500.00 |
+| 2 | INV-2026-002 | Design System & Component Library | 2026-03-14 | $1,500.00 |
+| 3 | INV-2026-003 | Application Development & Deployment | 2026-04-30 | $1,500.00 |
 
-**Total Invoiced:** $1,500.00
+**Total Invoiced:** $4,500.00
 
 ---
 ---
@@ -63,24 +46,21 @@ contact@gmhlab.org
 
 ---
 
-## Monorepo Infrastructure & Tooling
+## Foundation & Developer Tooling
 
-| # | Item | Description | Hours | Rate | Amount |
-|---|------|-------------|-------|------|--------|
-| 1 | Repository scaffolding | pnpm workspaces config, `pnpm-workspace.yaml` catalog pinning, root `package.json`, `.gitignore`, `README.md` | 3.0 | $50 | $150.00 |
-| 2 | Build orchestration | Turborepo config (`turbo.json`), task pipeline, remote caching, `pnpm build`/`dev`/`typecheck`/`lint` scripts | 2.0 | $50 | $100.00 |
-| 3 | Shared TypeScript config | `@repo/typescript-config` package — `base.json`, `nextjs.json`, `react-library.json` presets with strict mode | 1.0 | $50 | $50.00 |
-| 4 | Shared ESLint config | `@repo/eslint-config` package — flat config presets for Next.js apps and React library | 1.0 | $50 | $50.00 |
-| 5 | Environment & middleware | Password-protection middleware, `SITE_PASSWORD` / `PASSWORD_PROTECTION_ENABLED` env vars, 303-redirect gate for staging | 1.0 | $50 | $50.00 |
+| # | Item | Description | Amount |
+|---|------|-------------|--------|
+| 1 | Unified codebase structure | Set up a monorepo so all three applications and the shared component library live together, share dependencies, and can be developed and built as a single unit | $450.00 |
+| 2 | Automated build pipeline | Configured task orchestration so running one command builds, checks, or starts all parts of the project in the correct order, with caching to keep builds fast | $375.00 |
+| 3 | Code quality standards | Established shared TypeScript and linting configurations used by every application, enforcing consistent, type-safe code across the whole project | $300.00 |
+| 4 | Staging access controls | Added password-protection middleware so preview deployments are gated — only people with the password can view the site before it goes live | $225.00 |
+| 5 | Project documentation | Wrote developer-facing documentation covering commands, architecture decisions, conventions, and onboarding guidance | $150.00 |
 
-| | | | | **Subtotal** | **$400.00** |
-| | | | | Tax (0%) | $0.00 |
-| | | | | **Total Due** | **$400.00** |
+| | | **Subtotal** | **$1,500.00** |
+| | | Tax (0%) | $0.00 |
+| | | **Total Due** | **$1,500.00** |
 
----
-
-**Payment Terms:** Net 14 days
-**Method:** Bank transfer or check
+**Payment Terms:** Net 14 days | **Method:** Bank transfer or check
 
 ---
 ---
@@ -100,22 +80,19 @@ contact@gmhlab.org
 
 ## Design System & Component Library
 
-| # | Item | Description | Hours | Rate | Amount |
-|---|------|-------------|-------|------|--------|
-| 1 | Token system | Tailwind CSS v4 CSS-first configuration; oklch color space; 32 semantic color tokens (light + dark), 231 color primitives (21 palettes × 11 shades), spacing/sizing/radius scales in `index.css` | 2.5 | $50 | $125.00 |
-| 2 | Spatial primitive system | 7 Every Layout primitives (Stack, Center, Cluster, Grid, Container, Split, Cover); shared `_scale.ts` vocabulary (Gap, Padding, ContainerWidth, CenterMax, Measure, SectionSpacing, GridMin) | 3.5 | $50 | $175.00 |
-| 3 | Headless UI component library | 57 Radix UI / Base UI primitives across form, dialog, data, and layout categories (Accordion, Calendar, Carousel, Chart, Combobox, DataTable, Drawer, Form, Sheet, Sidebar, and 47 more); cva variants + cn + data-slot pattern throughout | 5.0 | $50 | $250.00 |
-| 4 | Composite & pattern layers | Composites (Logo, LogoMark, ModeToggle, ThemeProvider, Hamburger, ProfileCard); Patterns (PageHeader, SectionHeader, FormSection, EmptyState, FeatureCard, ProfileHeader); Templates (AppShellTemplate, AuthTemplate, MarketingTemplate, SplitTemplate) | 2.0 | $50 | $100.00 |
-| 5 | Figma Code Connect integration | `.figma/` Code Connect files for all 7 layout primitives; variable collection bindings (Spacing 25 vars, Sizing 24 vars, Semantic Colors 32 vars); `figma.config.json`; prop mappings for Stack/Center/Cluster/Grid/Container/Split/Cover | 1.0 | $50 | $50.00 |
+| # | Item | Description | Amount |
+|---|------|-------------|--------|
+| 1 | Visual identity & token system | Defined the full color palette (navy, gold, neutrals) and spacing scale as design tokens — values that flow from Figma through to every application automatically, with light and dark mode variants | $400.00 |
+| 2 | Spatial layout system | Built seven composable layout primitives (Stack, Center, Cluster, Grid, Container, Split, Cover) that control how elements are arranged on the page, replacing one-off layout code with a consistent spatial vocabulary | $375.00 |
+| 3 | Core UI component library | Assembled a comprehensive set of reusable interface components — forms, dialogs, tables, navigation, charts, and more — that all three applications draw from | $425.00 |
+| 4 | Page-level templates & patterns | Composed higher-level building blocks (page headers, empty states, dashboard shells, auth layouts) from the core components, giving each application a consistent structural language | $225.00 |
+| 5 | Figma integration | Linked every layout component to its counterpart in the Figma design file so that design decisions and code stay synchronized, and developers can see real code snippets from within Figma | $75.00 |
 
-| | | | | **Subtotal** | **$700.00** |
-| | | | | Tax (0%) | $0.00 |
-| | | | | **Total Due** | **$700.00** |
+| | | **Subtotal** | **$1,500.00** |
+| | | Tax (0%) | $0.00 |
+| | | **Total Due** | **$1,500.00** |
 
----
-
-**Payment Terms:** Net 14 days
-**Method:** Bank transfer or check
+**Payment Terms:** Net 14 days | **Method:** Bank transfer or check
 
 ---
 ---
@@ -135,20 +112,18 @@ contact@gmhlab.org
 
 ## Application Development & Deployment
 
-| # | Item | Description | Hours | Rate | Amount |
-|---|------|-------------|-------|------|--------|
-| 1 | `apps/web` — Main application | Next.js 16 App Router; 5 route groups: `(content)` GMH public site with homepage + innovations + EQUIP/Photovoice detail pages, `(marketing)` campaign pages, `(home)` portal landing, `(auth)` login/link-in-bio/layout demos, `(app)` dashboard with sidebar + 3 example views + design-system viewer | 5.0 | $50 | $250.00 |
-| 2 | `apps/docs` — Design system docs | Next.js 16 documentation app; component showcase and design-system reference for `@repo/ui`; port 3001 | 1.0 | $50 | $50.00 |
-| 3 | `apps/cdn` — Embeddable widget CDN | Vite 6 SPA serving 4 iFrame-embeddable widgets (hero-section, what-is-section, partner-marquee, how-to-section) for Wix and external sites; GitHub Pages deployment pipeline; `docs/` pre-built assets and embed snippets | 2.0 | $50 | $100.00 |
+| # | Item | Description | Amount |
+|---|------|-------------|--------|
+| 1 | Main web application | Built the primary GMH Lab site — including the public-facing homepage, the Innovations showcase (EQUIP, Photovoice), marketing pages, a portal landing page, login and link-in-bio pages, and a full dashboard area with sidebar navigation | $700.00 |
+| 2 | Design system documentation site | Created a dedicated site where the component library is documented and showcased, serving as a living reference for designers and developers on the team | $300.00 |
+| 3 | Embeddable content widgets | Developed four standalone content widgets (hero section, explainer section, partner logo marquee, step-by-step how-to section) that can be embedded in Wix or any external site as iframes | $350.00 |
+| 4 | Deployment & hosting | Configured GitHub Pages publishing for the CDN widgets and wired up deployment pipelines so all three applications can be released from the same repository | $150.00 |
 
-| | | | | **Subtotal** | **$400.00** |
-| | | | | Tax (0%) | $0.00 |
-| | | | | **Total Due** | **$400.00** |
+| | | **Subtotal** | **$1,500.00** |
+| | | Tax (0%) | $0.00 |
+| | | **Total Due** | **$1,500.00** |
 
----
-
-**Payment Terms:** Net 14 days
-**Method:** Bank transfer or check
+**Payment Terms:** Net 14 days | **Method:** Bank transfer or check
 
 ---
 
@@ -156,7 +131,7 @@ contact@gmhlab.org
 
 | Invoice | Description | Amount |
 |---------|-------------|--------|
-| INV-2026-001 | Monorepo Infrastructure & Tooling | $400.00 |
-| INV-2026-002 | Design System & Component Library | $700.00 |
-| INV-2026-003 | Application Development & Deployment | $400.00 |
-| | **Total Contract Value** | **$1,500.00** |
+| INV-2026-001 | Foundation & Developer Tooling | $1,500.00 |
+| INV-2026-002 | Design System & Component Library | $1,500.00 |
+| INV-2026-003 | Application Development & Deployment | $1,500.00 |
+| | **Total Contract Value** | **$4,500.00** |
