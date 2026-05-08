@@ -3,10 +3,10 @@ import { Flex, FlexItem, Section } from "../../../layouts";
 export function InnovationsHero() {
   return (
       <Section paddingTop="1200" paddingBottom="0">
-          <Flex 
-            container 
-            direction="column" 
-            gap="100" 
+          <Flex
+            container
+            direction="column"
+            gap="100"
             className="px-0 relative"
           >
               <div className="flex flex-row items-start justify-start p-0 relative">

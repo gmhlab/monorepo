@@ -1,7 +1,7 @@
 .section {
   box-sizing: border-box;
-  padding: var(--padding-y-top) var(--sds-size-space-600)
-    var(--padding-y-bottom);
+  padding-top: var(--padding-y-top);
+  padding-bottom: var(--padding-y-bottom);
   position: relative;
   width: 100%;
 }

@@ -18,7 +18,7 @@ export function Innovations({ logoSrc }: InnovationsProps = {}) {
         <div className="absolute bottom-20 left-20 w-80 h-80 bg-gradient-to-tr from-[#AA9868]/30 to-transparent rounded-full blur-3xl" />
       </div>
 
-      <Grid columns="clamp(0rem, 4vw, 6rem) 1fr clamp(0rem, 4vw, 6rem)" alignItems="stretch" className="relative">
+      <Grid columns="clamp(0rem, 4vw, 6rem) minmax(0, 1fr) clamp(0rem, 4vw, 6rem)" alignItems="stretch" className="relative">
         <div className="bg-gradient-to-r from-[#033C5A] to-transparent" />
         <Flex direction="column">
           <InnovationsHero />
