@@ -101,7 +101,7 @@ function ContentBox({ title, description, href }: { title: string; description: 
 
 export function InnovationCard({ title, description, imageFilter, icon, href }: InnovationCardProps) {
   return (
-    <div className="relative w-full max-w-96 aspect-square mx-auto group">
+    <div className="relative w-80 h-96 mx-auto group">
       {/* Main image area with gradient overlay */}
       <div className="absolute inset-0 w-80 h-96 rounded-2xl overflow-hidden shadow-2xl shadow-black/50">
         <div className="relative w-full h-full">

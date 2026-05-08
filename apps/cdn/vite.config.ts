@@ -3,8 +3,8 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import { resolve } from "path";
 
-export default defineConfig({
-  base: "/monorepo/",
+export default defineConfig(({ command }) => ({
+  base: command === "build" ? "/monorepo/" : "/",
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
@@ -12,4 +12,4 @@ export default defineConfig({
       "@repo/ui": resolve(__dirname, "../../packages/ui/src"),
     },
   },
-});
+}));

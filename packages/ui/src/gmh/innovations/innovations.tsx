@@ -4,10 +4,14 @@ import { Header } from '../../composites/Headers/Headers';
 import { InnovationsSection } from './components/section';
 import { InnovationsHero } from './components/hero';
 
-export function Innovations() {
+export type InnovationsProps = {
+  logoSrc?: string;
+};
+
+export function Innovations({ logoSrc }: InnovationsProps = {}) {
   return (
     <main className="relative overflow-hidden">
-      <Header currentPath="/innovations" />
+      <Header currentPath="/innovations" logoSrc={logoSrc} />
 
       <div aria-hidden className="absolute inset-0 opacity-10 pointer-events-none">
         <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br from-[#AA9868] to-transparent rounded-full blur-3xl" />
