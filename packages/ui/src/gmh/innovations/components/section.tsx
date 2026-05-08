@@ -1,10 +1,17 @@
 import { InnovationCard } from './card';
 import { MessageSquareHeart, Camera } from 'lucide-react';
+import { Section } from '../../../layouts/Section/Section';         
+import { Grid } from '../../../layouts/Grid/Grid';    
 
 export function InnovationsSection() {
   return (
-    <div className="overflow-hidden py-20 relative w-full ">
-        <div className="container flex-wrap mx-auto max-w-6xl flex w-full gap-12 px-8 relative">
+      <Section padding="1200" className="overflow-hidden relative">
+        <Grid
+          container
+          columns="repeat(auto-fill, minmax(min(20rem, 100%), 24rem))"
+          gap="600"
+          className="mx-auto max-w-6xl relative justify-start"
+        >
           <InnovationCard
             title="EQUIP"
             description={
@@ -29,7 +36,7 @@ export function InnovationsSection() {
             icon={<Camera />}
             href='/site/innovations/photovoice'
           />
-        </div>
-      </div>
+        </Grid>
+      </Section>
   );
 }

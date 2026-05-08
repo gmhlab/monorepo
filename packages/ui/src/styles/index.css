@@ -115,6 +115,19 @@
   --shadow-2xl: -1px 6.5px 14px -0.5px hsl(202 53% 10% / 1.05);
   --tracking-normal: 0.02em;
   --spacing: 0.25rem;
+
+  /* SDS space tokens — consumed by layouts/Section, layouts/Flex, layouts/Grid */
+  --sds-size-space-100: 0.5rem;
+  --sds-size-space-200: 1rem;
+  --sds-size-space-300: 1.5rem;
+  --sds-size-space-400: 2rem;
+  --sds-size-space-600: 3rem;
+  --sds-size-space-800: 4rem;
+  --sds-size-space-1200: 6rem;
+  --sds-size-space-1600: 8rem;
+  --sds-size-space-4000: 20rem;
+
+  --global-container-max-width: 63rem;
 }
 
 .dark {

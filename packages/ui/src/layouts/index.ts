@@ -29,3 +29,7 @@ export { Grid, type GridProps } from "./grid"
 export { Container, type ContainerProps } from "./container"
 export { Split, type SplitProps } from "./split"
 export { Cover, type CoverProps } from "./cover"
+
+export * from "./Flex/Flex";
+export * from "./Section/Section";
+export * from "./Grid/Grid";
