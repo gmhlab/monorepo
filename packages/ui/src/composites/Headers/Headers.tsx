@@ -11,7 +11,6 @@ import {
   SheetTrigger,
 } from "../../primitives/sheet";
 import { cn } from "../../lib/utils";
-import crest from "./crest.png?url";
 
 export type NavItem = {
   label: string;
@@ -33,12 +32,14 @@ export type HeaderProps = {
   navItems?: NavItem[];
   currentPath?: string;
   className?: string;
+  logoSrc?: string;
 };
 
 export function Header({
   navItems = DEFAULT_NAV,
   currentPath,
   className,
+  logoSrc = "/crest.png",
 }: HeaderProps) {
   const [open, setOpen] = useState(false);
 
@@ -52,7 +53,7 @@ export function Header({
             aria-label="Center for Global Mental Health Equity — The George Washington University"
           >
             <img
-              src={crest}
+              src={logoSrc}
               alt=""
               className="block h-16 sm:h-24 w-auto"
             />
@@ -118,7 +119,7 @@ export function Header({
 
         <div className="px-5 py-6 border-b border-secondary/40 text-center">
           <img
-            src={crest}
+            src={logoSrc}
             alt=""
             className="inline-block max-w-full h-auto max-h-16"
           />

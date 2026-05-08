@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { ComponentPropsWithoutRef } from "react";
+import type { ComponentPropsWithoutRef, CSSProperties } from "react";
 import "./flex.css";
 
 export type FlexProps = ComponentPropsWithoutRef<"div"> & {
@@ -39,7 +39,7 @@ export function Flex({
         "--flex-align-primary": alignPrimary,
         "--flex-align-secondary": alignSecondary,
         "--flex-direction": direction,
-      }}
+      } as CSSProperties}
       className={classNames}
       {...props}
     />

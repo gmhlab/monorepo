@@ -1,5 +1,8 @@
+"use client";
+
 import clsx from "clsx";
-import { ComponentPropsWithoutRef, useState } from "react";
+import { useState } from "react";
+import type { ComponentPropsWithoutRef } from "react";
 import "./image.css";
 
 export type ImageProps = Omit<ComponentPropsWithoutRef<"img">, "alt"> & {

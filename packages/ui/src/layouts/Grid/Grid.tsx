@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { ComponentPropsWithoutRef, CSSProperties } from "react";
+import type { ComponentPropsWithoutRef, CSSProperties } from "react";
 import "./grid.css";
 
 export type GridProps = ComponentPropsWithoutRef<"div"> & {

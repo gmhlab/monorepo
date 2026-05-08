@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { Image } from "../../primitives/Image/Image";
-import { ComponentPropsWithoutRef } from "react";
+import type { ComponentPropsWithoutRef } from "react";
 import "./section.css";
 
 export type SectionProps = ComponentPropsWithoutRef<
