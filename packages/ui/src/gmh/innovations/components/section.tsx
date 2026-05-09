@@ -22,7 +22,7 @@ export function InnovationsSection() {
             }
             imageFilter="from-blue-600/60 to-blue-800/80"
             icon={<MessageSquareHeart />}
-            href='/site/innovations/equip'
+            href='https://gwglobalmentalhealth.com/innovations/equip'
           />
           <InnovationCard
             title="PhotoVoice™"
@@ -34,7 +34,7 @@ export function InnovationsSection() {
             }
             imageFilter="from-blue-700/60 to-indigo-800/80"
             icon={<Camera />}
-            href='/site/innovations/photovoice'
+            href='https://gwglobalmentalhealth.com/innovations/photovoice'
           />
         </Grid>
       </Section>
