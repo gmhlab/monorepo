@@ -1,7 +1,7 @@
 import { type ReactNode } from "react"
-import { Grid } from "../../layouts/grid"
-import { Stack } from "../../layouts/stack"
-import { Cluster } from "../../layouts/cluster"
+import { Grid } from "../../layouts"
+import { Stack } from "../../layouts"
+import { Cluster } from "../../layouts"
 import { cn } from "../../lib/"
 
 export type FooterLink = {

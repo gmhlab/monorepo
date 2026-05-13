@@ -1,6 +1,6 @@
 import { forwardRef, type HTMLAttributes, type ReactNode } from "react"
-import { Stack } from "../layouts/stack"
-import { Center } from "../layouts/center"
+import { Stack } from "../layouts"
+import { Center } from "../layouts"
 import { cn } from "../lib/"
 
 export interface EmptyStateProps extends Omit<HTMLAttributes<HTMLDivElement>, "title"> {

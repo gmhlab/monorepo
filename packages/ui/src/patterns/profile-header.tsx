@@ -1,5 +1,5 @@
 import { forwardRef, type HTMLAttributes, type ReactNode } from "react"
-import { Stack } from "../layouts/stack"
+import { Stack } from "../layouts"
 import { cn } from "../lib/"
 
 export interface ProfileHeaderProps extends HTMLAttributes<HTMLDivElement> {

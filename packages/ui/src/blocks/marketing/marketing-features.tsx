@@ -1,7 +1,7 @@
 import { forwardRef, type HTMLAttributes } from "react"
-import { Center } from "../../layouts/center"
-import { Stack } from "../../layouts/stack"
-import { Grid } from "../../layouts/grid"
+import { Center } from "../../layouts"
+import { Stack } from "../../layouts"
+import { Grid } from "../../layouts"
 import { FeatureCard, type FeatureCardProps } from "../../patterns/feature-card"
 import { cn } from "../../lib/"
 

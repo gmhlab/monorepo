@@ -14,19 +14,19 @@ import { PageHeader, SectionHeader } from "@repo/ui/patterns"
 // ── Layout index data ──
 
 const layouts = [
-  { href: "dashboard/layouts/stack", title: "Stack", description: "Vertical flow with consistent spacing", tier: "foundational" },
-  { href: "dashboard/layouts/cluster", title: "Cluster", description: "Horizontal wrapping groups", tier: "foundational" },
-  { href: "dashboard/layouts/grid", title: "Grid", description: "Multi-column grid arrangements", tier: "foundational" },
-  { href: "dashboard/layouts/center", title: "Center", description: "Centered content with max-width", tier: "foundational" },
-  { href: "dashboard/layouts/container", title: "Container", description: "Width constraint + padding + container queries", tier: "foundational" },
-  { href: "dashboard/layouts/split", title: "Split", description: "Two-column ratio layouts", tier: "structural" },
-  { href: "dashboard/layouts/cover", title: "Cover", description: "Full-height with centered principal", tier: "structural" },
-  { href: "dashboard/layouts/box", title: "Box", description: "Consistent padding with optional border", tier: "structural" },
-  { href: "dashboard/layouts/switcher", title: "Switcher", description: "Horizontal to vertical based on container width", tier: "specialized" },
-  { href: "dashboard/layouts/frame", title: "Frame", description: "Aspect-ratio container that crops content", tier: "specialized" },
-  { href: "dashboard/layouts/reel", title: "Reel", description: "Horizontal scrolling strip with snap", tier: "specialized" },
-  { href: "dashboard/layouts/imposter", title: "Imposter", description: "Positioned overlay with 7 placements", tier: "specialized" },
-  { href: "dashboard/layouts/icon", title: "Icon", description: "Inline icon+text alignment at font size", tier: "specialized" },
+  { href: "dashboard/layouts", title: "Stack", description: "Vertical flow with consistent spacing", tier: "foundational" },
+  { href: "dashboard/layouts", title: "Cluster", description: "Horizontal wrapping groups", tier: "foundational" },
+  { href: "dashboard/layouts", title: "Grid", description: "Multi-column grid arrangements", tier: "foundational" },
+  { href: "dashboard/layouts", title: "Center", description: "Centered content with max-width", tier: "foundational" },
+  { href: "dashboard/layouts", title: "Container", description: "Width constraint + padding + container queries", tier: "foundational" },
+  { href: "dashboard/layouts", title: "Split", description: "Two-column ratio layouts", tier: "structural" },
+  { href: "dashboard/layouts", title: "Cover", description: "Full-height with centered principal", tier: "structural" },
+  { href: "dashboard/layouts", title: "Box", description: "Consistent padding with optional border", tier: "structural" },
+  { href: "dashboard/layouts", title: "Switcher", description: "Horizontal to vertical based on container width", tier: "specialized" },
+  { href: "dashboard/layouts", title: "Frame", description: "Aspect-ratio container that crops content", tier: "specialized" },
+  { href: "dashboard/layouts", title: "Reel", description: "Horizontal scrolling strip with snap", tier: "specialized" },
+  { href: "dashboard/layouts", title: "Imposter", description: "Positioned overlay with 7 placements", tier: "specialized" },
+  { href: "dashboard/layouts", title: "Icon", description: "Inline icon+text alignment at font size", tier: "specialized" },
 ]
 
 const tierColors: Record<string, "default" | "secondary" | "outline"> = {

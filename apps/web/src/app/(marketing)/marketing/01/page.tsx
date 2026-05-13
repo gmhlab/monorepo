@@ -1,5 +1,5 @@
 import { MarketingHero } from "@repo/ui";
-import { Cluster } from "@repo/ui/layouts/cluster";
+import { Cluster } from "@repo/ui/layouts";
 import { Button } from "@repo/ui";
 
 

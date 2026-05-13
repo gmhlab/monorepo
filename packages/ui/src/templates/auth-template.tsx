@@ -1,8 +1,8 @@
 import { type ComponentPropsWithRef, type ReactNode } from "react"
-import { Cover } from "../layouts/cover"
-import { Center } from "../layouts/center"
-import { Stack } from "../layouts/stack"
-import { type CenterMax } from "../layouts/_scale"
+import { Cover } from "../layouts"
+import { Center } from "../layouts"
+import { Stack } from "../layouts"
+import { type CenterMax } from "../layouts"
 import { cn } from "../lib/"
 
 const maxWidthMap = {

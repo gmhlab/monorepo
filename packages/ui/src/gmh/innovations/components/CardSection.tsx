@@ -1,11 +1,11 @@
-import { InnovationCard } from './card';
+import { InnovationCard } from './InnovationCard';
 import { MessageSquareHeart, Camera } from 'lucide-react';
 import { Section } from '../../../layouts/Section/Section';         
 import { Grid } from '../../../layouts/Grid/Grid';    
 
 export function InnovationsSection() {
   return (
-      <Section padding="1200" className="overflow-hidden relative">
+      <Section padding="1200" >
         <Grid
           container
           columns="repeat(auto-fill, minmax(min(20rem, 100%), 24rem))"
@@ -14,7 +14,8 @@ export function InnovationsSection() {
         >
           <InnovationCard
             title="EQUIP"
-            description={
+            imageSrc="https://worldatwork.org/media/CDN/dist/CDN2/images/article/D4_July_evolve_Navigate_Mental_Health_Benefits_1110_x_428.jpg"
+            description={  
               <>
                 <span className="font-bold text-[#033C5A]">EQUIP is for trainers and supervisors</span>
                 <span className="text-gray-600"> to improve the quality of their teams's psychosocial and mental health helping skills.</span>
@@ -26,6 +27,7 @@ export function InnovationsSection() {
           />
           <InnovationCard
             title="PhotoVoice™"
+            imageSrc="https://unsplash.com/photos/man-in-blue-long-sleeve-shirt-holding-woman-in-gray-sweater-uOhBxB23Wao"
             description={
               <>
                 <span className="font-bold text-[#033C5A]">Photography and digital storytelling</span>
