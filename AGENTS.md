@@ -43,7 +43,7 @@ Dependency versions are pinned in the `catalog:` section of `pnpm-workspace.yaml
 
 Apps consume raw TypeScript source via path aliases. Next.js uses `transpilePackages: ["@repo/ui"]`; Vite uses aliases. No compilation in the UI package itself.
 
-**Import:** `import { Button, Stack, cn } from "@repo/ui"`
+**Import:** `import { Button, Flex, cn } from "@repo/ui"`
 **CSS:** `@import "@repo/ui/index.css"` in app root CSS (required for theme tokens)
 
 ### Component Layer Hierarchy
@@ -53,13 +53,20 @@ The UI package uses a layered architecture inspired by "Every Layout":
 ```
 lib/           Pure utilities (cn, slot) — no UI
   ↑
-hooks/         Shared hooks (useIsMobile)
+hooks/         Shared hooks (useIsMobile, useMediaQuery)
   ↑
-layouts/       Spatial primitives — Stack, Center, Cluster, Grid, Container, Split, Cover. Shared scale in _scale.ts.
+utils/         Cross-family helpers (AnchorOrButton)
   ↑
-primitives/    Headless, accessible base components (Radix/Base UI). Use cva + cn + data-slot pattern.
+icons/         Icon component set (Icon + 280+ Icon* SVG wrappers)
   ↑
-composites/    Composed UI pieces — Logo, LogoMark, ModeToggle, ThemeProvider, ImageWithFallback, Hamburger, ProfileCard.
+layouts/       Spatial primitives — Section, Grid, Flex (+ FlexItem). Legacy Stack/Cluster/Container/Center/Split/Cover in legacy.tsx.
+  ↑
+primitives/    Two coexisting families:
+                 • shadcn modules (lowercase files) — Radix/Base UI via cva + cn + data-slot
+                 • react-aria-components drop-ins (PascalCase folders) — Button/, Avatar/, Fieldset/, …
+               Both live side-by-side. Pick one family per component to avoid export collisions.
+  ↑
+composites/    Composed UI pieces — Cards, Footers, Forms, Sections (Hero, Panel), Headers, plus Logo, ModeToggle, ThemeProvider, ImageWithFallback, Hamburger, ProfileCard.
   ↑
 blocks/        Page-ready sections (numbered: dashboard-01, login-03, etc.) + marketing blocks + navbars/footers.
   ↑
@@ -78,17 +85,15 @@ Each layer re-exports through barrel `index.ts` files up to `ui/src/index.ts`.
 
 ### Layout Primitives
 
-7 composable primitives based on [Every Layout](https://every-layout.dev/) by Pickering & Bell. They control **where things go** — spacing, alignment, distribution. No colors, borders, or typography.
+Three composable spatial primitives in `src/layouts/`. They control **where things go** — gap, alignment, padding — and stay free of colors, borders, and typography.
 
-- **Stack** — vertical flow with gap. `recursive` prop applies spacing to all descendants (for prose/CMS content).
-- **Center** — horizontal centering + max-width + gutter. `intrinsic` prop centers content-width elements.
-- **Cluster** — horizontal wrapping flow (tags, buttons, breadcrumbs).
-- **Grid** — multi-column grid. `auto-fill`/`auto-fit` with configurable `min` column width.
-- **Container** — CSS container-query context wrapper + max-width + padding.
-- **Split** — two-column layout (flexbox wrapping). Columns stack when the container is too narrow.
-- **Cover** — vertical centering between header/footer.
+- **Section** — page region with `padding`/`paddingTop`/`paddingBottom` rhythm and `variant` (`brand` | `neutral` | `stroke` | `subtle` | `image`). Renders as `<section>`, `<header>`, or `<footer>` via `elementType`.
+- **Grid** — CSS grid with typed `gap`/`columnGap`/`rowGap`, `columns`/`rows` template strings, `flow`, `justifyItems`, `alignItems`, and a `container` max-width opt-in.
+- **Flex** — flex container with `alignPrimary`/`alignSecondary`, `direction`, `wrap`, and `container`. Ships with **FlexItem** for `size="full" | "major" | "minor" | "half" | "fill"` column behavior.
 
-**Shared scale:** All layouts share a `Gap` type and `gapMap` from `layouts/_scale.ts`. The scale also exports `Padding`, `ContainerWidth`, `CenterMax`, `Measure`, `SectionSpacing`, and `GridMin` types.
+**Shared scale:** All three accept the numeric gap/padding tokens `100`, `200`, `300`, `400`, `600`, `800`, `1200`, `1600` (mapped to CSS variables in `styles/index.css`). `Section.padding` adds `0` and `4000`.
+
+**Legacy primitives** — `Stack`, `Cluster`, `Center`, `Container`, `Split`, `Cover` still ship from `layouts/legacy.tsx` (re-exported through `layouts/index.ts`) for backwards compatibility. **Don't use them in new code.** Reach for `Section` / `Grid` / `Flex` instead.
 
 ### Route Groups (`apps/web`)
 
@@ -122,11 +127,12 @@ Apps must include `@source` directives in their `globals.css` pointing to both l
 
 **Always use semantic tokens** (`bg-primary`, `text-muted-foreground`), never hardcode hex values. Exception: GMH branded components.
 
-Use layout components (Stack, Cluster, Grid, Center, Cover, Split) for structural composition instead of raw `flex`/`grid` utilities.
+Use layout components (`Section`, `Grid`, `Flex`) for structural composition instead of raw `flex`/`grid` utilities.
 
 ## Conventions
 
-- **Primitives** use `cva` for variants, `cn()` for className merging, `data-slot` attribute, `asChild`/`Slot.Root` pattern
+- **Primitives (shadcn family)** use `cva` for variants, `cn()` for className merging, `data-slot` attribute, `asChild`/`Slot.Root` pattern
+- **Primitives (react-aria family)** ship as `primitives/<PascalCase>/<PascalCase>.tsx` + colocated `<name>.css`. Import siblings via explicit relative paths (`../Text/Text`) — **not** through the `primitives/index.ts` barrel, which would collide with shadcn exports of the same name (`Button`, `Avatar`, `Dialog`, …)
 - **Blocks** use numbered suffix convention: `blocks/<name>-<nn>/`
 - **`"use client"`** required at file top for any component using hooks, events, or browser APIs. Default to Server Components in Next.js.
 - **Unused vars** must be prefixed with `_` (strict `@typescript-eslint/no-unused-vars`)
@@ -160,8 +166,8 @@ Code Connect files live in `.figma/` directories within each UI layer. These map
 
 | Collection | Type | Count | Source |
 |---|---|---|---|
-| **Spacing** | `FLOAT` | 25 | `_scale.ts` — Gap, Padding, Space, Section Spacing, Gutter |
-| **Sizing** | `FLOAT` | 24 | `_scale.ts` — Container Width, Center Max, Measure, Grid Min, Radius |
+| **Spacing** | `FLOAT` | 25 | `styles/index.css` — numeric gap/padding tokens (`100`–`4000`) consumed by Section/Grid/Flex |
+| **Sizing** | `FLOAT` | 24 | `styles/index.css` — container widths, content measure, radius |
 | **Semantic Colors** | `COLOR` | 32 | `index.css` — Light + Dark modes (background, primary, secondary, muted, accent, destructive, border, ring, chart, sidebar tokens) |
 | **Color Primitives** | `COLOR` | 231 | `index.css` — 21 Tailwind palettes × 11 shades |
 
@@ -182,7 +188,7 @@ Three Claude Code skills are available in this repo:
 
 | Skill | File | Trigger |
 |-------|------|---------|
-| **layout-primitives** | [`SKILL.md`](SKILL.md) | Building or refactoring layout components (Stack, Cluster, Container, Grid), spacing tokens, `_scale.ts`, component taxonomy, or discussing spatial vocabulary in the design system |
+| **layout-primitives** | [`SKILL.md`](SKILL.md) | Building or refactoring layout components (Section, Grid, Flex), spacing tokens, the numeric gap scale, component taxonomy, or discussing spatial vocabulary in the design system |
 | **design** | [`.claude/skills/design/skill.md`](.claude/skills/design/skill.md) | Figma-to-code translation (Figma URL provided), design review of a component, or creating a new UI component |
 | **figma-sync** | [`.claude/skills/figma-sync/skill.md`](.claude/skills/figma-sync/skill.md) | Creating/auditing Figma Code Connect mappings, syncing components to/from Figma, or checking Code Connect coverage |
 

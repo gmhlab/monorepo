@@ -43,6 +43,9 @@ catalog:
   # Icons
   lucide-react: "^0.487.0"                                                                                                                                                                
   
+  # React Aria
+  "react-aria-components": "^1.5.0"
+
   # Radix UI
   "@radix-ui/react-accordion": "^1.1.0"
   "@radix-ui/react-avatar": "^1.1.0"                                                                                                                                                      

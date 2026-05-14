@@ -1,8 +1,26 @@
-# GMH Lab Monorepo
+# Global Mental Health Lab — Monorepo
 
-Design system and web applications for the [Global Mental Health Lab](https://gwglobalmentalhealth.com).
+This repository is a **pnpm + Turborepo** monorepo that powers the Global Mental Health Lab frontend ecosystem.
 
-Built with pnpm workspaces, Turborepo, React 19, Next.js 16, Vite 6, and Tailwind CSS v4.
+## What’s inside
+
+- **`apps/web`** — Main Next.js application (App Router)
+- **`apps/docs`** — Design system docs site (Next.js)
+- **`apps/cdn`** — Static asset delivery app (Vite SPA)
+- **`packages/ui`** — Shared UI library (raw TypeScript source, token-driven styling)
+
+## Core architecture
+
+- **Monorepo tooling:** pnpm workspaces + Turborepo
+- **UI system:** layered component model (layouts → primitives → composites → blocks → templates/pages)
+- **Styling:** Tailwind CSS v4 + semantic design tokens from `index.css`
+- **Design workflow:** Figma Code Connect mappings for component parity
+
+## Why this repo exists
+
+- Keep product apps and design system in sync
+- Reuse a single source of truth for UI tokens/components
+- Enable rapid iteration across web, docs, and branded experiences
 
 ## Quick Start
 
@@ -34,13 +52,15 @@ gmhlab_monorepo/
 │   ├── ui/                         # Shared component library (raw TS, no build)
 │   │   └── src/
 │   │       ├── lib/               # Pure utilities (cn, slot)
-│   │       ├── hooks/             # Shared hooks (useIsMobile)
-│   │       ├── layouts/            # Spatial primitives (Stack, Center, Grid, etc.)
-│   │       ├── primitives/         # Headless, accessible base components (Radix/Base UI)
-│   │       ├── composites/         # Multi-primitive widgets (Logo, ThemeProvider)
-│   │       ├── blocks/             # Page-ready sections (navbars, footers, marketing)
-│   │       ├── patterns/           # Stateless UI recipes (PageHeader, FormSection)
-│   │       ├── templates/          # Full page shells (AppShell, Auth, Marketing, Split)
+│   │       ├── hooks/             # Shared hooks (useIsMobile, useMediaQuery)
+│   │       ├── utils/             # Cross-family helpers (AnchorOrButton)
+│   │       ├── icons/             # Icon component + 280+ Icon* SVG wrappers
+│   │       ├── layouts/           # Spatial primitives (Section, Grid, Flex) + legacy.tsx
+│   │       ├── primitives/        # shadcn modules (lowercase) + react-aria-components drop-ins (PascalCase)
+│   │       ├── composites/        # Cards, Footers, Forms, Sections, Headers, Logo, ThemeProvider, …
+│   │       ├── blocks/            # Page-ready sections (navbars, footers, marketing)
+│   │       ├── patterns/          # Stateless UI recipes (PageHeader, FormSection)
+│   │       ├── templates/         # Full page shells (AppShell, Auth, Marketing, Split)
 │   │       ├── pages/             # Complete page compositions (Dashboard, DesignSystem, LinkInBio)
 │   │       ├── gmh/               # Domain-specific branded components
 │   │       ├── styles/            # Theme tokens and CSS
@@ -61,7 +81,7 @@ Raw TypeScript component library — apps compile it themselves, no build step r
 ### Importing
 
 ```ts
-import { Button, Card, Stack, cn, useIsMobile } from "@repo/ui";
+import { Button, Card, Flex, cn, useIsMobile } from "@repo/ui";
 ```
 
 ```css
@@ -71,15 +91,25 @@ import { Button, Card, Stack, cn, useIsMobile } from "@repo/ui";
 
 ### Component Layers
 
-**Primitives** (`src/primitives/`) — 56 headless, accessible base components built on Radix UI:
+**Primitives** (`src/primitives/`) — two component families that share the directory. Pick one family per component to avoid export collisions.
+
+*shadcn modules* (lowercase files) — 56 headless components built on Radix UI / Base UI, using `cva` + `cn` + `data-slot`:
 
 `Accordion` · `AlertDialog` · `Alert` · `AspectRatio` · `Avatar` · `Badge` · `Breadcrumb` · `Button` · `ButtonGroup` · `Calendar` · `Card` · `Carousel` · `Chart` · `Checkbox` · `Collapsible` · `Combobox` · `Command` · `ContextMenu` · `Dialog` · `Direction` · `Drawer` · `DropdownMenu` · `Empty` · `Field` · `Form` · `HoverCard` · `Input` · `InputGroup` · `InputOTP` · `Item` · `Kbd` · `Label` · `Menubar` · `NativeSelect` · `NavigationMenu` · `Pagination` · `Popover` · `Progress` · `RadioGroup` · `Resizable` · `ScrollArea` · `Select` · `Separator` · `Sheet` · `Sidebar` · `Skeleton` · `Slider` · `Sonner` · `Spinner` · `Switch` · `Table` · `Tabs` · `Textarea` · `Toggle` · `ToggleGroup` · `Tooltip`
 
-**Layouts** (`src/layouts/`) — 7 spatial primitives based on [Every Layout](https://every-layout.dev/):
+*react-aria-components drop-ins* (PascalCase folders) — 28 primitives built on `react-aria-components` with colocated CSS:
 
-`Stack` · `Center` · `Cluster` · `Grid` · `Container` · `Split` · `Cover`
+`Accordion` · `Avatar` · `Button` · `Checkbox` · `Dialog` · `Fieldset` · `Icon` · `IconButton` · `Image` · `Input` · `Link` · `ListBox` · `Logo` · `Menu` · `Navigation` · `Notification` · `Pagination` · `Radio` · `Search` · `Select` · `Slider` · `Switch` · `Tab` · `Table` · `Tag` · `Text` · `Textarea` · `Tooltip`
 
-All share a `Gap` type and scale from `_scale.ts`.
+Import siblings inside this family with explicit relative paths (e.g. `import { Text } from "../Text/Text"`) — not through the `primitives/index.ts` barrel.
+
+**Layouts** (`src/layouts/`) — 3 spatial primitives:
+
+`Section` · `Grid` · `Flex` (with `FlexItem`)
+
+All three accept the numeric token scale `100` · `200` · `300` · `400` · `600` · `800` · `1200` · `1600` for `gap`/`padding`.
+
+*Legacy:* `Stack` · `Cluster` · `Center` · `Container` · `Split` · `Cover` remain available from `layouts/legacy.tsx` for backwards compatibility but should not be used in new code.
 
 **Blocks** (`src/blocks/`) — page-ready composed sections:
 
@@ -113,7 +143,8 @@ All share a `Gap` type and scale from `_scale.ts`.
 
 **Composites** (`src/composites/`) — multi-primitive widgets:
 
-`Logo` · `LogoMark` · `ModeToggle` · `ThemeProvider` · `ImageWithFallback` · `Hamburger` · `ProfileCard`
+- *Grouped families:* `Cards/` (Card, PricingCard, ProductInfoCard + skeletons & adapters), `Footers/`, `Forms/` (FormBox), `Sections/` (Hero, Panel), `Headers/`
+- *Standalone:* `Logo` · `LogoMark` · `ModeToggle` · `ThemeProvider` · `ImageWithFallback` · `Hamburger` · `ProfileCard`
 
 **GMH** (`src/gmh/`) — domain-specific branded pages:
 
@@ -214,9 +245,9 @@ pnpm --filter @repo/ui build:registry    # rebuild registry
 | Language | TypeScript (strict) | 5.7 |
 | UI | React | 19 |
 | Styling | Tailwind CSS v4 | 4.0 |
-| Components | Radix UI + Base UI | 1.4 / 1.2 |
+| Components | Radix UI + Base UI + react-aria-components | 1.4 / 1.2 / 1.17 |
 | Variants | class-variance-authority | — |
-| Icons | lucide-react | 0.487 |
+| Icons | lucide-react (+ local `Icon*` set) | 0.487 |
 | Animation | motion | 12 |
 | Charts | Recharts | 2.15 |
 | Tables | @tanstack/react-table | 8.21 |
@@ -251,3 +282,19 @@ pnpm exec prettier --write .          # Format everything
 ## Contributing
 
 For detailed agent/contributor workflow, component conventions, and architectural decisions, see [CLAUDE.md](./CLAUDE.md).
+
+## Agent & Contributor Docs
+
+| File | Purpose |
+|------|---------|
+| [`AGENTS.md`](./AGENTS.md) | Commands, architecture, layer hierarchy, conventions, Figma integration, and skill index — the working reference for AI agents and contributors |
+| [`SKILL.md`](./SKILL.md) | `layout-primitives` skill — spatial vocabulary, numeric gap scale, and rules for `Section` / `Grid` / `Flex` |
+| [`CLAUDE.md`](./CLAUDE.md) | Entry point for Claude Code; pulls in `AGENTS.md` and `SKILL.md` via `@` imports |
+
+## Appendix
+
+### Suggested GitHub Repo Description (short)
+Global Mental Health Lab monorepo (pnpm + Turborepo) with Next.js apps and a shared token-driven UI system built on composable layout primitives.
+
+### Suggested “About” blurb (slightly longer)
+A production-ready monorepo for the Global Mental Health Lab: multiple frontend apps (web, docs, cdn) powered by Next.js/Vite, plus a shared @repo/ui design system with semantic tokens, layered component architecture, and Figma Code Connect integration.

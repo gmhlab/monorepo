@@ -1,21 +1,22 @@
 ---
 name: layout-primitives
 description: >
-  Architect spatial vocabulary and layout primitives for React + Tailwind design systems.
-  Use this skill whenever the user is building or refactoring layout components (Stack, Cluster,
-  Container, Grid), defining spacing tokens or scales, setting up a _scale.ts or similar
-  spatial contract file, creating a component taxonomy (primitive → composite → pattern →
-  layout → template), working in a monorepo with shared UI packages, or discussing how
-  components should own their spacing. Also trigger when the user mentions gap tiers,
-  section spacing, container widths, content measure, CVA layout variants, or the
-  relationship between layout and composition in a design system — even if they don't
-  use the exact term "layout primitives." If someone is building a packages/ui folder
-  structure or asking how layout components should relate to Tailwind tokens, this is the skill.
+  Architect and maintain the spatial vocabulary and layout primitives for the @repo/ui design
+  system. Use this skill whenever the user is building or refactoring layout components
+  (Section, Grid, Flex / FlexItem), defining spacing tokens, working with the numeric gap
+  scale (100–1600), discussing how composites/blocks/templates should own their spacing,
+  reviewing whether something should live in `layouts/`, `primitives/`, or `composites/`,
+  or considering whether to keep the legacy primitives (Stack/Cluster/Container/Center/Split/
+  Cover) in `layouts/legacy.tsx`. Also trigger when the user talks about section padding,
+  variant backgrounds, FlexItem column sizes, or container max-widths inside Grid/Flex —
+  even if they don't use the exact term "layout primitives." If someone is editing
+  `packages/ui/src/layouts/` or asking how layout components relate to the Tailwind v4
+  token system, this is the skill.
 ---
 
 # Layout Primitives
 
-A methodology for building the spatial foundation of a React + Tailwind CSS design system.
+A methodology for the spatial foundation of `@repo/ui`, the design system in `packages/ui/`.
 The core principle: **spatial vocabulary first, layout primitives second, everything else after.**
 
 ## Why this order matters
@@ -31,163 +32,164 @@ their parent layout does.
 
 ## The authoring sequence
 
-The taxonomy describes complexity: `primitive → composite → pattern → layout → template`.
+The taxonomy describes complexity:
+`layout → primitive → composite → block → pattern → template → page`.
 But the **authoring sequence** is different:
 
 ```
-1. Spatial vocabulary (_scale.ts)    — the shared type contract
-2. Layout primitives                  — Stack, Cluster, Container, Grid
-3. Primitives                         — Button, Input, Badge
-4. Composites                         — SearchField, NavItem
-5. Patterns                           — Hero, FeatureGrid, PricingTable
-6. Templates                          — MarketingPage, DashboardShell
+1. Spatial tokens (styles/index.css + layouts CSS)  — the shared contract
+2. Layout primitives                                — Section, Grid, Flex (+ FlexItem)
+3. Primitives                                       — Button, Input, Text, …
+4. Composites                                       — Cards, Forms, Headers, Sections (Hero/Panel)
+5. Blocks                                           — navbars, footers, marketing sections
+6. Patterns / templates / pages                     — recipes and full shells
 ```
 
 Layout comes early because you can't compose anything coherently if you haven't
 decided how space works first.
 
-## Step 1 — Build the spatial vocabulary
+## The numeric gap scale
 
-Create a single file (typically `_scale.ts` in your layout primitives folder) that
-exports every spacing type and its corresponding Tailwind class map. The underscore
-prefix signals "shared infrastructure, not a public component."
+`Section`, `Grid`, and `Flex` all accept the same numeric token scale for spacing.
+The tokens map to CSS variables defined in `packages/ui/src/styles/index.css`:
 
-Read `references/scale-reference.md` for the full annotated code pattern.
+| Token  | Tier   | Use |
+|--------|--------|-----|
+| `100`  | tight  | icon-to-label, inside composites |
+| `200`  | tight  | within composites |
+| `300`  | tight  | within composites |
+| `400`  | normal | between composites in a pattern |
+| `600`  | normal | between patterns inside a block |
+| `800`  | loose  | between blocks |
+| `1200` | loose  | section interiors |
+| `1600` | loose  | hero/section breathing room |
 
-### What the vocabulary must cover
+`Section.padding` additionally accepts `0` and `4000` (the largest section break).
+**Do not invent values outside this scale** — the whole point is constraint.
 
-These are the spatial domains, in priority order:
+## The three primitives
 
-**Gap scale** — flex/grid gap between children. This is the most-used spatial token.
-Define a union type and a class map. The key insight: not every Tailwind spacing
-value should be in the scale. Constrain it to the steps your system actually uses.
-Organize them into conceptual tiers:
+All three are in `packages/ui/src/layouts/`. Each has its own folder + colocated CSS.
 
-- **Tight** (xs–sm): within composites, icon-to-label distances
-- **Normal** (md–lg): between composites in a pattern
-- **Loose** (xl–3xl): between patterns/sections in a layout
+### Section — page region
 
-**Padding** — internal spacing for containers, cards, sections. Needs axis variants
-(px, py) because the most common container pattern is generous horizontal padding
-with no vertical padding. A symmetric `p-*` is rarely what you want on a page wrapper.
+The outermost spatial contract for a page region. Answers:
 
-**Container widths** — max-width constraints. Without this, your apps disagree on
-what "page width" means. Semantic names (xs through full) mapped to Tailwind's
-max-w classes. This is the missing contract in most systems.
+1. How much vertical rhythm does this region get? (`padding` / `paddingTop` / `paddingBottom` → numeric scale)
+2. What is the region's visual treatment? (`variant`: `brand` | `neutral` | `stroke` | `subtle` | `image`)
+3. What semantic element should it render? (`elementType`: `section` | `header` | `footer`)
 
-**Content measure** — max-width for readable text. Distinct from container width.
-Governs how wide prose can get before readability degrades (~45–75ch). Three tiers:
-narrow (captions), prose (articles), wide (code blocks).
+```tsx
+<Section padding="1600" variant="brand">…</Section>
+<Section variant="image" src="/hero.jpg">…</Section>
+```
 
-**Section spacing** — vertical rhythm between major page regions. Larger than gap
-(starts at 32px, goes to 128px). Uses `py-*` classes. Separate type from Padding
-because it operates at a fundamentally different scale — mixing them is a type error
-that TypeScript should catch.
+When `variant="image"`, an `src` is required and a background `Image` is rendered behind
+the content. This is the single component that owns page-region vertical rhythm — do not
+reach for `py-*` utilities in composites.
 
-**Grid minimums** — constrained min-width values for auto-fill/auto-fit grids.
-These are just a type (the values pass through as-is to CSS), not a class map.
+### Grid — explicit grids
 
-### Design rules for the vocabulary file
+CSS grid with typed gap. Use when you need column/row templates:
 
-- One file, one spatial vocabulary. Don't split gap into one module and padding
-  into another. Co-location makes drift visible.
-- Every map must be `Record<YourType, string>` — exhaustive by construction.
-  Adding a new tier to the type forces you to add it to every map.
-- Include the px values as comments next to each entry. Future you (or your
-  teammate) shouldn't have to memorize that `gap-6` is 24px.
-- Add a changelog comment at the top. Treat edits like schema migrations.
-- If you add helper functions (resolveGap, resolvePadding), keep them in this
-  file too. They're part of the vocabulary, not component logic.
+```tsx
+<Grid columns="repeat(3, 1fr)" gap="600" container>…</Grid>
+<Grid columns="minmax(0, 1fr) 320px" columnGap="400" rowGap="200">…</Grid>
+```
 
-## Step 2 — Build layout primitives
+Props: `columns`, `rows`, `gap`, `columnGap`, `rowGap`, `flow`,
+`justifyItems`, `alignItems`, `container`. The `container` opt-in adds the
+layout's max-width — leave it off for full-bleed grids.
 
-Four layout primitives cover ~90% of composition needs:
+### Flex — flexible rows and stacks
 
-### Stack
-Vertical flow with consistent gap. Your most-used component.
+A flex container with token-driven gap. The most-used primitive — covers both
+horizontal rows and vertical stacks:
 
-- Default `gap="md"`, `align="stretch"`
-- `align` maps to `items-*` classes
-- Gap comes from the shared `gapMap`
-- Optional `recursive` mode (lobotomized owl selector) for prose content, but
-  document it clearly as prose-only — the descendant selector will fight nested
-  layout components' own gap values
+```tsx
+<Flex direction="column" gap="600" alignSecondary="stretch">…</Flex>
+<Flex direction="row" gap="400" alignPrimary="space-between" wrap>…</Flex>
+```
 
-### Cluster (or Inline)
-Horizontal wrapping flow.
+Props: `direction` (`row` | `row-reverse` | `column` | `column-reverse`),
+`gap`, `alignPrimary`, `alignSecondary`, `container`, `wrap`,
+`type` (`quarter` | `third` | `half` | `auto`).
 
-- Default `gap="md"`, `align="center"`, `wrap=true`
-- `justify` prop for distribution (start, center, end, between, around)
-- Same `gapMap` as Stack — spatial vocabulary is shared
+`alignPrimary` controls the main axis, `alignSecondary` controls the cross axis,
+both accept `start | end | center | stretch | space-between`.
 
-### Container
-The outermost spatial contract. Not a generic wrapper div.
+Pair with **FlexItem** when children need explicit column shares:
 
-Must answer three questions every page region needs to agree on:
-1. How wide can content get? (`width` → containerWidthMap)
-2. How much horizontal breathing room? (`px` → paddingXMap)
-3. Does this region respond to its own width or the viewport? (`query`)
+```tsx
+<Flex direction="row" gap="400" wrap>
+  <FlexItem size="major">…</FlexItem>
+  <FlexItem size="minor">…</FlexItem>
+</Flex>
+```
 
-Also supports:
-- `section` prop for vertical rhythm (uses sectionSpacingMap, NOT paddingYMap)
-- `as` prop for semantic HTML (section, main, article, aside, header, footer)
-- Nested container pattern: `width="full"` outer (background) + `width="lg"` inner (content)
+`FlexItem.size`: `full` | `major` | `minor` | `half` | `fill`.
 
-Common mistake to prevent: building Container as *only* a container-query wrapper.
-Container queries are an opt-in feature, not the component's identity.
+### Legacy primitives — do not use in new code
 
-### Grid
-CSS grid with column conventions.
+`Stack`, `Cluster`, `Center`, `Container`, `Split`, `Cover` are still exported from
+`layouts/legacy.tsx` (and re-exported through `layouts/index.ts`) so older code keeps
+compiling. They are **frozen**: don't add features, don't extend the scale they use, and
+reach for `Section` / `Grid` / `Flex` in any new file. When refactoring a file that
+already uses them, swap in the new primitives in the same commit when scope allows —
+otherwise leave a brief note and migrate later.
 
-- Fixed columns (1–6) via Tailwind's grid-cols-*
-- Auto-fill/auto-fit with constrained min-widths (typed, not arbitrary strings)
-- Same `gapMap` as everything else
+## Component API guidelines
 
-### Component API guidelines
-
-- All layout primitives use the same `Gap` type from `_scale.ts`
-- On React 19+, use regular function components with `ref` as a prop — no `forwardRef`
-- Use `cn()` (clsx + twMerge) for class composition
-- Accept `className` for escape-hatch customization
-- Accept `children` implicitly via HTMLAttributes spread
+- Layout primitives accept `className` and forward the rest of the HTML props.
+- They render concrete elements (`<div>`, `<section>`) — no `Slot.Root`/`asChild`. Wrap with
+  `elementType` (Section) when you need different semantics.
+- Don't accept new typography/color props on layout primitives. Those belong on `Text`,
+  `Section.variant`, or design tokens.
+- CSS lives next to the component (`Flex/flex.css`, `Grid/grid.css`, `Section/section.css`).
+  Edit the CSS file when adding a new token tier — not arbitrary Tailwind classes inline.
 
 ## The cardinal rule of composition
 
 > **Layout owns the gap between children. Children own their internal spacing.**
 
 This is the "margin is the parent's job" principle, and it maps directly to `gap`
-on the layout component. If patterns start setting their own `margin-top` or
-`margin-bottom`, the contract is broken and composition becomes unpredictable.
+on the layout component. If composites or patterns start setting their own `margin-top`
+or `margin-bottom`, the contract is broken and composition becomes unpredictable.
 
 The one exception: components that genuinely own their outer breathing room
-(Divider, SectionSeparator). These should use the `spaceYMap` from the shared
-vocabulary — never freehand Tailwind margin classes.
+(`Section` with its `padding`, dividers/separators). Those use the same numeric scale —
+never freehand Tailwind margin classes.
 
 ## Files to watch with high vigilance
 
 In priority order, these are the files where spatial drift causes the most damage:
 
-1. **The `_scale.ts` vocabulary file** — every layout component depends on it.
-   Adding a tier to one component without adding it here breaks the contract.
-2. **Layout component files** — Stack, Container, Cluster, Grid. These define
-   the spatial contracts everything else assumes.
-3. **CVA variant definitions with size variants** — Button size="sm"|"md"|"lg"
-   makes implicit claims about space. Must be coherent with the gap tiers.
-4. **Root layout files** — app/layout.tsx in each app. Inconsistency here means
-   apps feel like different products.
-5. **Barrel exports** — packages/ui/index.ts. If an internal layout helper leaks,
-   someone will depend on it.
+1. **`packages/ui/src/styles/index.css`** — defines the CSS variables every layout
+   primitive consumes. A token change here ripples through every app.
+2. **`packages/ui/src/layouts/{Section,Grid,Flex}/*.css`** — the layout's class-to-token
+   mapping. Adding a new gap step requires touching all three.
+3. **`packages/ui/src/layouts/legacy.tsx`** — frozen, but still ships. Don't extend it.
+   Treat any new code referencing its exports as a migration target.
+4. **CVA variant definitions with size variants** (e.g. Button `size="small" | "medium"`)
+   — make implicit spatial claims. Must stay coherent with the numeric scale.
+5. **Root layouts** — `apps/*/app/layout.tsx`. Inconsistency here means apps feel like
+   different products.
+6. **Barrel exports** — `packages/ui/src/index.ts` and `layouts/index.ts`. If an
+   internal helper leaks, someone will depend on it.
 
 ## Anti-patterns
 
-- **Gap freestyle**: using `gap-3`, `gap-5`, `gap-7` (values outside the scale)
-  instead of the semantic tokens. The scale exists to prevent this.
-- **Margin on children**: a Card setting `mb-6` to space itself from siblings.
-  The parent Stack's `gap` should handle this.
-- **Conflating section spacing with component padding**: a hero section using
-  `p-8` (component-level) instead of `py-24` (section-level). These are
-  different tiers for a reason.
-- **Container-only query wrapping**: building Container as just a container-query
-  context without max-width or padding logic.
-- **Recursive Stack for non-prose**: the lobotomized owl selector reaches into
-  nested components and fights their gap values. Only use for prose/article content.
+- **Gap freestyle**: hardcoding `gap-3` / `gap-5` or pixel values instead of the numeric
+  tokens. The scale exists to prevent this.
+- **Reaching for legacy primitives in new code**: importing `Stack` or `Cluster` in a
+  new file. The legacy module is a graveyard, not a menu.
+- **Margin on children**: a Card setting `mb-6` to space itself from siblings. The
+  parent `Flex` / `Grid` `gap` should handle this.
+- **Conflating Section with Flex**: `<Flex direction="column" gap="1600">` to fake a
+  page region. Use `<Section padding="1600">` so variants and semantic element come
+  along for free.
+- **Container-only wrapping**: building a one-off wrapper div with bespoke max-width and
+  padding when `Section` (or `Grid container` / `Flex container`) already does it.
+- **Bypassing the barrel collision rule**: importing react-aria-components primitives
+  through `from "@repo/ui"` or `primitives/index.ts`. Use explicit relative paths like
+  `../Text/Text` inside the RAC family.
