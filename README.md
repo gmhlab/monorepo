@@ -109,7 +109,7 @@ Import siblings inside this family with explicit relative paths (e.g. `import { 
 
 All three accept the numeric token scale `100` · `200` · `300` · `400` · `600` · `800` · `1200` · `1600` for `gap`/`padding`.
 
-*Legacy:* `Stack` · `Cluster` · `Center` · `Container` · `Split` · `Cover` remain available from `layouts/legacy.tsx` for backwards compatibility but should not be used in new code.
+*Legacy:* `Stack` · `Cluster` · `Center` · `Container` · `Split` · `Cover` · `LegacyGrid` remain available from `layouts/legacy.tsx` for backwards compatibility but should not be used in new code. (`LegacyGrid` was previously exported as `Grid`; the canonical `Grid` is now the spatial primitive from `layouts/Grid/Grid`.)
 
 **Blocks** (`src/blocks/`) — page-ready composed sections:
 
@@ -131,15 +131,15 @@ All three accept the numeric token scale `100` · `200` · `300` · `400` · `60
 
 **Patterns** (`src/patterns/`) — stateless UI recipes:
 
-`PageHeader` · `SectionHeader` · `FormSection` · `EmptyState` · `FeatureCard` · `ProfileHeader`
+`PageHeader` · `SectionHeader` · `FormSection` · `EmptyState` · `FeatureCard` · `ProfileHeader` · `SidebarNav`
 
 **Templates** (`src/templates/`) — full page shells with named slots:
 
-`AppShellTemplate` · `AuthTemplate` · `MarketingTemplate` · `SplitTemplate`
+`AppShellTemplate` · `AuthTemplate` · `MarketingTemplate` · `SplitTemplate` · `BrandedTemplate`
 
 **Pages** (`src/pages/`) — complete page compositions wired into route-ready views:
 
-`DashboardPage` · `DesignSystemPage` · `LinkInBioTemplate`
+`DashboardPage` · `DesignSystem` · `LinkInBioTemplate`
 
 **Composites** (`src/composites/`) — multi-primitive widgets:
 
@@ -191,7 +191,7 @@ Key routes:
 
 ### Tailwind v4
 
-No `tailwind.config.js`. All theme tokens live in `packages/ui/src/styles/index.css` via `@theme inline`. Apps receive the full token set by importing the CSS.
+No `tailwind.config.js`. `packages/ui/src/styles/index.css` is the single entry; it composes `tailwind.css` (`@import "tailwindcss"` + `@source` globs), `responsive.css`, `theme.css` (`@theme inline` semantic tokens + dark-mode block), `icons.css`, and `fonts.css`. Apps receive the full token set by importing `index.css`.
 
 ### Brand Colors
 

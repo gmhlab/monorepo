@@ -1,7 +1,7 @@
 import { forwardRef, type HTMLAttributes } from "react"
 import { Center } from "../../layouts"
 import { Stack } from "../../layouts"
-import { Grid } from "../../layouts"
+import { LegacyGrid as Grid } from "../../layouts"
 import { Button } from "../../primitives/button"
 import { cn } from "../../lib/"
 

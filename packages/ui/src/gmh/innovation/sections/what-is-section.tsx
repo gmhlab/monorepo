@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowRight } from "lucide-react";
-import { Grid, Flex, Section } from "../../../layouts";
+import { LegacyGrid as Grid, Flex, Section } from "../../../layouts";
 import { Button, ButtonGroup } from "../../../primitives/Button/Button";
 import { Card } from "../../../composites";
 import { TextTitlePage, TextContentHeading } from "../../../primitives/Text/Text";

@@ -1,7 +1,7 @@
 "use client";
 
 import { Card } from "../../../primitives";
-import { Section, Grid, Flex } from "../../../layouts";
+import { Section, LegacyGrid as Grid, Flex } from "../../../layouts";
 import { User, Quote } from "lucide-react";
 import type { UserStoryData } from "../innovation-template";
 

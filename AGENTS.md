@@ -59,7 +59,7 @@ utils/         Cross-family helpers (AnchorOrButton)
   ↑
 icons/         Icon component set (Icon + 280+ Icon* SVG wrappers)
   ↑
-layouts/       Spatial primitives — Section, Grid, Flex (+ FlexItem). Legacy Stack/Cluster/Container/Center/Split/Cover in legacy.tsx.
+layouts/       Spatial primitives — Section, Grid, Flex (+ FlexItem). Legacy Stack/Cluster/Container/Center/Split/Cover/LegacyGrid in legacy.tsx.
   ↑
 primitives/    Two coexisting families:
                  • shadcn modules (lowercase files) — Radix/Base UI via cva + cn + data-slot
@@ -70,9 +70,9 @@ composites/    Composed UI pieces — Cards, Footers, Forms, Sections (Hero, Pan
   ↑
 blocks/        Page-ready sections (numbered: dashboard-01, login-03, etc.) + marketing blocks + navbars/footers.
   ↑
-patterns/      Stateless UI recipes — PageHeader, SectionHeader, FormSection, EmptyState, FeatureCard, ProfileHeader.
+patterns/      Stateless UI recipes — PageHeader, SectionHeader, FormSection, EmptyState, FeatureCard, ProfileHeader, SidebarNav.
   ↑
-templates/     Full page shells — AppShellTemplate, AuthTemplate, MarketingTemplate, SplitTemplate.
+templates/     Full page shells — AppShellTemplate, AuthTemplate, MarketingTemplate, SplitTemplate, BrandedTemplate.
   ↑
 pages/         Complete page compositions — template + blocks + patterns wired into route-ready views.
   ↑
@@ -93,7 +93,7 @@ Three composable spatial primitives in `src/layouts/`. They control **where thin
 
 **Shared scale:** All three accept the numeric gap/padding tokens `100`, `200`, `300`, `400`, `600`, `800`, `1200`, `1600` (mapped to CSS variables in `styles/index.css`). `Section.padding` adds `0` and `4000`.
 
-**Legacy primitives** — `Stack`, `Cluster`, `Center`, `Container`, `Split`, `Cover` still ship from `layouts/legacy.tsx` (re-exported through `layouts/index.ts`) for backwards compatibility. **Don't use them in new code.** Reach for `Section` / `Grid` / `Flex` instead.
+**Legacy primitives** — `Stack`, `Cluster`, `Center`, `Container`, `Split`, `Cover`, and `LegacyGrid` still ship from `layouts/legacy.tsx` (re-exported through `layouts/index.ts`) for backwards compatibility. The barrel's `Grid` export is the new spatial primitive from `layouts/Grid/Grid` — the legacy grid moved to `LegacyGrid` to free that name. **Don't use any of these in new code.** Reach for `Section` / `Grid` / `Flex` instead.
 
 ### Route Groups (`apps/web`)
 
@@ -115,9 +115,18 @@ Root layout provides ThemeProvider, TooltipProvider, Toaster, and fonts.
 
 ## Styling
 
-**Tailwind CSS v4** — no `tailwind.config.js`. All configuration is CSS-first:
+**Tailwind CSS v4** — no `tailwind.config.js`. All configuration is CSS-first.
 
-- Theme tokens: `packages/ui/src/styles/index.css` via `@theme inline`
+`packages/ui/src/styles/index.css` is the single entry consumers import. It composes:
+
+| File | Role |
+|------|------|
+| `tailwind.css` | `@import "tailwindcss"` + `@source` globs |
+| `responsive.css` | Container queries and responsive display tokens |
+| `theme.css` | `@theme inline` semantic tokens, brand variables, dark-mode block |
+| `icons.css` | Icon sizing and stroke tokens |
+| `fonts.css` | Font face declarations |
+
 - Dark mode: class-based (`.dark` on `<html>`) via next-themes
 - Color space: oklch
 - Brand: dark navy primary, gold/tan secondary

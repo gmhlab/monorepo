@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Container, Stack, Cluster, Grid } from "@repo/ui/layouts"
+import { Container, Stack, Cluster, LegacyGrid as Grid } from "@repo/ui/layouts"
 import {
   Card,
   CardHeader,

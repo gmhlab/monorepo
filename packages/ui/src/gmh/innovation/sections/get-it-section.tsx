@@ -1,6 +1,6 @@
 import { Card } from "../../../composites/Cards/Cards";
 import { TextTitlePage, TextContentHeading } from "../../../primitives/Text/Text";
-import { Section, Flex, Grid } from "../../../layouts";
+import { Section, Flex, LegacyGrid as Grid } from "../../../layouts";
 import { BookOpen } from "lucide-react";
 import type { GetItData } from "../innovation-template";
 

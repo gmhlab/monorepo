@@ -1,5 +1,5 @@
 import figma from "@figma/code-connect"
-import { Grid } from "../grid"
+import { LegacyGrid as Grid } from "../legacy"
 
 const FIGMA_URL =
   "https://www.figma.com/design/JoFKlZFj4MXQoXxOxVqM1F?node-id=25:136"

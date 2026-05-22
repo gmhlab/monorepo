@@ -131,12 +131,17 @@ Pair with **FlexItem** when children need explicit column shares:
 
 ### Legacy primitives — do not use in new code
 
-`Stack`, `Cluster`, `Center`, `Container`, `Split`, `Cover` are still exported from
-`layouts/legacy.tsx` (and re-exported through `layouts/index.ts`) so older code keeps
-compiling. They are **frozen**: don't add features, don't extend the scale they use, and
-reach for `Section` / `Grid` / `Flex` in any new file. When refactoring a file that
-already uses them, swap in the new primitives in the same commit when scope allows —
-otherwise leave a brief note and migrate later.
+`Stack`, `Cluster`, `Center`, `Container`, `Split`, `Cover`, and `LegacyGrid` are still
+exported from `layouts/legacy.tsx` (and re-exported through `layouts/index.ts`) so older
+code keeps compiling. They are **frozen**: don't add features, don't extend the scale
+they use, and reach for `Section` / `Grid` / `Flex` in any new file. When refactoring a
+file that already uses them, swap in the new primitives in the same commit when scope
+allows — otherwise leave a brief note and migrate later.
+
+`LegacyGrid` was previously exported under the name `Grid` — the rename freed the
+canonical `Grid` for the new spatial primitive in `layouts/Grid/Grid`. Files that still
+need legacy behavior import it as `import { LegacyGrid as Grid } from "../layouts"` so
+the JSX stays unchanged.
 
 ## Component API guidelines
 
@@ -164,8 +169,10 @@ never freehand Tailwind margin classes.
 
 In priority order, these are the files where spatial drift causes the most damage:
 
-1. **`packages/ui/src/styles/index.css`** — defines the CSS variables every layout
-   primitive consumes. A token change here ripples through every app.
+1. **`packages/ui/src/styles/`** — `index.css` is the entry that composes `tailwind.css`,
+   `responsive.css`, `theme.css`, `icons.css`, and `fonts.css`. The `@theme inline`
+   semantic tokens every layout primitive consumes live in `theme.css`. A token change
+   here ripples through every app.
 2. **`packages/ui/src/layouts/{Section,Grid,Flex}/*.css`** — the layout's class-to-token
    mapping. Adding a new gap step requires touching all three.
 3. **`packages/ui/src/layouts/legacy.tsx`** — frozen, but still ships. Don't extend it.

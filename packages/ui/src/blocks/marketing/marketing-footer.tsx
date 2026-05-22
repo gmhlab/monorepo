@@ -1,5 +1,5 @@
 import { type ReactNode } from "react"
-import { Grid } from "../../layouts"
+import { LegacyGrid as Grid } from "../../layouts"
 import { Stack } from "../../layouts"
 import { Cluster } from "../../layouts"
 import { cn } from "../../lib/"

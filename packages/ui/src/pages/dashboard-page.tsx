@@ -3,7 +3,7 @@
 import { Users, BarChart3, Globe, TrendingUp } from "lucide-react"
 import { PageHeader } from "../patterns/page-header"
 import { SectionHeader } from "../patterns/section-header"
-import { Grid } from "../layouts"
+import { LegacyGrid as Grid } from "../layouts"
 import { Stack } from "../layouts"
 import {
   Card,

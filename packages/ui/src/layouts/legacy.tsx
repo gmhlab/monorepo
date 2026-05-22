@@ -28,13 +28,13 @@ export const Center = forwardRef<HTMLDivElement, DivProps & { max?: CenterMax; g
 )
 Center.displayName = "Center"
 
-export const Grid = forwardRef<HTMLDivElement, DivProps & { columns?: number | string; gap?: Gap; min?: string }>(
+export const LegacyGrid = forwardRef<HTMLDivElement, DivProps & { columns?: number | string; gap?: Gap; min?: string }>(
   ({ className, columns = 1, gap = "md", min, ...props }, ref) => {
     const cols = typeof columns === "number" ? `repeat(${columns}, minmax(0, 1fr))` : columns === "auto-fit" || columns === "auto-fill" ? `repeat(${columns}, minmax(${min || "16rem"}, 1fr))` : columns
     return <div ref={ref} className={cn("grid", className)} style={{...(props as any).style, gridTemplateColumns: cols, gap:`var(--sds-size-space-${gapMap[gap]})`}} {...props} />
   },
 )
-Grid.displayName = "Grid"
+LegacyGrid.displayName = "LegacyGrid"
 
 export function Container<T extends ElementType = "div">({ as, className, width = "lg", section, ...props }: { as?: T; className?: string; width?: "xs" | "sm" | "md" | "lg" | "xl" | "full"; section?: keyof typeof sectionSpacingMap } & Record<string, unknown>) {
   const Comp: any = as || "div"

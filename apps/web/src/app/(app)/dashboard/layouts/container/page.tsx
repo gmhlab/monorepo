@@ -1,4 +1,4 @@
-import { Container, Stack, Cluster, Grid } from "@repo/ui/"
+import { Container, Stack, Cluster, LegacyGrid as Grid } from "@repo/ui/"
 import {
   Badge,
   Card,
