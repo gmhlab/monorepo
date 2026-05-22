@@ -5,7 +5,6 @@ import { IconInstagram, IconLinkedin, IconTwitter, IconYoutube } from "../../ico
 import { Flex, FlexItem, Section, type SectionProps } from "../../layouts";
 import { ButtonGroup } from "../../primitives/Button/Button";
 import { IconButton } from "../../primitives/IconButton/IconButton";
-import { Logo } from "../../primitives/Logo/Logo";
 import {
   TextLink,
   TextLinkList,
@@ -13,50 +12,49 @@ import {
   TextStrong,
 } from "../../primitives/Text/Text";
 
-export type FooterProps = Omit<SectionProps, "variant" | "padding" | "src">;
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export function Footer({ className, ...props }: FooterProps) {
+export type FooterProps = Omit<SectionProps, "variant" | "padding" | "src"> & {
+  logoSrc?: string;
+};
+export function Footer({ className, logoSrc = "/crest-light.png", ...props }: FooterProps) {
   const { isTabletDown } = useMediaQuery();
   const listDensity = isTabletDown ? "tight" : "default";
   return (
     <Section
       elementType="footer"
-      variant="stroke"
+      variant="neutral"
       paddingTop="1600"
       paddingBottom="4000"
-      style={{ marginTop: "auto" }}
+      style={{ marginTop: "auto", color: "var(--card-foreground)" }}
       {...props}
     >
       <Flex wrap type="quarter" gap="600" container>
         <FlexItem size="minor">
           <Flex direction="column" gap="600" alignSecondary="start">
             <FlexItem>
-              <Logo className="footer-logo" 
-                href="/"
-                aria-label="MonoFly logo, navigate to homepage"
-                showText={false}
-              />
+              <a href="/" className="block w-fit" aria-label="Center for Global Mental Health Equity — The George Washington University">
+                <img src={logoSrc} alt="" className="block h-14 w-auto" />
+              </a>
             </FlexItem>
             <TextLinkList density={listDensity}>
               <TextListItem>
-                <TextLink href="https://www.kaleidoscopeofbutterflies.com" target="_blank">monofly.com</TextLink>
+                <TextLink href="https://www.figma.com">figma.com</TextLink>
               </TextListItem>
               <TextListItem>
-                <TextLink href="https://www.x.com/monoflyui" target="_blank">Twitter</TextLink>
+                <TextLink href="https://www.x.com/figma">X</TextLink>
               </TextListItem>
               <TextListItem>
-                <TextLink href="https://instagram.com/kobutterflies" target="_blank">
+                <TextLink href="https://instagram.com/figma">
                   Instagram
                 </TextLink>
               </TextListItem>
               <TextListItem>
-                <TextLink href="https://www.youtube.com/@JeffersonKidd" target="_blank">
+                <TextLink href="https://www.youtube.com/@Figma">
                   YouTube
                 </TextLink>
               </TextListItem>
               <TextListItem>
-                <TextLink href="https://www.github.com/kobutterflies" target="_blank">
-                  GitHub
+                <TextLink href="https://www.linkedin.com/company/figma/">
+                  LinkedIn
                 </TextLink>
               </TextListItem>
             </TextLinkList>
@@ -64,7 +62,7 @@ export function Footer({ className, ...props }: FooterProps) {
         </FlexItem>
         <TextLinkList
           density={listDensity}
-          title={<TextStrong>Use cases</TextStrong>}
+          title={<TextStrong className="var(--sds-typography-font-serif)">Use cases</TextStrong>}
         >
           <TextListItem>
             <TextLink href="#">UI design</TextLink>

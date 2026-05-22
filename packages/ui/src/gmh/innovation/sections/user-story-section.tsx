@@ -1,14 +1,15 @@
 "use client";
 
 import { Card } from "../../../primitives";
-import { Container, Grid, Stack, Cluster } from "../../../layouts";
+import { Section, Grid, Flex } from "../../../layouts";
 import { User, Quote } from "lucide-react";
 import type { UserStoryData } from "../innovation-template";
 
 export function UserStorySection({ storyIntro, paragraphs, quote, name, role, org }: UserStoryData) {
   return (
-    <Container as="section" width="lg" section="lg">
-      <h2 className="text-5xl md:text-6xl font-serif text-white text-center mb-16">Who has used it?</h2>
+    <Section padding="1600">
+      <Flex direction="column" alignSecondary="center" gap="1600" container>
+      <h2 className="text-5xl md:text-6xl font-serif text-white text-center">Who has used it?</h2>
 
       <div>
         <Card className="p-8 bg-white/10 backdrop-blur-sm shadow-2xl overflow-hidden relative border-white/20">
@@ -17,12 +18,12 @@ export function UserStorySection({ storyIntro, paragraphs, quote, name, role, or
 
           <Grid columns="auto-fit" min="25rem" gap="xl" className="relative z-10">
             <div>
-              <Cluster gap="sm" align="center" className="mb-6">
+              <Flex gap="600" className="mb-6">
                 <Quote className="w-22 h-22 text-[#AA9868]" />
                 <h3 className="text-white text-3xl font-bold">
                   {storyIntro}
                 </h3>
-              </Cluster>
+              </Flex>
 
               {paragraphs.map((p, i) => (
                 <p key={i} className="text-white/90 mb-4 leading-relaxed">
@@ -37,7 +38,7 @@ export function UserStorySection({ storyIntro, paragraphs, quote, name, role, or
               </div>
             </div>
 
-            <Stack align="center" className="justify-center">
+            <Flex direction="column" alignPrimary="center" className="justify-center">
               <div className="bg-gradient-to-br from-[#033C5A] to-[#AA9868] w-48 h-48 rounded-full flex items-center justify-center shadow-2xl mb-6">
                 <User className="w-24 h-24 text-white" />
               </div>
@@ -49,10 +50,11 @@ export function UserStorySection({ storyIntro, paragraphs, quote, name, role, or
                   {org}
                 </p>
               </div>
-            </Stack>
+            </Flex>
           </Grid>
         </Card>
       </div>
-    </Container>
+      </Flex>
+    </Section>
   );
 }

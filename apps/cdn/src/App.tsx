@@ -1,9 +1,15 @@
-import { Innovations } from "@repo/ui";
+import { InnovationTemplate, getEquipData } from "@repo/ui";
 
-const crestUrl = import.meta.env.PROD
-  ? "https://gmhlab.github.io/monorepo/crest.png"
-  : `${import.meta.env.BASE_URL}crest.png`;
+const assetBase = import.meta.env.PROD
+  ? "https://gmhlab.github.io/monorepo/"
+  : import.meta.env.BASE_URL;
 
 export default function App() {
-  return <Innovations logoSrc={crestUrl} />;
+  return (
+    <InnovationTemplate
+      data={getEquipData(assetBase)}
+      logoSrc={`${assetBase}crest.png`}
+      footerLogoSrc={`${assetBase}crest-light.png`}
+    />
+  );
 }

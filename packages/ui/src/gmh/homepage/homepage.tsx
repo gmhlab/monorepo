@@ -6,6 +6,8 @@ import { Input } from "../../primitives/input";
 import { Card, CardContent } from "../../primitives/card";
 import { Badge } from "../../primitives/badge";
 import { Container, Grid, Cluster, Center } from "../../layouts";
+import { Header } from "../../composites/Headers/Headers";
+import { BrandedTemplate } from "../../templates";
 import {
   Globe,
   Lightbulb,
@@ -480,9 +482,13 @@ function MapSection() {
 }
 
 // Main Page Component
-export function HomePage() {
+export type HomePageProps = {
+  logoSrc?: string;
+};
+
+export function HomePage({ logoSrc }: HomePageProps = {}) {
   return (
-    <div className="min-h-screen bg-white">
+    <BrandedTemplate header={<Header currentPath="/" logoSrc={logoSrc} />}>
       <HeroSection />
       <WhoWeAreSection />
       <WhatWeDoSection />
@@ -490,6 +496,6 @@ export function HomePage() {
       <TestimonialSection />
       <NewsletterSection />
       <MapSection />
-    </div>
+    </BrandedTemplate>
   );
 }

@@ -1,6 +1,9 @@
 // Template
 export { InnovationTemplate } from "./innovation-template";
 
+// Data
+export { getEquipData } from "./data/equip";
+
 // Types
 export type {
   InnovationData,

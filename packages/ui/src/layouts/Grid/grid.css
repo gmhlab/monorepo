@@ -1,4 +1,5 @@
 .grid-container {
+  padding: var(--sds-size-space-400);
   margin: 0 auto;
   max-width: var(--global-container-max-width);
   width: 100%;

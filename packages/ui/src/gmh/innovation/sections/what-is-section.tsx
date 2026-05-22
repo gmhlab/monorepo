@@ -1,48 +1,36 @@
 "use client";
 
 import { ArrowRight } from "lucide-react";
-import {
-  Card,
-  Button,
-  Accordion,
-  AccordionItem,
-  AccordionTrigger,
-  AccordionContent,
-} from "../../../primitives";
-import { Container, Grid, Cluster } from "../../../layouts";
+import { Grid, Flex, Section } from "../../../layouts";
+import { Button, ButtonGroup } from "../../../primitives/Button/Button";
+import { Card } from "../../../composites";
+import { TextTitlePage, TextContentHeading } from "../../../primitives/Text/Text";
+import { Accordion, AccordionItem } from "../../../primitives/Accordion/Accordion";
 import type { WhatIsItData } from "../innovation-template";
 
 export function WhatIsItSection({ headline, body, capabilities }: WhatIsItData) {
   return (
-    <Container as="section" width="xl" section="lg">
-      <h2 className="text-5xl md:text-6xl font-serif text-white text-center mb-16">What is it?</h2>
-      <Card className="p-8 bg-white/10 backdrop-blur-sm shadow-2xl border-white/20">
-        <Grid columns="auto-fit" min="25rem" gap="xl">
-          <div>
-            <h3 className="text-white text-2xl md:text-3xl font-bold mb-4 break-words">
-              {headline}
-            </h3>
-            <p className="text-white/90 mb-6 break-words">
-              {body}
-            </p>
-            <Accordion type="single" collapsible className="w-full space-y-3 mb-6">
+    <Section padding="1600">
+      <Flex direction="column" alignSecondary="center" gap="1200" container>
+        <TextTitlePage className="text-center">What is it?</TextTitlePage>
+        <Grid columns="auto-fit" min="28rem" gap="xl" className="p-8 bg-white/5 backdrop-blur-sm shadow-2xl border border-white/20 rounded-xl">
+
+          <Card variant="stroke" padding="600">
+            <TextContentHeading heading={headline} subheading={body} className="text-card-foreground break-words" />
+            <Accordion>
               {capabilities.map((cap, i) => (
-                <AccordionItem key={i} value={`capability-${i}`} className="bg-white/10 rounded border-none">
-                  <AccordionTrigger className="px-3 py-3 text-sm text-white font-bold hover:no-underline [&>svg]:text-white">
-                    {cap.label}
-                  </AccordionTrigger>
-                  <AccordionContent className="px-3 text-white/80 break-words">
-                    {cap.detail}
-                  </AccordionContent>
+                <AccordionItem key={i} title={cap.label} >
+                  {cap.detail}
                 </AccordionItem>
               ))}
             </Accordion>
-            <Cluster gap="md">
-              <Button className="font-bold h-16 w-full sm:w-56 rounded-lg text-lg shadow-sm hover:shadow-lg" size="lg">Request Training<ArrowRight /></Button>
-              <Button className="font-bold h-16 w-full sm:w-56 rounded-lg text-lg shadow-sm hover:shadow-lg" variant="secondary" size="lg">Use Platform</Button>
-            </Cluster>
-          </div>
-          <div className="bg-white/5 rounded-lg p-8 flex items-center justify-center relative overflow-hidden">
+            <ButtonGroup>
+              <Button className="font-bold h-16 w-full sm:w-56 rounded-lg text-lg shadow-sm hover:shadow-lg" >Request Training<ArrowRight /></Button>
+              <Button className="font-bold h-16 w-full sm:w-56 rounded-lg text-lg shadow-sm hover:shadow-lg" >Use Platform</Button>
+            </ButtonGroup>
+          </Card>
+
+          <Flex alignPrimary="center" alignSecondary="center" className="bg-white/5 rounded-xl p-8 relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-[#AA9868]/20 to-white/10"></div>
             <div className="relative z-10 text-center">
               <div className="w-32 h-32 bg-white/20 rounded-full mx-auto mb-4 flex items-center justify-center shadow-lg">
@@ -50,9 +38,10 @@ export function WhatIsItSection({ headline, body, capabilities }: WhatIsItData) 
               </div>
               <p className="text-white/80">Visual representation</p>
             </div>
-          </div>
+          </Flex>
+
         </Grid>
-      </Card>
-    </Container>
+      </Flex>
+    </Section>
   );
 }

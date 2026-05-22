@@ -9,6 +9,9 @@ import { PartnerMarquee } from "./sections/partner-marquee";
 import { GetItSection } from "./sections/get-it-section";
 import { CtaSection } from "./sections/cta-section";
 import { NavigationFooter } from "./sections/navigation-footer";
+import { Header } from "../../composites/Headers/Headers";
+import { Footer } from "../../composites/Footers/Footers";
+import { BrandedTemplate } from "../../templates";
 
 export interface WhatIsItData {
   headline: string;
@@ -70,20 +73,23 @@ export interface InnovationData {
     href?: string;
   };
   navigation?: {
-    prevHref?: string;
-    nextHref?: string;
-    current?: number;
-    total?: number;
+    items: { href: string; label: string }[];
+    current: number;
   };
 }
 
 interface InnovationTemplateProps {
   data: InnovationData;
+  logoSrc?: string;
+  footerLogoSrc?: string;
 }
 
-export function InnovationTemplate({ data }: InnovationTemplateProps) {
+export function InnovationTemplate({ data, logoSrc, footerLogoSrc }: InnovationTemplateProps) {
   return (
-      <div className="w-full flex flex-col items-center">
+    <BrandedTemplate
+      header={<Header currentPath="/innovations" logoSrc={logoSrc} />}
+      footer={<Footer logoSrc={footerLogoSrc} />}
+    >
 
         <HeroSection
           title={data.hero.title}
@@ -102,12 +108,13 @@ export function InnovationTemplate({ data }: InnovationTemplateProps) {
           href={data.cta?.href}
         />
 
-        <NavigationFooter
-          prevHref={data.navigation?.prevHref}
-          nextHref={data.navigation?.nextHref}
-          current={data.navigation?.current}
-          total={data.navigation?.total}
-        />
-      </div>
+        {data.navigation && (
+          <NavigationFooter
+            items={data.navigation.items}
+            current={data.navigation.current}
+          />
+        )}
+
+    </BrandedTemplate>
   );
 }

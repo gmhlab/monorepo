@@ -76,7 +76,7 @@
 }
 
 .section-variant-neutral {
-  background: var(--sds-color-background-default-tertiary);
+  background: var(--sds-color-background-default-default);
 }
 .section-variant-stroke {
   &:not(:last-child) {

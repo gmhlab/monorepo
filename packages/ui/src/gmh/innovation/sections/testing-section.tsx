@@ -1,8 +1,9 @@
 "use client";
 
 import { motion } from 'motion/react';
+import { TextTitlePage } from '../../../primitives/Text/Text';
 import { Card } from '../../../primitives/card';
-import { Container } from '../../../layouts';
+import { Flex, Section } from '../../../layouts';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
 
 const improvementData = [
@@ -23,15 +24,15 @@ const assessmentsData = [
 
 export function TestingSection() {
   return (
-    <Container as="section" section="lg">
-      <motion.h2
+    <Section >
+      <Flex direction="column" alignSecondary="center" gap="1600" container >
+      <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-5xl md:text-6xl font-serif text-white text-center mb-16"
       >
-        How have we tested it?
-      </motion.h2>
+        <TextTitlePage className="text-center">How have we tested it?</TextTitlePage>
+      </motion.div>
 
       <motion.div
         initial={{ opacity: 0, y: 50 }}
@@ -54,7 +55,7 @@ export function TestingSection() {
           </motion.div>
 
           {/* Stats Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
             {/* Improvement Rate */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -92,16 +93,16 @@ export function TestingSection() {
               <h4 className="text-white mb-4 text-center">Number of Trainees Assessed</h4>
               <span className="text-6xl md:text-7xl font-bold text-[#AA9868]">2,450</span>
               <p className="text-white/60 text-sm mt-2">mental health professionals trained</p>
-              <div className="mt-4 flex gap-4">
+              <Flex gap="600" className="mt-8 flex gap-4">
                 <div className="text-center">
-                  <span className="text-2xl font-bold text-white">12</span>
-                  <p className="text-white/60 text-xs">Countries</p>
+                  <span className="text-4xl font-bold text-white">12</span>
+                  <p className="text-white/60 text-lg">Countries</p>
                 </div>
                 <div className="text-center">
-                  <span className="text-2xl font-bold text-white">45</span>
-                  <p className="text-white/60 text-xs">Institutions</p>
+                  <span className="text-4xl font-bold text-white">45</span>
+                  <p className="text-white/60 text-lg">Institutions</p>
                 </div>
-              </div>
+              </Flex>
             </motion.div>
 
             {/* Cumulative Assessments */}
@@ -146,6 +147,7 @@ export function TestingSection() {
           </motion.div>
         </Card>
       </motion.div>
-    </Container>
+      </Flex>
+    </Section>
   );
 }

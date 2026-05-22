@@ -56,6 +56,7 @@
 }
 .text-subtitle {
   font: var(--sds-font-subtitle);
+  color: #aa9868;
 }
 .text-subheading {
   font: var(--sds-font-subheading);
