@@ -6,6 +6,9 @@ const assetBase = import.meta.env.PROD
 
 export default function App() {
   return (
-    <Innovations />
+    <Innovations
+      logoSrc={`${assetBase}crest.png`}
+      footerLogoSrc={`${assetBase}crest-light.png`}
+    />
   );
 }
