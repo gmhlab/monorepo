@@ -48,7 +48,7 @@ export function Header({
       <header className={cn("w-full", className)}>
         <div className="bg-background text-foreground py-6 md:py-6">
           <a
-            href="/"
+            href="https://gwglobalmentalhealth.com"
             className="block w-fit mx-auto"
             aria-label="Center for Global Mental Health Equity — The George Washington University"
           >

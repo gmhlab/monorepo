@@ -31,7 +31,7 @@ export function Footer({ className, logoSrc = "/crest-light.png", ...props }: Fo
         <FlexItem size="minor">
           <Flex direction="column" gap="600" alignSecondary="start">
             <FlexItem>
-              <a href="/" className="block w-fit" aria-label="Center for Global Mental Health Equity — The George Washington University">
+              <a href="https://gwglobalmentalhealth.com" className="block w-fit" aria-label="Center for Global Mental Health Equity — The George Washington University">
                 <img src={logoSrc} alt="" className="block h-14 w-auto" />
               </a>
             </FlexItem>
