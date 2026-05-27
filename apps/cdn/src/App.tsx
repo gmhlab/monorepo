@@ -1,4 +1,4 @@
-import { InnovationTemplate, getEquipData } from "@repo/ui";
+import { Innovations } from "@repo/ui";
 
 const assetBase = import.meta.env.PROD
   ? "https://gmhlab.github.io/monorepo/"
@@ -6,10 +6,6 @@ const assetBase = import.meta.env.PROD
 
 export default function App() {
   return (
-    <InnovationTemplate
-      data={getEquipData(assetBase)}
-      logoSrc={`${assetBase}crest.png`}
-      footerLogoSrc={`${assetBase}crest-light.png`}
-    />
+    <Innovations />
   );
 }

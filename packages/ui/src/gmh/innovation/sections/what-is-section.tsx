@@ -7,6 +7,7 @@ import { Card } from "../../../composites";
 import { TextTitlePage, TextContentHeading } from "../../../primitives/Text/Text";
 import { Accordion, AccordionItem } from "../../../primitives/Accordion/Accordion";
 import type { WhatIsItData } from "../innovation-template";
+import { EquipVisual } from "./equip-visual";
 
 export function WhatIsItSection({ headline, body, capabilities }: WhatIsItData) {
   return (
@@ -30,15 +31,7 @@ export function WhatIsItSection({ headline, body, capabilities }: WhatIsItData) 
             </ButtonGroup>
           </Card>
 
-          <Flex alignPrimary="center" alignSecondary="center" className="bg-white/5 rounded-xl p-8 relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-[#AA9868]/20 to-white/10"></div>
-            <div className="relative z-10 text-center">
-              <div className="w-32 h-32 bg-white/20 rounded-full mx-auto mb-4 flex items-center justify-center shadow-lg">
-                <div className="w-24 h-24 bg-gradient-to-br from-[#AA9868] to-white rounded-full"></div>
-              </div>
-              <p className="text-white/80">Visual representation</p>
-            </div>
-          </Flex>
+          <EquipVisual />
 
         </Grid>
       </Flex>
