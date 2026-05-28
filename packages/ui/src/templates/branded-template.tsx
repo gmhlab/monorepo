@@ -45,15 +45,15 @@ export function BrandedTemplate({
           <>
             <div
               aria-hidden
-              className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-primary to-transparent"
+              className="pointer-events-none absolute inset-y-0 left-0 w-120 bg-gradient-to-r from-black/15 to-transparent"
             />
             <div
               aria-hidden
-              className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-primary/50 to-transparent"
+              className="pointer-events-none absolute inset-y-0 right-0 w-120 bg-gradient-to-l from-primary/100 to-transparent"
             />
           </>
         )}
-        <Flex direction="column" gap="100" className="relative min-w-0">
+        <Flex direction="column" className="relative min-w-0">
           {children}
         </Flex>
       </main>

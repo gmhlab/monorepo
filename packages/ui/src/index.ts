@@ -3,9 +3,6 @@
 // Blocks
 export * from "./blocks"
 
-// GMH
-export * from "./gmh"
-
 // Hooks
 export * from "./hooks"
 

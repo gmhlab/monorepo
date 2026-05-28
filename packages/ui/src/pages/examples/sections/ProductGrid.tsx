@@ -2,13 +2,13 @@ import {
   ProductInfoCard,
   ProductInfoCardSkeleton,
   productToProductInfoCardProps,
-} from "./../../composites/Cards/Cards";
-import { useProducts, type Product } from "./../../../data";
-import { useMediaQuery } from "./../../hooks";
-import { IconChevronDown, IconChevronUp } from "./../../icons";
-import { Flex, FlexItem, Section } from "./../../layout";
-import { Search } from "./../../primitives/Search/Search";
-import { TagButton } from "./../../primitives/Tag/Tag";
+} from "./../../../composites/Cards/Cards";
+import { useProducts, type Product } from "../../../data";
+import { useMediaQuery } from "./../../../hooks";
+import { IconChevronDown, IconChevronUp } from "./../../../icons";
+import { Flex, FlexItem, Section } from "./../../../layout";
+import { Search } from "./../../../primitives/Search/Search";
+import { TagButton } from "./../../../primitives/Tag/Tag";
 import { useEffect, useState } from "react";
 
 export function ProductGrid() {

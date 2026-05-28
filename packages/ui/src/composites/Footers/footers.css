@@ -1,0 +1,7 @@
+.footer {
+  /* The apps run forcedTheme="light", but SDS color tokens still follow the OS
+     prefers-color-scheme, so the footer goes dark on dark-OS machines. Pin the
+     tokens the footer uses to their light values so it always renders light. */
+  --sds-color-background-default-default: var(--sds-color-white-1000);
+  --sds-color-text-default-secondary: var(--sds-color-gray-500);
+}

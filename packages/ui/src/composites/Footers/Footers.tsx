@@ -1,6 +1,8 @@
 "use client";
 
+import clsx from "clsx";
 import { useMediaQuery } from "../../hooks";
+import "./footers.css";
 import { IconInstagram, IconLinkedin, IconTwitter, IconYoutube } from "../../icons";
 import { Flex, FlexItem, Section, type SectionProps } from "../../layout";
 import { ButtonGroup } from "../../primitives/Button/Button";
@@ -24,6 +26,7 @@ export function Footer({ className, logoSrc = "/crest-light.png", ...props }: Fo
       variant="neutral"
       paddingTop="1600"
       paddingBottom="4000"
+      className={clsx("footer", className)}
       style={{ marginTop: "auto", color: "var(--card-foreground)" }}
       {...props}
     >

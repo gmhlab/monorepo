@@ -1,6 +1,6 @@
 # AGENTS.md
 
-This file provides guidance to AI coding agents working with code in this repository.
+This file provides guidance to AI coding agents working with code in this repository.  It's supposed to be more wide-reaching than CLAUDE.md, ergot Opus 4.6 insisted to put Claude's instructions in this file.  But Claude can be a shortsighted little clown, and VS Code Sessions doesn't pick up on this markdown file for instructions– only CLAUDE.md (so I comitted the world's worst comp sci crime and doubled up on them)
 
 ## Commands
 

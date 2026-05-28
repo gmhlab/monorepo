@@ -1,9 +1,9 @@
 "use client"
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../primitives/card";
-import { Badge } from "../../primitives/badge";
-import { Separator } from "../../primitives/separator";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../primitives/tabs";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../../primitives/card";
+import { Badge } from "../../../primitives/badge";
+import { Separator } from "../../../primitives/separator";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../primitives/tabs";
 
 export function DesignTokens() {
   const colorTokens = [

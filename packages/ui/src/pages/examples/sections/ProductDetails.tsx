@@ -1,12 +1,12 @@
-import { useMediaQuery } from "./../../hooks";
-import { IconShoppingBag } from "./../../icons";
-import { Flex, FlexItem, Section } from "./../../layout";
-import { Accordion, AccordionItem } from "./../../primitives/Accordion/Accordion";
-import { Button } from "./../../primitives/Button/Button";
-import { Image } from "./../../primitives/Image/Image";
-import { SelectField, SelectItem } from "./../../primitives/Select/Select";
-import { Tag } from "./../../primitives/Tag/Tag";
-import { Text, TextHeading, TextPrice } from "./../../primitives/Text/Text";
+import { useMediaQuery } from "./../../../hooks";
+import { IconShoppingBag } from "./../../../icons";
+import { Flex, FlexItem, Section } from "./../../../layout";
+import { Accordion, AccordionItem } from "./../../../primitives/Accordion/Accordion";
+import { Button } from "./../../../primitives/Button/Button";
+import { Image } from "./../../../primitives/Image/Image";
+import { SelectField, SelectItem } from "./../../../primitives/Select/Select";
+import { Tag } from "./../../../primitives/Tag/Tag";
+import { Text, TextHeading, TextPrice } from "./../../../primitives/Text/Text";
 
 export function ProductDetails() {
   const { isMobile, isDesktop } = useMediaQuery();

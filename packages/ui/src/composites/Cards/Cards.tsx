@@ -1,7 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import type { PricingPlan, Product } from "../../../data";
+import type { PricingPlan, Product } from "../../data";
 import { useMediaQuery } from "../../hooks";
 import { Flex } from "../../layout";
 import { Avatar, AvatarBlock, type AvatarProps } from "../../primitives/Avatar/Avatar";

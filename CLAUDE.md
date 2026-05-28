@@ -1,6 +1,209 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to AI coding agents working with code in this repository.  It's supposed to be more wide-reaching than CLAUDE.md, ergot Opus 4.6 insisted to put Claude's instructions in this file.  But Claude can be a shortsighted little clown, and VS Code Sessions doesn't pick up on this markdown file for instructions– only CLAUDE.md (so I comitted the world's worst comp sci crime and doubled up on them)
 
-@AGENTS.md
-@SKILL.md
+## Commands
+
+```bash
+pnpm install                          # install all dependencies (from repo root)
+pnpm dev                              # start all apps concurrently
+pnpm build                            # build everything (Turborepo handles ordering)
+pnpm typecheck                        # type-check all packages
+pnpm lint                             # lint all packages
+pnpm clean                            # clear Turborepo cache + build artifacts
+
+# Single package
+pnpm --filter @repo/web dev           # web app only (port 3000)
+pnpm --filter @repo/docs dev          # docs app only (port 3001)
+pnpm --filter @repo/cdn dev           # CDN app only (port 3002)
+pnpm --filter @repo/ui typecheck      # typecheck UI package
+pnpm --filter @repo/ui lint           # lint UI package
+pnpm --filter @repo/ui build:registry # build shadcn registry
+
+pnpm exec prettier --write .          # format everything
+```
+
+Always run tasks from the repo root so Turborepo handles dependency ordering.
+
+## Architecture
+
+**pnpm + Turborepo monorepo** for the Global Mental Health Lab.
+
+| App | Stack | Port | Purpose |
+|-----|-------|------|---------|
+| `apps/web` | Next.js 16 (App Router) | 3000 | Main application |
+| `apps/docs` | Next.js 16 (App Router) | 3001 | Design system docs |
+| `apps/cdn` | Vite 6 SPA | 3002 | Static asset delivery |
+
+Shared packages: `@repo/ui` (component library), `packages/typescript-config`, `packages/eslint-config`.
+
+Dependency versions are pinned in the `catalog:` section of `pnpm-workspace.yaml`. When adding or updating shared dependencies, update the catalog — not individual `package.json` files.
+
+### `@repo/ui` — No Build Step
+
+Apps consume raw TypeScript source via path aliases. Next.js uses `transpilePackages: ["@repo/ui"]`; Vite uses aliases. No compilation in the UI package itself.
+
+**Import:** `import { Button, Flex, cn } from "@repo/ui"`
+**CSS:** `@import "@repo/ui/index.css"` in app root CSS (required for theme tokens)
+
+### Component Layer Hierarchy
+
+The UI package uses a layered architecture inspired by "Every Layout":
+
+```
+lib/           Pure utilities (cn, slot) — no UI
+  ↑
+hooks/         Shared hooks (useIsMobile, useMediaQuery)
+  ↑
+utils/         Cross-family helpers (AnchorOrButton)
+  ↑
+icons/         Icon component set (Icon + 280+ Icon* SVG wrappers)
+  ↑
+layouts/       Spatial primitives — Section, Grid, Flex (+ FlexItem). Legacy Stack/Cluster/Container/Center/Split/Cover/LegacyGrid in legacy.tsx.
+  ↑
+primitives/    Two coexisting families:
+                 • shadcn modules (lowercase files) — Radix/Base UI via cva + cn + data-slot
+                 • react-aria-components drop-ins (PascalCase folders) — Button/, Avatar/, Fieldset/, …
+               Both live side-by-side. Pick one family per component to avoid export collisions.
+  ↑
+composites/    Composed UI pieces — Cards, Footers, Forms, Sections (Hero, Panel), Headers, plus Logo, ModeToggle, ThemeProvider, ImageWithFallback, Hamburger, ProfileCard.
+  ↑
+blocks/        Page-ready sections (numbered: dashboard-01, login-03, etc.) + marketing blocks + navbars/footers.
+  ↑
+patterns/      Stateless UI recipes — PageHeader, SectionHeader, FormSection, EmptyState, FeatureCard, ProfileHeader, SidebarNav.
+  ↑
+templates/     Full page shells — AppShellTemplate, AuthTemplate, MarketingTemplate, SplitTemplate, BrandedTemplate.
+  ↑
+pages/         Complete page compositions — template + blocks + patterns wired into route-ready views.
+  ↑
+gmh/           Domain-specific branded components (HomePage, Innovations). May use hardcoded brand colors.
+```
+
+**Each layer may only import from layers below it.** Internal cross-layer imports use relative paths.
+
+Each layer re-exports through barrel `index.ts` files up to `ui/src/index.ts`.
+
+### Layout Primitives
+
+Three composable spatial primitives in `src/layouts/`. They control **where things go** — gap, alignment, padding — and stay free of colors, borders, and typography.
+
+- **Section** — page region with `padding`/`paddingTop`/`paddingBottom` rhythm and `variant` (`brand` | `neutral` | `stroke` | `subtle` | `image`). Renders as `<section>`, `<header>`, or `<footer>` via `elementType`.
+- **Grid** — CSS grid with typed `gap`/`columnGap`/`rowGap`, `columns`/`rows` template strings, `flow`, `justifyItems`, `alignItems`, and a `container` max-width opt-in.
+- **Flex** — flex container with `alignPrimary`/`alignSecondary`, `direction`, `wrap`, and `container`. Ships with **FlexItem** for `size="full" | "major" | "minor" | "half" | "fill"` column behavior.
+
+**Shared scale:** All three accept the numeric gap/padding tokens `100`, `200`, `300`, `400`, `600`, `800`, `1200`, `1600` (mapped to CSS variables in `styles/index.css`). `Section.padding` adds `0` and `4000`.
+
+**Legacy primitives** — `Stack`, `Cluster`, `Center`, `Container`, `Split`, `Cover`, and `LegacyGrid` still ship from `layouts/legacy.tsx` (re-exported through `layouts/index.ts`) for backwards compatibility. The barrel's `Grid` export is the new spatial primitive from `layouts/Grid/Grid` — the legacy grid moved to `LegacyGrid` to free that name. **Don't use any of these in new code.** Reach for `Section` / `Grid` / `Flex` instead.
+
+### Route Groups (`apps/web`)
+
+The web app uses Next.js route groups for distinct layout contexts:
+
+- `(content)/` — GMH branded public site (homepage, innovations)
+- `(marketing)/` — Marketing pages
+- `(home)/` — Portal landing page (root `/`)
+- `(auth)/` — Authentication pages, layout demos, link-in-bio
+- `(app)/` — Dashboard area (Sidebar + Header)
+
+Root layout provides ThemeProvider, TooltipProvider, Toaster, and fonts.
+
+### Import Conventions Within `packages/ui/`
+
+- Same-layer imports: use `./` relative paths (e.g., `import { Button } from "./button"`)
+- Cross-layer imports: use `../` relative paths (e.g., `import { cn } from "../lib/cn"`)
+- **Never** use absolute `src/primitives/...` paths — always `./` for same-directory, `../` for cross-layer
+
+## Styling
+
+**Tailwind CSS v4** — no `tailwind.config.js`. All configuration is CSS-first.
+
+`packages/ui/src/styles/index.css` is the single entry consumers import. It composes:
+
+| File | Role |
+|------|------|
+| `tailwind.css` | `@import "tailwindcss"` + `@source` globs |
+| `responsive.css` | Container queries and responsive display tokens |
+| `theme.css` | `@theme inline` semantic tokens, brand variables, dark-mode block |
+| `icons.css` | Icon sizing and stroke tokens |
+| `fonts.css` | Font face declarations |
+
+- Dark mode: class-based (`.dark` on `<html>`) via next-themes
+- Color space: oklch
+- Brand: dark navy primary, gold/tan secondary
+- `--radius: 0.15rem` (very tight), `--spacing: 0.25rem`
+
+Apps must include `@source` directives in their `globals.css` pointing to both local and UI package `.tsx` files.
+
+**Always use semantic tokens** (`bg-primary`, `text-muted-foreground`), never hardcode hex values. Exception: GMH branded components.
+
+Use layout components (`Section`, `Grid`, `Flex`) for structural composition instead of raw `flex`/`grid` utilities.
+
+## Conventions
+
+- **Primitives (shadcn family)** use `cva` for variants, `cn()` for className merging, `data-slot` attribute, `asChild`/`Slot.Root` pattern
+- **Primitives (react-aria family)** ship as `primitives/<PascalCase>/<PascalCase>.tsx` + colocated `<name>.css`. Import siblings via explicit relative paths (`../Text/Text`) — **not** through the `primitives/index.ts` barrel, which would collide with shadcn exports of the same name (`Button`, `Avatar`, `Dialog`, …)
+- **Blocks** use numbered suffix convention: `blocks/<name>-<nn>/`
+- **`"use client"`** required at file top for any component using hooks, events, or browser APIs. Default to Server Components in Next.js.
+- **Unused vars** must be prefixed with `_` (strict `@typescript-eslint/no-unused-vars`)
+- **Dependency versions** pinned in `pnpm-workspace.yaml` catalog — use `"catalog:"` in package.json
+- **TypeScript strict mode** is on everywhere
+- **Path aliases**: `@/*` → `./src/*`, `@repo/ui` → `../../packages/ui/src`
+- **New components**: after adding via `npx shadcn@latest add` from `packages/ui/`, verify the file landed in the correct layer and update that layer's `index.ts` barrel export
+
+## Figma Integration
+
+**Figma file**: `JoFKlZFj4MXQoXxOxVqM1F` — [GMH Lab — Monorepo (Layer 1)](https://www.figma.com/design/JoFKlZFj4MXQoXxOxVqM1F)
+
+Code Connect files live in `.figma/` directories within each UI layer. These map Figma component variants to code props.
+
+- Config: `packages/ui/figma.config.json`
+- Dependency: `@figma/code-connect` (devDependency on `@repo/ui`)
+
+### Figma Pages
+
+| Page | ID | Code Layer |
+|------|-----|------------|
+| Layouts | `0:1` | `layouts/` |
+| Primitives | `9:2` | `primitives/` |
+| Composites | `9:3` | `composites/` |
+| Patterns | `9:4` | `patterns/` |
+| Blocks | `9:5` | `blocks/` |
+| Templates | `9:6` | `templates/` |
+| Pages | `9:7` | `pages/` |
+
+### Figma Variable Collections
+
+| Collection | Type | Count | Source |
+|---|---|---|---|
+| **Spacing** | `FLOAT` | 25 | `styles/index.css` — numeric gap/padding tokens (`100`–`4000`) consumed by Section/Grid/Flex |
+| **Sizing** | `FLOAT` | 24 | `styles/index.css` — container widths, content measure, radius |
+| **Semantic Colors** | `COLOR` | 32 | `index.css` — Light + Dark modes (background, primary, secondary, muted, accent, destructive, border, ring, chart, sidebar tokens) |
+| **Color Primitives** | `COLOR` | 231 | `index.css` — 21 Tailwind palettes × 11 shades |
+
+When creating Figma components, bind properties to these variables rather than hardcoding values. Semantic Colors support mode switching (Light/Dark).
+
+### Figma-to-Code Rules
+
+1. Pick a **template** for the page shell
+2. Use **layouts** to arrange sections — do not inline `flex`/`grid` for page structure
+3. Use existing **primitives** before creating new ones
+4. Use existing **patterns** where they match
+5. Map colors to token system (`bg-background`, `text-muted-foreground`) — no raw hex values
+6. Icons use **Lucide React** (`lucide-react`)
+
+## Skills
+
+Three Claude Code skills are available in this repo:
+
+| Skill | File | Trigger |
+|-------|------|---------|
+| **layout-primitives** | [`SKILL.md`](SKILL.md) | Building or refactoring layout components (Section, Grid, Flex), spacing tokens, the numeric gap scale, component taxonomy, or discussing spatial vocabulary in the design system |
+| **design** | [`.claude/skills/design/skill.md`](.claude/skills/design/skill.md) | Figma-to-code translation (Figma URL provided), design review of a component, or creating a new UI component |
+| **figma-sync** | [`.claude/skills/figma-sync/skill.md`](.claude/skills/figma-sync/skill.md) | Creating/auditing Figma Code Connect mappings, syncing components to/from Figma, or checking Code Connect coverage |
+
+## Environment
+
+- `SITE_PASSWORD`, `PASSWORD_PROTECTION_ENABLED` — global env vars (turbo.json)
+- No test framework configured
+- No CI/CD pipeline configured
+- Prettier v3.4 with default settings (no `.prettierrc`)

@@ -1,9 +1,9 @@
-import { Hero } from "./../../composites/Sections/Heroes";
-import { Panel } from "./../../composites/Sections/Panels";
-import { useMediaQuery } from "./../../hooks";
-import { Flex, FlexItem, Section } from "./../../layout";
-import { Image } from "./../../primitives/Image/Image";
-import { Text, TextContentHeading, TextContentTitle } from "./../../primitives/Text/Text";
+import { Hero } from "./../../../composites/Sections/Heroes";
+import { Panel } from "./../../../composites/Sections/Panels";
+import { useMediaQuery } from "./../../../hooks";
+import { Flex, FlexItem, Section } from "./../../../layout";
+import { Image } from "./../../../primitives/Image/Image";
+import { Text, TextContentHeading, TextContentTitle } from "./../../../primitives/Text/Text";
 
 export function PanelSections() {
   const { isMobile } = useMediaQuery();
@@ -12,7 +12,7 @@ export function PanelSections() {
 
   return (
     <>
-      <Section padding={sectionPadding} variant="brand">
+      <Section padding={sectionPadding} variant="neutral">
         <Panel type="auto">
           <FlexItem size="fill">
             <Image
@@ -54,7 +54,7 @@ export function PanelSections() {
         </Panel>
       </Section>
 
-      <Section padding={sectionPadding} variant="neutral">
+      <Section padding={sectionPadding} variant="neutral" className="text-[#033c5a]/90">
         <Panel alignSecondary="center" type="half" gap={flexGap}>
           <FlexItem size="half">
             <Flex direction="column" gap="600">
@@ -103,6 +103,7 @@ export function PanelSections() {
         padding="4000"
         variant="image"
         src="https://picsum.photos/seed/hero/1200/900"
+        className="text-black/75"
       >
         <TextContentTitle align="center" title="Join us today." />
       </Hero>

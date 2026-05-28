@@ -18,10 +18,10 @@ export type NavItem = {
 };
 
 const DEFAULT_NAV: NavItem[] = [
-  { label: "Home", href: "https://gwglobalmentalhealth.com/" },
+  { label: "Home", href: "https://gwglobalmentalhealth.com" },
   { label: "About", href: "https://gwglobalmentalhealth.com/about" },
   { label: "Team", href: "https://gwglobalmentalhealth.com/team" },
-  { label: "News", href: "https://gwglobalmentalhealth.com/news" },
+  { label: "News", href: "https://gwglobalmentalhealth.com/blog" },
   { label: "Projects", href: "https://gwglobalmentalhealth.com/projects" },
   { label: "Innovations", href: "https://gwglobalmentalhealth.com/innovations" },
   { label: "Publications", href: "https://gwglobalmentalhealth.com/publications" },
@@ -39,18 +39,18 @@ export function Header({
   navItems = DEFAULT_NAV,
   currentPath,
   className,
-  logoSrc = "/crest.png",
+  logoSrc = "/crest-dark.png",
 }: HeaderProps) {
   const [open, setOpen] = useState(false);
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <header className={cn("w-full", className)}>
-        <div className="bg-background text-foreground py-6 md:py-6">
+        <div className="bg-transparent text-foreground py-6 md:py-6">
           <a
             href="https://gwglobalmentalhealth.com"
             className="block w-fit mx-auto"
-            aria-label="Center for Global Mental Health Equity — The George Washington University"
+            aria-label="Center for Global Mental Health — The George Washington University"
           >
             <img
               src={logoSrc}
@@ -66,7 +66,7 @@ export function Header({
               <div className="grid place-items-center h-12">
                 <SheetTrigger
                   aria-label="Open menu"
-                  className="bg-background text-foreground flex items-center justify-center w-10 h-10 rounded-xl hover:bg-background/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary"
+                  className="bg-card-background text-card-foreground flex items-center justify-center w-10 h-10 rounded-xl hover:bg-background/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary"
                 >
                   <Menu className="size-10" />
                 </SheetTrigger>
@@ -120,7 +120,7 @@ export function Header({
         <div className="px-5 py-6 border-b border-secondary/40 text-center">
           <img
             src={logoSrc}
-            alt=""
+            alt="GW Global Mental Health logo"
             className="inline-block max-w-full h-auto max-h-16"
           />
         </div>

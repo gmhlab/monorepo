@@ -1,11 +1,11 @@
 import { type ComponentPropsWithRef, type ReactNode } from "react"
-import { Cover } from "../layout"
-import { Center } from "../layout"
-import { Stack } from "../layout"
-import { Cluster } from "../layout"
-import { sectionSpacingMap } from "../layout"
-import { ProfileHeader } from "../patterns/profile-header"
-import { cn } from "../lib"
+import { Cover } from "../../layout"
+import { Center } from "../../layout"
+import { Stack } from "../../layout"
+import { Cluster } from "../../layout"
+import { sectionSpacingMap } from "../../layout"
+import { ProfileHeader } from "../../patterns/profile-header"
+import { cn } from "../../lib"
 
 export interface LinkInBioTemplateProps extends ComponentPropsWithRef<"div"> {
   /** Profile avatar or image */

@@ -1,7 +1,7 @@
-import { useMediaQuery } from "./../../hooks";
-import { Flex, FlexItem, Section } from "./../../layout";
-import { Accordion, AccordionItem } from "./../../primitives/Accordion/Accordion";
-import { TextContentHeading } from "./../../primitives/Text/Text";
+import { useMediaQuery } from "../../../hooks";
+import { Flex, FlexItem, Section } from "../../../layout";
+import { Accordion, AccordionItem } from "../../../primitives/Accordion/Accordion";
+import { TextContentHeading } from "../../../primitives/Text/Text";
 
 export function FAQs() {
   const { isMobile } = useMediaQuery();

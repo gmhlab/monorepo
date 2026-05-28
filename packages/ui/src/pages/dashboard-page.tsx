@@ -3,8 +3,7 @@
 import { Users, BarChart3, Globe, TrendingUp } from "lucide-react"
 import { PageHeader } from "../patterns/page-header"
 import { SectionHeader } from "../patterns/section-header"
-import { LegacyGrid as Grid } from "../layout"
-import { Stack } from "../layout"
+import { Flex, Grid, Section } from "../layout"
 import {
   Card,
   CardHeader,
@@ -22,13 +21,13 @@ const stats = [
 
 export function DashboardPage() {
   return (
-    <Stack gap="xl">
+    <Section padding="1200" variant="stroke">
       <PageHeader
         title="Dashboard"
         description="Overview of platform activity and key metrics."
       />
 
-      <Grid columns="auto-fit" min="15rem" gap="lg">
+      <Grid columns="repeat(auto-fit, minmax(12rem, 1fr))" gap="400" className="mb-8">
         {stats.map((stat) => (
           <Card key={stat.title}>
             <CardHeader>
@@ -55,7 +54,7 @@ export function DashboardPage() {
         description="Latest updates across the platform"
       />
 
-      <Grid columns="auto-fit" min="20rem" gap="lg">
+      <Grid columns="repeat(auto-fit, minmax(20rem, 1fr))" gap="600">
         <Card>
           <CardHeader>
             <CardTitle>Training Sessions</CardTitle>
@@ -64,7 +63,7 @@ export function DashboardPage() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <Stack gap="sm">
+            <Flex direction="column" gap="200">
               {[
                 "EQUIP Competency Training — Uganda",
                 "Photovoice Workshop — Kenya",
@@ -78,7 +77,7 @@ export function DashboardPage() {
                   {item}
                 </div>
               ))}
-            </Stack>
+            </Flex>
           </CardContent>
         </Card>
 
@@ -90,7 +89,7 @@ export function DashboardPage() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <Stack gap="sm">
+            <Flex direction="column" gap="200">
               {[
                 { name: "Sarah K.", score: "87%" },
                 { name: "James O.", score: "92%" },
@@ -104,10 +103,10 @@ export function DashboardPage() {
                   <span className="font-medium">{item.score}</span>
                 </div>
               ))}
-            </Stack>
+            </Flex>
           </CardContent>
         </Card>
       </Grid>
-    </Stack>
+    </Section>
   )
 }

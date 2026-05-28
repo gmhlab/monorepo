@@ -1,26 +1,25 @@
-import { Card } from "../composites/Cards/Cards";
+import { Card } from "../../composites/Cards/Cards";
 import {
   IconArrowRight,
-  IconBook,
   IconGithub,
   IconInstagram,
   IconLinkedin,
   IconYoutube,
-} from "../icons";
-import { useMediaQuery } from "../hooks";
-import { Flex, FlexItem, Section } from "../layout";
-import { Button, ButtonGroup } from "../primitives/Button/Button";
-import { Image } from "../primitives/Image/Image";
-import { Tag, TagButton } from "../primitives/Tag/Tag";
+} from "../../icons";
+import { useMediaQuery } from "../../hooks";
+import { Flex, FlexItem, Section } from "../../layout";
+import { Button, ButtonGroup } from "../../primitives/Button/Button";
+import { Image } from "../../primitives/Image/Image";
+import { Tag, TagButton } from "../../primitives/Tag/Tag";
 import {
-  Text,
   TextStrong,
   TextContentTitle,
   TextContentHeading,
   TextHeading,
   TextSmall,
   TextTitlePage,
-} from "../primitives/Text/Text";
+  TextSubtitle,
+} from "../../primitives/Text/Text";
 
 const featuredLinks = [
   {
@@ -58,49 +57,55 @@ const quickStats = [
   { label: "Brand partners", value: "28" },
 ];
 
-export function Demo() {
+export function LinkInBio02() {
   const { isMobile } = useMediaQuery();
   const sectionPadding = isMobile ? "600" : "1600";
   const pageGap = isMobile ? "800" : "1200";
 
   return (
+
     <Section padding={sectionPadding} variant="neutral">
+  <Flex
+    direction="column"
+    alignPrimary="center"
+    alignSecondary="center"
+    gap="1200"
+    container
+    >
       <Flex
         direction="column"
-        gap="800"
-        alignPrimary="center"
+        gap="1200"
         alignSecondary="center"
-        type="third"
-        style={{ minWidth: 0, maxWidth: "48rem" }}
-        container
-        wrap
+        style={{ minWidth: 0 }}
       >
         {/* Profile */}
         <Flex
-          direction="column"
+          direction="row"
           gap={pageGap}
           alignPrimary="stretch"
           alignSecondary="center"
           container
-          
-    
+          style={{ minWidth: 0 }}
         >
           <Card
             align="start"
             direction="vertical"
             variant="stroke"
             padding="600"
+            style={{ minWidth: 0 }}
           >
             <Flex
               direction="column"
+              alignPrimary="center"
               alignSecondary="center"
               gap="800"
+              style={{ minWidth: 0 }}
             >
               <Image
-                src="https://avatars.githubusercontent.com/u/9919?s=200&v=4"
-                alt="Profile Picture of Ava Monroe"
-                size="medium"
-                style={{ borderRadius: "100%" }}
+              src="https://media.gettyimages.com/id/93015397/photo/author-and-poet-chinua-achebe-poses-at-a-portrait-session-for-the-new-yorker-magazine-in.jpg?s=612x612&w=0&k=20&c=J_4rznU4jiEna5pf4HF7gIMT2EI4qivJuKEezEgpFPE=" 
+              alt="Author and poet Chinua Achebe poses at a portrait session for The New Yorker Magazine in Annandale On Hudson, NY on April 22, 2008"
+              size="large"
+
               />
 
               <Flex
@@ -111,32 +116,36 @@ export function Demo() {
                 style={{ minWidth: 0 }}
               >
                 <Tag scheme="positive" variant="primary">
-                  <IconBook />New course live
+                  🤑 New course live
+                </Tag>
+                <Tag scheme="danger" variant="primary">
+                  😡 I don't eat @$$ on OnlyFans!!!
                 </Tag>
 
                 <TextContentTitle
                   align="center"
-                  title="Ava Monroe"
+                  title="Monofly UI"
                   subtitle="Creative strategist sharing launch notes, studio workflows, and simple systems for independent brands."
                 />
               </Flex>
             </Flex>
 
             {/* Stats */}
-            <Flex direction={isMobile ? "column" : "row"} gap="600" type="third" alignPrimary="center" alignSecondary="center" container wrap>
+            <Flex type="third" direction="row" gap="600" >
+   
               {quickStats.map((stat) => (
-                <FlexItem key={stat.label} size="fill" >
-                  <Card direction="vertical" variant="stroke" align="start" padding="600"   >
+                <FlexItem key={stat.label} size="minor" style={{ minWidth: 0 }}>
+                  <Card variant="stroke" padding="600">
                     <Flex
                       direction="column"
-                      gap="100"
                       alignPrimary="center"
                       alignSecondary="center"
-                      container
+                      gap="100"
                     
+                      container
                     >
                       <TextSmall >{stat.label}</TextSmall>
-                      <TextHeading   >{stat.value}</TextHeading>
+                      <TextHeading>{stat.value}</TextHeading>
                     </Flex>
                   </Card>
                 </FlexItem>
@@ -147,19 +156,22 @@ export function Demo() {
 
         {/* Featured Links */}
         <Flex
-          direction="column"
+          direction="row"
           gap={pageGap}
+          alignPrimary="stretch"
           alignSecondary="stretch"
-          style={{ maxWidth: "48rem", minWidth: 0, width: "100%" }}
+          container
+          type="auto"
+          content=""
+          
         >
           <Card variant="stroke" padding="800" direction="vertical" style={{ minWidth: 0 }}>
             <Flex
               direction="column"
               gap="600"
               alignSecondary="stretch"
-              type="auto"
-              wrap
               container
+              type="auto"
               style={{ minWidth: 0 }}
             >
               <TextContentHeading
@@ -170,7 +182,7 @@ export function Demo() {
 
               <ButtonGroup
                 align="stack"
-                style={{ gap: "var(--sds-size-space-300)" }} // ✅ fixed
+                style={{ gap: "var(--sds-size-space-400)" }} // ✅ fixed
               >
                 {featuredLinks.map((link) => (
                   <Button
@@ -203,28 +215,25 @@ export function Demo() {
 
         {/* Email CTA */}
         <Flex
-          type="third"
-          direction="column"
+          direction="row"
           gap={pageGap}
-          alignSecondary="stretch"
+          alignPrimary="stretch"
+          alignSecondary="center"
           container
-          wrap
+          style={{ minWidth: 0 }}
         >
-          <Card variant="brand" direction="vertical" padding="800" style={{ minWidth: 0 }}>
+          <Card variant="brand" padding="800" style={{ minWidth: 0 }}>
             <Flex
               direction="column"
-              type="auto"
               alignPrimary="center"
-              alignSecondary={"stretch"}
+              alignSecondary={isMobile ? "center" : "stretch"}
               gap="200"
-              style={{ minWidth: 0, width: "100%" }}
+              style={{ minWidth: 0 }}
             >
-              <FlexItem size="full">
-                <TextTitlePage >Join the studio memo</TextTitlePage>
-              </FlexItem>
-              <FlexItem size="full">
-                <Text >One practical email every Friday with new templates, campaign notes, and upcoming drops.</Text>
-              </FlexItem>
+              <TextTitlePage>Join the studio memo</TextTitlePage>
+              <TextSubtitle>
+                One practical email every Friday with new templates, campaign notes, and upcoming drops.
+              </TextSubtitle>
             </Flex>
 
             <Button
@@ -238,9 +247,12 @@ export function Demo() {
           </Card>
         </Flex>
 
+      <Flex direction="column" alignPrimary="center" alignSecondary="stretch"/>
+      </Flex>
+
         {/* Social */}
-        <Flex direction="column" gap="300" alignPrimary="center" alignSecondary="center">
-          <ButtonGroup align="center" style={{width:"100%"}}>
+        <Flex direction="column" gap="300" alignSecondary="stretch">
+          <ButtonGroup align="justify">
             {socialLinks.map((link) => (
               <TagButton key={link.label} href={link.href}>
                 <Flex gap="100" alignSecondary="center">
@@ -251,9 +263,11 @@ export function Demo() {
             ))}
           </ButtonGroup>
 
-          <TextSmall>hello@avamonroe.studio</TextSmall>
+          <TextSmall>hello@monofly.studio</TextSmall>
         </Flex>
       </Flex>
-    </Section>
+
+       </Section>
+     
   );
 }

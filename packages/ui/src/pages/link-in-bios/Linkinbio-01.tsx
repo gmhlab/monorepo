@@ -1,16 +1,16 @@
-import { Card } from "../src/composites/Cards/Cards";
+import { Card } from "../../composites/Cards/Cards";
 import {
   IconArrowRight,
   IconGithub,
   IconInstagram,
   IconLinkedin,
   IconYoutube,
-} from "../src/icons";
-import { useMediaQuery } from "../src/hooks";
-import { Flex, FlexItem, Section } from "../src/layouts";
-import { Button, ButtonGroup } from "../src/primitives/Button/Button";
-import { Image } from "../src/primitives/Image/Image";
-import { Tag, TagButton } from "../src/primitives/Tag/Tag";
+} from "../../icons";
+import { useMediaQuery } from "../../hooks";
+import { Flex, FlexItem, Section } from "../../layout";
+import { Button, ButtonGroup } from "../../primitives/Button/Button";
+import { Image } from "../../primitives/Image/Image";
+import { Tag, TagButton } from "../../primitives/Tag/Tag";
 import {
   TextStrong,
   TextContentTitle,
@@ -19,7 +19,7 @@ import {
   TextSmall,
   TextTitlePage,
   TextSubtitle,
-} from "../src/primitives/Text/Text";
+} from "../../primitives/Text/Text";
 
 const featuredLinks = [
   {
@@ -57,7 +57,7 @@ const quickStats = [
   { label: "Brand partners", value: "28" },
 ];
 
-export function LinkInBio() {
+export function LinkInBio01() {
   const { isMobile } = useMediaQuery();
   const sectionPadding = isMobile ? "600" : "1600";
   const pageGap = isMobile ? "800" : "1200";

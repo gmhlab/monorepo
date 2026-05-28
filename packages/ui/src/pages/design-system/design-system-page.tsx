@@ -1,23 +1,23 @@
 "use client";
 
 import { useState } from "react";
-import { Button } from "../primitives/button";
-import { Input } from "../primitives/input";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter, CardAction } from "../primitives/card";
-import { Badge } from "../primitives/badge";
-import { Switch } from "../primitives/switch";
-import { Checkbox } from "../primitives/checkbox";
-import { Label } from "../primitives/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../primitives/select";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../primitives/tabs";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../primitives/accordion";
-import { Avatar, AvatarFallback, AvatarImage } from "../primitives/avatar";
-import { Progress } from "../primitives/progress";
-import { Slider } from "../primitives/slider";
-import { Textarea } from "../primitives/textarea";
-import { Separator } from "../primitives/separator";
-import { Skeleton } from "../primitives/skeleton";
-import { RadioGroup, RadioGroupItem } from "../primitives/radio-group";
+import { Button } from "../../primitives/button";
+import { Input } from "../../primitives/input";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter, CardAction } from "../../primitives/card";
+import { Badge } from "../../primitives/badge";
+import { Switch } from "../../primitives/switch";
+import { Checkbox } from "../../primitives/checkbox";
+import { Label } from "../../primitives/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../primitives/select";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../primitives/tabs";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../../primitives/accordion";
+import { Avatar, AvatarFallback, AvatarImage } from "../../primitives/avatar";
+import { Progress } from "../../primitives/progress";
+import { Slider } from "../../primitives/slider";
+import { Textarea } from "../../primitives/textarea";
+import { Separator } from "../../primitives/separator";
+import { Skeleton } from "../../primitives/skeleton";
+import { RadioGroup, RadioGroupItem } from "../../primitives/radio-group";
 import { 
   Bell, 
   Search, 
@@ -34,10 +34,10 @@ import {
   MoreVertical
 } from "lucide-react";
 import { toast } from "sonner";
-import { Toaster } from "../primitives/sonner";
-import { DesignTokens } from "./design-system/tokens";
-import { TailwindColorPalettes } from "./design-system/palettes";
-import { ModeToggle } from "../composites/mode-toggle";
+import { Toaster } from "../../primitives/sonner";
+import { DesignTokens } from "./sections/tokens";
+import { TailwindColorPalettes } from "./sections/palettes";
+import { ModeToggle } from "../../composites/mode-toggle";
 
 export default function DesignSystem() {
   const [switchChecked, setSwitchChecked] = useState(false);
