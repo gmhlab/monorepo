@@ -11,7 +11,8 @@
     "build": "turbo build",
     "lint": "turbo lint",
     "typecheck": "turbo typecheck",
-    "clean": "turbo clean"
+    "clean": "turbo clean",
+    "deploy:cdn": "pnpm --filter @repo/cdn deploy:docs"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "catalog:",

@@ -1,6 +1,6 @@
 import { type ComponentPropsWithRef, type ReactNode } from "react"
-import { Split } from "../layouts"
-import { Cover } from "../layouts"
+import { Split } from "../layout"
+import { Cover } from "../layout"
 import { cn } from "../lib/"
 
 export interface SplitTemplateProps extends ComponentPropsWithRef<"div"> {

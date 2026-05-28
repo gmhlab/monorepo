@@ -3,7 +3,7 @@
 import { type ReactNode } from "react"
 import { Hamburger } from "../../composites"
 import { useState } from "react"
-import { Cluster, Stack } from "../../layouts"
+import { Cluster, Stack } from "../../layout"
 import { cn } from "../../lib/"
 import {
   NavigationMenu,

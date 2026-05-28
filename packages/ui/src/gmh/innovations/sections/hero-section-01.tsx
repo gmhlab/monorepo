@@ -1,12 +1,12 @@
-import { Section, Flex } from "../../../layouts";
-import { TextContentTitle } from "../../../primitives";
+import { Section, Flex } from "../../../layout";
+import { TextContentTitle } from "../../../primitives/Text/Text";
 
 interface HeroSectionProps {
   title: string;
   subtitle: string;
 }
 
-export function HeroSection({ title, subtitle }: HeroSectionProps) {
+export function HeroSection01({ title, subtitle }: HeroSectionProps) {
   return (
     <Section paddingTop="1600" paddingBottom="0" >
       <Flex alignPrimary="center" alignSecondary="center" container>

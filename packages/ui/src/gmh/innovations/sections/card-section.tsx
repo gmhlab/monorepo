@@ -1,9 +1,9 @@
-import { InnovationCard } from './InnovationCard';
+import { InnovationCard } from './innovation-card';
 import { MessageSquareHeart, Camera } from 'lucide-react';
-import { Section } from '../../../layouts/Section/Section';         
-import { Grid } from '../../../layouts/Grid/Grid';    
+import { Section } from '../../../layout/Section/Section';         
+import { Grid } from '../../../layout/Grid/Grid';    
 
-export function InnovationsSection() {
+export function CardSection() {
   return (
       <Section padding="1200" >
         <Grid

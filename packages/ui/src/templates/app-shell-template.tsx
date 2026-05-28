@@ -10,7 +10,7 @@ import {
   SidebarProvider,
   SidebarSeparator,
 } from "../primitives/sidebar"
-import { Stack } from "../layouts"
+import { Stack } from "../layout"
 import { cn } from "../lib/"
 
 export interface AppShellTemplateProps extends Omit<ComponentPropsWithRef<"div">, "content"> {

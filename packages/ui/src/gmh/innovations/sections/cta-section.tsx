@@ -1,5 +1,5 @@
 import { Download } from "lucide-react";
-import { Section, Flex } from "../../../layouts";
+import { Section, Flex } from "../../../layout";
 
 interface CtaButtonProps {
   label?: string;

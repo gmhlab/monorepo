@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { TextContentHeading } from '../../../primitives/Text/Text';
-import { Section, FlexItem, Flex } from '../../../layouts';
+import { Section, FlexItem, Flex } from '../../../layout';
 
 const partners = [
   { name: 'UNICEF', abbr: 'UNICEF' },

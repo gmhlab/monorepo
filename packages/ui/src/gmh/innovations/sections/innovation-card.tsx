@@ -1,6 +1,6 @@
 import { Plus } from "lucide-react";
 import { ImageWithFallback } from '../../../composites/image-with-fallback';
-import { Flex, FlexItem } from '../../../layouts/Flex/Flex';
+import { Flex, FlexItem } from '../../../layout/Flex/Flex';
 
 interface InnovationCardProps {
   title: string;

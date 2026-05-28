@@ -1,5 +1,5 @@
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
-import { Flex } from "../layouts";
+import { Flex } from "../layout";
 import { Header } from "../composites/Headers/Headers";
 import { Footer } from "../composites/Footers/Footers";
 import { cn } from "../lib";

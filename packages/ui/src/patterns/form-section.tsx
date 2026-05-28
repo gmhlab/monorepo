@@ -1,6 +1,6 @@
 import { forwardRef, type HTMLAttributes, type ReactNode } from "react"
-import { Split } from "../layouts"
-import { Stack } from "../layouts"
+import { Split } from "../layout"
+import { Stack } from "../layout"
 import { cn } from "../lib/"
 
 export interface FormSectionProps extends Omit<HTMLAttributes<HTMLDivElement>, "title" | "children"> {

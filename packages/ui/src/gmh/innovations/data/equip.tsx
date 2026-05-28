@@ -10,7 +10,7 @@ import {
   ClipboardList,
   FolderOpen,
 } from "lucide-react";
-import type { InnovationData } from "../innovation-template";
+import type { InnovationData } from "../innovation-page";
 
 export function getEquipData(assetBase: string = "/"): InnovationData {
   return {

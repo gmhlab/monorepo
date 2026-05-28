@@ -12,5 +12,18 @@ export default defineConfig(({ command }) => ({
       "@repo/ui": resolve(__dirname, "../../packages/ui/src"),
     },
   },
+  build: {
+    rollupOptions: {
+      input: {
+        innovations: resolve(__dirname, "index.html"),
+        equip: resolve(__dirname, "equip.html"),
+      },
+      output: {
+        entryFileNames: "assets/[name]/index-[hash].js",
+        chunkFileNames: "assets/shared/[name]-[hash].js",
+        assetFileNames: "assets/[name]/index-[hash][extname]",
+      },
+    },
+  },
 }));
  

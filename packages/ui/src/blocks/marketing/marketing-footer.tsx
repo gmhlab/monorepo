@@ -1,7 +1,7 @@
 import { type ReactNode } from "react"
-import { LegacyGrid as Grid } from "../../layouts"
-import { Stack } from "../../layouts"
-import { Cluster } from "../../layouts"
+import { LegacyGrid as Grid } from "../../layout"
+import { Stack } from "../../layout"
+import { Cluster } from "../../layout"
 import { cn } from "../../lib/"
 
 export type FooterLink = {

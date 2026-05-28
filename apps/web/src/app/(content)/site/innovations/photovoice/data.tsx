@@ -115,9 +115,11 @@ export const photovoiceData: InnovationData = {
   },
 
   navigation: {
-    prevHref: "/innovations/equip",
-    nextHref: undefined,
+    items: [
+      { href: "/innovations/equip", label: "EQUIP" },
+      { href: "/innovations/photovoice", label: "Photovoice" },
+      { href: "/innovations/sensingtech", label: "SensingTech" },
+    ],
     current: 2,
-    total: 2,
   },
 };

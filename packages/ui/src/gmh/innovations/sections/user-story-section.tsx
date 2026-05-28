@@ -1,9 +1,9 @@
 "use client";
 
 import { Card } from "../../../primitives";
-import { Section, LegacyGrid as Grid, Flex } from "../../../layouts";
+import { Section, LegacyGrid as Grid, Flex } from "../../../layout";
 import { User, Quote } from "lucide-react";
-import type { UserStoryData } from "../innovation-template";
+import type { UserStoryData } from "../innovation-page";
 
 export function UserStorySection({ storyIntro, paragraphs, quote, name, role, org }: UserStoryData) {
   return (

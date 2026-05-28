@@ -1,8 +1,8 @@
 "use client"
 
-import { InnovationTemplate } from "@repo/ui";
+import { InnovationPage } from "@repo/ui";
 import { photovoiceData } from "./data";
 
 export default function PhotovoicePage() {
-  return <InnovationTemplate data={photovoiceData} />;
+  return <InnovationPage data={photovoiceData} />;
 }

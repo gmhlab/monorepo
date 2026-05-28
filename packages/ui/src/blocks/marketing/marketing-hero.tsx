@@ -1,5 +1,5 @@
 import { forwardRef, type HTMLAttributes, type ReactNode } from "react"
-import { Center, Stack, Cluster } from "../../layouts"
+import { Center, Stack, Cluster } from "../../layout"
 import { Badge } from "../../primitives"
 import { cn } from "../../lib/"
 

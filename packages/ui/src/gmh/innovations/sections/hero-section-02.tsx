@@ -1,8 +1,8 @@
-import { Section } from "../../../layouts/Section/Section";
-import { Flex } from "../../../layouts/Flex/Flex";
+import { Section } from "../../../layout/Section/Section";
+import { Flex } from "../../../layout/Flex/Flex";
 import { TextContentTitle } from "../../../primitives/Text/Text";
 
-export function InnovationsHero() {
+export function HeroSection02() {
   return (
     <Section paddingTop="1200" paddingBottom="0">
       <Flex container direction="column" gap="100"> 

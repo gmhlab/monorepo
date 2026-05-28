@@ -1,4 +1,4 @@
-import { Flex, type FlexProps } from "../../layouts";
+import { Flex, type FlexProps } from "../../layout";
 
 export type PanelProps = Omit<FlexProps, "container" | "wrap">;
 export function Panel({ children, ...props }: PanelProps) {

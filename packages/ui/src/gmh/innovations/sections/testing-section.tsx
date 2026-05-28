@@ -3,7 +3,7 @@
 import { motion } from 'motion/react';
 import { TextTitlePage } from '../../../primitives/Text/Text';
 import { Card } from '../../../primitives/card';
-import { Flex, Section } from '../../../layouts';
+import { Flex, Section } from '../../../layout';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
 
 const improvementData = [

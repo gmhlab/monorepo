@@ -1,6 +1,6 @@
 import { forwardRef, type HTMLAttributes, type ReactNode } from "react"
-import { Center } from "../../layouts"
-import { Stack } from "../../layouts"
+import { Center } from "../../layout"
+import { Stack } from "../../layout"
 import { cn } from "../../lib/"
 
 export interface MarketingCTAProps extends HTMLAttributes<HTMLDivElement> {

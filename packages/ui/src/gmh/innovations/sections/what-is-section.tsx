@@ -1,12 +1,12 @@
 "use client";
 
 import { ArrowRight } from "lucide-react";
-import { LegacyGrid as Grid, Flex, Section } from "../../../layouts";
+import { LegacyGrid as Grid, Flex, Section } from "../../../layout";
 import { Button, ButtonGroup } from "../../../primitives/Button/Button";
 import { Card } from "../../../composites";
 import { TextTitlePage, TextContentHeading } from "../../../primitives/Text/Text";
 import { Accordion, AccordionItem } from "../../../primitives/Accordion/Accordion";
-import type { WhatIsItData } from "../innovation-template";
+import type { WhatIsItData } from "../innovation-page";
 import { EquipVisual } from "./equip-visual";
 
 export function WhatIsItSection({ headline, body, capabilities }: WhatIsItData) {

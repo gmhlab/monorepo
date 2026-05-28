@@ -1,8 +1,8 @@
 import { type ComponentPropsWithRef, type ReactNode } from "react"
-import { Stack } from "../layouts"
-import { Center } from "../layouts"
-import { Cluster } from "../layouts"
-import { type CenterMax } from "../layouts"
+import { Stack } from "../layout"
+import { Center } from "../layout"
+import { Cluster } from "../layout"
+import { type CenterMax } from "../layout"
 import { cn } from "../lib/"
 
 export interface MarketingTemplateProps extends ComponentPropsWithRef<"div"> {

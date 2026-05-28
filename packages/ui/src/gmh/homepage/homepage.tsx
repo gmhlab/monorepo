@@ -5,7 +5,7 @@ import { Button } from "../../primitives/button";
 import { Input } from "../../primitives/input";
 import { Card, CardContent } from "../../primitives/card";
 import { Badge } from "../../primitives/badge";
-import { Container, LegacyGrid as Grid, Cluster, Center } from "../../layouts";
+import { Container, LegacyGrid as Grid, Cluster, Center } from "../../layout";
 import { Header } from "../../composites/Headers/Headers";
 import { BrandedTemplate } from "../../templates";
 import {

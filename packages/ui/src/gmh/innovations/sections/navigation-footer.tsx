@@ -2,7 +2,7 @@
 
 import { motion } from "motion/react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Flex } from "../../../layouts";
+import { Flex } from "../../../layout";
 
 interface NavigationFooterProps {
   items: { href: string; label: string }[];

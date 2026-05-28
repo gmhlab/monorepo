@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import type { LucideIcon } from "lucide-react";
-import { HeroSection } from "./sections/hero-section";
+import { HeroSection01 } from "./sections/hero-section-01";
 import { WhatIsItSection } from "./sections/what-is-section";
 import { HowToUseSection } from "./sections/how-to-section";
 import { TestingSection } from "./sections/testing-section";
@@ -78,20 +78,20 @@ export interface InnovationData {
   };
 }
 
-interface InnovationTemplateProps {
+interface InnovationPageProps {
   data: InnovationData;
   logoSrc?: string;
   footerLogoSrc?: string;
 }
 
-export function InnovationTemplate({ data, logoSrc, footerLogoSrc }: InnovationTemplateProps) {
+export function InnovationPage({ data, logoSrc, footerLogoSrc }: InnovationPageProps) {
   return (
     <BrandedTemplate
       header={<Header currentPath="/innovations" logoSrc={logoSrc} />}
       footer={<Footer logoSrc={footerLogoSrc} />}
     >
 
-        <HeroSection
+        <HeroSection01
           title={data.hero.title}
           subtitle={data.hero.subtitle}
         />

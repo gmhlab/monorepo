@@ -2,7 +2,7 @@
 
 import { clsx } from "clsx";
 import { useMediaQuery } from "../../hooks";
-import { Flex } from "../../layouts";
+import { Flex } from "../../layout";
 import { Link } from "../Link/Link";
 import { ComponentPropsWithoutRef, ReactNode } from "react";
 import {

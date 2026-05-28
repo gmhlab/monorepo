@@ -1,5 +1,5 @@
-import { InnovationsSection } from './components/CardSection';
-import { InnovationsHero } from './components/HeroSection';
+import { CardSection } from './sections/card-section';
+import { HeroSection02 } from './sections/hero-section-02';
 import { Header } from "../../composites/Headers/Headers";
 import { Footer } from "../../composites/Footers/Footers";
 import { BrandedTemplate } from "../../templates";
@@ -9,14 +9,14 @@ export type InnovationsProps = {
   footerLogoSrc?: string;
 };
 
-export function Innovations({ logoSrc, footerLogoSrc }: InnovationsProps = {}) {
+export function InnovationsPage({ logoSrc, footerLogoSrc }: InnovationsProps = {}) {
   return (
     <BrandedTemplate
       header={<Header currentPath="/innovations" logoSrc={logoSrc} />}
       footer={<Footer logoSrc={footerLogoSrc} />}
     >
-      <InnovationsHero />
-      <InnovationsSection />
+      <HeroSection02 />
+      <CardSection />
     </BrandedTemplate>
   );
 }

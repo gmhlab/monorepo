@@ -1,7 +1,7 @@
 "use client"
 
-import { InnovationTemplate, getEquipData } from "@repo/ui";
+import { InnovationPage, getEquipData } from "@repo/ui";
 
 export default function EquipPage() {
-  return <InnovationTemplate data={getEquipData()} />;
+  return <InnovationPage data={getEquipData()} />;
 }

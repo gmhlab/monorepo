@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { ArrowDown } from "lucide-react";
-import { Flex, Section } from "../../../layouts";
-import type { HowToUseData } from "../innovation-template";
+import { Flex, Section } from "../../../layout";
+import type { HowToUseData } from "../innovation-page";
 
 export function HowToUseSection({ steps }: HowToUseData) {
   return (

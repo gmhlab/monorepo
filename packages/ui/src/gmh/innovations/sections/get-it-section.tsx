@@ -1,8 +1,8 @@
 import { Card } from "../../../composites/Cards/Cards";
 import { TextTitlePage, TextContentHeading } from "../../../primitives/Text/Text";
-import { Section, Flex, LegacyGrid as Grid } from "../../../layouts";
+import { Section, Flex, LegacyGrid as Grid } from "../../../layout";
 import { BookOpen } from "lucide-react";
-import type { GetItData } from "../innovation-template";
+import type { GetItData } from "../innovation-page";
 
 export function GetItSection({ heading, body, resources, highlight }: GetItData) {
   return (

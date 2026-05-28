@@ -1,4 +1,4 @@
-import { Flex, Section, type FlexProps, type SectionProps } from "../../layouts";
+import { Flex, Section, type FlexProps, type SectionProps } from "../../layout";
 
 export type HeroProps = SectionProps & { flexProps?: FlexProps };
 export function Hero({ children, flexProps, ...sectionProps }: HeroProps) {
