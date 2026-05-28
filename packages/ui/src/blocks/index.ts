@@ -1,6 +1,6 @@
 // Blocks
 
-export * from "../pages/design-system/design-system-page"
+export * from "../pages/design-system-page"
 export * from "./example-01/page";
 export * from "./example-02/page";
 export * from "./example-03/page";

@@ -1,4 +1,4 @@
-import { Product, ProductFilter, ProductSort } from "../types/products";
+import type { Product, ProductFilter, ProductSort } from "../types/products";
 
 /**
  * Mock products service

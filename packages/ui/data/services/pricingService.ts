@@ -1,4 +1,4 @@
-import { PricingPlan } from "../types/pricing";
+import type { PricingPlan } from "../types/pricing";
 
 /**
  * Mock pricing service

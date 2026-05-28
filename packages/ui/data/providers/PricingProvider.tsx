@@ -1,7 +1,7 @@
 import { ReactNode, useEffect, useMemo, useState } from "react";
 import { PricingContext } from "../contexts/PricingContext";
 import { pricingService } from "../services/pricingService";
-import { PricingPlan } from "../types/pricing";
+import type { PricingPlan } from "../types/pricing";
 
 /**
  * Pricing provider with full state management

@@ -10,7 +10,7 @@ import {
   SidebarProvider,
   SidebarSeparator,
 } from "../primitives/sidebar"
-import { Stack } from "../layout"
+import { Flex } from "../layout"
 import { cn } from "../lib/"
 
 export interface AppShellTemplateProps extends Omit<ComponentPropsWithRef<"div">, "content"> {
@@ -59,7 +59,7 @@ export function AppShellTemplate({
         </Sidebar>
 
         <SidebarInset>
-          <Stack gap="none" className="flex-1">
+          <Flex direction="column" gap="400" className="flex-1">
             {/* ── Header ────────────────────────────────────────── */}
             {header && (
               <header className="sticky top-0 z-30 shrink-0 border-b border-sidebar-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
@@ -80,7 +80,7 @@ export function AppShellTemplate({
                 {panel}
               </div>
             )}
-          </Stack>
+          </Flex>
         </SidebarInset>
       </div>
     </SidebarProvider>

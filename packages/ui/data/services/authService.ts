@@ -1,4 +1,4 @@
-import { Credentials, User } from "../types/auth";
+import type { Credentials, User } from "../types/auth";
 
 /**
  * Mock authentication service

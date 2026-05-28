@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { AuthContextType } from "../types/auth";
+import type { AuthContextType } from "../types/auth";
 
 /**
  * Authentication context

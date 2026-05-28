@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { PricingContextType } from "../types/pricing";
+import type { PricingContextType } from "../types/pricing";
 
 /**
  * Pricing context

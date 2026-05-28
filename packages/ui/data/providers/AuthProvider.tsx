@@ -1,7 +1,7 @@
 import { ReactNode, useCallback, useEffect, useMemo, useState } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import { authService } from "../services/authService";
-import { Credentials, User } from "../types/auth";
+import type { Credentials, User } from "../types/auth";
 
 /**
  * Authentication provider with full state management

@@ -5,7 +5,7 @@ import { IconX } from "../../icons";
 import React, { ReactNode } from "react";
 import {
   Button as RACButton,
-  PressEvent as RACPressEvent,
+  type PressEvent as RACPressEvent,
   Tag as RACTag,
   TagGroup as RACTagGroup,
   TagList as RACTagList,

@@ -1,9 +1,9 @@
-import { useMediaQuery } from "../src/hooks";
-import { Flex, Section } from "../src/layouts";
-import { Button } from "../src/primitives/Button/Button";
-import { Form } from "../src/primitives/Fieldset/Fieldset";
-import { Input } from "../src/primitives/Input/Input";
-import { TextContentTitle } from "../src/primitives/Text/Text";
+import { useMediaQuery } from "./../../hooks";
+import { Flex, Section } from "./../../layout";
+import { Button } from "./../../primitives/Button/Button";
+import { Form } from "./../../primitives/Fieldset/Fieldset";
+import { Input } from "./../../primitives/Input/Input";
+import { TextContentTitle } from "./../../primitives/Text/Text";
 
 export function WelcomeHero() {
   const { isMobile } = useMediaQuery();

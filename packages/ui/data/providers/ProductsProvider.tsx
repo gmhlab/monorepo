@@ -1,7 +1,7 @@
 import { ReactNode, useCallback, useEffect, useMemo, useState } from "react";
 import { ProductsContext } from "../contexts/ProductsContext";
 import { productsService } from "../services/productsService";
-import {
+import type {
   Product,
   ProductCart,
   ProductFilter,

@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { ProductsContextType } from "../types/products";
+import type { ProductsContextType } from "../types/products";
 
 /**
  * Products context
