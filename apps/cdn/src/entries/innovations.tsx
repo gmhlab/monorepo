@@ -7,7 +7,7 @@ const assetBase = import.meta.env.PROD
 
 mount(
   <InnovationsPage
-    logoSrc={`${assetBase}crest.png`}
+    logoSrc={`${assetBase}crest-dark.png`}
     footerLogoSrc={`${assetBase}crest-light.png`}
   />,
 );
