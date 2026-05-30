@@ -4,13 +4,13 @@ description: >
   Architect and maintain the spatial vocabulary and layout primitives for the @repo/ui design
   system. Use this skill whenever the user is building or refactoring layout components
   (Section, Grid, Flex / FlexItem), defining spacing tokens, working with the numeric gap
-  scale (100–1600), discussing how composites/blocks/templates should own their spacing,
-  reviewing whether something should live in `layouts/`, `primitives/`, or `composites/`,
+  scale (100–1600), discussing how composites/templates/pages should own their spacing,
+  reviewing whether something should live in `layout/`, `primitives/`, or `composites/`,
   or considering whether to keep the legacy primitives (Stack/Cluster/Container/Center/Split/
-  Cover) in `layouts/legacy.tsx`. Also trigger when the user talks about section padding,
+  Cover) in `layout/legacy.tsx`. Also trigger when the user talks about section padding,
   variant backgrounds, FlexItem column sizes, or container max-widths inside Grid/Flex —
   even if they don't use the exact term "layout primitives." If someone is editing
-  `packages/ui/src/layouts/` or asking how layout components relate to the Tailwind v4
+  `packages/ui/src/layout/` or asking how layout components relate to the Tailwind v4
   token system, this is the skill.
 ---
 
@@ -33,17 +33,18 @@ their parent layout does.
 ## The authoring sequence
 
 The taxonomy describes complexity:
-`layout → primitive → composite → block → pattern → template → page`.
+`layout → primitive → composite → pattern → template → page`.
 But the **authoring sequence** is different:
 
 ```
-1. Spatial tokens (styles/index.css + layouts CSS)  — the shared contract
+1. Spatial tokens (styles/index.css + layout CSS)   — the shared contract
 2. Layout primitives                                — Section, Grid, Flex (+ FlexItem)
 3. Primitives                                       — Button, Input, Text, …
-4. Composites                                       — Cards, Forms, Headers, Sections (Hero/Panel)
-5. Blocks                                           — navbars, footers, marketing sections
-6. Patterns / templates / pages                     — recipes and full shells
+4. Composites                                       — Cards, Forms, Headers, Footers, Sections (Heroes/Panels)
+5. Patterns / templates / pages                     — recipes and full shells
 ```
+
+(The former `blocks/` layer was dissolved — its sections now live in `composites/` and `pages/`.)
 
 Layout comes early because you can't compose anything coherently if you haven't
 decided how space works first.
@@ -69,7 +70,7 @@ The tokens map to CSS variables defined in `packages/ui/src/styles/index.css`:
 
 ## The three primitives
 
-All three are in `packages/ui/src/layouts/`. Each has its own folder + colocated CSS.
+All three are in `packages/ui/src/layout/`. Each has its own folder + colocated CSS.
 
 ### Section — page region
 
@@ -132,15 +133,15 @@ Pair with **FlexItem** when children need explicit column shares:
 ### Legacy primitives — do not use in new code
 
 `Stack`, `Cluster`, `Center`, `Container`, `Split`, `Cover`, and `LegacyGrid` are still
-exported from `layouts/legacy.tsx` (and re-exported through `layouts/index.ts`) so older
+exported from `layout/legacy.tsx` (and re-exported through `layout/index.ts`) so older
 code keeps compiling. They are **frozen**: don't add features, don't extend the scale
 they use, and reach for `Section` / `Grid` / `Flex` in any new file. When refactoring a
 file that already uses them, swap in the new primitives in the same commit when scope
 allows — otherwise leave a brief note and migrate later.
 
 `LegacyGrid` was previously exported under the name `Grid` — the rename freed the
-canonical `Grid` for the new spatial primitive in `layouts/Grid/Grid`. Files that still
-need legacy behavior import it as `import { LegacyGrid as Grid } from "../layouts"` so
+canonical `Grid` for the new spatial primitive in `layout/Grid/Grid`. Files that still
+need legacy behavior import it as `import { LegacyGrid as Grid } from "../layout"` so
 the JSX stays unchanged.
 
 ## Component API guidelines
@@ -173,15 +174,15 @@ In priority order, these are the files where spatial drift causes the most damag
    `responsive.css`, `theme.css`, `icons.css`, and `fonts.css`. The `@theme inline`
    semantic tokens every layout primitive consumes live in `theme.css`. A token change
    here ripples through every app.
-2. **`packages/ui/src/layouts/{Section,Grid,Flex}/*.css`** — the layout's class-to-token
+2. **`packages/ui/src/layout/{Section,Grid,Flex}/*.css`** — the layout's class-to-token
    mapping. Adding a new gap step requires touching all three.
-3. **`packages/ui/src/layouts/legacy.tsx`** — frozen, but still ships. Don't extend it.
+3. **`packages/ui/src/layout/legacy.tsx`** — frozen, but still ships. Don't extend it.
    Treat any new code referencing its exports as a migration target.
 4. **CVA variant definitions with size variants** (e.g. Button `size="small" | "medium"`)
    — make implicit spatial claims. Must stay coherent with the numeric scale.
 5. **Root layouts** — `apps/*/app/layout.tsx`. Inconsistency here means apps feel like
    different products.
-6. **Barrel exports** — `packages/ui/src/index.ts` and `layouts/index.ts`. If an
+6. **Barrel exports** — `packages/ui/src/index.ts` and `layout/index.ts`. If an
    internal helper leaks, someone will depend on it.
 
 ## Anti-patterns
