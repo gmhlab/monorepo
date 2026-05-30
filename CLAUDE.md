@@ -59,33 +59,33 @@ utils/         Cross-family helpers (AnchorOrButton)
   ↑
 icons/         Icon component set (Icon + 280+ Icon* SVG wrappers)
   ↑
-layouts/       Spatial primitives — Section, Grid, Flex (+ FlexItem). Legacy Stack/Cluster/Container/Center/Split/Cover/LegacyGrid in legacy.tsx.
+layout/        Spatial primitives — Section, Grid, Flex (+ FlexItem). Legacy Stack/Cluster/Container/Center/Split/Cover/LegacyGrid in legacy.tsx.
   ↑
 primitives/    Two coexisting families:
                  • shadcn modules (lowercase files) — Radix/Base UI via cva + cn + data-slot
                  • react-aria-components drop-ins (PascalCase folders) — Button/, Avatar/, Fieldset/, …
                Both live side-by-side. Pick one family per component to avoid export collisions.
   ↑
-composites/    Composed UI pieces — Cards, Footers, Forms, Sections (Hero, Panel), Headers, plus Logo, ModeToggle, ThemeProvider, ImageWithFallback, Hamburger, ProfileCard.
-  ↑
-blocks/        Page-ready sections (numbered: dashboard-01, login-03, etc.) + marketing blocks + navbars/footers.
+composites/    Composed UI pieces — grouped families Cards/, Footers/, Forms/, Headers/, Sections/ (Heroes, Panels), plus standalone Logo, LogoMark, ModeToggle, ThemeProvider, ImageWithFallback, Hamburger, ProfileCard, brand-logo.
   ↑
 patterns/      Stateless UI recipes — PageHeader, SectionHeader, FormSection, EmptyState, FeatureCard, ProfileHeader, SidebarNav.
   ↑
-templates/     Full page shells — AppShellTemplate, AuthTemplate, MarketingTemplate, SplitTemplate, BrandedTemplate.
+templates/     Full page shells — AppShellTemplate, AuthTemplate, BrandTemplate.
   ↑
-pages/         Complete page compositions — template + blocks + patterns wired into route-ready views.
-  ↑
-gmh/           Domain-specific branded components (HomePage, Innovations). May use hardcoded brand colors.
+pages/         Complete page compositions — template + patterns wired into route-ready views. Organized into subfolders: dashboards/, design-system/, examples/, homepage/, innovations/, link-in-bios/, login/, marketing/, sds-demo/, tester/. This is also where GMH-branded domain pages (HomePage, Innovations, marketing) live — they may use hardcoded brand colors.
 ```
 
 **Each layer may only import from layers below it.** Internal cross-layer imports use relative paths.
 
 Each layer re-exports through barrel `index.ts` files up to `ui/src/index.ts`.
 
+A separate **`data/`** layer (`src/data/`) holds non-presentational app data consumed by `pages/`: `config/` (navigation, features, pricing, footer, portal), `contexts/` + `providers/` (Auth, Pricing, Products), `hooks/`, `services/`, and `types/`. It carries no UI and is not re-exported through the top-level `ui/src/index.ts` barrel — import it via relative paths from within `pages/`.
+
+> **Note:** The former `blocks/` and `gmh/` layers were dissolved (commit `ef66b20`). Block sections moved into `composites/` (Headers, Footers, brand-logo) and `pages/` (examples); GMH domain pages moved into `pages/`. Older docs or Figma references to `blocks/`, `gmh/`, or `layouts/` (now `layout/`) are stale.
+
 ### Layout Primitives
 
-Three composable spatial primitives in `src/layouts/`. They control **where things go** — gap, alignment, padding — and stay free of colors, borders, and typography.
+Three composable spatial primitives in `src/layout/`. They control **where things go** — gap, alignment, padding — and stay free of colors, borders, and typography.
 
 - **Section** — page region with `padding`/`paddingTop`/`paddingBottom` rhythm and `variant` (`brand` | `neutral` | `stroke` | `subtle` | `image`). Renders as `<section>`, `<header>`, or `<footer>` via `elementType`.
 - **Grid** — CSS grid with typed `gap`/`columnGap`/`rowGap`, `columns`/`rows` template strings, `flow`, `justifyItems`, `alignItems`, and a `container` max-width opt-in.
@@ -93,7 +93,7 @@ Three composable spatial primitives in `src/layouts/`. They control **where thin
 
 **Shared scale:** All three accept the numeric gap/padding tokens `100`, `200`, `300`, `400`, `600`, `800`, `1200`, `1600` (mapped to CSS variables in `styles/index.css`). `Section.padding` adds `0` and `4000`.
 
-**Legacy primitives** — `Stack`, `Cluster`, `Center`, `Container`, `Split`, `Cover`, and `LegacyGrid` still ship from `layouts/legacy.tsx` (re-exported through `layouts/index.ts`) for backwards compatibility. The barrel's `Grid` export is the new spatial primitive from `layouts/Grid/Grid` — the legacy grid moved to `LegacyGrid` to free that name. **Don't use any of these in new code.** Reach for `Section` / `Grid` / `Flex` instead.
+**Legacy primitives** — `Stack`, `Cluster`, `Center`, `Container`, `Split`, `Cover`, and `LegacyGrid` still ship from `layout/legacy.tsx` (re-exported through `layout/index.ts`) for backwards compatibility. The barrel's `Grid` export is the new spatial primitive from `layout/Grid/Grid` — the legacy grid moved to `LegacyGrid` to free that name. **Don't use any of these in new code.** Reach for `Section` / `Grid` / `Flex` instead.
 
 ### Route Groups (`apps/web`)
 
@@ -134,7 +134,7 @@ Root layout provides ThemeProvider, TooltipProvider, Toaster, and fonts.
 
 Apps must include `@source` directives in their `globals.css` pointing to both local and UI package `.tsx` files.
 
-**Always use semantic tokens** (`bg-primary`, `text-muted-foreground`), never hardcode hex values. Exception: GMH branded components.
+**Always use semantic tokens** (`bg-primary`, `text-muted-foreground`), never hardcode hex values. Exception: GMH branded domain pages under `pages/` (homepage, innovations, marketing).
 
 Use layout components (`Section`, `Grid`, `Flex`) for structural composition instead of raw `flex`/`grid` utilities.
 
@@ -142,7 +142,7 @@ Use layout components (`Section`, `Grid`, `Flex`) for structural composition ins
 
 - **Primitives (shadcn family)** use `cva` for variants, `cn()` for className merging, `data-slot` attribute, `asChild`/`Slot.Root` pattern
 - **Primitives (react-aria family)** ship as `primitives/<PascalCase>/<PascalCase>.tsx` + colocated `<name>.css`. Import siblings via explicit relative paths (`../Text/Text`) — **not** through the `primitives/index.ts` barrel, which would collide with shadcn exports of the same name (`Button`, `Avatar`, `Dialog`, …)
-- **Blocks** use numbered suffix convention: `blocks/<name>-<nn>/`
+- **Pages** are grouped by kind under `pages/<group>/` (e.g. `dashboards/`, `examples/`, `link-in-bios/`); numbered variants keep a suffix (`Linkinbio-01`, `example-03`)
 - **`"use client"`** required at file top for any component using hooks, events, or browser APIs. Default to Server Components in Next.js.
 - **Unused vars** must be prefixed with `_` (strict `@typescript-eslint/no-unused-vars`)
 - **Dependency versions** pinned in `pnpm-workspace.yaml` catalog — use `"catalog:"` in package.json
@@ -163,11 +163,11 @@ Code Connect files live in `.figma/` directories within each UI layer. These map
 
 | Page | ID | Code Layer |
 |------|-----|------------|
-| Layouts | `0:1` | `layouts/` |
+| Layouts | `0:1` | `layout/` |
 | Primitives | `9:2` | `primitives/` |
 | Composites | `9:3` | `composites/` |
 | Patterns | `9:4` | `patterns/` |
-| Blocks | `9:5` | `blocks/` |
+| Blocks | `9:5` | _dissolved — now `composites/` + `pages/`_ |
 | Templates | `9:6` | `templates/` |
 | Pages | `9:7` | `pages/` |
 

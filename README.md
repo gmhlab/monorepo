@@ -12,7 +12,7 @@ This repository is a **pnpm + Turborepo** monorepo that powers the Global Mental
 ## Core architecture
 
 - **Monorepo tooling:** pnpm workspaces + Turborepo
-- **UI system:** layered component model (layouts → primitives → composites → blocks → templates/pages)
+- **UI system:** layered component model (layout → primitives → composites → patterns → templates → pages)
 - **Styling:** Tailwind CSS v4 + semantic design tokens from `index.css`
 - **Design workflow:** Figma Code Connect mappings for component parity
 
@@ -55,14 +55,13 @@ gmhlab_monorepo/
 │   │       ├── hooks/             # Shared hooks (useIsMobile, useMediaQuery)
 │   │       ├── utils/             # Cross-family helpers (AnchorOrButton)
 │   │       ├── icons/             # Icon component + 280+ Icon* SVG wrappers
-│   │       ├── layouts/           # Spatial primitives (Section, Grid, Flex) + legacy.tsx
+│   │       ├── layout/            # Spatial primitives (Section, Grid, Flex) + legacy.tsx
 │   │       ├── primitives/        # shadcn modules (lowercase) + react-aria-components drop-ins (PascalCase)
-│   │       ├── composites/        # Cards, Footers, Forms, Sections, Headers, Logo, ThemeProvider, …
-│   │       ├── blocks/            # Page-ready sections (navbars, footers, marketing)
+│   │       ├── data/              # App data: config, contexts, providers, hooks, services, types
+│   │       ├── composites/        # Cards, Footers, Forms, Headers, Sections, Logo, ThemeProvider, …
 │   │       ├── patterns/          # Stateless UI recipes (PageHeader, FormSection)
-│   │       ├── templates/         # Full page shells (AppShell, Auth, Marketing, Split)
-│   │       ├── pages/             # Complete page compositions (Dashboard, DesignSystem, LinkInBio)
-│   │       ├── gmh/               # Domain-specific branded components
+│   │       ├── templates/         # Full page shells (AppShell, Auth, Brand)
+│   │       ├── pages/             # Page compositions, grouped (dashboards, examples, homepage, innovations, …)
 │   │       ├── styles/            # Theme tokens and CSS
 │   │       └── assets/            # Static assets
 │   ├── typescript-config/          # Shared tsconfig presets
@@ -103,31 +102,22 @@ import { Button, Card, Flex, cn, useIsMobile } from "@repo/ui";
 
 Import siblings inside this family with explicit relative paths (e.g. `import { Text } from "../Text/Text"`) — not through the `primitives/index.ts` barrel.
 
-**Layouts** (`src/layouts/`) — 3 spatial primitives:
+**Layout** (`src/layout/`) — 3 spatial primitives:
 
 `Section` · `Grid` · `Flex` (with `FlexItem`)
 
 All three accept the numeric token scale `100` · `200` · `300` · `400` · `600` · `800` · `1200` · `1600` for `gap`/`padding`.
 
-*Legacy:* `Stack` · `Cluster` · `Center` · `Container` · `Split` · `Cover` · `LegacyGrid` remain available from `layouts/legacy.tsx` for backwards compatibility but should not be used in new code. (`LegacyGrid` was previously exported as `Grid`; the canonical `Grid` is now the spatial primitive from `layouts/Grid/Grid`.)
+*Legacy:* `Stack` · `Cluster` · `Center` · `Container` · `Split` · `Cover` · `LegacyGrid` remain available from `layout/legacy.tsx` for backwards compatibility but should not be used in new code. (`LegacyGrid` was previously exported as `Grid`; the canonical `Grid` is now the spatial primitive from `layout/Grid/Grid`.)
 
-**Blocks** (`src/blocks/`) — page-ready composed sections:
+**Data** (`src/data/`) — non-presentational app data consumed by pages:
 
-| Block | Description |
-|-------|-------------|
-| `marketing/` | MarketingNav, MarketingHero, MarketingFeatures, MarketingPricing, MarketingCTA, MarketingFooter |
-| `portal-nav` | Portal navigation component |
-| `brand-logo` | Brand logo block |
-| `navbar-02` | Navigation with configurable data prop |
-| `navbar-05` | GMH-branded navigation bar |
-| `footer-02` | Footer with logo |
-| `footer-03` | GMH-branded footer with quick links and contact info |
-| `header` | Shared header block |
-| `footer` | Shared footer block |
-| `example-01/` | Card + Form examples with AlertDialog, Combobox, DropdownMenu |
-| `example-02/` | Kitchen sink page demonstrating many UI primitives |
-| `example-03/` | Data dashboard with charts and data table |
-| `login-03` | Login page with form |
+`config/` (navigation, features, pricing, footer, portal) · `contexts/` + `providers/` (Auth, Pricing, Products) · `hooks/` · `services/` · `types/`. Not re-exported through the top-level barrel — imported via relative paths from `pages/`.
+
+**Composites** (`src/composites/`) — multi-primitive widgets:
+
+- *Grouped families:* `Cards/` (Card, PricingCard, ProductInfoCard + skeletons & adapters), `Footers/` (footer-02), `Forms/` (FormBox), `Sections/` (Heroes, Panels), `Headers/` (navbar-02)
+- *Standalone:* `Logo` · `LogoMark` · `ModeToggle` · `ThemeProvider` · `ImageWithFallback` · `Hamburger` · `ProfileCard` · `brand-logo`
 
 **Patterns** (`src/patterns/`) — stateless UI recipes:
 
@@ -135,20 +125,15 @@ All three accept the numeric token scale `100` · `200` · `300` · `400` · `60
 
 **Templates** (`src/templates/`) — full page shells with named slots:
 
-`AppShellTemplate` · `AuthTemplate` · `MarketingTemplate` · `SplitTemplate` · `BrandedTemplate`
+`AppShellTemplate` · `AuthTemplate` · `BrandTemplate`
 
-**Pages** (`src/pages/`) — complete page compositions wired into route-ready views:
+**Pages** (`src/pages/`) — complete page compositions wired into route-ready views, grouped by kind:
 
-`DashboardPage` · `DesignSystem` · `LinkInBioTemplate`
+`dashboards/` · `design-system/` · `examples/` (example-01–03) · `homepage/` · `innovations/` · `link-in-bios/` · `login/` · `marketing/` · `sds-demo/` · `tester/`
 
-**Composites** (`src/composites/`) — multi-primitive widgets:
+Notable exports: `DashboardPage` · `DesignSystem` · `LinkInBioTemplate` · `LinkInBio00–02`. The GMH-branded domain pages (`HomePage`, `Innovation`, `Innovations`, marketing) also live here — they may use hardcoded brand colors.
 
-- *Grouped families:* `Cards/` (Card, PricingCard, ProductInfoCard + skeletons & adapters), `Footers/`, `Forms/` (FormBox), `Sections/` (Hero, Panel), `Headers/`
-- *Standalone:* `Logo` · `LogoMark` · `ModeToggle` · `ThemeProvider` · `ImageWithFallback` · `Hamburger` · `ProfileCard`
-
-**GMH** (`src/gmh/`) — domain-specific branded pages:
-
-`HomePage` · `Innovation` · `Innovations`
+> The former `blocks/` and `gmh/` layers were dissolved: block sections moved into `composites/` and `pages/examples/`; GMH domain pages moved into `pages/`.
 
 ### Utilities
 
@@ -166,7 +151,7 @@ The main app (`apps/web`) uses Next.js App Router with five route groups:
 | `(content)` | Navbar5 + Footer3 | GMH branded public site |
 | `(marketing)` | Marketing layout | Marketing pages |
 | `(home)` | Navbar2 + Footer2 | Portal landing page |
-| `(auth)` | Minimal | Authentication, layout demos, link-in-bio |
+| `(auth)` | Minimal | Authentication, link-in-bio |
 | `(app)` | Sidebar + Header | Dashboard area |
 
 Key routes:
@@ -181,7 +166,6 @@ Key routes:
 | `/` | `(home)` — Portal landing |
 | `/login` | `(auth)` — Login page |
 | `/links` | `(auth)` — Link-in-bio page |
-| `/layouts/*` | `(auth)` — Layout primitive demos |
 | `/dashboard` | `(app)` — Dashboard |
 | `/dashboard/design-system` | `(app)` — Design system viewer |
 | `/dashboard/example/01–03` | `(app)` — Example pages |
@@ -240,12 +224,12 @@ pnpm --filter @repo/ui build:registry    # rebuild registry
 
 | Layer | Technology | Version |
 |-------|-----------|---------|
-| Monorepo | pnpm workspaces + Turborepo | pnpm 9.15 / Turbo 2.3 |
+| Monorepo | pnpm workspaces + Turborepo | pnpm 9.15 / Turbo 2.9 |
 | Framework | Next.js / Vite | 16 / 6.0 |
 | Language | TypeScript (strict) | 5.7 |
 | UI | React | 19 |
 | Styling | Tailwind CSS v4 | 4.0 |
-| Components | Radix UI + Base UI + react-aria-components | 1.4 / 1.2 / 1.17 |
+| Components | Radix UI + Base UI + react-aria-components | 1.4 / 1.2 / 1.5 |
 | Variants | class-variance-authority | — |
 | Icons | lucide-react (+ local `Icon*` set) | 0.487 |
 | Animation | motion | 12 |
@@ -289,7 +273,7 @@ For detailed agent/contributor workflow, component conventions, and architectura
 |------|---------|
 | [`AGENTS.md`](./AGENTS.md) | Commands, architecture, layer hierarchy, conventions, Figma integration, and skill index — the working reference for AI agents and contributors |
 | [`SKILL.md`](./SKILL.md) | `layout-primitives` skill — spatial vocabulary, numeric gap scale, and rules for `Section` / `Grid` / `Flex` |
-| [`CLAUDE.md`](./CLAUDE.md) | Entry point for Claude Code; pulls in `AGENTS.md` and `SKILL.md` via `@` imports |
+| [`CLAUDE.md`](./CLAUDE.md) | Entry point for Claude Code — a verbatim copy of `AGENTS.md` (some tools only read `CLAUDE.md`, so the two are kept in sync) |
 
 ## Appendix
 
