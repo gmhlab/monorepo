@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 import { AuthProvider } from "./AuthProvider";
 import { PricingProvider } from "./PricingProvider";
 import { ProductsProvider } from "./ProductsProvider";

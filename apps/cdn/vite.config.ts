@@ -18,9 +18,7 @@ export default defineConfig(({ command }) => ({
         innovations: resolve(__dirname, "innovations.html"),
         equip: resolve(__dirname, "equip.html"),
         page: resolve(__dirname, "index.html"),
-        marketing: resolve(__dirname, "marketing.html"),
         globals: resolve(__dirname, "globals.html"),
-        patterns: resolve(__dirname, "patterns.html"),
       },
       output: {
         entryFileNames: "assets/[name]/index-[hash].js",

@@ -1,9 +1,6 @@
 import { type ComponentPropsWithRef, type ReactNode } from "react"
-import { Cover } from "../layout"
-import { Center } from "../layout"
-import { Stack } from "../layout"
-import { type CenterMax } from "../layout"
-import { cn } from "../utils/utils"
+import { Flex } from "../layout"
+import { cn } from "../lib/utils"
 
 const maxWidthMap = {
   xs: "max-w-xs",
@@ -36,24 +33,12 @@ export function AuthTemplate({
   ...props
 }: AuthTemplateProps) {
   return (
-    <Cover
+    <div
       ref={ref}
-      minHeight="screen"
-      header={
-        logo && (
-          <div className="flex h-20 items-end justify-center px-6 pt-6">
-            {logo}
-          </div>
-        )
-      }
-      footer={
-        footer && (
-          <div className="px-6 pb-8 pt-4 text-center text-xs text-muted-foreground">
-            {footer}
-          </div>
-        )
-      }
-      className={cn("relative overflow-hidden bg-background", className)}
+      className={cn(
+        "relative flex min-h-screen flex-col overflow-hidden bg-background",
+        className,
+      )}
       {...props}
     >
       {/* ── Decorative background ───────────────────────────── */}
@@ -63,15 +48,29 @@ export function AuthTemplate({
         </div>
       )}
 
-      {/* ── Form content ────────────────────────────────────── */}
-      <Center max="full" gutter className="relative z-10">
-        <div className={cn("w-full", maxWidthMap[maxWidth])}>
-          <Stack gap="lg">
-            {children}
-          </Stack>
+      {/* ── Header (logo) ───────────────────────────────────── */}
+      {logo && (
+        <div className="relative z-10 flex h-20 items-end justify-center px-6 pt-6">
+          {logo}
         </div>
-      </Center>
-    </Cover>
+      )}
+
+      {/* ── Form content ────────────────────────────────────── */}
+      <div className="relative z-10 flex flex-1 items-center justify-center px-6 py-12">
+        <div className={cn("w-full", maxWidthMap[maxWidth])}>
+          <Flex direction="column" gap="400" alignSecondary="stretch">
+            {children}
+          </Flex>
+        </div>
+      </div>
+
+      {/* ── Footer ──────────────────────────────────────────── */}
+      {footer && (
+        <div className="relative z-10 px-6 pb-8 pt-4 text-center text-xs text-muted-foreground">
+          {footer}
+        </div>
+      )}
+    </div>
   )
 }
 AuthTemplate.displayName = "AuthTemplate"

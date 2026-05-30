@@ -1,5 +1,4 @@
-import { Section } from "../../../layout/Section/Section";
-import { Flex } from "../../../layout/Flex/Flex";
+import { Section, Flex } from "../../../layout";
 import { TextContentTitle } from "../../../primitives/Text/Text";
 
 export function HeroSection02() {

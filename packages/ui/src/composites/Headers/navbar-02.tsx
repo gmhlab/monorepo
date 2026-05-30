@@ -9,8 +9,8 @@ import {
   DropdownMenuTrigger
 } from '../../primitives/dropdown-menu'
 
-import LogoSvg from '../logo-mark'
-import { cn } from '../../utils/utils'
+import LogoSvg from '../../primitives/Logo/Logos/logo-mark'
+import { cn } from '../../lib/utils'
 import { ModeToggle } from '../mode-toggle'
 
 const Logo = ({ className }: { className?: string }) => (

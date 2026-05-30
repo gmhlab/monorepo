@@ -7,7 +7,7 @@ import {
   type ButtonDangerProps,
   type ButtonProps,
 } from "../Button/Button";
-import { ForwardedRef, forwardRef } from "react";
+import { type ForwardedRef, forwardRef } from "react";
 import "./iconButton.css";
 
 export type IconButtonProps = Omit<ButtonProps, "aria-label"> & {

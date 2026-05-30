@@ -1,6 +1,6 @@
 import { Card } from "../../../composites/Cards/Cards";
 import { TextTitlePage, TextContentHeading } from "../../../primitives/Text/Text";
-import { Section, Flex, LegacyGrid as Grid } from "../../../layout";
+import { Section, Flex, Grid } from "../../../layout";
 import { BookOpen } from "lucide-react";
 import type { GetItData } from "../innovation-page";
 
@@ -10,7 +10,7 @@ export function GetItSection({ heading, body, resources, highlight }: GetItData)
       <Flex direction="column" alignSecondary="center" gap="1200" container>
         <TextTitlePage className="text-center">What is it?</TextTitlePage>
           <Card variant="stroke" padding="600">
-          <Grid columns="auto-fit" min="25rem" gap="xl" className="items-center">
+          <Grid columns="(3 1fr)" className="p-8 bg-white/5 backdrop-blur-sm shadow-2xl border border-white/20 rounded-xl">
             <Flex direction="column" gap="600" alignSecondary="stretch">
               <TextContentHeading heading={heading} subheading={body} className="text-card-foreground break-words" />
               <Flex direction="column" gap="200" alignSecondary="stretch">

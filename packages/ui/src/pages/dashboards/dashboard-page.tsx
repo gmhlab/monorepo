@@ -1,8 +1,6 @@
 "use client"
 
 import { Users, BarChart3, Globe, TrendingUp } from "lucide-react"
-import { PageHeader } from "../../patterns/page-header"
-import { SectionHeader } from "../../patterns/section-header"
 import { Flex, Grid, Section } from "../../layout"
 import {
   Card,
@@ -11,6 +9,7 @@ import {
   CardDescription,
   CardContent,
 } from "../../primitives/card"
+import { TextContentTitle } from "../../primitives/Text/Text"
 
 const stats = [
   { title: "Total Users", value: "2,450", change: "+12%", icon: Users },
@@ -22,9 +21,9 @@ const stats = [
 export function DashboardPage() {
   return (
     <Section padding="1200" variant="stroke">
-      <PageHeader
+      <TextContentTitle
         title="Dashboard"
-        description="Overview of platform activity and key metrics."
+        subtitle="Overview of platform activity and key metrics."
       />
 
       <Grid columns="repeat(auto-fit, minmax(12rem, 1fr))" gap="400" className="mb-8">
@@ -49,9 +48,9 @@ export function DashboardPage() {
         ))}
       </Grid>
 
-      <SectionHeader
+      <TextContentTitle
         title="Recent Activity"
-        description="Latest updates across the platform"
+        subtitle="Latest updates across the platform"
       />
 
       <Grid columns="repeat(auto-fit, minmax(20rem, 1fr))" gap="600">

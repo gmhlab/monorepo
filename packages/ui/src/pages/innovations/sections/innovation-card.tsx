@@ -1,5 +1,5 @@
 import { Plus } from "lucide-react";
-import { ImageWithFallback } from '../../../composites/image-with-fallback';
+import { ImageWithFallback } from '../../../primitives/Image/image-with-fallback';
 import { Flex, FlexItem } from '../../../layout/Flex/Flex';
 
 interface InnovationCardProps {

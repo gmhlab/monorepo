@@ -1,7 +1,7 @@
 // packages/ui/src/composites/logo.tsx
  
 import { type ReactNode } from "react"
-import { cn } from "../utils/utils"
+import { cn } from "../../../lib/utils"
  
 export type LogoVariant = "icon" | "wordmark" | "full"
 export type LogoSize = "xs" | "sm" | "md" | "lg" | "xl"

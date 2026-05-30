@@ -11,9 +11,9 @@ import {
   SidebarSeparator,
 } from "../primitives/sidebar"
 import { Flex } from "../layout"
-import { cn } from "../utils/utils"
+import { cn } from "../lib/utils"
 
-export interface AppShellTemplateProps extends Omit<ComponentPropsWithRef<"div">, "content"> {
+export interface AppTemplateProps extends Omit<ComponentPropsWithRef<"div">, "content"> {
   /** Sidebar header slot — typically a <Logo /> or brand mark */
   sidebarHeader?: ReactNode
   /** Sidebar body — nav groups, menus, etc. Usually a <SidebarNav /> pattern. */
@@ -30,7 +30,7 @@ export interface AppShellTemplateProps extends Omit<ComponentPropsWithRef<"div">
   defaultOpen?: boolean
 }
 
-export function AppShellTemplate({
+export function AppTemplate({
   sidebarHeader,
   nav,
   sidebarFooter,
@@ -41,10 +41,10 @@ export function AppShellTemplate({
   className,
   ref,
   ...props
-}: AppShellTemplateProps) {
+}: AppTemplateProps) {
   return (
     <SidebarProvider defaultOpen={defaultOpen}>
-      <div ref={ref} className={cn("flex min-h-screen w-full", className)} {...props}>
+      <div className="flex h-screen w-screen">
         <Sidebar>
           {sidebarHeader && (
             <>
@@ -63,9 +63,9 @@ export function AppShellTemplate({
             {/* ── Header ────────────────────────────────────────── */}
             {header && (
               <header className="sticky top-0 z-30 shrink-0 border-b border-sidebar-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
-                <div className="flex h-14 items-center px-4 sm:px-6">
+                <Flex alignPrimary="stretch" alignSecondary="stretch" className="sm:px-6">
                   {header}
-                </div>
+                </Flex>
               </header>
             )}
 
@@ -86,4 +86,4 @@ export function AppShellTemplate({
     </SidebarProvider>
   )
 }
-AppShellTemplate.displayName = "AppShellTemplate"
+AppTemplate.displayName = "AppTemplate"

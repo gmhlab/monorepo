@@ -1,13 +1,13 @@
 import { 
   Avatar, 
   AvatarFallback, 
-  AvatarImage } from "../primitives/avatar"
-import { Badge } from "../primitives/badge"
-import { Button } from "../primitives/button" 
+  AvatarImage } from "../../primitives/avatar"
+import { Badge } from "../../primitives/badge"
+import { Button } from "../../primitives/button" 
 import { Card,
   CardContent, 
   CardFooter, 
-  CardHeader } from "../primitives/card"
+  CardHeader } from "../../primitives/card"
 import { Code, GitBranch, Mail, Users } from 'lucide-react'
 
 interface ProfileCardProps {

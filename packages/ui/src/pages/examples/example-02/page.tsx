@@ -51,7 +51,7 @@ import { type DateRange } from "react-day-picker"
 import { Bar, BarChart, ResponsiveContainer } from "recharts"
 import { toast } from "sonner"
 
-import { cn } from "../../../utils/utils"
+import { cn } from "../../../lib/utils"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../../../primitives/accordion"
 import { Alert, AlertDescription, AlertTitle } from "../../../primitives/alert"
 import {

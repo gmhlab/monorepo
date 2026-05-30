@@ -2,4 +2,4 @@ export { WhiteboardSidebarHeader, WhiteboardNav, WhiteboardProTip, WhiteboardCon
 export { DashboardPage } from "./dashboard-page"
 export { TesterPage01 } from "./branded-dashboard";
 export { TesterWhiteboard } from "./tester-whiteboard";
-export { TesterAppShell } from "./app-shell-temp";
+export { AppDemo } from "./app-template-demo";

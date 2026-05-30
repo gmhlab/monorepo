@@ -1,5 +1,6 @@
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Tooltip } from 'recharts';
 import { Settings, LayoutGrid, Users, DollarSign, Zap, FileText } from 'lucide-react';
+import { Flex, Grid } from "../../layout" 
 
 const data = [
   { name: 'MON', views: 4000, subs: 240 },
@@ -71,7 +72,7 @@ export function WhiteboardContent() {
       </div>
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <Grid columns="(3 1fr)" gap="600">
         {[
           { label: 'TOTAL VIEWS', value: '1.2M', trend: '+14%', up: true },
           { label: 'NEW SUBS', value: '8,432', trend: '+5%', up: true },
@@ -93,7 +94,7 @@ export function WhiteboardContent() {
             </div>
           </div>
         ))}
-      </div>
+      </Grid>
 
       {/* Chart Area */}
       <div className="bg-white border-4 border-black p-6 shadow-[8px_8px_0px_0px_#000] flex-1 min-h-[400px]">
@@ -126,7 +127,7 @@ export function TwoSidedDash() {
   return (
     <div className="flex flex-col lg:flex-row min-h-[calc(100vh-6rem)] w-full max-w-[1600px] mx-auto p-4 gap-8">
       {/* Sidebar */}
-      <div className="w-full lg:w-64 flex-shrink-0 flex flex-col gap-4">
+      <Flex direction="column" gap="400" >
         <div className="bg-white border-4 border-black p-6 shadow-[8px_8px_0px_0px_#000]">
           <div className="mb-6 border-b-4 border-black pb-2">
             <WhiteboardSidebarHeader />
@@ -136,7 +137,7 @@ export function TwoSidedDash() {
         <div className="mt-auto">
           <WhiteboardProTip />
         </div>
-      </div>
+      </Flex>
 
       {/* Main Content */}
       <WhiteboardContent />

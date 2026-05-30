@@ -1,14 +1,14 @@
 "use client";
 
 import { Card } from "../../../primitives";
-import { Section, LegacyGrid as Grid, Flex } from "../../../layout";
+import { Section, Grid, Flex } from "../../../layout";
 import { User, Quote } from "lucide-react";
 import type { UserStoryData } from "../innovation-page";
 
 export function UserStorySection({ storyIntro, paragraphs, quote, name, role, org }: UserStoryData) {
   return (
-    <Section padding="1600">
-      <Flex direction="column" alignSecondary="center" gap="1600" container>
+    <div className="p-8 bg-white/10 backdrop-blur-sm shadow-2xl border border-white/20 rounded-xl">
+      <Flex direction="column" alignSecondary="center" gap="200" container>
       <h2 className="text-5xl md:text-6xl font-serif text-white text-center">Who has used it?</h2>
 
       <div>
@@ -16,7 +16,7 @@ export function UserStorySection({ storyIntro, paragraphs, quote, name, role, or
           <div className="absolute top-0 right-0 w-64 h-64 bg-[#AA9868]/10 rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#033C5A]/10 rounded-full blur-3xl"></div>
 
-          <Grid columns="auto-fit" min="25rem" gap="xl" className="relative z-10">
+          <Grid columns="(3 1fr)" gap="400" className="relative z-10">
             <div>
               <Flex gap="600" className="mb-6">
                 <Quote className="w-22 h-22 text-[#AA9868]" />
@@ -55,6 +55,6 @@ export function UserStorySection({ storyIntro, paragraphs, quote, name, role, or
         </Card>
       </div>
       </Flex>
-    </Section>
+    </div>
   );
 }

@@ -1,4 +1,4 @@
-import { cn } from "../../utils/utils"
+import { cn } from "../../lib/utils"
 import { Button } from "../../primitives/button"
 import {
   Card,

@@ -3,7 +3,7 @@
 import clsx from "clsx";
 import { IconX } from "../../icons";
 import { DestructiveIconButton, IconButton } from "../IconButton/IconButton";
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 import "./notification.css";
 
 type NotificationVariant = "message" | "alert";

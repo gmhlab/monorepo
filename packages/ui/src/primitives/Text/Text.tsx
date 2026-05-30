@@ -4,7 +4,7 @@ import { clsx } from "clsx";
 import { useMediaQuery } from "../../hooks";
 import { Flex } from "../../layout";
 import { Link } from "../Link/Link";
-import { ComponentPropsWithoutRef, ReactNode } from "react";
+import type { ComponentPropsWithoutRef, CSSProperties, ReactNode } from "react";
 import {
   Text as RACText,
   type TextProps as RACTextProps,
@@ -30,7 +30,7 @@ export function Text({
     `text-line-height-${lineHeight}`,
   );
   const style = lineClamp
-    ? { "--text-truncate-line-clamp": lineClamp }
+    ? ({ "--text-truncate-line-clamp": lineClamp } as CSSProperties)
     : undefined;
   return (
     <RACText
@@ -58,7 +58,7 @@ export function TextSmall({
     `text-line-height-${lineHeight}`,
   );
   const style = lineClamp
-    ? { "--text-truncate-line-clamp": lineClamp }
+    ? ({ "--text-truncate-line-clamp": lineClamp } as CSSProperties)
     : undefined;
   return (
     <RACText
@@ -86,7 +86,7 @@ export function TextSmallStrong({
     `text-line-height-${lineHeight}`,
   );
   const style = lineClamp
-    ? { "--text-truncate-line-clamp": lineClamp }
+    ? ({ "--text-truncate-line-clamp": lineClamp } as CSSProperties)
     : undefined;
   return (
     <RACText
@@ -110,7 +110,7 @@ export function TextStrong({
     "text-body-strong",
   );
   const style = lineClamp
-    ? { "--text-truncate-line-clamp": lineClamp }
+    ? ({ "--text-truncate-line-clamp": lineClamp } as CSSProperties)
     : undefined;
   return (
     <RACText
@@ -162,7 +162,7 @@ export function TextTitleHero({
     "text-title-hero",
   );
   const style = lineClamp
-    ? { "--text-truncate-line-clamp": lineClamp }
+    ? ({ "--text-truncate-line-clamp": lineClamp } as CSSProperties)
     : undefined;
   return (
     <RACText
@@ -186,7 +186,7 @@ export function TextTitlePage({
     "text-title-page",
   );
   const style = lineClamp
-    ? { "--text-truncate-line-clamp": lineClamp }
+    ? ({ "--text-truncate-line-clamp": lineClamp } as CSSProperties)
     : undefined;
   return (
     <RACText
@@ -210,7 +210,7 @@ export function TextSubtitle({
     "text-subtitle",
   );
   const style = lineClamp
-    ? { "--text-truncate-line-clamp": lineClamp }
+    ? ({ "--text-truncate-line-clamp": lineClamp } as CSSProperties)
     : undefined;
   return (
     <RACText
@@ -234,7 +234,7 @@ export function TextHeading({
     "text-heading",
   );
   const style = lineClamp
-    ? { "--text-truncate-line-clamp": lineClamp }
+    ? ({ "--text-truncate-line-clamp": lineClamp } as CSSProperties)
     : undefined;
   return (
     <RACText
@@ -258,7 +258,7 @@ export function TextSubheading({
     "text-subheading",
   );
   const style = lineClamp
-    ? { "--text-truncate-line-clamp": lineClamp }
+    ? ({ "--text-truncate-line-clamp": lineClamp } as CSSProperties)
     : undefined;
   return (
     <RACText

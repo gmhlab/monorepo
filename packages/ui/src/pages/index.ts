@@ -7,4 +7,3 @@ export * from "./link-in-bios";
 export * from "./homepage/homepage";
 export * from "./innovations";
 export * from "./dashboards";
-export * from "./marketing";

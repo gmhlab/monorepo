@@ -1,6 +1,6 @@
 "use client"
 
-import { ReactNode, useEffect, useMemo, useState } from "react";
+import { type ReactNode, useEffect, useMemo, useState } from "react";
 import { PricingContext } from "../contexts/PricingContext";
 import { pricingService } from "../services/pricingService";
 import type { PricingPlan } from "../types/pricing";

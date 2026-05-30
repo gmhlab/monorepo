@@ -1,6 +1,6 @@
 "use client"
 
-import { AppShellTemplate } from "../../templates";
+import { AppTemplate } from "../../templates";
 import { SidebarTrigger } from "../../primitives/sidebar";
 import {
   WhiteboardSidebarHeader,
@@ -11,7 +11,7 @@ import {
 
 export function TesterWhiteboard() {
   return (
-    <AppShellTemplate
+    <AppTemplate
       sidebarHeader={<WhiteboardSidebarHeader />}
       nav={<WhiteboardNav />}
       sidebarFooter={<WhiteboardProTip />}

@@ -1,7 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import { ComponentPropsWithoutRef, ReactNode } from "react";
+import type { ComponentPropsWithoutRef, ReactNode } from "react";
 import { AnchorOrButton, type AnchorOrButtonProps } from "../../utils";
 import "./navigation.css";
 

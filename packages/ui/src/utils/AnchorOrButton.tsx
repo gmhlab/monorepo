@@ -1,8 +1,8 @@
 "use client";
 
 import React, {
-  ComponentPropsWithoutRef,
-  ForwardedRef,
+  type ComponentPropsWithoutRef,
+  type ForwardedRef,
   forwardRef,
 } from "react";
 import {

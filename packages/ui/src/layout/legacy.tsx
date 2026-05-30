@@ -1,4 +1,4 @@
-import { cn } from "../utils/utils"
+import { cn } from "../lib/utils"
 import { Section } from "./Section/Section"
 import { forwardRef, type ComponentPropsWithoutRef, type ElementType } from "react"
 

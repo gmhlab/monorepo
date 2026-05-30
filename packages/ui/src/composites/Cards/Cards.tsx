@@ -18,7 +18,7 @@ import {
   TextStrong,
   TextSubheading,
 } from "../../primitives/Text/Text";
-import { ComponentPropsWithoutRef, ReactNode } from "react";
+import type { ComponentPropsWithoutRef, ReactNode } from "react";
 import { IconStar } from "../../icons/IconStar";
 import { AnchorOrButton, type AnchorOrButtonProps } from "../../utils";
 import "./cards.css";

@@ -1,11 +1,6 @@
 import { type ComponentPropsWithRef, type ReactNode } from "react"
-import { Cover } from "../../layout"
-import { Center } from "../../layout"
-import { Stack } from "../../layout"
-import { Cluster } from "../../layout"
-import { sectionSpacingMap } from "../../layout"
-import { ProfileHeader } from "../../patterns/profile-header"
-import { cn } from "../../utils/utils"
+import { Section, Flex } from "../../layout"
+import { cn } from "../../lib/utils"
 
 export interface LinkInBioTemplateProps extends ComponentPropsWithRef<"div"> {
   /** Profile avatar or image */
@@ -34,38 +29,28 @@ export function LinkInBioTemplate({
   ...props
 }: LinkInBioTemplateProps) {
   return (
-    <Cover
-      minHeight="auto"
-      ref={ref}
-      className={cn("bg-background text-foreground relative overflow-hidden", className)}
-      {...props}
-    >
+    <Section>
       {background}
+      <Flex>
+        <Flex gap="400" alignPrimary="center">
 
-      <Center max="xl" gutter className={cn("relative z-10", sectionSpacingMap["sm"])}>
-        <Stack gap="xl" align="center">
-          <ProfileHeader
-            avatar={avatar}
-            heading={heading}
-            description={description}
-          />
 
           {/* Social icons */}
           {socialLinks && (
-            <Cluster gap="md" justify="center">
+            <Flex gap="200" alignPrimary="center">
               {socialLinks}
-            </Cluster>
+            </Flex>
           )}
 
           {/* Main links */}
           {links && (
-            <Stack gap="md" className="w-full">
+            <Flex direction="column" gap="400" className="w-full">
               {links}
-            </Stack>
+            </Flex>
           )}
-        </Stack>
-      </Center>
-    </Cover>
+        </Flex>
+      </Flex>
+    </Section>
   )
 }
 LinkInBioTemplate.displayName = "LinkInBioTemplate"

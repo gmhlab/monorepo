@@ -1,7 +1,7 @@
 "use client"
 
 import {
-  AppShellTemplate,
+  AppTemplate,
   Logo,
   SidebarMenu,
   SidebarMenuButton,
@@ -72,7 +72,7 @@ function AppHeader() {
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
-    <AppShellTemplate
+    <AppTemplate
       sidebarHeader={<Logo />}
       nav={<SidebarNav groups={navGroups} />}
       sidebarFooter={<SidebarFooterLinks />}

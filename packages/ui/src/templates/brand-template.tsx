@@ -2,7 +2,7 @@ import type { ComponentPropsWithoutRef, ReactNode } from "react";
 import { Flex } from "../layout";
 import { Header } from "../composites/Headers/Headers";
 import { Footer } from "../composites/Footers/Footers";
-import { cn } from "../utils/utils";
+import { cn } from "../lib/utils";
 
 export type BrandTemplateProps = ComponentPropsWithoutRef<"div"> & {
   /** Page header. Defaults to `<Header />`; pass a configured Header instance to override (e.g. `currentPath`, `logoSrc`). */

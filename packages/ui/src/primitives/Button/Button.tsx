@@ -1,7 +1,7 @@
 "use client";
 
 import { clsx } from "clsx";
-import React, { ComponentPropsWithoutRef } from "react";
+import React, { type ComponentPropsWithoutRef } from "react";
 import {
   Button as RACButton,
   Link as RACLink,

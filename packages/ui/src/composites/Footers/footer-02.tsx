@@ -1,6 +1,6 @@
-import { cn } from "../../utils/utils";
+import { cn } from "../../lib/utils";
 
-import LogoMark from "../logo-mark";
+import LogoMark from "../../primitives/Logo/Logos/logo-mark";
 
 const Logo = ({
   url,

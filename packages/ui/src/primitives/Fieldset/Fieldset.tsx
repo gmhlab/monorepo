@@ -1,7 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import { ComponentPropsWithoutRef } from "react";
+import type { ComponentPropsWithoutRef } from "react";
 import {
   FieldError as RACFieldError,
   Form as RACForm,

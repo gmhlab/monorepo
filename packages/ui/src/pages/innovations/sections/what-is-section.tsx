@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowRight } from "lucide-react";
-import { LegacyGrid as Grid, Flex, Section } from "../../../layout";
+import { Grid, Flex, Section } from "../../../layout";
 import { Button, ButtonGroup } from "../../../primitives/Button/Button";
 import { Card } from "../../../composites";
 import { TextTitlePage, TextContentHeading } from "../../../primitives/Text/Text";
@@ -14,7 +14,7 @@ export function WhatIsItSection({ headline, body, capabilities }: WhatIsItData) 
     <Section padding="1600">
       <Flex direction="column" alignSecondary="center" gap="1200" container>
         <TextTitlePage className="text-center">What is it?</TextTitlePage>
-        <Grid columns="auto-fit" min="28rem" gap="xl" className="p-8 bg-white/5 backdrop-blur-sm shadow-2xl border border-white/20 rounded-xl">
+        <Grid columns="(3 1fr)" gap="1600" alignItems="start">
 
           <Card variant="stroke" padding="600">
             <TextContentHeading heading={headline} subheading={body} className="text-card-foreground break-words" />
