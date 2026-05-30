@@ -1,6 +1,6 @@
 import { Navbar2 } from "@repo/ui"
 import { Footer2 } from "@repo/ui";
-import { navigationData } from "../../config/navigation"
+import { navigationData } from "@repo/ui/data/config/navigation";
 
 
 

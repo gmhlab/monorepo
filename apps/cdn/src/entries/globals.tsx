@@ -1,4 +1,4 @@
-import { Navbar2, Footer2, PortalNav, Button } from "@repo/ui";
+import { Navbar2, Footer2, Button } from "@repo/ui";
 import { mount } from "../bootstrap";
 
 const navigationData = [
@@ -55,26 +55,6 @@ function GlobalsDemo() {
         description="Primary app/site navigation with logo, mode toggle, search, and a mobile dropdown menu."
       >
         <Navbar2 navigationData={navigationData} />
-      </Specimen>
-
-      <Specimen
-        name="PortalNav"
-        description="Lightweight section nav used inside the portal/dashboard layouts. Highlights the active link via pathname."
-      >
-        <PortalNav
-          title="Layouts"
-          titleHref="/layouts"
-          pathname="/layouts/grid"
-          links={[
-            { label: "Grid", href: "/layouts/grid" },
-            { label: "Flex", href: "/layouts/flex" },
-            { label: "Section", href: "/layouts/section" },
-          ]}
-        >
-          <Button size="sm" variant="outline">
-            Sign out
-          </Button>
-        </PortalNav>
       </Specimen>
 
       <Specimen

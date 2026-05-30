@@ -1,8 +1,8 @@
 "use client"
 
 import { useState } from "react"
-import { Container, Stack, Cluster, LegacyGrid as Grid } from "@repo/ui/layouts"
-import type { Gap } from "@repo/ui/layouts"
+import { Container, Stack, Cluster, LegacyGrid as Grid } from "@repo/ui/layout"
+import type { Gap } from "@repo/ui/layout"
 import {
   Alert,
   AlertTitle,

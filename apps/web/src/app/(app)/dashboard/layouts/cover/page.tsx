@@ -1,4 +1,4 @@
-import { Stack, Cover, Center, Cluster } from "@repo/ui/layouts"
+import { Stack, Cover, Center, Cluster } from "@repo/ui/layout"
 import {
   Badge,
   Button,

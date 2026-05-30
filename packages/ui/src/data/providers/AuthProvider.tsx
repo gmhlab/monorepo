@@ -1,3 +1,5 @@
+"use client"
+
 import { ReactNode, useCallback, useEffect, useMemo, useState } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import { authService } from "../services/authService";

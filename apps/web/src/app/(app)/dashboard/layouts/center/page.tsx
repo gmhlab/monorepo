@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Container, Stack, Center, Cluster, LegacyGrid as Grid } from "@repo/ui/layouts"
+import { Container, Stack, Center, Cluster, LegacyGrid as Grid } from "@repo/ui/layout"
 import {
   Alert,
   AlertTitle,

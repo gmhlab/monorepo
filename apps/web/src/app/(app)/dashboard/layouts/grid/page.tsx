@@ -1,8 +1,8 @@
 "use client"
 
 import { useState } from "react"
-import { Container, Stack, Cluster, LegacyGrid as Grid } from "@repo/ui/layouts"
-import type { Gap, GridMin } from "@repo/ui/layouts"
+import { Container, Stack, Cluster, LegacyGrid as Grid } from "@repo/ui/layout"
+import type { Gap, GridMin } from "@repo/ui/layout"
 import {
   Avatar,
   AvatarFallback,

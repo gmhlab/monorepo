@@ -1,7 +1,8 @@
 // apps/web/config/navigation.ts
 // All link data centralized here
 
-import type { NavLink, NavGroup } from "@repo/ui/blocks"
+export type NavLink = { label: string; href: string }
+export type NavGroup = { label: string; links: NavLink[] }
 
 export const navigationData = [
   { label: 'App', href: '/app/design-system' },

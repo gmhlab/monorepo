@@ -1,3 +1,5 @@
+"use client"
+
 import { ReactNode, useEffect, useMemo, useState } from "react";
 import { PricingContext } from "../contexts/PricingContext";
 import { pricingService } from "../services/pricingService";
