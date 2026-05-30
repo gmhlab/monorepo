@@ -1,7 +1,44 @@
 import { cn } from "../../lib/utils";
 
-import { Logo, LogoImage, LogoText } from "./components/logo";
 import LogoMark from "../../composites/logo-mark";
+
+const Logo = ({
+  url,
+  className,
+  children,
+  ...props
+}: React.HTMLAttributes<HTMLAnchorElement> & {
+  url: string;
+  children: React.ReactNode;
+}) => (
+  <a
+    href={url}
+    className={cn("flex max-h-8 items-center gap-2", className)}
+    {...props}
+  >
+    {children}
+  </a>
+);
+
+const LogoImage = ({
+  className,
+  ...props
+}: React.ImgHTMLAttributes<HTMLImageElement>) => (
+  <img className={cn("block h-8", className)} {...props} />
+);
+
+const LogoText = ({
+  children,
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLSpanElement>) => (
+  <span
+    className={cn("text-lg font-semibold tracking-tighter", className)}
+    {...props}
+  >
+    {children}
+  </span>
+);
 
 interface MenuItem {
   title: string;

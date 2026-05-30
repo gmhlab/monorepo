@@ -15,9 +15,11 @@ export default defineConfig(({ command }) => ({
   build: {
     rollupOptions: {
       input: {
-        innovations: resolve(__dirname, "index.html"),
+        innovations: resolve(__dirname, "innovations.html"),
         equip: resolve(__dirname, "equip.html"),
         page: resolve(__dirname, "page.html"),
+        marketing: resolve(__dirname, "marketing.html"),
+        globals: resolve(__dirname, "globals.html"),
       },
       output: {
         entryFileNames: "assets/[name]/index-[hash].js",

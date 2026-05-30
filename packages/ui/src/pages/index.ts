@@ -9,5 +9,6 @@ export { DashboardPage } from "./dashboard-page"
 // GMH
 export * from "../pages/homepage";
 export * from "../pages/innovations";
+export * from "../pages/marketing"
 export { TesterPage } from "../pages/tester/tester-page";
 export { TesterPage01 } from "../pages/tester/tester-page-01";

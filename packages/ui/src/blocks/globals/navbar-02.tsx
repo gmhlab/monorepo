@@ -9,8 +9,16 @@ import {
   DropdownMenuTrigger
 } from '../../primitives/dropdown-menu'
 
-import Logo from './components/logo'
+import LogoSvg from '../../composites/logo-mark'
+import { cn } from '../../lib/utils'
 import { ModeToggle } from '../../composites/mode-toggle'
+
+const Logo = ({ className }: { className?: string }) => (
+  <div className={cn('flex items-center', className)}>
+    <LogoSvg className='size-16 rounded-full' />
+    <span className='text-xl -ml-2 font-semibold'>GMH Lab / Studio</span>
+  </div>
+)
 
 type NavigationItem = {
   title: string

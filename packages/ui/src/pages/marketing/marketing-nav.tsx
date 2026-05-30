@@ -3,7 +3,7 @@
 import { type ReactNode } from "react"
 import { Hamburger } from "../../composites"
 import { useState } from "react"
-import { Cluster, Stack } from "../../layout"
+import { Flex } from "../../layout"
 import { cn } from "../../lib/"
 import {
   NavigationMenu,
@@ -61,10 +61,10 @@ export function MarketingNav({
 
   return (
     <div className={cn("relative w-full", className)}>
-      <Cluster
-        justify="between"
-        align="center"
-        gap="lg"
+      <Flex
+        alignPrimary="space-between"
+        alignSecondary="center"
+        gap="400"
         className="w-full"
       >
         {/* Left: Logo */}
@@ -122,13 +122,13 @@ export function MarketingNav({
         )}
 
         {/* Right: Actions + mobile menu */}
-        <Cluster gap="sm" className="flex-shrink-0">
+        <Flex gap="200" className="flex-shrink-0">
           {actions && <div className="hidden sm:flex">{actions}</div>}
           {(mobileMenu || defaultMobileMenu) && (
             <div className="md:hidden">{mobileMenu || defaultMobileMenu}</div>
           )}
-        </Cluster>
-      </Cluster>
+        </Flex>
+      </Flex>
 
       {/* Mobile menu dropdown */}
    {/* Mobile menu dropdown */}
@@ -139,7 +139,7 @@ export function MarketingNav({
       "shadow-lg", // Add shadow
       "animate-in fade-in slide-in-from-top-2 duration-200", // Smooth animation
     )}>
-      <Stack gap="xs" className="p-4">
+      <Flex direction="column" gap="400" className="p-4">
         {links.map((link) => (
           <a
             key={link.href}
@@ -159,7 +159,7 @@ export function MarketingNav({
           </a>
         ))}
         {/* groups... */}
-      </Stack>
+      </Flex>
     </div>
   )}
     </div>

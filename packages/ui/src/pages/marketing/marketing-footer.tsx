@@ -1,7 +1,5 @@
 import { type ReactNode } from "react"
-import { LegacyGrid as Grid } from "../../layout"
-import { Stack } from "../../layout"
-import { Cluster } from "../../layout"
+import { Section, Flex, Grid } from "../../layout"
 import { cn } from "../../lib/"
 
 export type FooterLink = {
@@ -57,12 +55,12 @@ export function MarketingFooter({
     copyright ?? `\u00a9 ${currentYear} ${companyName}. All rights reserved.`
 
   return (
-    <div className={cn("w-full", className)}>
-      <Stack gap="xl">
+    <Section padding="1600" variant="subtle" className={cn("text-muted-foreground", className)}>
+      <Flex gap="1600" direction="column" container>
         {/* Main footer content */}
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.5fr_2.5fr]">
           {/* Brand column */}
-          <Stack gap="md">
+          <Flex gap="400" direction="column">
             {logo && <div>{logo}</div>}
 
             {tagline && (
@@ -72,7 +70,7 @@ export function MarketingFooter({
             )}
 
             {social && social.length > 0 && (
-              <Cluster gap="md">
+              <Flex gap="400" direction="row">
                 {social.map((item) => (
                   <a
                     key={item.href}
@@ -85,25 +83,25 @@ export function MarketingFooter({
                     {item.icon}
                   </a>
                 ))}
-              </Cluster>
+              </Flex>
             )}
 
             {cta && <div className="max-w-sm">{cta}</div>}
-          </Stack>
+          </Flex>
 
           {/* Link columns */}
           {columns.length > 0 && (
             <Grid
-              columns={4}
-              gap="sm"
+              columns="repeat(4, 1fr)"
+              gap="1600"
               className="[--min-col-width:140px] grid-cols-[repeat(auto-fit,minmax(var(--min-col-width),1fr))]"
             >
               {columns.map((column) => (
-                <Stack key={column.title} gap="md">
+                <Flex key={column.title} gap="400" direction="column">
                   <h3 className="text-sm font-semibold text-foreground">
                     {column.title}
                   </h3>
-                  <Stack gap="sm">
+                  <Flex gap="400" direction="column">
                     {column.links.map((link) => (
                       <a
                         key={link.href}
@@ -117,8 +115,8 @@ export function MarketingFooter({
                         {link.label}
                       </a>
                     ))}
-                  </Stack>
-                </Stack>
+                  </Flex>
+                </Flex>
               ))}
             </Grid>
           )}
@@ -130,7 +128,7 @@ export function MarketingFooter({
             <p className="text-sm text-muted-foreground">{copyrightText}</p>
 
             {legal && legal.length > 0 && (
-              <Cluster gap="md">
+              <Flex gap="400" direction="row">
                 {legal.map((link) => (
                   <a
                     key={link.href}
@@ -144,11 +142,11 @@ export function MarketingFooter({
                     {link.label}
                   </a>
                 ))}
-              </Cluster>
+              </Flex>
             )}
           </div>
         </div>
-      </Stack>
-    </div>
+      </Flex>
+    </Section>
   )
 }
