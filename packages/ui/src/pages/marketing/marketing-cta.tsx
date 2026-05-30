@@ -1,6 +1,6 @@
 import { forwardRef, type HTMLAttributes, type ReactNode } from "react"
 import { Section, Flex } from "../../layout"
-import { cn } from "../../lib/"
+import { cn } from "../../utils/utils"
 
 export interface MarketingCTAProps extends HTMLAttributes<HTMLDivElement> {
   title: string

@@ -122,7 +122,7 @@ export function WhiteboardContent() {
 }
 
 /** Standalone brutalist dashboard — self-contained sidebar + content shell. */
-export function Dashboard() {
+export function TwoSidedDash() {
   return (
     <div className="flex flex-col lg:flex-row min-h-[calc(100vh-6rem)] w-full max-w-[1600px] mx-auto p-4 gap-8">
       {/* Sidebar */}

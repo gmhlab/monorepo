@@ -4,7 +4,7 @@ import { type ReactNode } from "react"
 import { Hamburger } from "../../composites"
 import { useState } from "react"
 import { Flex } from "../../layout"
-import { cn } from "../../lib/"
+import { cn } from "../../utils/utils"
 import {
   NavigationMenu,
   NavigationMenuList,

@@ -2,7 +2,7 @@ import { CardSection } from './sections/card-section';
 import { HeroSection02 } from './sections/hero-section-02';
 import { Header } from "../../composites/Headers/Headers";
 import { Footer } from "../../composites/Footers/Footers";
-import { BrandedTemplate } from "../../templates";
+import { BrandTemplate } from "../../templates";
 
 export type InnovationsProps = {
   logoSrc?: string;
@@ -11,12 +11,12 @@ export type InnovationsProps = {
 
 export function InnovationsPage({ logoSrc, footerLogoSrc }: InnovationsProps = {}) {
   return (
-    <BrandedTemplate
+    <BrandTemplate
       header={<Header currentPath="/innovations" logoSrc={logoSrc} />}
       footer={<Footer logoSrc={footerLogoSrc} />}
     >
       <HeroSection02 />
       <CardSection />
-    </BrandedTemplate>
+    </BrandTemplate>
   );
 }

@@ -5,7 +5,7 @@ import { Stack } from "../../layout"
 import { Cluster } from "../../layout"
 import { sectionSpacingMap } from "../../layout"
 import { ProfileHeader } from "../../patterns/profile-header"
-import { cn } from "../../lib"
+import { cn } from "../../utils/utils"
 
 export interface LinkInBioTemplateProps extends ComponentPropsWithRef<"div"> {
   /** Profile avatar or image */

@@ -1,5 +1,5 @@
 import { Toggle } from "../primitives"
-import { cn } from "../lib"
+import { cn } from "../utils/utils"
 
 export interface HamburgerProps {
   /** Whether the menu is open or closed */

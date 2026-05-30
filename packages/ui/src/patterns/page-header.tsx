@@ -1,7 +1,7 @@
 import { forwardRef, type HTMLAttributes, type ReactNode } from "react"
 import { Cluster, Stack } from "../layout"
 import { Badge } from "../primitives"
-import { cn } from "../lib/"
+import { cn } from "../utils/utils"
 
 export interface PageHeaderProps extends Omit<HTMLAttributes<HTMLDivElement>, "title"> {
   badge?: ReactNode

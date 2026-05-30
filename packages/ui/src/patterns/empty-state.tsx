@@ -1,7 +1,7 @@
 import { forwardRef, type HTMLAttributes, type ReactNode } from "react"
 import { Stack } from "../layout"
 import { Center } from "../layout"
-import { cn } from "../lib/"
+import { cn } from "../utils/utils"
 
 export interface EmptyStateProps extends Omit<HTMLAttributes<HTMLDivElement>, "title"> {
   icon?: ReactNode

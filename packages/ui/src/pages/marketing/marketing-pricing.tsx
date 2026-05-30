@@ -1,7 +1,7 @@
 import { forwardRef, type HTMLAttributes } from "react"
 import { Section, Flex, Grid } from "../../layout"
 import { Button } from "../../primitives/button"
-import { cn } from "../../lib/"
+import { cn } from "../../utils/utils"
 
 export interface PricingPlan {
   name: string

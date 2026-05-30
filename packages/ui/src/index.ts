@@ -4,17 +4,18 @@
 // Hooks
 export * from "./hooks"
 
+// Pages
+export * from "./pages"
+
 // Layouts
 export * from "./layout"
 
 // Utils
-export * from "./lib"
+export * from "./utils"
 
 // Patterns
 export * from "./patterns"
 
-// Pages
-export * from "./pages"
 
 // Templates
 export * from "./templates"
@@ -28,3 +29,5 @@ export * from "./composites/hamburger"
 export * from "./composites/profile-card";
 export { default as LogoMark } from "./composites/logo-mark"
 export * from "./composites/Headers/Headers"
+export { Navbar2 } from "./composites/Headers/navbar-02"
+export { Footer2 } from "./composites/Footers/footer-02"

@@ -7,7 +7,7 @@ import { Card, CardContent } from "../../primitives/card";
 import { Badge } from "../../primitives/badge";
 import { Container, LegacyGrid as Grid, Cluster, Center } from "../../layout";
 import { Header } from "../../composites/Headers/Headers";
-import { BrandedTemplate } from "../../templates";
+import { BrandTemplate } from "../../templates";
 import {
   Globe,
   Lightbulb,
@@ -488,7 +488,7 @@ export type HomePageProps = {
 
 export function HomePage({ logoSrc }: HomePageProps = {}) {
   return (
-    <BrandedTemplate header={<Header currentPath="/" logoSrc={logoSrc} />}>
+    <BrandTemplate header={<Header currentPath="/" logoSrc={logoSrc} />}>
       <HeroSection />
       <WhoWeAreSection />
       <WhatWeDoSection />
@@ -496,6 +496,6 @@ export function HomePage({ logoSrc }: HomePageProps = {}) {
       <TestimonialSection />
       <NewsletterSection />
       <MapSection />
-    </BrandedTemplate>
+    </BrandTemplate>
   );
 }

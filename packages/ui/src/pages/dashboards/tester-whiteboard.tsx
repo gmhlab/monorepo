@@ -7,7 +7,7 @@ import {
   WhiteboardNav,
   WhiteboardProTip,
   WhiteboardContent,
-} from "./make-2sided-db";
+} from "./two-sided-dash";
 
 export function TesterWhiteboard() {
   return (

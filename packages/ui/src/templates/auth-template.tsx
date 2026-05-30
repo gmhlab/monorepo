@@ -3,7 +3,7 @@ import { Cover } from "../layout"
 import { Center } from "../layout"
 import { Stack } from "../layout"
 import { type CenterMax } from "../layout"
-import { cn } from "../lib/"
+import { cn } from "../utils/utils"
 
 const maxWidthMap = {
   xs: "max-w-xs",

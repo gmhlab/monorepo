@@ -1,5 +1,6 @@
 // Page
 export { InnovationPage } from "./innovation-page";
+export { InnovationsPage } from "./innovations-page";
 
 // Data
 export { getEquipData } from "./data/equip";

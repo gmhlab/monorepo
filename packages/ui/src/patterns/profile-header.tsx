@@ -1,6 +1,6 @@
 import { forwardRef, type HTMLAttributes, type ReactNode } from "react"
 import { Stack } from "../layout"
-import { cn } from "../lib/"
+import { cn } from "../utils/utils"
 
 export interface ProfileHeaderProps extends HTMLAttributes<HTMLDivElement> {
   /** Profile avatar or image */

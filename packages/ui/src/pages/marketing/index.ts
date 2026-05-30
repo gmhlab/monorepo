@@ -1,5 +1,3 @@
-// Blocks
-
 export { MarketingCTA, type MarketingCTAProps } from "./marketing-cta"
 
 export {

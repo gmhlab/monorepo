@@ -1,6 +1,6 @@
 import { type ReactNode } from "react"
 import { Section, Flex, Grid } from "../../layout"
-import { cn } from "../../lib/"
+import { cn } from "../../utils/utils"
 
 export type FooterLink = {
   label: string

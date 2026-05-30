@@ -10,7 +10,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "../../primitives/sheet";
-import { cn } from "../../lib/utils";
+import { cn } from "../../utils/utils";
 
 export type NavItem = {
   label: string;

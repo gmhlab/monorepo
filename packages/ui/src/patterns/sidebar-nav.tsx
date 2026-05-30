@@ -10,7 +10,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "../primitives/sidebar"
-import { cn } from "../lib/"
+import { cn } from "../utils/utils"
 
 export interface SidebarNavItem {
   title: string

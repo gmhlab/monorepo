@@ -1,5 +1,5 @@
-import { TesterAppShell } from "@repo/ui";
+import { TwoSidedDash } from "@repo/ui";
 import { mount } from "../bootstrap";
 
 
-mount(<TesterAppShell />);
+mount(<TwoSidedDash />);

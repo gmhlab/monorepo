@@ -10,7 +10,7 @@ import {
 } from '../../primitives/dropdown-menu'
 
 import LogoSvg from '../logo-mark'
-import { cn } from '../../lib/utils'
+import { cn } from '../../utils/utils'
 import { ModeToggle } from '../mode-toggle'
 
 const Logo = ({ className }: { className?: string }) => (

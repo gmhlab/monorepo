@@ -1,7 +1,7 @@
 import { forwardRef, type HTMLAttributes, type ReactNode } from "react"
 import { Cluster } from "../layout"
 import { Stack } from "../layout"
-import { cn } from "../lib/"
+import { cn } from "../utils/utils"
 
 export interface SectionHeaderProps extends Omit<HTMLAttributes<HTMLDivElement>, "title"> {
   title: ReactNode

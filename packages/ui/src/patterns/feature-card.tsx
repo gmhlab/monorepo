@@ -1,5 +1,5 @@
 import { forwardRef, type HTMLAttributes, type ReactNode } from "react"
-import { cn } from "../lib/"
+import { cn } from "../utils/utils"
 
 export interface FeatureCardProps extends Omit<HTMLAttributes<HTMLDivElement>, "title"> {
   icon?: ReactNode

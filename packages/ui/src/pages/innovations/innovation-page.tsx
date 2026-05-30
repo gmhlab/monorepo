@@ -11,7 +11,7 @@ import { CtaSection } from "./sections/cta-section";
 import { NavigationFooter } from "./sections/navigation-footer";
 import { Header } from "../../composites/Headers/Headers";
 import { Footer } from "../../composites/Footers/Footers";
-import { BrandedTemplate } from "../../templates";
+import { BrandTemplate } from "../../templates";
 
 export interface WhatIsItData {
   headline: string;
@@ -86,7 +86,7 @@ interface InnovationPageProps {
 
 export function InnovationPage({ data, logoSrc, footerLogoSrc }: InnovationPageProps) {
   return (
-    <BrandedTemplate
+    <BrandTemplate
       header={<Header currentPath="/innovations" logoSrc={logoSrc} />}
       footer={<Footer logoSrc={footerLogoSrc} />}
     >
@@ -115,6 +115,6 @@ export function InnovationPage({ data, logoSrc, footerLogoSrc }: InnovationPageP
           />
         )}
 
-    </BrandedTemplate>
+    </BrandTemplate>
   );
 }

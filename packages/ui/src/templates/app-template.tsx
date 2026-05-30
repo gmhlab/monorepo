@@ -11,7 +11,7 @@ import {
   SidebarSeparator,
 } from "../primitives/sidebar"
 import { Flex } from "../layout"
-import { cn } from "../lib"
+import { cn } from "../utils/utils"
 
 export interface AppShellTemplateProps extends Omit<ComponentPropsWithRef<"div">, "content"> {
   /** Sidebar header slot — typically a <Logo /> or brand mark */
