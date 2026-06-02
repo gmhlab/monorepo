@@ -1,15 +1,15 @@
 "use client"
 
 import { Users, BarChart3, Globe, TrendingUp } from "lucide-react"
-import { Flex, Grid, Section } from "../../layout"
+import { Flex, Grid, Section } from "../../../layout"
 import {
   Card,
   CardHeader,
   CardTitle,
   CardDescription,
   CardContent,
-} from "../../primitives/card"
-import { TextContentTitle } from "../../primitives/Text/Text"
+} from "../../../primitives/card"
+import { TextContentHeading } from "../../../primitives/Text/Text"
 
 const stats = [
   { title: "Total Users", value: "2,450", change: "+12%", icon: Users },
@@ -20,13 +20,14 @@ const stats = [
 
 export function DashboardPage() {
   return (
-    <Section padding="1200" variant="stroke">
-      <TextContentTitle
-        title="Dashboard"
-        subtitle="Overview of platform activity and key metrics."
+    <Section padding="600" variant="stroke">
+      <Flex direction="column" gap="600" className="mb-8">
+      <TextContentHeading
+        heading="Key Metrics"
+        subheading="Overview of platform activity and key metrics."
       />
 
-      <Grid columns="repeat(auto-fit, minmax(12rem, 1fr))" gap="400" className="mb-8">
+      <Grid columns="repeat(auto-fit, minmax(12rem, 1fr))" gap="400" className="mb-8 w-full">
         {stats.map((stat) => (
           <Card key={stat.title}>
             <CardHeader>
@@ -47,13 +48,15 @@ export function DashboardPage() {
           </Card>
         ))}
       </Grid>
+      </Flex>
+      <Flex direction="column" gap="600" className="mb-8">  
 
-      <TextContentTitle
-        title="Recent Activity"
-        subtitle="Latest updates across the platform"
+      <TextContentHeading
+        heading="Recent Activity"
+        subheading="Latest updates across the platform"
       />
 
-      <Grid columns="repeat(auto-fit, minmax(20rem, 1fr))" gap="600">
+      <Grid columns="repeat(auto-fit, minmax(20rem, 1fr))" gap="600" className="w-full">
         <Card>
           <CardHeader>
             <CardTitle>Training Sessions</CardTitle>
@@ -106,6 +109,21 @@ export function DashboardPage() {
           </CardContent>
         </Card>
       </Grid>
+      </Flex>
     </Section>
+  )
+}
+
+/** Placeholder dashboard content — the card grid + main panel. */
+export function DashboardContent() {
+  return (
+    <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
+      <div className="grid auto-rows-min gap-4 md:grid-cols-3">
+        <div className="aspect-video rounded-xl bg-muted/50" />
+        <div className="aspect-video rounded-xl bg-muted/50" />
+        <div className="aspect-video rounded-xl bg-muted/50" />
+      </div>
+      <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min" />
+    </div>
   )
 }

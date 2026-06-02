@@ -39,50 +39,51 @@ export function AppTemplate({
   panel,
   defaultOpen = true,
   className,
-  ref,
+  // Pulled out so it isn't spread onto SidebarProvider (a non-forwardRef fn component).
+  ref: _ref,
   ...props
 }: AppTemplateProps) {
   return (
-    <SidebarProvider defaultOpen={defaultOpen}>
-      <div className="bg-background h-screen w-screen">
-        <Sidebar>
-          {sidebarHeader && (
-            <>
-              <SidebarHeader className="p-4">{sidebarHeader}</SidebarHeader>
-              <SidebarSeparator className="max-w-xs" />
-            </>
-          )}
-          <SidebarContent>{nav}</SidebarContent>
-          {sidebarFooter && (
-            <SidebarFooter className="p-4">{sidebarFooter}</SidebarFooter>
-          )}
-        </Sidebar>
+    <SidebarProvider
+      defaultOpen={defaultOpen}
+      className={cn("h-svh bg-background", className)}
+      {...props}
+    >
+      <Sidebar>
+        {sidebarHeader && (
+          <>
+            <SidebarHeader className="p-4">{sidebarHeader}</SidebarHeader>
+            <SidebarSeparator className="max-w-xs" />
+          </>
+        )}
+        <SidebarContent>{nav}</SidebarContent>
+        {sidebarFooter && (
+          <SidebarFooter className="p-4">{sidebarFooter}</SidebarFooter>
+        )}
+      </Sidebar>
 
-        <SidebarInset>
-          <Flex direction="column" gap="400" alignPrimary="stretch" className="flex-1">
-            {/* ── Header ────────────────────────────────────────── */}
-            {header && (
-              <header className="sticky top-0 z-30 shrink-0 border-b border-sidebar-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
-                <Flex alignPrimary="stretch" alignSecondary="stretch" className="sm:px-6">
-                  {header}
-                </Flex>
-              </header>
-            )}
+      <SidebarInset>
+        {/* ── Header ────────────────────────────────────────── */}
+        {header && (
+          <header className="sticky top-0 z-30 shrink-0 border-b border-sidebar-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
+            <Flex alignPrimary="stretch" alignSecondary="stretch" className="sm:px-6">
+              {header}
+            </Flex>
+          </header>
+        )}
 
-            {/* ── Main content ──────────────────────────────────── */}
-            <main className="flex-1 overflow-y-auto p-4 sm:p-6">
-              {content}
-            </main>
+        {/* ── Main content ──────────────────────────────────── */}
+        <main className="flex-1 overflow-y-auto p-4 sm:p-6">
+          {content}
+        </main>
 
-            {/* ── Bottom panel ──────────────────────────────────── */}
-            {panel && (
-              <div className="shrink-0 border-t border-sidebar-border bg-muted/20 px-4 py-3 sm:px-6">
-                {panel}
-              </div>
-            )}
-          </Flex>
-        </SidebarInset>
-      </div>
+        {/* ── Bottom panel ──────────────────────────────────── */}
+        {panel && (
+          <div className="shrink-0 border-t border-sidebar-border bg-muted/20 px-4 py-3 sm:px-6">
+            {panel}
+          </div>
+        )}
+      </SidebarInset>
     </SidebarProvider>
   )
 }

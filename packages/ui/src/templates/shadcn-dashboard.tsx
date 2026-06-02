@@ -1,6 +1,6 @@
 "use client";
 
-import { AppSidebar } from "./components/app-sidebar"
+import { AppSidebar } from "./../composites/Sidebars/app-sidebar"
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -12,7 +12,7 @@ import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
-} from "./../../primitives"
+} from "./../primitives"
 
 /** Sidebar + header chrome for the `(app)` area. Renders route content inside `SidebarInset`. */
 export function DashboardShell({ children }: { children: React.ReactNode }) {
@@ -45,28 +45,5 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
         {children}
       </SidebarInset>
     </SidebarProvider>
-  )
-}
-
-/** Placeholder dashboard content — the card grid + main panel. */
-export function DashboardContent() {
-  return (
-    <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
-      <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-        <div className="aspect-video rounded-xl bg-muted/50" />
-        <div className="aspect-video rounded-xl bg-muted/50" />
-        <div className="aspect-video rounded-xl bg-muted/50" />
-      </div>
-      <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min" />
-    </div>
-  )
-}
-
-/** Complete self-contained shadcn dashboard (shell + content). */
-export default function Page() {
-  return (
-    <DashboardShell>
-      <DashboardContent />
-    </DashboardShell>
   )
 }
