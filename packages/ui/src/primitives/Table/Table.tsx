@@ -40,7 +40,7 @@ export function Table({
 }: TableProps) {
   const classNames = clsx(
     className,
-    "table",
+    "sds-table",
     bleed && "table-bleed",
     dense && "table-dense",
     grid && "table-grid",

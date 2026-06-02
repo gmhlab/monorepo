@@ -5,7 +5,7 @@
   width: 100%;
 }
 
-.flex {
+.sds-flex {
   --flex-gap: 0px;
   align-items: var(--flex-align-secondary, "start");
   display: flex;

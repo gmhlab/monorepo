@@ -5,7 +5,7 @@
   width: 100%;
 }
 
-.grid {
+.sds-grid {
   --grid-gap: 0px;
   --grid-column-gap: var(--grid-gap);
   --grid-row-gap: var(--grid-gap);

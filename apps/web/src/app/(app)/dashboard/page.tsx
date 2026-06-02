@@ -1,1 +1,1 @@
-export { DashboardPage as default } from "@repo/ui"
+export { DashboardContent as default } from "@repo/ui"

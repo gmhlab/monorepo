@@ -57,7 +57,7 @@ export function Grid({
 }: GridProps) {
   const classNames = clsx(
     className,
-    "grid",
+    "sds-grid",
     container && "grid-container",
     `grid-justify-items-${justifyItems}`,
     `grid-align-items-${alignItems}`,

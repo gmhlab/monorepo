@@ -4,8 +4,8 @@
 // Hooks
 export * from "./hooks"
 
-// Pages
-export * from "./pages"
+// Blocks
+export * from "./blocks"
 
 // Layouts
 export * from "./layout"

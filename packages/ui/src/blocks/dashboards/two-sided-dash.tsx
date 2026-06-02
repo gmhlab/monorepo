@@ -1,3 +1,5 @@
+"use client";
+
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Tooltip } from 'recharts';
 import { Settings, LayoutGrid, Users, DollarSign, Zap, FileText } from 'lucide-react';
 import { Flex, Grid } from "../../layout" 

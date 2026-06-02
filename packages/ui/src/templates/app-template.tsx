@@ -44,7 +44,7 @@ export function AppTemplate({
 }: AppTemplateProps) {
   return (
     <SidebarProvider defaultOpen={defaultOpen}>
-      <div className="flex h-screen w-screen">
+      <div className="bg-background h-screen w-screen">
         <Sidebar>
           {sidebarHeader && (
             <>

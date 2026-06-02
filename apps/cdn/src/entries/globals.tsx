@@ -1,4 +1,4 @@
-import { Navbar2, Footer2, Button } from "@repo/ui";
+import { Navbar2, Footer2 } from "@repo/ui";
 import { mount } from "../bootstrap";
 
 const navigationData = [

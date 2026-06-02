@@ -1,4 +1,4 @@
-.table {
+.sds-table {
   --table-cell-border-right-thickness: 0;
   --table-cell-padding-x: var(--sds-size-space-200);
   --table-cell-padding-y: var(--sds-size-space-400);
