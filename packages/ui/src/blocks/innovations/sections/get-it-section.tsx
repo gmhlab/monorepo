@@ -10,7 +10,7 @@ export function GetItSection({ heading, body, resources, highlight }: GetItData)
       <Flex direction="column" alignSecondary="center" gap="1200" container>
         <TextTitlePage className="text-center">What is it?</TextTitlePage>
           <Card variant="stroke" padding="600">
-          <Grid columns="(3 1fr)" className="p-8 bg-white/5 backdrop-blur-sm shadow-2xl border border-white/20 rounded-xl">
+        <Grid columns="repeat(auto-fit, minmax(min(100%, 26rem), 1fr))" gap="800" alignItems="start">
             <Flex direction="column" gap="600" alignSecondary="stretch">
               <TextContentHeading heading={heading} subheading={body} className="text-card-foreground break-words" />
               <Flex direction="column" gap="200" alignSecondary="stretch">

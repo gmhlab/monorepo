@@ -1,6 +1,6 @@
 .card {
   --border-radius: var(--sds-size-radius-200);
-  background: var(--sds-color-background-default-default);
+  background: var(--card);
   border-radius: var(--border-radius);
   gap: var(--sds-size-space-600);
   display: flex;

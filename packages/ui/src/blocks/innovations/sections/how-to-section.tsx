@@ -11,18 +11,18 @@ export function HowToUseSection({ steps }: HowToUseData) {
           How do you use it?
         </h2>
 
-        <Flex direction="column" gap="1600" className="p-6 sm:p-10 md:p-16 bg-white/5 backdrop-blur-sm shadow-2xl border border-white/20 rounded-xl w-full max-w-3xl">
+        <Flex direction="column" gap="1600" alignSecondary="center" className="md:items-start! p-10 md:p-16 bg-white/5 backdrop-blur-sm shadow-2xl border border-white/20 rounded-xl w-full max-w-3xl">
           {steps.map((step, index) => (
             <Fragment key={index}>
-              <Flex alignSecondary="center" gap="600">
+              <Flex direction="column" alignSecondary="center" gap="600" className="md:flex-row!">
 
                 <span className="text-5xl font-bold text-[#AA9868]">{index + 1}.</span>
 
-                <Flex alignPrimary="center" alignSecondary="center" className="bg-white w-56 h-56 rounded-xl border-6 border-slate-400 overflow-hidden shadow-xl">
-                  {step.graphic ?? (step.icon && <step.icon className="w-24 h-24 md:w-16 md:h-16 text-white" />)}
+                <Flex alignPrimary="center" alignSecondary="center" className="bg-white w-40 h-40 md:w-48 md:h-48 p-2 rounded-xl border-6 border-slate-400 overflow-hidden shadow-xl">
+                  {step.graphic ?? (step.icon && <step.icon className="w-126 h-16 md:w-16 md:h-16 text-white" />)}
                 </Flex>
 
-                <div className="flex-1 text-left">
+                <div className="flex-1 text-center md:text-left">
                   <h4 className="text-white text-4xl uppercase font-bold mb-1">{step.title}</h4>
                   <p className="text-white/80 text-base md:text-xl">{step.description}</p>
                 </div>
