@@ -30,7 +30,7 @@ export function PartnerMarquee() {
   const duplicatedPartners = [...partners, ...partners];
 
   return (
-    <Section padding='1200'>
+    <Section padding='1600'>
       <Flex direction="column" gap="800" alignSecondary="center" container>
         <motion.div
           initial={{ opacity: 0, y: 20 }}

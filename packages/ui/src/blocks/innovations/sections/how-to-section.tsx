@@ -2,14 +2,13 @@ import { Fragment } from "react";
 import { ArrowDown } from "lucide-react";
 import { Flex, Section } from "../../../layout";
 import type { HowToUseData } from "../innovation-page";
+import { TextTitlePage } from "./../../../primitives/Text/Text";
 
 export function HowToUseSection({ steps }: HowToUseData) {
   return (
-    <Section padding="1200">
+    <Section padding="1600">
       <Flex direction="column" alignSecondary="center" gap="1600" container>
-        <h2 className="text-3xl sm:text-5xl md:text-6xl font-serif text-white/90 text-center">
-          How do you use it?
-        </h2>
+      <TextTitlePage className="text-center">How do I use it?</TextTitlePage>
 
         <Flex direction="column" gap="1600" alignSecondary="center" className="md:items-start! p-10 md:p-16 bg-white/5 backdrop-blur-sm shadow-2xl border border-white/20 rounded-xl w-full max-w-3xl">
           {steps.map((step, index) => (

@@ -40,7 +40,7 @@ export function TestingSection() {
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        <Card className="p-8 bg-white/10 backdrop-blur-sm shadow-2xl border-white/20">
+        <Card className="p-8 bg-white/5 backdrop-blur-sm shadow-2xl border-white/20">
           {/* Hero Stat */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}

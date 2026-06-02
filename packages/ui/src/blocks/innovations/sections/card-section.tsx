@@ -5,7 +5,7 @@ import { Grid } from '../../../layout/Grid/Grid';
 
 export function CardSection() {
   return (
-      <Section padding="1200" >
+      <Section padding="1600" >
         <Grid
           container
           columns="repeat(auto-fill, minmax(min(20rem, 100%), 24rem))"

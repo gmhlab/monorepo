@@ -12,7 +12,7 @@ import { EquipVisual } from "./equip-visual";
 export function WhatIsItSection({ headline, body, capabilities }: WhatIsItData) {
   return (
     <Section padding="1600">
-      <Flex direction="column" alignSecondary="center" gap="1200" container>
+      <Flex direction="column" alignSecondary="center" gap="1600" container>
         <TextTitlePage className="text-center">What is it?</TextTitlePage>
         <Grid columns="repeat(auto-fit, minmax(min(100%, 26rem), 1fr))" gap="800" alignItems="start">
 

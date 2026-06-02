@@ -8,9 +8,9 @@ export function GetItSection({ heading, body, resources, highlight }: GetItData)
   return (
     <Section padding="1600">
       <Flex direction="column" alignSecondary="center" gap="1200" container>
-        <TextTitlePage className="text-center">What is it?</TextTitlePage>
-          <Card variant="stroke" padding="600">
-        <Grid columns="repeat(auto-fit, minmax(min(100%, 26rem), 1fr))" gap="800" alignItems="start">
+        <TextTitlePage className="text-center">How do I get it?</TextTitlePage>
+        <Card variant="stroke" padding="600">
+          <Grid columns="repeat(auto-fit, minmax(min(100%, 26rem), 1fr))" gap="800" alignItems="start">
             <Flex direction="column" gap="600" alignSecondary="stretch">
               <TextContentHeading heading={heading} subheading={body} className="text-card-foreground break-words" />
               <Flex direction="column" gap="200" alignSecondary="stretch">

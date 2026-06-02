@@ -4,19 +4,20 @@ import { Card } from "../../../primitives";
 import { Section, Grid, Flex } from "../../../layout";
 import { User, Quote } from "lucide-react";
 import type { UserStoryData } from "../innovation-page";
+import { TextTitlePage } from "../../../primitives/Text/Text";
 
 export function UserStorySection({ storyIntro, paragraphs, quote, name, role, org }: UserStoryData) {
   return (
-    <Section>
-      <Flex direction="column" alignSecondary="center" gap="1200" container>
-      <h2 className="text-5xl md:text-6xl font-serif text-white text-center">Who has used it?</h2>
+    <Section padding="1600">
+      <Flex direction="column" alignSecondary="center" gap="1600" container>
+      <TextTitlePage className="text-center">Who has used it?</TextTitlePage>
 
       <div>
-        <Card className="p-8 bg-white/10 backdrop-blur-sm shadow-2xl overflow-hidden relative border-white/20">
+        <Card className="p-8 bg-white/5 backdrop-blur-sm shadow-2xl overflow-hidden relative border-white/20">
           <div className="absolute top-0 right-0 w-64 h-64 bg-[#AA9868]/10 rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#033C5A]/10 rounded-full blur-3xl"></div>
 
-        <Grid columns="repeat(auto-fit, minmax(min(100%, 26rem), 1fr))" gap="800" alignItems="start">
+        <Grid columns="repeat(auto-fit, minmax(min(100%, 26rem), 1fr))" gap="800" alignItems="stretch">
             <div>
               <Flex gap="600" className="mb-6">
                 <Quote className="w-22 h-22 text-[#AA9868]" />
@@ -38,11 +39,11 @@ export function UserStorySection({ storyIntro, paragraphs, quote, name, role, or
               </div>
             </div>
 
-            <Flex direction="column" alignPrimary="center" className="justify-center">
+            <Flex direction="column" alignPrimary="center" alignSecondary="center">
+              
               <div className="bg-gradient-to-br from-[#033C5A] to-[#AA9868] w-48 h-48 rounded-full flex items-center justify-center shadow-2xl mb-6">
                 <User className="w-24 h-24 text-white" />
               </div>
-
               <div className="text-center">
                 <h4 className="text-white mb-2">{name}</h4>
                 <p className="text-white/80">{role}</p>
@@ -50,7 +51,9 @@ export function UserStorySection({ storyIntro, paragraphs, quote, name, role, or
                   {org}
                 </p>
               </div>
+              
             </Flex>
+
           </Grid>
         </Card>
       </div>
