@@ -14,7 +14,8 @@ export function WhatIsItSection({ headline, body, capabilities }: WhatIsItData) 
     <Section padding="1600">
       <Flex direction="column" alignSecondary="center" gap="1600" container>
         <TextTitlePage className="text-center">What is it?</TextTitlePage>
-        <Grid columns="repeat(auto-fit, minmax(min(100%, 26rem), 1fr))" gap="800" alignItems="start">
+
+        <Grid columns="repeat(auto-fit, minmax(min(100%, 26rem), 1fr))" gap="800" alignItems="start" className="w-full">
 
           <Card variant="stroke" padding="600">
             <TextContentHeading heading={headline} subheading={body} className="text-card-foreground break-words" />
@@ -34,6 +35,7 @@ export function WhatIsItSection({ headline, body, capabilities }: WhatIsItData) 
           <EquipVisual />
 
         </Grid>
+
       </Flex>
     </Section>
   );
