@@ -1,20 +1,15 @@
-
-
+// Blocks
+export * from "./blocks"
 
 // Hooks
 export * from "./hooks"
 
-// Blocks
-export * from "./blocks"
 
 // Layouts
 export * from "./layout"
 
 // Lib
 export * from "./lib"
-
-// Utils
-export * from "./utils"
 
 // Templates
 export * from "./templates"

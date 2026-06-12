@@ -70,7 +70,7 @@ export function EquipVisual() {
       </div>
 
       {/* Animated globe */}
-      <div className="relative aspect-video overflow-hidden rounded-xl isolate">
+      <div className="relative aspect-square overflow-hidden rounded-xl isolate">
         <div className="absolute inset-0 bg-gradient-to-br from-[#011f31] via-[#033C5A] to-[#0a4d6e]" />
 
         <motion.div

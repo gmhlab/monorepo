@@ -1,7 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import { AnchorOrButton, type AnchorOrButtonProps } from "../../utils";
+import { AnchorOrButton, type AnchorOrButtonProps } from "../../lib/AnchorOrButton";
 import "./logo.css";
 import { Flex } from "../../layout";
 

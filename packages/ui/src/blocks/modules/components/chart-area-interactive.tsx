@@ -3,7 +3,7 @@
 import * as React from "react"
 import { Area, AreaChart, CartesianGrid, XAxis } from "recharts"
 
-import { useIsMobile } from "../../../../hooks/use-mobile"
+import { useIsMobile } from "../../../hooks/use-mobile"
 import {
   Card,
   CardAction,
@@ -11,24 +11,24 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "../../../../primitives/card"
+} from "../../../primitives/card"
 import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
   type ChartConfig,
-} from "../../../../primitives/chart"
+} from "../../../primitives/chart"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../../../../primitives/select"
+} from "../../../primitives/select"
 import {
   ToggleGroup,
   ToggleGroupItem,
-} from "../../../../primitives/toggle-group"
+} from "../../../primitives/toggle-group"
 
 export const description = "An interactive area chart"
 

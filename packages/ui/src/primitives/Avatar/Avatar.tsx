@@ -3,7 +3,7 @@
 import clsx from "clsx";
 import { Text, TextStrong } from "../Text/Text";
 import React from "react";
-import { AnchorOrButton, type AnchorOrButtonProps } from "../../utils";
+import { AnchorOrButton, type AnchorOrButtonProps } from "../../lib/AnchorOrButton";
 import "./avatar.css";
 
 type SharedAvatarProps = {

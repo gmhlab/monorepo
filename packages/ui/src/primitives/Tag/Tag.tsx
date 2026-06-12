@@ -13,7 +13,7 @@ import {
   type TagListProps as RACTagListProps,
   type TagProps as RACTagProps,
 } from "react-aria-components";
-import { AnchorOrButton, type AnchorOrButtonProps } from "../../utils";
+import { AnchorOrButton, type AnchorOrButtonProps } from "../../lib/AnchorOrButton";
 import "./tag.css";
 
 type TagScheme = "brand" | "danger" | "positive" | "warning" | "neutral";

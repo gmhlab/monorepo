@@ -5,7 +5,7 @@ import * as React from "react"
 import {
   Example,
   ExampleWrapper,
-} from "./components/example"
+} from "./components/example-01"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -17,9 +17,9 @@ import {
   AlertDialogMedia,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "../../../primitives/alert-dialog"
-import { Badge } from "../../../primitives/badge"
-import { Button } from "../../../primitives/button"
+} from "../../primitives/alert-dialog"
+import { Badge } from "../../primitives/badge"
+import { Button } from "../../primitives/button"
 import {
   Card,
   CardAction,
@@ -28,7 +28,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "../../../primitives/card"
+} from "../../primitives/card"
 import {
   Combobox,
   ComboboxContent,
@@ -36,7 +36,7 @@ import {
   ComboboxInput,
   ComboboxItem,
   ComboboxList,
-} from "../../../primitives/combobox"
+} from "../../primitives/combobox"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -53,9 +53,9 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "../../../primitives/dropdown-menu"
-import { Field, FieldGroup, FieldLabel } from "../../../primitives/field"
-import { Input } from "../../../primitives/input"
+} from "../../primitives/dropdown-menu"
+import { Field, FieldGroup, FieldLabel } from "../../primitives/field"
+import { Input } from "../../primitives/input"
 import {
   Select,
   SelectContent,
@@ -63,11 +63,11 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../../../primitives/select"
-import { Textarea } from "../../../primitives/textarea"
+} from "../../primitives/select"
+import { Textarea } from "../../primitives/textarea"
 import { PlusIcon, BluetoothIcon, MoreVerticalIcon, FileIcon, FolderIcon, FolderOpenIcon, FileCodeIcon, MoreHorizontalIcon, FolderSearchIcon, SaveIcon, DownloadIcon, EyeIcon, LayoutIcon, PaletteIcon, SunIcon, MoonIcon, MonitorIcon, UserIcon, CreditCardIcon, SettingsIcon, KeyboardIcon, LanguagesIcon, BellIcon, MailIcon, ShieldIcon, HelpCircleIcon, FileTextIcon, LogOutIcon } from "lucide-react"
 
-export function ComponentExample() {
+export function Example01() {
   return (
     <ExampleWrapper>
       <CardExample />

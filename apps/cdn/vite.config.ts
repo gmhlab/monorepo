@@ -39,6 +39,10 @@ export default defineConfig(({ command }) => ({
         page: resolve(__dirname, "index.html"),
         globals: resolve(__dirname, "globals.html"),
         dashboard: resolve(__dirname, "dashboard.html"),
+        demo: resolve(__dirname, "demo.html"),
+        homepage: resolve(__dirname, "homepage.html"),
+        designsystem: resolve(__dirname, "/modules/design-system.html"),  
+        sink: resolve(__dirname, "/modules/sink.html"),              
       },
       output: {
         entryFileNames: "assets/[name]/index-[hash].js",

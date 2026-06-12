@@ -1,15 +1,15 @@
 "use client"
 
 import { Users, BarChart3, Globe, TrendingUp } from "lucide-react"
-import { Flex, Grid, Section } from "../../../layout"
+import { Flex, Grid, Section } from "./../../layout"
 import {
   Card,
   CardHeader,
   CardTitle,
   CardDescription,
   CardContent,
-} from "../../../primitives/card"
-import { TextContentHeading } from "../../../primitives/Text/Text"
+} from "./../../primitives/card"
+import { TextContentHeading } from "./../../primitives/Text/Text"
 
 const stats = [
   { title: "Total Users", value: "2,450", change: "+12%", icon: Users },

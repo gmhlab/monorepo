@@ -20,7 +20,7 @@ import {
 } from "../../primitives/Text/Text";
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
 import { IconStar } from "../../icons/IconStar";
-import { AnchorOrButton, type AnchorOrButtonProps } from "../../utils";
+import { AnchorOrButton, type AnchorOrButtonProps } from "../../lib/AnchorOrButton";
 import "./cards.css";
 
 export type CardProps = ComponentPropsWithoutRef<"div"> & {

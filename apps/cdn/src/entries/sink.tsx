@@ -7,8 +7,8 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarTrigger,
-} from "@repo/ui/primitives/sidebar";
-import { DashboardPage } from "@repo/ui";
+} from "@repo/ui";
+import { SinkPage } from "@repo/ui";
 import { FolderKanban, LayoutDashboard, Settings, Users } from "lucide-react";
 import { mount } from "../bootstrap";
 
@@ -53,6 +53,6 @@ mount(
         <h1 className="font-semibold">Dashboard</h1>
       </div>
     }
-    content={<DashboardPage />}
+    content={<SinkPage />}
   />,
 );

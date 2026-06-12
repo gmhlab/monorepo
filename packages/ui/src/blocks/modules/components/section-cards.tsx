@@ -1,6 +1,6 @@
 "use client"
 
-import { Badge } from "../../../../primitives/badge"
+import { Badge } from "../../../primitives/badge"
 import {
   Card,
   CardAction,
@@ -8,7 +8,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "../../../../primitives/card"
+} from "../../../primitives/card"
 import { TrendingUpIcon, TrendingDownIcon } from "lucide-react"
 
 export function SectionCards() {

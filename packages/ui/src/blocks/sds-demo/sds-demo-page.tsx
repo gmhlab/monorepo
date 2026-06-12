@@ -8,7 +8,7 @@ import { ProductDetails } from "./sections/ProductDetails";
 import { ProductGrid } from "./sections/ProductGrid";
 import { WelcomeHero } from "./sections/WelcomeHero";
 
-function SdsDemo() {
+export function SdsDemo() {
   return (
     <AllProviders>
       <Header />
@@ -23,4 +23,3 @@ function SdsDemo() {
   );
 }
 
-export default SdsDemo;

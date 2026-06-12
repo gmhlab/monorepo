@@ -5,7 +5,7 @@ import { Button } from "../../primitives/button";
 import { Input } from "../../primitives/input";
 import { Card, CardContent } from "../../primitives/card";
 import { Badge } from "../../primitives/badge";
-import { Container, LegacyGrid as Grid, Cluster, Center } from "../../layout";
+import { Flex, Section, Grid } from "../../layout";
 import { Header } from "../../composites/Headers/Headers";
 import { BrandTemplate } from "../../templates";
 import {
@@ -34,15 +34,15 @@ const brandColors = {
 // Hero Section
 function HeroSection() {
   return (
-    <section className="relative overflow-hidden" style={{ background: `linear-gradient(180deg, background 0%, ${brandColors.navyLight} 100%)` }}>
+    <Section className="relative overflow-hidden" style={{ background: `linear-gradient(180deg, background 0%, ${brandColors.navyLight} 100%)` }}>
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 left-0 w-96 h-96 rounded-full bg-white blur-3xl transform -translate-x-1/2 -translate-y-1/2" />
         <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-white blur-3xl transform translate-x-1/2 translate-y-1/2" />
       </div>
 
-      <Container width="xl" section="xl" className="relative">
-        <Grid columns="auto-fit" min="25rem" gap="2xl" className="items-center">
+      <Flex container className="relative">
+        <Grid columns="repeat(2, 1fr)" className="items-center">
           {/* Content */}
           <div className="text-center lg:text-left">
             <Badge className="mb-6 px-4 py-1.5 text-xs font-semibold tracking-wider uppercase" style={{ backgroundColor: `${brandColors.gold}20`, color: brandColors.gold, border: `1px solid ${brandColors.gold}40` }}>
@@ -56,7 +56,7 @@ function HeroSection() {
               Partnering with communities worldwide to promote mental health,
               dismantle stigma, and develop sustainable strategies for lasting change.
             </p>
-            <Cluster gap="md" justify="center" className="lg:justify-start">
+            <Flex className="lg:justify-start">
               <Button size="lg" className="text-base font-semibold px-8" style={{ backgroundColor: brandColors.gold, color: brandColors.navy }}>
                 Learn More
                 <ArrowRight className="w-4 h-4 ml-2" />
@@ -64,7 +64,7 @@ function HeroSection() {
               <Button size="lg" variant="outline" className="text-base font-semibold px-8 border-white/30 text-white hover:bg-white/10 hover:text-white">
                 Our Projects
               </Button>
-            </Cluster>
+            </Flex>
           </div>
 
           {/* Image */}
@@ -91,17 +91,18 @@ function HeroSection() {
             </div>
           </div>
         </Grid>
-      </Container>
-    </section>
+      </Flex>
+    </Section>
   );
 }
 
 // Who We Are Section
 function WhoWeAreSection() {
   return (
-    <section style={{ backgroundColor: brandColors.warmWhite }}>
-      <Container width="xl" section="lg">
-        <Grid columns="auto-fit" min="25rem" gap="2xl" className="items-center">
+    <Section style={{ backgroundColor: brandColors.warmWhite }}>
+      <Flex container>
+        <Grid columns="repeat(2, 1fr)" className="row-reverse gap-12">
+          
           {/* Content */}
           <div>
             <div className="inline-flex items-center gap-2 mb-4">
@@ -124,8 +125,8 @@ function WhoWeAreSection() {
                 and empower community members to be effective providers for each other.
               </p>
             </div>
-            <Cluster gap="lg" className="mt-8">
-              <Cluster gap="sm" align="center">
+            <Flex className="mt-8">
+              <Flex alignPrimary="center">
                 <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: `${brandColors.navy}10` }}>
                   <Users className="w-5 h-5" style={{ color: brandColors.navy }} />
                 </div>
@@ -133,8 +134,8 @@ function WhoWeAreSection() {
                   <p className="font-semibold" style={{ color: brandColors.navy }}>Community-Centered</p>
                   <p className="text-sm text-gray-500">Local partnerships</p>
                 </div>
-              </Cluster>
-              <Cluster gap="sm" align="center">
+              </Flex>
+              <Flex gap="600" alignPrimary="center">
                 <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: `${brandColors.gold}20` }}>
                   <Globe className="w-5 h-5" style={{ color: brandColors.gold }} />
                 </div>
@@ -142,8 +143,8 @@ function WhoWeAreSection() {
                   <p className="font-semibold" style={{ color: brandColors.navy }}>Global Reach</p>
                   <p className="text-sm text-gray-500">Worldwide impact</p>
                 </div>
-              </Cluster>
-            </Cluster>
+              </Flex>
+            </Flex>
             <Button className="mt-8" style={{ backgroundColor: brandColors.navy }}>
               Learn More About Us
               <ChevronRight className="w-4 h-4 ml-1" />
@@ -151,7 +152,7 @@ function WhoWeAreSection() {
           </div>
 
           {/* Image Grid */}
-          <Grid columns={2} gap="md">
+          <Grid columns="repeat(2, 1fr)" gap="200">
             <div className="space-y-4">
               <img
                 src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&h=300&fit=crop"
@@ -178,8 +179,8 @@ function WhoWeAreSection() {
             </div>
           </Grid>
         </Grid>
-      </Container>
-    </section>
+      </Flex>
+    </Section>
   );
 }
 
@@ -207,10 +208,10 @@ function WhatWeDoSection() {
   ];
 
   return (
-    <section className="bg-white">
-      <Container width="xl" section="lg">
+    <Section className="bg-white">
+      <Flex direction="column" className="items-center" container>
         {/* Header */}
-        <Center max="2xl" text className="mb-16" gutter={false}>
+        <Flex direction="column" className="items-center text-center mb-12">
           <div className="inline-flex items-center gap-2 mb-4 justify-center">
             <div className="w-12 h-0.5" style={{ backgroundColor: brandColors.gold }} />
             <span className="text-sm font-semibold tracking-wider uppercase" style={{ color: brandColors.gold }}>Our Work</span>
@@ -222,10 +223,10 @@ function WhatWeDoSection() {
           <p className="text-gray-600">
             Driving change through research, innovation, and community partnerships
           </p>
-        </Center>
+        </Flex>
 
         {/* Cards */}
-        <Grid columns="auto-fit" min="20rem" gap="xl">
+        <Grid columns="repeat(3, 1fr)" gap="400">
           {services.map((service) => (
             <Card key={service.title} className="group relative overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
               <CardContent className="p-8">
@@ -251,8 +252,8 @@ function WhatWeDoSection() {
             </Card>
           ))}
         </Grid>
-      </Container>
-    </section>
+      </Flex>
+    </Section>
   );
 }
 
@@ -289,8 +290,8 @@ function LatestNewsSection() {
   ];
 
   return (
-    <section style={{ backgroundColor: brandColors.cream }}>
-      <Container width="xl" section="lg">
+    <Section style={{ backgroundColor: brandColors.cream }}>
+      <Flex direction="column" container>
         {/* Header */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-12">
           <div>
@@ -309,7 +310,7 @@ function LatestNewsSection() {
         </div>
 
         {/* News Cards */}
-        <Grid columns="auto-fit" min="20rem" gap="xl">
+        <Grid columns="repeat(3, 1fr)" gap="400">
           {news.map((item, index) => (
             <Card key={index} className="group overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-white">
               <div className="relative overflow-hidden">
@@ -340,21 +341,20 @@ function LatestNewsSection() {
             </Card>
           ))}
         </Grid>
-      </Container>
-    </section>
+      </Flex>
+    </Section>
   );
 }
 
 // Testimonial Section
 function TestimonialSection() {
   return (
-    <section className="relative overflow-hidden" style={{ background: `linear-gradient(135deg, ${brandColors.navy} 0%, ${brandColors.navyLight} 100%)` }}>
+    <Section className="relative overflow-hidden" style={{ background: `linear-gradient(135deg, ${brandColors.navy} 0%, ${brandColors.navyLight} 100%)` }}>
       {/* Background decoration */}
       <div className="absolute top-0 left-0 w-64 h-64 rounded-full opacity-10 blur-3xl" style={{ backgroundColor: brandColors.gold }} />
       <div className="absolute bottom-0 right-0 w-64 h-64 rounded-full opacity-10 blur-3xl" style={{ backgroundColor: brandColors.gold }} />
 
-      <Container width="md" section="lg" className="relative">
-        <div className="text-center">
+      <Flex direction="column" alignPrimary="center" alignSecondary="center" container className="relative">
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-full mb-8" style={{ backgroundColor: `${brandColors.gold}20` }}>
             <Quote className="w-8 h-8" style={{ color: brandColors.gold }} />
           </div>
@@ -364,16 +364,16 @@ function TestimonialSection() {
             reach underserved communities and implement impactful programs. They are a crucial
             ally in promoting global mental health."
           </blockquote>
-          <Cluster gap="md" align="center" justify="center">
+          <Flex >
             <div className="w-12 h-12 rounded-full bg-gray-300" />
             <div className="text-left">
               <p className="font-semibold text-white">Claudia Sartor</p>
               <p className="text-sm" style={{ color: brandColors.gold }}>Global Mental Health Peer Network</p>
             </div>
-          </Cluster>
-        </div>
-      </Container>
-    </section>
+          </Flex>
+
+      </Flex>
+    </Section>
   );
 }
 
@@ -382,9 +382,8 @@ function NewsletterSection() {
   const [email, setEmail] = useState("");
 
   return (
-    <section className="bg-white">
-      <Container width="lg" section="md">
-        <Center max="3xl" gutter={false}>
+    <Section className="bg-white">
+      <Flex alignPrimary="center" container>
         <Card className="border-0 bg-secondary shadow-xl overflow-hidden">
           <CardContent className="p-8 sm:p-12">
             <div className="text-center">
@@ -415,18 +414,18 @@ function NewsletterSection() {
             </div>
           </CardContent>
         </Card>
-        </Center>
-      </Container>
-    </section>
+        </Flex>
+    </Section>
   );
 }
 
 // Map Section
 function MapSection() {
   return (
-    <section style={{ background: `linear-gradient(180deg, ${brandColors.navy} 0%, ${brandColors.navyLight} 100%)` }}>
-      <Container width="xl" section="lg">
-        <div className="text-center mb-12">
+    <Section style={{ background: `linear-gradient(180deg, ${brandColors.navy} 0%, ${brandColors.navyLight} 100%)` }}>
+      <Flex alignPrimary="start" alignSecondary="stretch" direction="column" container>
+          {/* Header */}
+        <Flex direction="column" className="text-center mb-12">
           <div className="inline-flex items-center gap-2 mb-4 justify-center">
             <div className="w-12 h-0.5" style={{ backgroundColor: brandColors.gold }} />
             <span className="text-sm font-semibold tracking-wider uppercase" style={{ color: brandColors.gold }}>Global Impact</span>
@@ -435,14 +434,14 @@ function MapSection() {
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
             Where We Work
           </h2>
-          <p className="text-gray-300 max-w-2xl mx-auto">
+          <p className="text-gray-300 max-w-2xl">
             Our partnerships span across continents, bringing mental health to communities worldwide
           </p>
-        </div>
+        </Flex>
 
         {/* World Map Placeholder */}
-        <div className="relative bg-white/5 rounded-2xl p-8 backdrop-blur-sm border border-white/10">
-          <div className="aspect-[2/1] flex items-center justify-center">
+        <Flex direction="column" className="aspect-[2/1] relative bg-white/5 rounded-2xl p-8 backdrop-blur-sm border border-white/10">
+          <Flex alignPrimary="center" alignSecondary="center" className="absolute inset-0">
             <svg viewBox="0 0 1000 500" className="w-full h-full opacity-60">
               {/* Simplified world map outline */}
               <path
@@ -466,18 +465,18 @@ function MapSection() {
                 </g>
               ))}
             </svg>
-          </div>
-          <Cluster gap="xl" justify="center" className="mt-8">
+          </Flex>
+          <Flex gap="400" alignPrimary="center" className="mt-8">
             {["Americas", "Europe", "Africa", "Asia", "Oceania"].map((region) => (
-              <Cluster key={region} gap="sm" align="center">
+              <Flex key={region} gap="200" alignPrimary="center">
                 <MapPin className="w-4 h-4" style={{ color: brandColors.gold }} />
                 <span className="text-white text-sm">{region}</span>
-              </Cluster>
+              </Flex>
             ))}
-          </Cluster>
-        </div>
-      </Container>
-    </section>
+          </Flex>
+        </Flex>
+      </Flex>
+    </Section>
   );
 }
 

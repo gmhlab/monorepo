@@ -51,9 +51,9 @@ import { type DateRange } from "react-day-picker"
 import { Bar, BarChart, ResponsiveContainer } from "recharts"
 import { toast } from "sonner"
 
-import { cn } from "../../../lib/utils"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../../../primitives/accordion"
-import { Alert, AlertDescription, AlertTitle } from "../../../primitives/alert"
+import { cn } from "../../lib/utils"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../../primitives/accordion"
+import { Alert, AlertDescription, AlertTitle } from "../../primitives/alert"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -65,8 +65,8 @@ import {
   AlertDialogMedia,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "../../../primitives/alert-dialog"
-import { AspectRatio } from "../../../primitives/aspect-ratio"
+} from "../../primitives/alert-dialog"
+import { AspectRatio } from "../../primitives/aspect-ratio"
 import {
   Avatar,
   AvatarBadge,
@@ -74,8 +74,8 @@ import {
   AvatarGroup,
   AvatarGroupCount,
   AvatarImage,
-} from "../../../primitives/avatar"
-import { Badge } from "../../../primitives/badge"
+} from "../../primitives/avatar"
+import { Badge } from "../../primitives/badge"
 import {
   Breadcrumb,
   BreadcrumbEllipsis,
@@ -84,24 +84,24 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "../../../primitives/breadcrumb"
-import { Button } from "../../../primitives/button"
+} from "../../primitives/breadcrumb"
+import { Button } from "../../primitives/button"
 import {
   ButtonGroup,
   ButtonGroupSeparator,
   ButtonGroupText,
-} from "../../../primitives/button-group"
-import { Calendar } from "../../../primitives/calendar"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../../../primitives/card"
+} from "../../primitives/button-group"
+import { Calendar } from "../../primitives/calendar"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../../primitives/card"
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "../../../primitives/carousel"
-import { Checkbox } from "../../../primitives/checkbox"
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "../../../primitives/collapsible"
+} from "../../primitives/carousel"
+import { Checkbox } from "../../primitives/checkbox"
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "../../primitives/collapsible"
 import {
   Combobox,
   ComboboxChip,
@@ -118,7 +118,7 @@ import {
   ComboboxTrigger,
   ComboboxValue,
   useComboboxAnchor,
-} from "../../../primitives/combobox"
+} from "../../primitives/combobox"
 import {
   Command,
   CommandDialog,
@@ -129,7 +129,7 @@ import {
   CommandList,
   CommandSeparator,
   CommandShortcut,
-} from "../../../primitives/command"
+} from "../../primitives/command"
 import {
   ContextMenu,
   ContextMenuCheckboxItem,
@@ -144,7 +144,7 @@ import {
   ContextMenuSubContent,
   ContextMenuSubTrigger,
   ContextMenuTrigger,
-} from "../../../primitives/context-menu"
+} from "../../primitives/context-menu"
 import {
   Dialog,
   DialogClose,
@@ -154,7 +154,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../../../primitives/dialog"
+} from "../../primitives/dialog"
 import {
   Drawer,
   DrawerClose,
@@ -164,7 +164,7 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "../../../primitives/drawer"
+} from "../../primitives/drawer"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -181,7 +181,7 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "../../../primitives/dropdown-menu"
+} from "../../primitives/dropdown-menu"
 import {
   Empty,
   EmptyContent,
@@ -189,7 +189,7 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "../../../primitives/empty"
+} from "../../primitives/empty"
 import {
   Field,
   FieldDescription,
@@ -197,16 +197,16 @@ import {
   FieldLabel,
   FieldLegend,
   FieldSet,
-} from "../../../primitives/field"
-import { HoverCard, HoverCardContent, HoverCardTrigger } from "../../../primitives/hover-card"
-import { Input } from "../../../primitives/input"
+} from "../../primitives/field"
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "../../primitives/hover-card"
+import { Input } from "../../primitives/input"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
   InputGroupText,
-} from "../../../primitives/input-group"
-import { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot } from "../../../primitives/input-otp"
+} from "../../primitives/input-group"
+import { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot } from "../../primitives/input-otp"
 import {
   Item,
   ItemActions,
@@ -215,9 +215,9 @@ import {
   ItemGroup,
   ItemSeparator,
   ItemTitle,
-} from "../../../primitives/item"
-import { Kbd, KbdGroup } from "../../../primitives/kbd"
-import { Label } from "../../../primitives/label"
+} from "../../primitives/item"
+import { Kbd, KbdGroup } from "../../primitives/kbd"
+import { Label } from "../../primitives/label"
 import {
   Menubar,
   MenubarCheckboxItem,
@@ -232,12 +232,12 @@ import {
   MenubarSubContent,
   MenubarSubTrigger,
   MenubarTrigger,
-} from "../../../primitives/menubar"
+} from "../../primitives/menubar"
 import {
   NativeSelect,
   NativeSelectOptGroup,
   NativeSelectOption,
-} from "../../../primitives/native-select"
+} from "../../primitives/native-select"
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -246,7 +246,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "../../../primitives/navigation-menu"
+} from "../../primitives/navigation-menu"
 import {
   Pagination,
   PaginationContent,
@@ -255,7 +255,7 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "../../../primitives/pagination"
+} from "../../primitives/pagination"
 import {
   Popover,
   PopoverContent,
@@ -263,11 +263,11 @@ import {
   PopoverHeader,
   PopoverTitle,
   PopoverTrigger,
-} from "../../../primitives/popover"
-import { Progress } from "../../../primitives/progress"
-import { RadioGroup, RadioGroupItem } from "../../../primitives/radio-group"
-import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "../../../primitives/resizable"
-import { ScrollArea, ScrollBar } from "../../../primitives/scroll-area"
+} from "../../primitives/popover"
+import { Progress } from "../../primitives/progress"
+import { RadioGroup, RadioGroupItem } from "../../primitives/radio-group"
+import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "../../primitives/resizable"
+import { ScrollArea, ScrollBar } from "../../primitives/scroll-area"
 import {
   Select,
   SelectContent,
@@ -276,8 +276,8 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from "../../../primitives/select"
-import { Separator } from "../../../primitives/separator"
+} from "../../primitives/select"
+import { Separator } from "../../primitives/separator"
 import {
   Sheet,
   SheetClose,
@@ -287,12 +287,12 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "../../../primitives/sheet"
-import { Skeleton } from "../../../primitives/skeleton"
-import { Slider } from "../../../primitives/slider"
-import { Toaster } from "../../../primitives/sonner"
-import { Spinner } from "../../../primitives/spinner"
-import { Switch } from "../../../primitives/switch"
+} from "../../primitives/sheet"
+import { Skeleton } from "../../primitives/skeleton"
+import { Slider } from "../../primitives/slider"
+import { Toaster } from "../../primitives/sonner"
+import { Spinner } from "../../primitives/spinner"
+import { Switch } from "../../primitives/switch"
 import {
   Table,
   TableBody,
@@ -302,12 +302,12 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "../../../primitives/table"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../primitives/tabs"
-import { Textarea } from "../../../primitives/textarea"
-import { Toggle } from "../../../primitives/toggle"
-import { ToggleGroup, ToggleGroupItem } from "../../../primitives/toggle-group"
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../../../primitives/tooltip"
+} from "../../primitives/table"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../primitives/tabs"
+import { Textarea } from "../../primitives/textarea"
+import { Toggle } from "../../primitives/toggle"
+import { ToggleGroup, ToggleGroupItem } from "../../primitives/toggle-group"
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../../primitives/tooltip"
 
 // ---------------------------------------------------------------------------
 // ComponentWrapper
@@ -2851,7 +2851,7 @@ function TooltipDemo() {
 // Page
 // ---------------------------------------------------------------------------
 
-export default function SinkPage() {
+export function SinkPage() {
   return (
     <TooltipProvider>
     <div className="@container grid flex-1 gap-4 p-4">
