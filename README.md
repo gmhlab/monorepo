@@ -12,7 +12,7 @@ This repository is a **pnpm + Turborepo** monorepo that powers the Global Mental
 ## Core architecture
 
 - **Monorepo tooling:** pnpm workspaces + Turborepo
-- **UI system:** layered component model (layout → primitives → composites → patterns → templates → pages)
+- **UI system:** layered component model (layout → primitives → composites → templates → blocks)
 - **Styling:** Tailwind CSS v4 + semantic design tokens from `index.css`
 - **Design workflow:** Figma Code Connect mappings for component parity
 
@@ -35,7 +35,7 @@ Requires [pnpm](https://pnpm.io) 9.15+ and Node.js 18+.
 
 | App | Port | Stack | Purpose |
 |-----|------|-------|---------|
-| [`apps/web`](apps/web) | 3000 | Next.js 16 | Main GMH application — dashboard, public site, marketing |
+| [`apps/web`](apps/web) | 3000 | Next.js 16 | Main GMH application — portal landing, login, dashboard |
 | [`apps/docs`](apps/docs) | 3001 | Next.js 16 | Design system documentation |
 | [`apps/cdn`](apps/cdn) | 3002 | Vite 6 | Static asset delivery SPA |
 
@@ -51,17 +51,15 @@ gmhlab_monorepo/
 ├── packages/
 │   ├── ui/                         # Shared component library (raw TS, no build)
 │   │   └── src/
-│   │       ├── lib/               # Pure utilities (cn, slot)
+│   │       ├── lib/               # Pure utilities (cn, slot, AnchorOrButton)
 │   │       ├── hooks/             # Shared hooks (useIsMobile, useMediaQuery)
-│   │       ├── utils/             # Cross-family helpers (AnchorOrButton)
 │   │       ├── icons/             # Icon component + 280+ Icon* SVG wrappers
 │   │       ├── layout/            # Spatial primitives (Section, Grid, Flex) + legacy.tsx
 │   │       ├── primitives/        # shadcn modules (lowercase) + react-aria-components drop-ins (PascalCase)
 │   │       ├── data/              # App data: config, contexts, providers, hooks, services, types
-│   │       ├── composites/        # Cards, Footers, Forms, Headers, Sections, Logo, ThemeProvider, …
-│   │       ├── patterns/          # Stateless UI recipes (PageHeader, FormSection)
+│   │       ├── composites/        # Cards, Footers, Forms, Headers, Sections, Sidebars, ThemeProvider, …
 │   │       ├── templates/         # Full page shells (AppShell, Auth, Brand)
-│   │       ├── pages/             # Page compositions, grouped (dashboards, examples, homepage, innovations, …)
+│   │       ├── blocks/            # Page compositions, grouped (homepage, innovations, link-in-bios, login, sds-demo, modules)
 │   │       ├── styles/            # Theme tokens and CSS
 │   │       └── assets/            # Static assets
 │   ├── typescript-config/          # Shared tsconfig presets
@@ -110,30 +108,26 @@ All three accept the numeric token scale `100` · `200` · `300` · `400` · `60
 
 *Legacy:* `Stack` · `Cluster` · `Center` · `Container` · `Split` · `Cover` · `LegacyGrid` remain available from `layout/legacy.tsx` for backwards compatibility but should not be used in new code. (`LegacyGrid` was previously exported as `Grid`; the canonical `Grid` is now the spatial primitive from `layout/Grid/Grid`.)
 
-**Data** (`src/data/`) — non-presentational app data consumed by pages:
+**Data** (`src/data/`) — non-presentational app data consumed by blocks:
 
-`config/` (navigation, features, pricing, footer, portal) · `contexts/` + `providers/` (Auth, Pricing, Products) · `hooks/` · `services/` · `types/`. Not re-exported through the top-level barrel — imported via relative paths from `pages/`.
+`config/` (navigation, features, pricing, footer, portal) · `contexts/` + `providers/` (Auth, Pricing, Products) · `hooks/` · `services/` · `types/`. Not re-exported through the top-level barrel — imported via relative paths from `blocks/`.
 
 **Composites** (`src/composites/`) — multi-primitive widgets:
 
 - *Grouped families:* `Cards/` (Card, PricingCard, ProductInfoCard + skeletons & adapters), `Footers/` (footer-02), `Forms/` (FormBox), `Sections/` (Heroes, Panels), `Headers/` (navbar-02)
 - *Standalone:* `Logo` · `LogoMark` · `ModeToggle` · `ThemeProvider` · `ImageWithFallback` · `Hamburger` · `ProfileCard` · `brand-logo`
 
-**Patterns** (`src/patterns/`) — stateless UI recipes:
-
-`PageHeader` · `SectionHeader` · `FormSection` · `EmptyState` · `FeatureCard` · `ProfileHeader` · `SidebarNav`
-
 **Templates** (`src/templates/`) — full page shells with named slots:
 
 `AppShellTemplate` · `AuthTemplate` · `BrandTemplate`
 
-**Pages** (`src/pages/`) — complete page compositions wired into route-ready views, grouped by kind:
+**Blocks** (`src/blocks/`) — complete page compositions wired into route-ready views, grouped by kind:
 
-`dashboards/` · `design-system/` · `examples/` (example-01–03) · `homepage/` · `innovations/` · `link-in-bios/` · `login/` · `marketing/` · `sds-demo/` · `tester/`
+`homepage/` · `innovations/` · `link-in-bios/` · `login/` · `sds-demo/` · `modules/` (demo/sandbox pages — example pages, design-system showcase, dashboard content, palettes/tokens)
 
-Notable exports: `DashboardPage` · `DesignSystem` · `LinkInBioTemplate` · `LinkInBio00–02`. The GMH-branded domain pages (`HomePage`, `Innovation`, `Innovations`, marketing) also live here — they may use hardcoded brand colors.
+The GMH-branded domain pages (`HomePage`, `Innovations`) live here — they may use hardcoded brand colors.
 
-> The former `blocks/` and `gmh/` layers were dissolved: block sections moved into `composites/` and `pages/examples/`; GMH domain pages moved into `pages/`.
+> There is **no** `pages/`, `patterns/`, or `utils/` layer in `src/` despite older docs. `blocks/` is the top composition layer; `AnchorOrButton` lives in `lib/`.
 
 ### Utilities
 
@@ -144,32 +138,22 @@ useIsMobile()         // responsive hook (< 768px)
 
 ## Web App Routes
 
-The main app (`apps/web`) uses Next.js App Router with five route groups:
+The main app (`apps/web`) uses Next.js App Router with three route groups:
 
 | Route Group | Layout | Purpose |
 |-------------|--------|---------|
-| `(content)` | Navbar5 + Footer3 | GMH branded public site |
-| `(marketing)` | Marketing layout | Marketing pages |
-| `(home)` | Navbar2 + Footer2 | Portal landing page |
-| `(auth)` | Minimal | Authentication, link-in-bio |
+| `(home)` | Portal layout | Portal landing page |
+| `(auth)` | Minimal | Authentication |
 | `(app)` | Sidebar + Header | Dashboard area |
 
 Key routes:
 
 | Route | Route Group |
 |-------|-------------|
-| `/site` | `(content)` — GMH homepage |
-| `/site/innovations` | `(content)` — Innovations index |
-| `/site/innovations/equip` | `(content)` — EQUIP detail |
-| `/site/innovations/photovoice` | `(content)` — Photovoice detail |
-| `/marketing/01`, `/marketing/02` | `(marketing)` — Marketing pages |
 | `/` | `(home)` — Portal landing |
 | `/login` | `(auth)` — Login page |
-| `/links` | `(auth)` — Link-in-bio page |
 | `/dashboard` | `(app)` — Dashboard |
-| `/dashboard/design-system` | `(app)` — Design system viewer |
-| `/dashboard/example/01–03` | `(app)` — Example pages |
-| `/dashboard/layouts/*` | `(app)` — Layout primitive demos |
+| `/password-gate` | (top-level) — Site password gate |
 
 ## Design System
 

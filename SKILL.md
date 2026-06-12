@@ -33,7 +33,7 @@ their parent layout does.
 ## The authoring sequence
 
 The taxonomy describes complexity:
-`layout → primitive → composite → pattern → template → page`.
+`layout → primitive → composite → template → block`.
 But the **authoring sequence** is different:
 
 ```
@@ -41,10 +41,10 @@ But the **authoring sequence** is different:
 2. Layout primitives                                — Section, Grid, Flex (+ FlexItem)
 3. Primitives                                       — Button, Input, Text, …
 4. Composites                                       — Cards, Forms, Headers, Footers, Sections (Heroes/Panels)
-5. Patterns / templates / pages                     — recipes and full shells
+5. Templates / blocks                               — full shells and page compositions
 ```
 
-(The former `blocks/` layer was dissolved — its sections now live in `composites/` and `pages/`.)
+(`blocks/` is the top composition layer; there is no `pages/`, `patterns/`, or `utils/` layer in `src/`.)
 
 Layout comes early because you can't compose anything coherently if you haven't
 decided how space works first.

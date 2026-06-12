@@ -51,11 +51,9 @@ Apps consume raw TypeScript source via path aliases. Next.js uses `transpilePack
 The UI package uses a layered architecture inspired by "Every Layout":
 
 ```
-lib/           Pure utilities (cn, slot) — no UI
+lib/           Pure utilities (cn, slot, AnchorOrButton) — no UI
   ↑
 hooks/         Shared hooks (useIsMobile, useMediaQuery)
-  ↑
-utils/         Cross-family helpers (AnchorOrButton)
   ↑
 icons/         Icon component set (Icon + 280+ Icon* SVG wrappers)
   ↑
@@ -66,22 +64,20 @@ primitives/    Two coexisting families:
                  • react-aria-components drop-ins (PascalCase folders) — Button/, Avatar/, Fieldset/, …
                Both live side-by-side. Pick one family per component to avoid export collisions.
   ↑
-composites/    Composed UI pieces — grouped families Cards/, Footers/, Forms/, Headers/, Sections/ (Heroes, Panels), plus standalone Logo, LogoMark, ModeToggle, ThemeProvider, ImageWithFallback, Hamburger, ProfileCard, brand-logo.
-  ↑
-patterns/      Stateless UI recipes — PageHeader, SectionHeader, FormSection, EmptyState, FeatureCard, ProfileHeader, SidebarNav.
+composites/    Composed UI pieces — grouped families Cards/, Footers/, Forms/, Headers/, Sections/, Sidebars/, plus standalone hamburger, mode-toggle, theme-provider.
   ↑
 templates/     Full page shells — AppShellTemplate, AuthTemplate, BrandTemplate.
   ↑
-pages/         Complete page compositions — template + patterns wired into route-ready views. Organized into subfolders: dashboards/, design-system/, examples/, homepage/, innovations/, link-in-bios/, login/, marketing/, sds-demo/, tester/. This is also where GMH-branded domain pages (HomePage, Innovations, marketing) live — they may use hardcoded brand colors.
+blocks/        Complete page compositions wired into route-ready views. Subfolders: homepage/, innovations/, link-in-bios/, login/, sds-demo/, and modules/ (demo/sandbox pages — example pages, design-system showcase, dashboard content, palettes/tokens). GMH-branded domain pages (homepage, innovations) live here and may use hardcoded brand colors.
 ```
 
 **Each layer may only import from layers below it.** Internal cross-layer imports use relative paths.
 
 Each layer re-exports through barrel `index.ts` files up to `ui/src/index.ts`.
 
-A separate **`data/`** layer (`src/data/`) holds non-presentational app data consumed by `pages/`: `config/` (navigation, features, pricing, footer, portal), `contexts/` + `providers/` (Auth, Pricing, Products), `hooks/`, `services/`, and `types/`. It carries no UI and is not re-exported through the top-level `ui/src/index.ts` barrel — import it via relative paths from within `pages/`.
+A separate **`data/`** layer (`src/data/`) holds non-presentational app data consumed by `blocks/`: `config/` (navigation, features, pricing, footer, portal), `contexts/` + `providers/` (Auth, Pricing, Products), `hooks/`, `services/`, and `types/`. It carries no UI and is not re-exported through the top-level `ui/src/index.ts` barrel — import it via relative paths from within `blocks/`.
 
-> **Note:** The former `blocks/` and `gmh/` layers were dissolved (commit `ef66b20`). Block sections moved into `composites/` (Headers, Footers, brand-logo) and `pages/` (examples); GMH domain pages moved into `pages/`. Older docs or Figma references to `blocks/`, `gmh/`, or `layouts/` (now `layout/`) are stale.
+> **Note:** Commit `ef66b20` once dissolved the `blocks/` layer into `pages/`, but `blocks/` is the current top layer again — there is **no** `pages/`, `patterns/`, or `utils/` directory in `src/`. `AnchorOrButton` lives in `lib/`. Older docs or Figma references to `pages/`, `patterns/`, `utils/`, `gmh/`, or `layouts/` (now `layout/`) are stale.
 
 ### Layout Primitives
 
@@ -99,13 +95,11 @@ Three composable spatial primitives in `src/layout/`. They control **where thing
 
 The web app uses Next.js route groups for distinct layout contexts:
 
-- `(content)/` — GMH branded public site (homepage, innovations)
-- `(marketing)/` — Marketing pages
 - `(home)/` — Portal landing page (root `/`)
-- `(auth)/` — Authentication pages, layout demos, link-in-bio
+- `(auth)/` — Authentication pages (`login`)
 - `(app)/` — Dashboard area (Sidebar + Header)
 
-Root layout provides ThemeProvider, TooltipProvider, Toaster, and fonts.
+(A `password-gate` route and `api/` live alongside the groups.) Root layout provides ThemeProvider, TooltipProvider, Toaster, and fonts.
 
 ### Import Conventions Within `packages/ui/`
 
@@ -134,7 +128,7 @@ Root layout provides ThemeProvider, TooltipProvider, Toaster, and fonts.
 
 Apps must include `@source` directives in their `globals.css` pointing to both local and UI package `.tsx` files.
 
-**Always use semantic tokens** (`bg-primary`, `text-muted-foreground`), never hardcode hex values. Exception: GMH branded domain pages under `pages/` (homepage, innovations, marketing).
+**Always use semantic tokens** (`bg-primary`, `text-muted-foreground`), never hardcode hex values. Exception: GMH branded domain pages under `blocks/` (homepage, innovations).
 
 Use layout components (`Section`, `Grid`, `Flex`) for structural composition instead of raw `flex`/`grid` utilities.
 
@@ -142,7 +136,7 @@ Use layout components (`Section`, `Grid`, `Flex`) for structural composition ins
 
 - **Primitives (shadcn family)** use `cva` for variants, `cn()` for className merging, `data-slot` attribute, `asChild`/`Slot.Root` pattern
 - **Primitives (react-aria family)** ship as `primitives/<PascalCase>/<PascalCase>.tsx` + colocated `<name>.css`. Import siblings via explicit relative paths (`../Text/Text`) — **not** through the `primitives/index.ts` barrel, which would collide with shadcn exports of the same name (`Button`, `Avatar`, `Dialog`, …)
-- **Pages** are grouped by kind under `pages/<group>/` (e.g. `dashboards/`, `examples/`, `link-in-bios/`); numbered variants keep a suffix (`Linkinbio-01`, `example-03`)
+- **Page compositions** live under `blocks/<group>/` (e.g. `homepage/`, `innovations/`, `link-in-bios/`, `modules/`); numbered variants keep a suffix (`Linkinbio-01`, `example-01`)
 - **`"use client"`** required at file top for any component using hooks, events, or browser APIs. Default to Server Components in Next.js.
 - **Unused vars** must be prefixed with `_` (strict `@typescript-eslint/no-unused-vars`)
 - **Dependency versions** pinned in `pnpm-workspace.yaml` catalog — use `"catalog:"` in package.json
@@ -166,10 +160,10 @@ Code Connect files live in `.figma/` directories within each UI layer. These map
 | Layouts | `0:1` | `layout/` |
 | Primitives | `9:2` | `primitives/` |
 | Composites | `9:3` | `composites/` |
-| Patterns | `9:4` | `patterns/` |
-| Blocks | `9:5` | _dissolved — now `composites/` + `pages/`_ |
+| Patterns | `9:4` | _no `patterns/` layer in code_ |
+| Blocks | `9:5` | `blocks/` |
 | Templates | `9:6` | `templates/` |
-| Pages | `9:7` | `pages/` |
+| Pages | `9:7` | `blocks/` (no separate `pages/` layer) |
 
 ### Figma Variable Collections
 
