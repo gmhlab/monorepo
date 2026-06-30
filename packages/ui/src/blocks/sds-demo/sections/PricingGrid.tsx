@@ -4,11 +4,11 @@ import {
   PricingCard,
   PricingCardSkeleton,
   pricingPlanToPricingCardProps,
-} from "./../../../composites/Cards/Cards";
+} from "../../../composites/Cards/Cards";
 import { usePricing } from "../../../data";
-import { useMediaQuery } from "./../../../hooks";
-import { Flex, FlexItem, Section } from "./../../../layout";
-import { Navigation, NavigationPill } from "./../../../primitives/Navigation/Navigation";
+import { useMediaQuery } from "../../../hooks";
+import { Flex, FlexItem, Section } from "../../../layout";
+import { Navigation, NavigationPill } from "../../../primitives/Navigation/Navigation";
 import { useState } from "react";
 
 export function PricingGrid() {

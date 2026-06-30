@@ -26,7 +26,7 @@ export function WhatIsItSection({ headline, body, capabilities }: WhatIsItData) 
                 </AccordionItem>
               ))}
             </Accordion>
-            <ButtonGroup gap="600" mt="600" justify="start" className="w-full">
+            <ButtonGroup align="start" className="w-full mt-6 gap-6">
               <Button className="font-bold h-16 w-full sm:w-56 rounded-lg text-lg shadow-sm hover:shadow-lg" >Request Training<ArrowRight /></Button>
               <Button className="font-bold h-16 w-full sm:w-56 rounded-lg text-lg shadow-sm hover:shadow-lg" >Use Platform</Button>
             </ButtonGroup>

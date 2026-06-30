@@ -1,6 +1,6 @@
 "use client";
 
-import { AppSidebar } from "./../composites/Sidebars/app-sidebar"
+import { AppSidebar } from "../composites/Sidebars/app-sidebar"
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -12,7 +12,7 @@ import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
-} from "./../primitives"
+} from "../primitives"
 
 /** Sidebar + header chrome for the `(app)` area. Renders route content inside `SidebarInset`. */
 export function DashboardShell({ children }: { children: React.ReactNode }) {

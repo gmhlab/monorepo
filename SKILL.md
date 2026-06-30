@@ -201,3 +201,4 @@ In priority order, these are the files where spatial drift causes the most damag
 - **Bypassing the barrel collision rule**: importing react-aria-components primitives
   through `from "@repo/ui"` or `primitives/index.ts`. Use explicit relative paths like
   `../Text/Text` inside the RAC family.
+

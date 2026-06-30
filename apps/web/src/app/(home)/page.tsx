@@ -1,7 +1,7 @@
-import { ComponentExample } from '@repo/ui'
+import { Example01 } from '@repo/ui'
 
 export default function Page() {
   return (
-    <ComponentExample />
+    <Example01 />
   )
 }

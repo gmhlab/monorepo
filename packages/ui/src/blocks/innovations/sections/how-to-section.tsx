@@ -2,7 +2,7 @@ import { Fragment } from "react";
 import { ArrowDown } from "lucide-react";
 import { Flex, Section } from "../../../layout";
 import type { HowToUseData } from "../innovation-page";
-import { TextTitlePage } from "./../../../primitives/Text/Text";
+import { TextTitlePage } from "../../../primitives/Text/Text";
 
 export function HowToUseSection({ steps }: HowToUseData) {
   return (

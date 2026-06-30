@@ -1,9 +1,9 @@
-import { Hero } from "./../../../composites/Sections/Heroes";
-import { Panel } from "./../../../composites/Sections/Panels";
-import { useMediaQuery } from "./../../../hooks";
-import { Flex, FlexItem, Section } from "./../../../layout";
-import { Image } from "./../../../primitives/Image/Image";
-import { Text, TextContentHeading, TextContentTitle } from "./../../../primitives/Text/Text";
+import { Hero } from "../../../composites/Sections/Heroes";
+import { Panel } from "../../../composites/Sections/Panels";
+import { useMediaQuery } from "../../../hooks";
+import { Flex, FlexItem, Section } from "../../../layout";
+import { Image } from "../../../primitives/Image/Image";
+import { Text, TextContentHeading, TextContentTitle } from "../../../primitives/Text/Text";
 
 export function PanelSections() {
   const { isMobile } = useMediaQuery();
